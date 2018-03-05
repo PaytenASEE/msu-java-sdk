@@ -8,12 +8,16 @@ Credential Storage is supported in three Locations
   merchantuser=apiuser@testmerchant.com
   merchantpassword=******
 ```
+`Authentication userCredentialsAuthentication = new UserCredentialsAuthentication(new ClasspathPropertyFileCredentialsProvider());`
+
 - Environment Variables with keys
 ```
   MSU_MERCHANT_BUSINESS_ID=testmerchant
   MSU_MERCHANT_USER=apiuser@testmerchant.com
   MSU_MERCHANT_PASSWORD=******
 ```
+`Authentication userCredentialsAuthentication = new UserCredentialsAuthentication(new EnvironmentVariableCredentialsProvider());`
+
 - Static Credentials In Code
 ```java
 Authentication userCredentialsAuthentication = new UserCredentialsAuthentication(
@@ -21,14 +25,9 @@ Authentication userCredentialsAuthentication = new UserCredentialsAuthentication
 ```
 
 ## Setting Up The Client
-- With Credentials In Property File in Classpath
-```java 
-Authentication userCredentialsAuthentication = new UserCredentialsAuthentication(new ClasspathPropertyFileCredentialsProvider());
-MsuApiClient msuClient = new MsuApiClientBuilder().withDefaultAuthentication(userCredentialsAuthentication).build();
-```
-- With Credentials In Environment Variables
 ```java
-Authentication userCredentialsAuthentication = new UserCredentialsAuthentication(new EnvironmentVariableCredentialsProvider());
-MsuApiClient msuClient = new MsuApiClientBuilder().withDefaultAuthentication(userCredentialsAuthentication).build();
+MsuApiClient msuClient = new MsuApiClientBuilder().withDefaultAuthentication(userCredentialsAuthentication)
+			.build();
 ```
+## Sending Requests
 
