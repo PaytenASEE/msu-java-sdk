@@ -8,6 +8,6 @@ syntax: glob
 target
 .idea
 *.orig
-*.iml
 .factorypath
+*.iml
 logs
