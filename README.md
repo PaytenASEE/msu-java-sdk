@@ -2,7 +2,7 @@
 ## MSU API Fluent SDK - Java
 
 Credential Storage is supported in three Locations
-- Property File in Classpath (msuCredentials.properties) 
+- Property File in Classpath (i.e. `src/main/resources/msuCredentials.properties`) 
 ```
   merchantBusinessId=testmerchant
   merchantuser=apiuser@testmerchant.com
@@ -10,7 +10,7 @@ Credential Storage is supported in three Locations
 ```
 ```java
 Authentication userCredentialsAuthentication = new UserCredentialsAuthentication(
-				new ClasspathPropertyFileCredentialsProvider());
+		new ClasspathPropertyFileCredentialsProvider());
 ```
 
 - Environment Variables with keys
@@ -33,7 +33,7 @@ Authentication userCredentialsAuthentication = new UserCredentialsAuthentication
 ## Setting Up The Client
 ```java
 MsuApiClient msuClient = new MsuApiClientBuilder().withDefaultAuthentication(userCredentialsAuthentication)
-			.build();
+		.build();
 ```
 ## Sending Requests
 - Session Token request
