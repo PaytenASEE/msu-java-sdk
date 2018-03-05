@@ -1,5 +1,7 @@
 # msu-api-sdk
-## MSU API Fluent SDK - Java
+## MSU API Fluent SDK - Java - [MerchantSafe Unipay](http://merchantsafeunipay.asseco.com/)
+
+
 
 Credential Storage is supported in three Locations
 - Property File in Classpath (i.e. `src/main/resources/msuCredentials.properties`) 
@@ -59,3 +61,4 @@ PreauthRequest preauthRequest =  PreauthRequest.builder().withAuthentication(ses
 		.withNameOnCard("Filan Fisteku").withCardPan("4022774022774026").withCardExpiry("02.2021")
 		.withCardCvv("000").build();
 ```
+If authentication is not set on request, `defaultAuthentication` set on the client is used
