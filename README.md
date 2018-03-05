@@ -8,7 +8,10 @@ Credential Storage is supported in three Locations
   merchantuser=apiuser@testmerchant.com
   merchantpassword=******
 ```
-`Authentication userCredentialsAuthentication = new UserCredentialsAuthentication(new ClasspathPropertyFileCredentialsProvider());`
+```java
+Authentication userCredentialsAuthentication = new UserCredentialsAuthentication(
+				new ClasspathPropertyFileCredentialsProvider());
+```
 
 - Environment Variables with keys
 ```
@@ -16,7 +19,10 @@ Credential Storage is supported in three Locations
   MSU_MERCHANT_USER=apiuser@testmerchant.com
   MSU_MERCHANT_PASSWORD=******
 ```
-`Authentication userCredentialsAuthentication = new UserCredentialsAuthentication(new EnvironmentVariableCredentialsProvider());`
+```java
+Authentication userCredentialsAuthentication = new UserCredentialsAuthentication(
+		new EnvironmentVariableCredentialsProvider());
+```
 
 - Static Credentials In Code
 ```java
@@ -30,4 +36,26 @@ MsuApiClient msuClient = new MsuApiClientBuilder().withDefaultAuthentication(use
 			.build();
 ```
 ## Sending Requests
+- Session Token request
 
+```java
+SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurrency(Currency.TRY)
+		.withAmount(new BigDecimal("100.00")).withCustomer("customer-3828342004")
+		.withMerchantPaymentId("payment-1834832985932").withReturnUrl("http://www.returnurl.com").build();
+SessionTokenResponse sessionTokenResponse = msuClient.doRequest(sessionTokenRequest);
+```
+### Using Session Token to authenticate other requests
+```java
+SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurrency(Currency.TRY)
+		.withAmount(new BigDecimal("100.00")).withCustomer("customer-3828342004")
+		.withMerchantPaymentId("payment-1834832985932").withReturnUrl("http://www.returnurl.com").build();
+SessionTokenResponse sessionTokenResponse = msuClient.doRequest(sessionTokenRequest);
+
+Authentication sessionTokenAuthentication = SessionTokenAuthentication.sessionTokenAuthentication()
+		.withToken(sessionTokenResponse.getSessionToken()).build();
+
+// preauth request uses previously created token
+PreauthRequest preauthRequest =  PreauthRequest.builder().withAuthentication(sessionTokenAuthentication)
+		.withNameOnCard("Filan Fisteku").withCardPan("4022774022774026").withCardExpiry("02.2021")
+		.withCardCvv("000").build();
+```
