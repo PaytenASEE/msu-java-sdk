@@ -60,5 +60,6 @@ Authentication sessionTokenAuthentication = SessionTokenAuthentication.sessionTo
 PreauthRequest preauthRequest =  PreauthRequest.builder().withAuthentication(sessionTokenAuthentication)
 		.withNameOnCard("Filan Fisteku").withCardPan("4022774022774026").withCardExpiry("02.2021")
 		.withCardCvv("000").build();
+PreauthResponse preauthResponse = msuClient.doRequest(preauthRequest);
 ```
 If authentication is not set on request, `defaultAuthentication` set on the client is used
