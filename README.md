@@ -46,6 +46,12 @@ SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurr
 		.withMerchantPaymentId("payment-1834832985932").withReturnUrl("http://www.returnurl.com").build();
 SessionTokenResponse sessionTokenResponse = msuClient.doRequest(sessionTokenRequest);
 ```
+
+- Query Merchant request
+```java
+QueryMerchantRequest queryMerchantRequest = new QueryMerchantRequest.QueryMerchantRequestBuilder().build();
+QueryMerchantResponse queryMerchantResponse = msuApiClient.doRequest(queryMerchantRequest);
+```
 ### Using Session Token to authenticate other requests
 ```java
 SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurrency(Currency.TRY)
