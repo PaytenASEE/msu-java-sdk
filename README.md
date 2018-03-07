@@ -52,6 +52,15 @@ SessionTokenResponse sessionTokenResponse = msuClient.doRequest(sessionTokenRequ
 QueryMerchantRequest queryMerchantRequest = QueryMerchantRequest.builder().build();
 QueryMerchantResponse queryMerchantResponse = msuApiClient.doRequest(queryMerchantRequest);
 ```
+
+- Query Merchant Content request
+
+```java
+        QueryMerchantContentRequest queryMerchantContentRequest = QueryMerchantContentRequest.builder().withLanguage("en")
+                .withMessageContentType("contact").build();
+        QueryMerchantContentResponse queryMerchantContentResponse = msuApiClient.doRequest(queryMerchantContentRequest);
+```
+
 ### Using Session Token to authenticate other requests
 ```java
 SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurrency(Currency.TRY)
