@@ -47,7 +47,7 @@ SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurr
 SessionTokenResponse sessionTokenResponse = msuClient.doRequest(sessionTokenRequest);
 ```
 A session token request can be created and used for subsequent requests for as long as it's not expired. If session token authentication is not set on request, `defaultAuthentication` set on the client is used.
-Here's an PREAUTH request authenticated with a session token.
+Here's a PREAUTH request authenticated with a session token.
 ```java
 SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurrency(Currency.TRY)
 		.withAmount(new BigDecimal("100.00")).withCustomer("customer-3828342004")
@@ -62,6 +62,7 @@ PreauthRequest preauthRequest =  PreauthRequest.builder().withAuthentication(ses
 		.withNameOnCard("Filan Fisteku").withCardPan("4022774022774026").withCardExpiry("02.2021")
 		.withCardCvv("000").build();
 PreauthResponse preauthResponse = msuClient.doRequest(preauthRequest);
+// can do other requests with the same token
 ```
 - Query Merchant request
 ```java
