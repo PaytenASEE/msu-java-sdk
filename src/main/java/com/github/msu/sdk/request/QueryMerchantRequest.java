@@ -23,6 +23,10 @@ public class QueryMerchantRequest extends ApiRequest {
         return payload;
     }
 
+    public static QueryMerchantRequestBuilder builder(){
+        return new QueryMerchantRequestBuilder();
+    }
+
     public static class QueryMerchantRequestBuilder {
         private Authentication authentication;
 

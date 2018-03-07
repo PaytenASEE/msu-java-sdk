@@ -49,7 +49,7 @@ SessionTokenResponse sessionTokenResponse = msuClient.doRequest(sessionTokenRequ
 
 - Query Merchant request
 ```java
-QueryMerchantRequest queryMerchantRequest = new QueryMerchantRequest.QueryMerchantRequestBuilder().build();
+QueryMerchantRequest queryMerchantRequest = QueryMerchantRequest.builder().build();
 QueryMerchantResponse queryMerchantResponse = msuApiClient.doRequest(queryMerchantRequest);
 ```
 ### Using Session Token to authenticate other requests
