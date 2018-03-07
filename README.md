@@ -46,22 +46,8 @@ SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurr
 		.withMerchantPaymentId("payment-1834832985932").withReturnUrl("http://www.returnurl.com").build();
 SessionTokenResponse sessionTokenResponse = msuClient.doRequest(sessionTokenRequest);
 ```
-
-- Query Merchant request
-```java
-QueryMerchantRequest queryMerchantRequest = QueryMerchantRequest.builder().build();
-QueryMerchantResponse queryMerchantResponse = msuClient.doRequest(queryMerchantRequest);
-```
-
-- Query Merchant Content request
-
-```java
-        QueryMerchantContentRequest queryMerchantContentRequest = QueryMerchantContentRequest.builder().withLanguage("en")
-                .withMessageContentType("contact").build();
-        QueryMerchantContentResponse queryMerchantContentResponse = msuClient.doRequest(queryMerchantContentRequest);
-```
-
-### Using Session Token to authenticate other requests
+A session token request can be created and used for subsequent requests for as long as it's not expired. If session token authentication is not set on request, `defaultAuthentication` set on the client is used.
+Here's an PREAUTH request authenticated with a session token.
 ```java
 SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurrency(Currency.TRY)
 		.withAmount(new BigDecimal("100.00")).withCustomer("customer-3828342004")
@@ -77,4 +63,16 @@ PreauthRequest preauthRequest =  PreauthRequest.builder().withAuthentication(ses
 		.withCardCvv("000").build();
 PreauthResponse preauthResponse = msuClient.doRequest(preauthRequest);
 ```
-If authentication is not set on request, `defaultAuthentication` set on the client is used
+- Query Merchant request
+```java
+QueryMerchantRequest queryMerchantRequest = QueryMerchantRequest.builder().build(); // the queried merchant is the one making the request
+QueryMerchantResponse queryMerchantResponse = msuClient.doRequest(queryMerchantRequest);
+```
+
+- Query Merchant Content request
+
+```java
+QueryMerchantContentRequest queryMerchantContentRequest = QueryMerchantContentRequest.builder().withLanguage("en")
+	.withMessageContentType("contact").build();
+QueryMerchantContentResponse queryMerchantContentResponse = msuClient.doRequest(queryMerchantContentRequest);
+```
