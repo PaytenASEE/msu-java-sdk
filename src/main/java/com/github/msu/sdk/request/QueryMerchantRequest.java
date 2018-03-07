@@ -19,7 +19,7 @@ public class QueryMerchantRequest extends ApiRequest {
 
     @Override
     public Map<String, String> getFormUrlEncodedData() {
-        payload.put(Param.ACTION.name(), Action.QUERYMERCHANT.name());
+        addToPayload(Param.ACTION, Action.QUERYMERCHANT.name());
         return payload;
     }
 
