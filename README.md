@@ -1,6 +1,6 @@
 # msu-api-sdk
 ## MSU API Fluent SDK - Java - [MerchantSafe Unipay](http://merchantsafeunipay.asseco.com/)
-
+[API Documentation](https://test.merchantsafeunipay.com/msu/api/v2/doc)
 
 
 Credential Storage is supported in three Locations
