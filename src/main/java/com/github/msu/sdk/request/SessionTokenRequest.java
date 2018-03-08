@@ -48,8 +48,12 @@ public class SessionTokenRequest extends ApiRequest {
 	private String shipToCountry;
 	private String shipToPhone;
 
-	public Map<String, String> getFormUrlEncodedData() {
-		addToPayload(Param.ACTION, Action.SESSIONTOKEN);
+	@Override
+	public Action action() {
+		return Action.SESSIONTOKEN;
+	}
+
+	public void applyRequestParams() {
 		addToPayload(Param.CUSTOMER, this.customer);
 		addToPayload(Param.SESSIONTYPE, this.sessionType);
 		addToPayload(Param.RETURNURL, this.returnUrl);
@@ -64,7 +68,7 @@ public class SessionTokenRequest extends ApiRequest {
 		addToPayload(Param.SESSIONEXPIRY, this.sessionExpiry);
 		addToPayload(Param.LANGUAGE, this.language);
 		addToPayload(Param.CAMPAIGNCODE, this.campaignCode);
-		addToPayload(Param.ORDERITEMS, this.orderItems); 
+		addToPayload(Param.ORDERITEMS, this.orderItems);
 		addToPayload(Param.TMXSESSIONQUERYINPUT, this.tmxSessionQueryInput);
 		addToPayload(Param.EXTRA, this.extra);
 		addToPayload(Param.MAXINSTALLMENTCOUNT, String.valueOf(this.maxInstallmentCount));
@@ -79,7 +83,6 @@ public class SessionTokenRequest extends ApiRequest {
 		addToPayload(Param.SHIPTOPOSTALCODE, this.shipToPostalCode);
 		addToPayload(Param.SHIPTOCOUNTRY, this.shipToCountry);
 		addToPayload(Param.SHIPTOPHONE, this.shipToPhone);
-		return payload;
 	}
 
 	public static class SessionTokenRequestBuilder {
@@ -112,7 +115,6 @@ public class SessionTokenRequest extends ApiRequest {
 		private String shipToPostalCode;
 		private String shipToCountry;
 		private String shipToPhone;
-
 		private Authentication authentication;
 
 		public SessionTokenRequestBuilder withAuthentication(Authentication authentication) {
@@ -273,7 +275,7 @@ public class SessionTokenRequest extends ApiRequest {
 	public static SessionTokenRequestBuilder builder() {
 		return new SessionTokenRequestBuilder();
 	}
-	
+
 	private SessionTokenRequest(SessionTokenRequestBuilder sessionTokenRequestBuilder) {
 		this.customer = sessionTokenRequestBuilder.customer;
 		this.returnUrl = sessionTokenRequestBuilder.returnUrl;

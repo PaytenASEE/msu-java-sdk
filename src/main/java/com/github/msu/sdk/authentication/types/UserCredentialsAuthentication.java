@@ -26,5 +26,4 @@ public class UserCredentialsAuthentication implements Authentication {
 	public String toString() {
 		return "UserCredentialsAuthentication " + msuCredentials;
 	}
-
 }

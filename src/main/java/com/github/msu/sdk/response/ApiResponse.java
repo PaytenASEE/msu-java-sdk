@@ -273,4 +273,8 @@ public class ApiResponse {
 	public String toString() {
 		return this.rawResponse;
 	}
+	
+	public boolean isApproved() {
+		return this.responseCode == ResponseCode.APPROVEDCODE;
+	}
 }

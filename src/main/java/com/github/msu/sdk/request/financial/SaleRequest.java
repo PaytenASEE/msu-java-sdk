@@ -99,8 +99,12 @@ public class SaleRequest extends ApiRequest {
 	}
 
 	@Override
-	public Map<String, String> getFormUrlEncodedData() {
-		addToPayload(Param.ACTION, Action.SALE);
+	public Action action() {
+		return Action.SALE;
+	}
+	
+	@Override
+	public void applyRequestParams() {
 		addToPayload(Param.MERCHANTPAYMENTID, this.merchantPaymentId);
 		addToPayload(Param.CUSTOMER, this.customer);
 		addToPayload(Param.AMOUNT, this.amount);
@@ -139,7 +143,6 @@ public class SaleRequest extends ApiRequest {
 		addToPayload(Param.EXTRA, this.extra);
 		addToPayload(Param.DEALERCODE, this.dealerCode);
 		addToPayload(Param.FORGROUP, this.forGroup);
-		return payload;
 	}
 
 
@@ -387,5 +390,4 @@ public class SaleRequest extends ApiRequest {
 	public static SaleRequestBuilder builder() {
 		return new SaleRequestBuilder();
 	}
-
 }

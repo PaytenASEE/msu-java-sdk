@@ -1,7 +1,6 @@
 package com.github.msu.sdk.request.financial;
 
 import java.math.BigDecimal;
-import java.util.Map;
 
 import com.github.msu.sdk.authentication.Authentication;
 import com.github.msu.sdk.request.base.ApiRequest;
@@ -24,13 +23,16 @@ public class PostauthRequest extends ApiRequest {
 	}
 
 	@Override
-	public Map<String, String> getFormUrlEncodedData() {
-		addToPayload(Param.ACTION, Action.POSTAUTH);
+	public void applyRequestParams() {
 		addToPayload(Param.PGTRANID, this.pgTranId);
 		addToPayload(Param.MERCHANTPAYMENTID, this.merchantPaymentId);
 		addToPayload(Param.INITIATORMERCHANTBUSINESSID, this.initiatorMerchantBusinessId);
 		addToPayload(Param.AMOUNT, this.amount);
-		return payload;
+	}
+
+	@Override
+	public Action action() {
+		return Action.POSTAUTH;
 	}
 
 	public static class PostauthRequestBuilder {
@@ -73,5 +75,4 @@ public class PostauthRequest extends ApiRequest {
 	public static PostauthRequestBuilder builder() {
 		return new PostauthRequestBuilder();
 	}
-
 }

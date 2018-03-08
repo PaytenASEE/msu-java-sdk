@@ -1,7 +1,5 @@
 package com.github.msu.sdk.request;
 
-import java.util.Map;
-
 import com.github.msu.sdk.request.base.ApiRequest;
 import com.github.msu.sdk.request.enumerated.Action;
 import com.github.msu.sdk.request.enumerated.Param;
@@ -12,14 +10,16 @@ import com.github.msu.sdk.util.ResponseInfo;
 public class QuerySessionRequest extends ApiRequest {
 	private String sessionToken;
 
-	private QuerySessionRequest() {
+	private QuerySessionRequest() {}
+
+	@Override
+	public Action action() {
+		return Action.QUERYSESSION;
 	}
 
 	@Override
-	public Map<String, String> getFormUrlEncodedData() {
-		payload.put(Param.ACTION.name(), Action.QUERYSESSION.name());
+	public void applyRequestParams() {
 		payload.put(Param.SESSIONTOKEN.name(), sessionToken);
-		return payload;
 	}
 
 	public static class QuerySessionRequestBuilder {

@@ -6,7 +6,6 @@ import java.util.Map;
 import com.github.msu.sdk.authentication.Authentication;
 import com.github.msu.sdk.request.enumerated.Action;
 import com.github.msu.sdk.request.enumerated.Currency;
-import com.github.msu.sdk.request.enumerated.Param;
 import com.github.msu.sdk.request.model.Point;
 import com.github.msu.sdk.response.model.PreauthResponse;
 import com.github.msu.sdk.util.ResponseInfo;
@@ -15,12 +14,10 @@ import com.github.msu.sdk.util.ResponseInfo;
 public class PreauthRequest extends SaleRequest {
 
 	@Override
-	public Map<String, String> getFormUrlEncodedData() {
-		Map<String, String> payload = super.getFormUrlEncodedData();
-		payload.put(Param.ACTION.name(), Action.PREAUTH.name());
-		return payload;
+	public Action action() {
+		return Action.PREAUTH;
 	}
-
+	
 	private PreauthRequest(PreauthRequestBuilder builder) {
 		super(builder);
 	}

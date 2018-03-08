@@ -10,6 +10,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.github.msu.sdk.authentication.Authentication;
+import com.github.msu.sdk.request.enumerated.Action;
 import com.github.msu.sdk.request.enumerated.Param;
 import com.github.msu.sdk.util.StringUtils;
 
@@ -18,7 +19,11 @@ public abstract class ApiRequest {
 	protected Map<String, String> payload = new HashMap<>();
 	protected ObjectMapper objectMapper = new ObjectMapper();
 
-	public abstract Map<String, String> getFormUrlEncodedData();
+	public Map<String, String> getFormUrlEncodedData() {
+		payload.put(Param.ACTION.name(), action().name());
+		this.applyRequestParams();
+		return payload;
+	}
 
 	public void setAuthentication(Authentication authentication) {
 		this.authentication = authentication;
@@ -46,9 +51,7 @@ public abstract class ApiRequest {
 				String asJsonString = objectWriter.writeValueAsString(paramValue);
 				String asJsonStringUrlEncoded = URLEncoder.encode(asJsonString, "UTF-8");
 				payload.put(param.name(), asJsonStringUrlEncoded);
-			} catch (JsonProcessingException e) {
-				throw new RuntimeException(e);
-			} catch (UnsupportedEncodingException e) {
+			} catch (JsonProcessingException | UnsupportedEncodingException e) {
 				throw new RuntimeException(e);
 			}
 		} else if (paramValue instanceof String) {
@@ -56,9 +59,13 @@ public abstract class ApiRequest {
 				return;
 			}
 			payload.put(param.name(), paramValue.toString());
-		}
-		else if (paramValue instanceof Number) {
+		} else if (paramValue instanceof Number) {
 			payload.put(param.name(), paramValue.toString());
 		}
 	}
+
+	// abstract methods
+	public abstract void applyRequestParams();
+
+	public abstract Action action();
 }
