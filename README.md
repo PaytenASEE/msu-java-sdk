@@ -97,7 +97,7 @@ QueryMerchantStatusHistoryResponse response = msuClient.doRequest(request);
 - Query Merchant User request
 
 ```java
-QueryMerchantUserRequest request = QueryMerchantUserRequest.builder().withMerchantUserEmail("apiuser@testmerchant.com")
-                .withRole("mapiu").build();
+QueryMerchantUserRequest request = QueryMerchantUserRequest.builder()
+		.withMerchantUserEmail("apiuser@testmerchant.com").withRole("mapiu").build();
 QueryMerchantUserResponse response = msuClient.doRequest(request);
 ```
