@@ -77,3 +77,11 @@ QueryMerchantContentRequest queryMerchantContentRequest = QueryMerchantContentRe
 	.withMessageContentType("contact").build();
 QueryMerchantContentResponse queryMerchantContentResponse = msuClient.doRequest(queryMerchantContentRequest);
 ```
+
+- Query Message Content request
+
+```java
+QueryMessageContentRequest request = QueryMessageContentRequest.builder()
+    .withLanguage("en").withMessageContentType("contact").build();
+QueryMessageContentResponse response = client.doRequest(request);
+```

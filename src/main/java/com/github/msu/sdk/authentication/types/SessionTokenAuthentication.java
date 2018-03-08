@@ -35,7 +35,7 @@ public class SessionTokenAuthentication implements Authentication {
 		}
 	}
 
-	public static SessionTokenAuthenticationBuilder sessionTokenAuthentication() {
+	public static SessionTokenAuthenticationBuilder builder() {
 		return new SessionTokenAuthenticationBuilder();
 	}
 
