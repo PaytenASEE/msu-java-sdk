@@ -119,3 +119,11 @@ QueryUserRolePermissionRequest request = QueryUserRolePermissionRequest.builder(
                 .withPermission("API_QUERYMERCHANT").build();
 QueryUserRolePermissionResponse response = msuClient.doRequest(request);
 ```
+
+- Query Dealer request
+
+```java
+QueryDealerRequest request = QueryDealerRequest.builder().withDealerCode("test")
+             .withParentDealerCode("").build();
+QueryDealerResponse response = msuClient.doRequest(request);
+```
