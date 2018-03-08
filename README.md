@@ -83,5 +83,21 @@ QueryMerchantContentResponse queryMerchantContentResponse = msuClient.doRequest(
 ```java
 QueryMessageContentRequest request = QueryMessageContentRequest.builder()
     .withLanguage("en").withMessageContentType("contact").build();
-QueryMessageContentResponse response = client.doRequest(request);
+QueryMessageContentResponse response = msuClient.doRequest(request);
+```
+
+- Query Merchant Status History request
+
+```java
+QueryMerchantStatusHistoryRequest request = QueryMerchantStatusHistoryRequest.builder().withStatus("OK")
+                .withStartDate("08-03-2017 18:00").withEndDate("08-03-2018 18:00").build();
+QueryMerchantStatusHistoryResponse response = msuClient.doRequest(request);
+```
+
+- Query Merchant User request
+
+```java
+QueryMerchantUserRequest request = QueryMerchantUserRequest.builder().withMerchantUserEmail("apiuser@testmerchant.com")
+                .withRole("mapiu").build();
+QueryMerchantUserResponse response = msuClient.doRequest(request);
 ```
