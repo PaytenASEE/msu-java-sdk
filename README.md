@@ -64,6 +64,14 @@ PreauthRequest preauthRequest =  PreauthRequest.builder().withAuthentication(ses
 PreauthResponse preauthResponse = msuClient.doRequest(preauthRequest);
 // can do other requests with the same token
 ```
+
+```java
+// query transaction by date and status
+QueryTransactionRequest request = QueryTransactionRequest.builder().withTransactionStatus("AP")
+        .withStartDate("01-01-2016 01:00").withEndDate("05-05-2016 20:00").withOffset("100").withLimit("20").build();
+QueryTransactionResponse response = msuClient.doRequest(request);
+```
+
 - Query Merchant request
 ```java
 QueryMerchantRequest queryMerchantRequest = QueryMerchantRequest.builder().build(); // the queried merchant is the one making the request
