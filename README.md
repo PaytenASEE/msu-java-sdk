@@ -101,3 +101,11 @@ QueryMerchantUserRequest request = QueryMerchantUserRequest.builder().withMercha
                 .withRole("mapiu").build();
 QueryMerchantUserResponse response = msuClient.doRequest(request);
 ```
+
+- Query User Role Permission request
+
+```java
+QueryUserRolePermissionRequest request = QueryUserRolePermissionRequest.builder().withRole("MSADM")
+                .withPermission("API_QUERYMERCHANT").build();
+QueryUserRolePermissionResponse response = msuClient.doRequest(request);
+```
