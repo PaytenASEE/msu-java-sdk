@@ -1,6 +1,6 @@
 # msu-api-sdk
 ## MSU API Fluent SDK - Java - [MerchantSafe Unipay](http://merchantsafeunipay.asseco.com/)
-
+[API Documentation](https://test.merchantsafeunipay.com/msu/api/v2/doc)
 
 
 Credential Storage is supported in three Locations
@@ -46,7 +46,8 @@ SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurr
 		.withMerchantPaymentId("payment-1834832985932").withReturnUrl("http://www.returnurl.com").build();
 SessionTokenResponse sessionTokenResponse = msuClient.doRequest(sessionTokenRequest);
 ```
-### Using Session Token to authenticate other requests
+A session token request can be created and used for subsequent requests for as long as it's not expired. If session token authentication is not set on request, `defaultAuthentication` set on the client is used.
+Here's a PREAUTH request authenticated with a session token.
 ```java
 SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurrency(Currency.TRY)
 		.withAmount(new BigDecimal("100.00")).withCustomer("customer-3828342004")
@@ -60,5 +61,27 @@ Authentication sessionTokenAuthentication = SessionTokenAuthentication.sessionTo
 PreauthRequest preauthRequest =  PreauthRequest.builder().withAuthentication(sessionTokenAuthentication)
 		.withNameOnCard("Filan Fisteku").withCardPan("4022774022774026").withCardExpiry("02.2021")
 		.withCardCvv("000").build();
+PreauthResponse preauthResponse = msuClient.doRequest(preauthRequest);
+// can do other requests with the same token
 ```
-If authentication is not set on request, `defaultAuthentication` set on the client is used
+- Query Merchant request
+```java
+QueryMerchantRequest queryMerchantRequest = QueryMerchantRequest.builder().build(); // the queried merchant is the one making the request
+QueryMerchantResponse queryMerchantResponse = msuClient.doRequest(queryMerchantRequest);
+```
+
+- Query Merchant Content request
+
+```java
+QueryMerchantContentRequest queryMerchantContentRequest = QueryMerchantContentRequest.builder().withLanguage("en")
+	.withMessageContentType("contact").build();
+QueryMerchantContentResponse queryMerchantContentResponse = msuClient.doRequest(queryMerchantContentRequest);
+```
+
+- Query Message Content request
+
+```java
+QueryMessageContentRequest request = QueryMessageContentRequest.builder()
+    .withLanguage("en").withMessageContentType("contact").build();
+QueryMessageContentResponse response = client.doRequest(request);
+```
