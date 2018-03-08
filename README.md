@@ -65,6 +65,8 @@ PreauthResponse preauthResponse = msuClient.doRequest(preauthRequest);
 // can do other requests with the same token
 ```
 
+- Query Transaction request
+
 ```java
 // query transactions by date and status
 QueryTransactionRequest request = QueryTransactionRequest.builder().withTransactionStatus("AP")
