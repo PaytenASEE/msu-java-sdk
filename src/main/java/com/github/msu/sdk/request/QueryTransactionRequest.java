@@ -7,8 +7,7 @@ import com.github.msu.sdk.response.QueryTransactionResponse;
 import com.github.msu.sdk.util.ResponseInfo;
 
 @ResponseInfo(responseClass = QueryTransactionResponse.class)
-public class QueryTransactionRequest extends ApiRequest{
-
+public class QueryTransactionRequest extends ApiRequest {
     private String pgTranId;
     private String transactionStatus;
     private String startDate;

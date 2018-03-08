@@ -66,7 +66,7 @@ PreauthResponse preauthResponse = msuClient.doRequest(preauthRequest);
 ```
 
 ```java
-// query transaction by date and status
+// query transactions by date and status
 QueryTransactionRequest request = QueryTransactionRequest.builder().withTransactionStatus("AP")
         .withStartDate("01-01-2016 01:00").withEndDate("05-05-2016 20:00").withOffset("100").withLimit("20").build();
 QueryTransactionResponse response = msuClient.doRequest(request);
