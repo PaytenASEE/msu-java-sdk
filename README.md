@@ -64,6 +64,16 @@ PreauthRequest preauthRequest =  PreauthRequest.builder().withAuthentication(ses
 PreauthResponse preauthResponse = msuClient.doRequest(preauthRequest);
 // can do other requests with the same token
 ```
+
+- Query Transaction request
+
+```java
+// query transactions by date and status
+QueryTransactionRequest request = QueryTransactionRequest.builder().withTransactionStatus("AP")
+        .withStartDate("01-01-2016 01:00").withEndDate("05-05-2016 20:00").withOffset("100").withLimit("20").build();
+QueryTransactionResponse response = msuClient.doRequest(request);
+```
+
 - Query Merchant request
 ```java
 QueryMerchantRequest queryMerchantRequest = QueryMerchantRequest.builder().build(); // the queried merchant is the one making the request
@@ -83,5 +93,29 @@ QueryMerchantContentResponse queryMerchantContentResponse = msuClient.doRequest(
 ```java
 QueryMessageContentRequest request = QueryMessageContentRequest.builder()
     .withLanguage("en").withMessageContentType("contact").build();
-QueryMessageContentResponse response = client.doRequest(request);
+QueryMessageContentResponse response = msuClient.doRequest(request);
+```
+
+- Query Merchant Status History request
+
+```java
+QueryMerchantStatusHistoryRequest request = QueryMerchantStatusHistoryRequest.builder().withStatus("OK")
+                .withStartDate("08-03-2017 18:00").withEndDate("08-03-2018 18:00").build();
+QueryMerchantStatusHistoryResponse response = msuClient.doRequest(request);
+```
+
+- Query Merchant User request
+
+```java
+QueryMerchantUserRequest request = QueryMerchantUserRequest.builder()
+		.withMerchantUserEmail("apiuser@testmerchant.com").withRole("mapiu").build();
+QueryMerchantUserResponse response = msuClient.doRequest(request);
+```
+
+- Query User Role Permission request
+
+```java
+QueryUserRolePermissionRequest request = QueryUserRolePermissionRequest.builder().withRole("MSADM")
+                .withPermission("API_QUERYMERCHANT").build();
+QueryUserRolePermissionResponse response = msuClient.doRequest(request);
 ```
