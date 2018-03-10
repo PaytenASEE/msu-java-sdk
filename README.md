@@ -99,7 +99,7 @@ QueryCardResponse response = msuClient.doRequest(request);
 - Query Customer request
 
 ```java
-QueryCustomerRequest request = QueryCustomerRequest.builder().withCustomer("CUSTOMER").build();
+QueryCustomerRequest request = QueryCustomerRequest.builder().withCustomer("CUSTOMER").build(); // by MerchantCustomerId
 QueryCustomerResponse response = msuClient.doRequest(request);
 ```
 
