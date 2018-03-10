@@ -127,3 +127,11 @@ QueryDealerRequest request = QueryDealerRequest.builder().withDealerCode("test")
              .withParentDealerCode("").build();
 QueryDealerResponse response = msuClient.doRequest(request);
 ```
+
+- Query Transaction Rule Request
+
+```java
+QueryTransactionRuleRequest request = QueryTransactionRuleRequest.builder()
+            .withDealerCode("test").build();
+QueryTransactionRuleResponse response = msuClient.doRequest(request);
+```
