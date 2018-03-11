@@ -74,6 +74,35 @@ QueryTransactionRequest request = QueryTransactionRequest.builder().withTransact
 QueryTransactionResponse response = msuClient.doRequest(request);
 ```
 
+- Query Installment request
+
+```java
+QueryInstallmentRequest request = QueryInstallmentRequest.builder().withPaymentSystem("Odeabank")
+                .withPaymentSystemType("ODEABANK").withStatus("OK").build();
+QueryInstallmentResponse response = msuClient.doRequest(request);
+```
+
+- Query Card request
+
+```java
+QueryCardRequest request = QueryCardRequest.builder().withCustomer("CUSTOMER").build();
+QueryCardResponse response = msuClient.doRequest(request);
+```
+
+- Query Card Expiry request
+
+```java
+QueryCardExpiryRequest request = QueryCardExpiryRequest.builder().withCustomer("CUSTOMER").build();
+QueryCardResponse response = msuClient.doRequest(request);
+```
+
+- Query Customer request
+
+```java
+QueryCustomerRequest request = QueryCustomerRequest.builder().withCustomer("CUSTOMER").build(); // by MerchantCustomerId
+QueryCustomerResponse response = msuClient.doRequest(request);
+```
+
 - Query Merchant request
 ```java
 QueryMerchantRequest queryMerchantRequest = QueryMerchantRequest.builder().build(); // the queried merchant is the one making the request
