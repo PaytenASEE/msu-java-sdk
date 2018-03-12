@@ -1,0 +1,40 @@
+package com.github.msu.sdk.request;
+
+import com.github.msu.sdk.request.base.ApiRequest;
+import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.Param;
+import com.github.msu.sdk.response.{ACTION_NAME_CAMEL_CASE}Response;
+import com.github.msu.sdk.util.ResponseInfo;
+
+@ResponseInfo(responseClass = {ACTION_NAME_CAMEL_CASE}Response.class)
+public class {ACTION_NAME_CAMEL_CASE}Request extends ApiRequest {
+	// CLASS_ATTRIBUTES_NEEDLE
+
+	private {ACTION_NAME_CAMEL_CASE}Request(){}
+	
+    @Override
+    public void applyRequestParams() {
+		// CLASS_PAYLOAD_NEEDLE
+    }
+
+    @Override
+    public Action action() {
+        return Action.{ACTION_NAME_UPPERCASE};
+    }
+
+    public static {ACTION_NAME_CAMEL_CASE}Builder builder() {
+        return new {ACTION_NAME_CAMEL_CASE}Builder();
+    }
+
+    public static final class {ACTION_NAME_CAMEL_CASE}RequestBuilder {
+        // BUILDER_ATTRIBUTES_NEEDLE
+
+		// BUILDER_WITHS_NEEDLE
+
+        public {ACTION_NAME_CAMEL_CASE}Request build() {
+            {ACTION_NAME_CAMEL_CASE}Request {ACTION_NAME_LOWER_CASE}Request = new {ACTION_NAME_CAMEL_CASE}Request();
+            // BUILDER_TO_CLASS_ASSIGN_NEEDLE
+            return {ACTION_NAME_LOWER_CASE}Request;
+        }
+    }
+}
