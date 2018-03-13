@@ -1,7 +1,6 @@
 package com.github.msu.sdk;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,18 +10,10 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.github.msu.sdk.authentication.Authentication;
-import com.github.msu.sdk.authentication.credentials.providers.StaticCredentialsProvider;
-import com.github.msu.sdk.authentication.types.SessionTokenAuthentication;
-import com.github.msu.sdk.authentication.types.UserCredentialsAuthentication;
 import com.github.msu.sdk.http.HttpRequestMaker;
-import com.github.msu.sdk.request.SessionTokenRequest;
 import com.github.msu.sdk.request.base.ApiRequest;
-import com.github.msu.sdk.request.enumerated.Currency;
 import com.github.msu.sdk.request.enumerated.Param;
-import com.github.msu.sdk.request.financial.PreauthRequest;
 import com.github.msu.sdk.response.ApiResponse;
-import com.github.msu.sdk.response.SessionTokenResponse;
-import com.github.msu.sdk.response.model.PreauthResponse;
 import com.github.msu.sdk.util.ResponseInfo;
 
 public class MsuApiClient {
