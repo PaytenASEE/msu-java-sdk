@@ -45,7 +45,7 @@ public class RequestGeneratorTest {
                 String paramName = stringCaseUtility.toCamelCase(param.getName());
                 String paramType = param.getType();
                 System.out.println(stringCaseUtility.toCamelCase(paramName + ":" + paramType));
-                FieldSpec field = FieldSpec.builder(String.class, paramName, Modifier.PRIVATE).build();
+                FieldSpec field = FieldSpec.builder(String.class, paramName.trim(), Modifier.PRIVATE).build();
                 fields.add(field);
 
                 //// TODO: 3/13/2018 Methods for builder
@@ -58,7 +58,7 @@ public class RequestGeneratorTest {
             // Add to payload block
             StringBuilder addToPayload = new StringBuilder();
             fields.stream().forEach(field -> {
-                addToPayload.append("addToPayload(Param." + Param.valueOf(field.name.toUpperCase()) + "," + "this." + field.name + ");");
+                addToPayload.append("addToPayload(Param." + Param.valueOf(field.name.toUpperCase()) + "," + "this." + field.name + ");").append("\n");
             });
             CodeBlock applyRequestParamBody = CodeBlock.builder().add(addToPayload.toString()).build();
 
@@ -68,7 +68,7 @@ public class RequestGeneratorTest {
 
             //action method
             MethodSpec actionMethod = MethodSpec.methodBuilder("action").returns(com.github.msu.sdk.request.enumerated.Action.class)
-                    .addModifiers(Modifier.PUBLIC).addAnnotation(Override.class).addCode("return Action." + actionName + ";").build();
+                    .addModifiers(Modifier.PUBLIC).addAnnotation(Override.class).addStatement("return Action." + actionName).build();
 
             // Class Builder
             String builderName = className + "Builder";
@@ -76,8 +76,9 @@ public class RequestGeneratorTest {
                     .addFields(fields).build();
 
             //builder method
-            MethodSpec builderMethod = MethodSpec.methodBuilder("builder").returns(Object.class)
-                    .addModifiers(Modifier.PUBLIC).addCode("return new " + builderName + "();").build();
+            ClassName builderClassName = ClassName.get("", builderName);
+            MethodSpec builderMethod = MethodSpec.methodBuilder("builder").returns(builderClassName)
+                    .addModifiers(Modifier.PUBLIC).addStatement("return new " + builderName + "()").build();
 
             // Main Class
             AnnotationSpec annotation = AnnotationSpec.builder(ResponseInfo.class).addMember("responseClass", actionName + "Response.class").build();

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class StringCaseUtility {
     private List<String> dictionary;
-    private final String [] allWords = {"merchant", "user", "date", "action", "password", "costumer",
+    private final String [] allWords = {"merchant", "user", "date", "action", "password", "customer",
             "session", "type", "return", "url", "payment", "id", "amount", "currency", "email",
             "name", "phone", "agent", "expiry", "language", "campaign", "code", "query", "input",
             "items", "extra", "order", "bill", "address", "line", "city", "postal", "country",
@@ -16,9 +16,15 @@ public class StringCaseUtility {
             "bin", "api", "gate", "default", "group", "notification", "channels", "recurring", "count", "pay",
             "by", "link", "displayed", "content", "split", "codes", "fax", "reason", "locked", "role",
             "confirm", "delete", "field", "integration", "refund", "invoice", "due", "recover", "rule",
-            "output", "this", "on", "state", "recurrence", "plan", "page", "interim", "tmx", "code", "edit"};
+            "output", "this", "on", "state", "recurrence", "plan", "page", "interim", "tmx", "code", "edit",
+            "to", "void", "pre","post", "auth", "system", "old", "new", "issue", "transaction", "pg",
+            "tran", "initiator", "ship", "recovery", "feature", "reset", "lower", "upper", "permission",
+            "description", "pst", "max", "min", "re", "time", "zone", "parent", "tckn", "vkn", "contact", "disable",
+            "online", "offline", "message", "error", "text", " compay", "response", "request", "eft", "bkm", "policy",
+            "gate", "3d", "key", "interest", "valid", "for", "debit", "e", "wallet"};
     //Pls add missing words!
 
+    //QueryTransactionStats e gabon included dhe include!
     public String toCamelCase(String input) {
         dictionary = new ArrayList<>(Arrays.asList(allWords));
         input = input.toLowerCase();
@@ -27,6 +33,13 @@ public class StringCaseUtility {
         for (int i = 1; i <= input.length(); i++) {
             String substring = input.substring(j, i);
             if (dictionary.contains(substring)) {
+                for(int e = i+1; e <= input.length(); e++){
+                    String temp = input.substring(j, e);
+                    if(e < input.length()+1 && dictionary.contains(temp)){
+                        i = e;
+                        substring = input.substring(j, e);
+                    }
+                }
                 j = i;
                 result += result.isEmpty() ? substring : firstUpperCase(substring);
             }
@@ -46,7 +59,7 @@ public class StringCaseUtility {
     }
 
     public static void main(String[] args) {
-        String test = new StringCaseUtility().toCamelCase("codesuserrules");
+        String test = new StringCaseUtility().toCamelCase("ISSUEDATE");
         System.out.println(test);
     }
 }
