@@ -1,7 +1,7 @@
 package com.github.msu.sdk.request.financial;
 
 import com.github.msu.sdk.request.base.ApiRequest;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Param;
 
 public class VoidRequest extends ApiRequest {
@@ -19,8 +19,8 @@ public class VoidRequest extends ApiRequest {
 	}
 
 	@Override
-	public Action action() {
-		return Action.VOID;
+	public ApiAction apiAction() {
+		return ApiAction.VOID;
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package com.github.msu.sdk.request;
 
 import com.github.msu.sdk.request.base.ApiRequest;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Param;
 import com.github.msu.sdk.response.QueryInstallmentResponse;
 import com.github.msu.sdk.util.ResponseInfo;
@@ -20,8 +20,8 @@ public class QueryInstallmentRequest extends ApiRequest {
     }
 
     @Override
-    public Action action() {
-        return Action.QUERYINSTALLMENT;
+    public ApiAction apiAction() {
+        return ApiAction.QUERYINSTALLMENT;
     }
 
     public static QueryInstallmentRequestBuilder builder() {

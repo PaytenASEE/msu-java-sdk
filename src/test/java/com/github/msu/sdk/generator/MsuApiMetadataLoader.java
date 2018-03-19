@@ -10,7 +10,7 @@ import javax.xml.transform.stream.StreamSource;
 public class MsuApiMetadataLoader {
 	private MsuApiMetadata msuApiMetadata;
 	private StreamSource source;
-	private String PATH_TO_METADATA_FILE = "C:\\npd\\msu.core\\src\\main\\resources\\api-request-param-definitions.xml";
+	private String PATH_TO_METADATA_FILE = "C:\\Users\\isah\\Desktop\\api-request-param-definitions.xml";
 
 	public MsuApiMetadata getMsuApiMetadata() {
 		return msuApiMetadata;

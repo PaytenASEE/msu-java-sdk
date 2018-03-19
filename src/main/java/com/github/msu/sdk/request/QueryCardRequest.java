@@ -1,7 +1,7 @@
 package com.github.msu.sdk.request;
 
 import com.github.msu.sdk.request.base.ApiRequest;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Param;
 import com.github.msu.sdk.response.QueryCardResponse;
 import com.github.msu.sdk.util.ResponseInfo;
@@ -26,8 +26,8 @@ public class QueryCardRequest extends ApiRequest {
     }
 
     @Override
-    public Action action() {
-        return Action.QUERYCARD;
+    public ApiAction apiAction() {
+        return ApiAction.QUERYCARD;
     }
 
     public static QueryCardRequestBuilder builder() {

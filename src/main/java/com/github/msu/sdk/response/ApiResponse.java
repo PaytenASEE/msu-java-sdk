@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.response.misc.ResponseCode;
 import com.github.msu.sdk.response.misc.ResponseMessage;
 
@@ -14,7 +14,7 @@ import com.github.msu.sdk.response.misc.ResponseMessage;
 @XmlRootElement(name = "response")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ApiResponse {
-	private Action action;
+	private ApiAction apiAction;
 	private String apiMerchantId;
 	private String paymentSystem;
 	private String paymentSystemType;
@@ -43,12 +43,12 @@ public class ApiResponse {
 
 	private String rawResponse;
 	
-	public Action getAction() {
-		return action;
+	public ApiAction getAction() {
+		return apiAction;
 	}
 
-	public void setAction(Action action) {
-		this.action = action;
+	public void setAction(ApiAction apiAction) {
+		this.apiAction = apiAction;
 	}
 
 	public String getApiMerchantId() {

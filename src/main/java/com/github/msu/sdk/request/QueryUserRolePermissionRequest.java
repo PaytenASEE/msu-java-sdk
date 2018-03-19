@@ -1,7 +1,7 @@
 package com.github.msu.sdk.request;
 
 import com.github.msu.sdk.request.base.ApiRequest;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Param;
 import com.github.msu.sdk.response.QueryUserRolePermissionResponse;
 import com.github.msu.sdk.util.ResponseInfo;
@@ -19,8 +19,8 @@ public class QueryUserRolePermissionRequest extends ApiRequest{
     }
 
     @Override
-    public Action action() {
-        return Action.QUERYUSERROLEPERMISSION;
+    public ApiAction apiAction() {
+        return ApiAction.QUERYUSERROLEPERMISSION;
     }
 
     public static QueryUserRolePermissionRequestBuilder builder() {

@@ -2,7 +2,7 @@ package com.github.msu.sdk.request;
 
 import com.github.msu.sdk.authentication.Authentication;
 import com.github.msu.sdk.request.base.ApiRequest;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.response.QueryMerchantResponse;
 import com.github.msu.sdk.util.ResponseInfo;
 
@@ -13,8 +13,8 @@ public class QueryMerchantRequest extends ApiRequest {
 	}
 
 	@Override
-	public Action action() {
-		return Action.QUERYMERCHANT;
+	public ApiAction apiAction() {
+		return ApiAction.QUERYMERCHANT;
 	}
 
 	@Override

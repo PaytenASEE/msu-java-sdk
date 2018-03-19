@@ -11,3 +11,4 @@ target
 .factorypath
 *.iml
 logs
+src/main/resources

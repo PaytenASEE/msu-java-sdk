@@ -1,7 +1,7 @@
 package com.github.msu.sdk.request;
 
 import com.github.msu.sdk.request.base.ApiRequest;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Param;
 import com.github.msu.sdk.response.QueryCustomerResponse;
 import com.github.msu.sdk.util.ResponseInfo;
@@ -16,8 +16,8 @@ public class QueryCustomerRequest extends ApiRequest {
     }
 
     @Override
-    public Action action() {
-        return Action.QUERYCUSTOMER;
+    public ApiAction apiAction() {
+        return ApiAction.QUERYCUSTOMER;
     }
 
     public static QueryCustomerRequestBuilder builder() {

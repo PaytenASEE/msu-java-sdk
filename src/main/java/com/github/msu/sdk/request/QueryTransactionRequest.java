@@ -1,7 +1,7 @@
 package com.github.msu.sdk.request;
 
 import com.github.msu.sdk.request.base.ApiRequest;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Param;
 import com.github.msu.sdk.response.QueryTransactionResponse;
 import com.github.msu.sdk.util.ResponseInfo;
@@ -40,8 +40,8 @@ public class QueryTransactionRequest extends ApiRequest {
     }
 
     @Override
-    public Action action() {
-        return Action.QUERYTRANSACTION;
+    public ApiAction apiAction() {
+        return ApiAction.QUERYTRANSACTION;
     }
 
     public static final class QueryTransactionRequestBuilder {

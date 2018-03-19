@@ -1,6 +1,6 @@
 package com.github.msu.sdk.request.enumerated;
 
-public enum Action  {
+public enum ApiAction  {
 	SESSIONTOKEN,
 	SALE,
 	SALE3D,	

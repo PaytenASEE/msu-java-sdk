@@ -1,7 +1,7 @@
 package com.github.msu.sdk.request;
 
 import com.github.msu.sdk.request.base.ApiRequest;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Param;
 import com.github.msu.sdk.response.QueryMessageContentResponse;
 import com.github.msu.sdk.util.ResponseInfo;
@@ -12,8 +12,8 @@ public class QueryMessageContentRequest extends ApiRequest {
 	private String language;
 
 	@Override
-	public Action action() {
-		return Action.QUERYMESSAGECONTENT;
+	public ApiAction apiAction() {
+		return ApiAction.QUERYMESSAGECONTENT;
 	}
 
 	@Override

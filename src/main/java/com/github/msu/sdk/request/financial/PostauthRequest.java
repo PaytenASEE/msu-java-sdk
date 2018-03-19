@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import com.github.msu.sdk.authentication.Authentication;
 import com.github.msu.sdk.request.base.ApiRequest;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Param;
 
 public class PostauthRequest extends ApiRequest {
@@ -31,8 +31,8 @@ public class PostauthRequest extends ApiRequest {
 	}
 
 	@Override
-	public Action action() {
-		return Action.POSTAUTH;
+	public ApiAction apiAction() {
+		return ApiAction.POSTAUTH;
 	}
 
 	public static class PostauthRequestBuilder {

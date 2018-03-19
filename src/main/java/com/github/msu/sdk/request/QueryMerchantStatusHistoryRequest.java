@@ -1,7 +1,7 @@
 package com.github.msu.sdk.request;
 
 import com.github.msu.sdk.request.base.ApiRequest;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Param;
 import com.github.msu.sdk.response.QueryMerchantStatusHistoryResponse;
 import com.github.msu.sdk.util.ResponseInfo;
@@ -14,8 +14,8 @@ public class QueryMerchantStatusHistoryRequest extends ApiRequest {
     private String endDate;
 
     @Override
-    public Action action() {
-        return Action.QUERYMERCHANTSTATUSHISTORY;
+    public ApiAction apiAction() {
+        return ApiAction.QUERYMERCHANTSTATUSHISTORY;
     }
 
     @Override

@@ -8,7 +8,7 @@ import java.util.Map;
 import com.github.msu.sdk.authentication.Authentication;
 import com.github.msu.sdk.request.base.ApiRequest;
 import com.github.msu.sdk.request.complex.OrderItem;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Currency;
 import com.github.msu.sdk.request.enumerated.Param;
 import com.github.msu.sdk.request.enumerated.SessionType;
@@ -49,8 +49,8 @@ public class SessionTokenRequest extends ApiRequest {
 	private String shipToPhone;
 
 	@Override
-	public Action action() {
-		return Action.SESSIONTOKEN;
+	public ApiAction apiAction() {
+		return ApiAction.SESSIONTOKEN;
 	}
 
 	public void applyRequestParams() {

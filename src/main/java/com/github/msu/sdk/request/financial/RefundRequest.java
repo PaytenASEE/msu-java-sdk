@@ -3,7 +3,7 @@ package com.github.msu.sdk.request.financial;
 import java.math.BigDecimal;
 
 import com.github.msu.sdk.request.base.ApiRequest;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Currency;
 import com.github.msu.sdk.request.enumerated.Param;
 
@@ -26,8 +26,8 @@ public class RefundRequest extends ApiRequest {
 	}
 	
 	@Override
-	public Action action() {
-		return Action.REFUND;
+	public ApiAction apiAction() {
+		return ApiAction.REFUND;
 	}
 
 	@Override

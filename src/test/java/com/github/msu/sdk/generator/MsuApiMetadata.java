@@ -171,7 +171,7 @@ public class MsuApiMetadata {
 		}
 	}
 
-	public List<Param> getParamsForAction(com.github.msu.sdk.request.enumerated.Action a) {
+	public List<Param> getParamsForAction(com.github.msu.sdk.request.enumerated.ApiAction a) {
 		List<Param> result = new ArrayList<MsuApiMetadata.Action.Params.Param>();
 		for (Action action : this.getAction()) {
 			if (a.name().equalsIgnoreCase(action.getName())) {

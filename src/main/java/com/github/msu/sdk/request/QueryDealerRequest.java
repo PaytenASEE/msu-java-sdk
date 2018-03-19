@@ -5,7 +5,7 @@ import com.github.msu.sdk.authentication.Authentication;
 import com.github.msu.sdk.authentication.credentials.providers.StaticCredentialsProvider;
 import com.github.msu.sdk.authentication.types.UserCredentialsAuthentication;
 import com.github.msu.sdk.request.base.ApiRequest;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Param;
 import com.github.msu.sdk.response.QueryDealerResponse;
 import com.github.msu.sdk.util.ResponseInfo;
@@ -22,8 +22,8 @@ public class QueryDealerRequest extends ApiRequest{
     }
 
     @Override
-    public Action action() {
-        return Action.QUERYDEALER;
+    public ApiAction apiAction() {
+        return ApiAction.QUERYDEALER;
     }
 
     public static QueryDealerRequestBuilder builder(){

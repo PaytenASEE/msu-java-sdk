@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.github.msu.sdk.authentication.Authentication;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Currency;
 import com.github.msu.sdk.request.model.Point;
 import com.github.msu.sdk.response.model.PreauthResponse;
@@ -14,8 +14,8 @@ import com.github.msu.sdk.util.ResponseInfo;
 public class PreauthRequest extends SaleRequest {
 
 	@Override
-	public Action action() {
-		return Action.PREAUTH;
+	public ApiAction apiAction() {
+		return ApiAction.PREAUTH;
 	}
 	
 	private PreauthRequest(PreauthRequestBuilder builder) {

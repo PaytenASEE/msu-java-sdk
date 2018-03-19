@@ -7,7 +7,7 @@ import java.util.Map;
 
 import com.github.msu.sdk.authentication.Authentication;
 import com.github.msu.sdk.request.base.ApiRequest;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Currency;
 import com.github.msu.sdk.request.enumerated.Param;
 import com.github.msu.sdk.request.model.Point;
@@ -99,8 +99,8 @@ public class SaleRequest extends ApiRequest {
 	}
 
 	@Override
-	public Action action() {
-		return Action.SALE;
+	public ApiAction apiAction() {
+		return ApiAction.SALE;
 	}
 	
 	@Override

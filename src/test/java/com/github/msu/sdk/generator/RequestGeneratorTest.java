@@ -1,100 +1,162 @@
 package com.github.msu.sdk.generator;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.nio.file.Paths;
+import java.lang.reflect.Type;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-import com.github.msu.sdk.request.enumerated.Param;
-import com.github.msu.sdk.util.ResponseInfo;
-import com.squareup.javapoet.*;
+import javax.lang.model.element.Modifier;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import com.github.msu.sdk.generator.MsuApiMetadata.Action;
 import com.github.msu.sdk.generator.MsuApiMetadata.Action.Params;
-
-import javax.lang.model.element.Modifier;
+import com.github.msu.sdk.request.enumerated.Param;
+import com.github.msu.sdk.util.ResponseInfo;
+import com.squareup.javapoet.AnnotationSpec;
+import com.squareup.javapoet.ClassName;
+import com.squareup.javapoet.CodeBlock;
+import com.squareup.javapoet.FieldSpec;
+import com.squareup.javapoet.JavaFile;
+import com.squareup.javapoet.MethodSpec;
+import com.squareup.javapoet.TypeName;
+import com.squareup.javapoet.TypeSpec;
 
 public class RequestGeneratorTest {
-    MsuApiMetadataLoader metadataLoader;
-    StringCaseUtility stringCaseUtility;
+	MsuApiMetadataLoader metadataLoader;
+	StringCaseUtility stringCaseUtility;
 
-    @Before
-    public void setUp() {
-        metadataLoader = new MsuApiMetadataLoader();
-        stringCaseUtility = new StringCaseUtility();
-        // TODO load template file from src/test/resources/requestTemplate.txt
-    }
+	static final Set<String> BOOLEAN_PARAMS = new HashSet<>(
+			Arrays.asList("SAVECARD", "ISREFUNDABLE", "FORGROUP", "APPLYFORDEBITCREDITCARD", "APPLYFORCREDITCARD",
+					"APPLYFORBUSINESSCARD", "INCLUDEDEALERS", "ISCOMMISSIONINCLUDED"));
+	static final Set<String> AUTH_PARAMS = new HashSet<>(
+			Arrays.asList("SESSIONTOKEN", "MERCHANTUSER", "MERCHANTPASSWORD", "MERCHANT"));
 
-    @Test
-    public void testMetadataLoader() throws IOException {
-        List<Action> actions = metadataLoader.getMsuApiMetadata().getAction();
-        actions.forEach(action -> {
-            String actionInCamelCase = stringCaseUtility.toCamelCase(action.getName());
-            String actionName = stringCaseUtility.firstUpperCase(actionInCamelCase);
-            System.out.println("Action: " + actionInCamelCase);
-            Params params = action.getParams();
-            String className = actionName + "Request";
-            List<FieldSpec> fields = new ArrayList<>();
-            List<MethodSpec> innerBuilderMethods = new ArrayList<>();
+	@Before
+	public void setUp() {
+		metadataLoader = new MsuApiMetadataLoader();
+		stringCaseUtility = new StringCaseUtility();
+		// TODO load template file from src/test/resources/requestTemplate.txt
+	}
 
-            // Get fields from params
-            params.param.forEach(param -> {
-                String paramName = stringCaseUtility.toCamelCase(param.getName());
-                String paramType = param.getType();
-                System.out.println(stringCaseUtility.toCamelCase(paramName + ":" + paramType));
-                FieldSpec field = FieldSpec.builder(String.class, paramName.trim(), Modifier.PRIVATE).build();
-                fields.add(field);
+	@Test
+	public void testMetadataLoader() throws IOException {
+		List<Action> actions = metadataLoader.getMsuApiMetadata().getAction();
+		actions = actions.stream().filter(a -> a.getName().equalsIgnoreCase("SALE")).collect(Collectors.toList()); // uncomment
+																													// for
+																													// all
+																													// actions
+		actions.forEach(action -> {
+			String actionInCamelCase = stringCaseUtility.toCamelCase(action.getName());
+			String actionName = stringCaseUtility.firstUpperCase(actionInCamelCase);
+			System.out.println("ApiAction: " + actionInCamelCase);
+			// exclude auth params
+			List<MsuApiMetadata.Action.Params.Param> params = action.getParams().param.stream()
+					.filter(p -> !AUTH_PARAMS.contains(p.getName().toUpperCase())).collect(Collectors.toList());
+			String className = actionName + "Request";
 
-                //// TODO: 3/13/2018 Methods for builder
-            });
-            System.out.println("------------------------------------------------------------");
+			List<FieldSpec> fields = new ArrayList<>();
+			List<MethodSpec> innerBuilderMethods = new ArrayList<>();
+			String builderName = className + "Builder";
+			// Get fields from params
+			params.forEach(param -> {
+				String paramName = stringCaseUtility.toCamelCase(param.getName());
+				String paramType = param.getType();
+				System.out.println(stringCaseUtility.toCamelCase(paramName + ":" + paramType));
+				FieldSpec field = FieldSpec.builder(getParameterType(param), paramName.trim(), Modifier.PRIVATE)
+						.build();
+				fields.add(field);
 
-            //Remove first field -> ACTION field
-            fields.remove(0);
+				// with* methods of builder
+				MethodSpec withMethod = MethodSpec.methodBuilder("with" + stringCaseUtility.firstUpperCase(field.name))
+						.addModifiers(Modifier.PUBLIC).addStatement("this." + field.name + " = " + field.name)
+						.addStatement("return this").returns(ClassName.get("", builderName))
+						.addParameter(getParameterType(param), field.name).build();
+				innerBuilderMethods.add(withMethod);
+			});
+			System.out.println("------------------------------------------------------------");
 
-            // Add to payload block
-            StringBuilder addToPayload = new StringBuilder();
-            fields.stream().forEach(field -> {
-                addToPayload.append("addToPayload(Param." + Param.valueOf(field.name.toUpperCase()) + "," + "this." + field.name + ");").append("\n");
-            });
-            CodeBlock applyRequestParamBody = CodeBlock.builder().add(addToPayload.toString()).build();
+			// Remove first field -> ACTION field
+			fields.remove(0);
 
-            //applyRequestParams method
-            MethodSpec applyRequestParams = MethodSpec.methodBuilder("applyRequestParams").addModifiers(Modifier.PUBLIC)
-                    .addCode(applyRequestParamBody).addAnnotation(Override.class).build();
+			// Add to payload block
+			StringBuilder addToPayload = new StringBuilder();
+			fields.stream().forEach(field -> {
+				addToPayload.append("addToPayload(Param." + Param.valueOf(field.name.toUpperCase()) + "," + "this."
+						+ field.name + ");").append("\n");
+			});
+			CodeBlock applyRequestParamBody = CodeBlock.builder().add(addToPayload.toString()).build();
 
-            //action method
-            MethodSpec actionMethod = MethodSpec.methodBuilder("action").returns(com.github.msu.sdk.request.enumerated.Action.class)
-                    .addModifiers(Modifier.PUBLIC).addAnnotation(Override.class).addStatement("return Action." + actionName).build();
+			// applyRequestParams() method of Request
+			MethodSpec applyRequestParams = MethodSpec.methodBuilder("applyRequestParams").addModifiers(Modifier.PUBLIC)
+					.addCode(applyRequestParamBody).addAnnotation(Override.class).build();
 
-            // Class Builder
-            String builderName = className + "Builder";
-            TypeSpec builder = TypeSpec.classBuilder(builderName).addModifiers(Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL)
-                    .addFields(fields).build();
+			// action() method of Request
+			MethodSpec actionMethod = MethodSpec.methodBuilder("action")
+					.returns(com.github.msu.sdk.request.enumerated.ApiAction.class).addModifiers(Modifier.PUBLIC)
+					.addAnnotation(Override.class).addStatement("return ApiAction." + actionName.toUpperCase()).build();
 
-            //builder method
-            ClassName builderClassName = ClassName.get("", builderName);
-            MethodSpec builderMethod = MethodSpec.methodBuilder("builder").returns(builderClassName)
-                    .addModifiers(Modifier.PUBLIC).addStatement("return new " + builderName + "()").build();
+			// build() block of Builder
+			StringBuilder builderBuildSatements = new StringBuilder();
+			builderBuildSatements.append(className + " request = new " + className + "()\n");
+			fields.stream().forEach(field -> {
+				builderBuildSatements.append("request." + field.name + " = this." + field.name + ";\n");
+			});
+			
+			builderBuildSatements.append("return request");
+			CodeBlock builderBuildStatementBlock = CodeBlock.builder().add(builderBuildSatements.toString()).build();
+			// build() method of Builder
+			MethodSpec buildMethod = MethodSpec.methodBuilder("build").returns(ClassName.get("", className))
+					.addModifiers(Modifier.PUBLIC).addStatement(builderBuildStatementBlock).build();
+			// Class Builder
+			TypeSpec builder = TypeSpec.classBuilder(builderName)
+					.addModifiers(Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL).addFields(fields)
+					.addMethods(innerBuilderMethods).addMethod(buildMethod).build();
 
-            // Main Class
-            AnnotationSpec annotation = AnnotationSpec.builder(ResponseInfo.class).addMember("responseClass", actionName + "Response.class").build();
-            TypeSpec mainClass = TypeSpec.classBuilder(className)
-                    .addAnnotation(annotation).addType(builder).addModifiers(Modifier.PUBLIC).addFields(fields)
-                    .addMethod(applyRequestParams).addMethod(actionMethod).addMethod(builderMethod).build();
-            JavaFile javaFile = JavaFile.builder("com.github.msu.sdk.request", mainClass).build();
+			// builder() method of Request
+			ClassName builderClassName = ClassName.get("", builderName);
+			MethodSpec builderMethod = MethodSpec.methodBuilder("builder").returns(builderClassName)
+					.addModifiers(Modifier.PUBLIC).addStatement("return new " + builderName + "()").build();
 
-            try {
-                // Save class to path
-                // javaFile.writeTo(Paths.get("C:\\Users\\DELL\\Asseco\\msu-api-sdk\\src\\main\\java\\com\\github\\msu\\sdk\\request"));
-               javaFile.writeTo(System.out);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        // TODO
-    }
+			// Main Class
+			AnnotationSpec annotation = AnnotationSpec.builder(ResponseInfo.class)
+					.addMember("responseClass", actionName + "Response.class").build();
+			TypeSpec mainClass = TypeSpec.classBuilder(className).addAnnotation(annotation)
+					.addMethod(MethodSpec.constructorBuilder().addModifiers(Modifier.PRIVATE).build()).addType(builder)
+					.addModifiers(Modifier.PUBLIC).addFields(fields).addMethod(applyRequestParams)
+					.addMethod(actionMethod).addMethod(builderMethod).build();
+			JavaFile javaFile = JavaFile.builder("com.github.msu.sdk.request", mainClass).build();
+
+			try {
+				// Save class to path
+				// javaFile.writeTo(Paths.get("C:\\Users\\DELL\\Asseco\\msu-api-sdk\\src\\main\\java\\com\\github\\msu\\sdk\\request"));
+				javaFile.writeTo(System.out);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
+		// TODO
+	}
+
+	private static TypeName getParameterType(com.github.msu.sdk.generator.MsuApiMetadata.Action.Params.Param param) {
+		if (BOOLEAN_PARAMS.contains(param.getName().toUpperCase())) {
+			return TypeName.BOOLEAN;
+		}
+		switch (param.getType()) {
+		case "decimal":
+			return TypeName.get(BigDecimal.class);
+		case "enum":
+			String enumClass = param.getEnumClass();
+			return ClassName.get("com.github.msu.sdk.request.enumerated",
+					enumClass.substring(enumClass.lastIndexOf('.') + 1, enumClass.length()));
+		default:
+			return TypeName.get(String.class);
+		}
+	}
 }

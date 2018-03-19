@@ -10,7 +10,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.github.msu.sdk.authentication.Authentication;
-import com.github.msu.sdk.request.enumerated.Action;
+import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Param;
 import com.github.msu.sdk.util.StringUtils;
 
@@ -20,7 +20,7 @@ public abstract class ApiRequest {
 	protected ObjectMapper objectMapper = new ObjectMapper();
 
 	public Map<String, String> getFormUrlEncodedData() {
-		payload.put(Param.ACTION.name(), action().name());
+		payload.put(Param.ACTION.name(), apiAction().name());
 		this.applyRequestParams();
 		return payload;
 	}
@@ -67,5 +67,5 @@ public abstract class ApiRequest {
 	// abstract methods
 	public abstract void applyRequestParams();
 
-	public abstract Action action();
+	public abstract ApiAction apiAction();
 }
