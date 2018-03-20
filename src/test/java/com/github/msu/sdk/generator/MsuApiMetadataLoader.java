@@ -1,16 +1,15 @@
 package com.github.msu.sdk.generator;
 
-import java.io.File;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
+import com.github.msu.sdk.util.StringUtils;
+
 public class MsuApiMetadataLoader {
 	private MsuApiMetadata msuApiMetadata;
 	private StreamSource source;
-	private String PATH_TO_METADATA_FILE = "C:\\npd\\msu.core\\src\\main\\resources\\api-request-param-definitions.xml";
 
 	public MsuApiMetadata getMsuApiMetadata() {
 		return msuApiMetadata;
@@ -21,8 +20,13 @@ public class MsuApiMetadataLoader {
 	}
 
 	public MsuApiMetadataLoader() {
+		String metadataFilePath = System.getProperty("metadata.file");
+		// -Dmetadata.file=/path/to/api-request-param-definitions.xml.xml
+		if(StringUtils.isBlank(metadataFilePath)) {
+			throw new IllegalArgumentException("metadata.file not specified!");
+		}
 		if (this.getClass().getClassLoader() != null) {
-			source = new StreamSource(new File(PATH_TO_METADATA_FILE));
+			source = new StreamSource(metadataFilePath);
 		}
 		try {
 			JAXBContext jaxbContext;

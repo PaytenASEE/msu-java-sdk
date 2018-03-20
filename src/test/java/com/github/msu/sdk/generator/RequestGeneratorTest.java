@@ -1,13 +1,14 @@
 package com.github.msu.sdk.generator;
 
-import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -16,9 +17,12 @@ import javax.lang.model.element.Modifier;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.github.msu.sdk.authentication.Authentication;
 import com.github.msu.sdk.generator.MsuApiMetadata.Action;
 import com.github.msu.sdk.request.base.ApiRequest;
+import com.github.msu.sdk.request.complex.OrderItem;
 import com.github.msu.sdk.request.enumerated.Param;
+import com.github.msu.sdk.request.model.Point;
 import com.github.msu.sdk.util.ResponseInfo;
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.ClassName;
@@ -26,6 +30,7 @@ import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
+import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 
@@ -42,11 +47,25 @@ public class RequestGeneratorTest {
 
 	static final Set<String> IGNORABLE_ENUMS = new HashSet<>(Arrays.asList("ROLE", "PERMISSION", "FEATURE"));
 	
+	@SuppressWarnings("serial")
+	static Map<String, FieldSpec> COMPLEX_TYPES = new HashMap<String, FieldSpec>() {
+		{
+			put("POINTS",
+					FieldSpec.builder(ParameterizedTypeName.get(ClassName.get(List.class), ClassName.get(Point.class)),
+							"points", Modifier.PRIVATE).build());
+			put("ORDERITEMS",
+					FieldSpec.builder(
+							ParameterizedTypeName.get(ClassName.get(List.class), ClassName.get(OrderItem.class)),
+							"orderItems", Modifier.PRIVATE).build());
+			put("EXTRA", FieldSpec.builder(ParameterizedTypeName.get(ClassName.get(Map.class),
+					ClassName.get(String.class), ClassName.get(String.class)), "orderItems", Modifier.PRIVATE).build());
+		}
+	};
+	
 	@Before
 	public void setUp() {
 		metadataLoader = new MsuApiMetadataLoader();
 		stringCaseUtility = new StringCaseUtility();
-		// TODO load template file from src/test/resources/requestTemplate.txt
 	}
 
 	@Test
@@ -68,22 +87,32 @@ public class RequestGeneratorTest {
 			List<FieldSpec> fields = new ArrayList<>();
 			List<MethodSpec> innerBuilderMethods = new ArrayList<>();
 			String builderName = className + "Builder";
+			
+			MethodSpec withAuthenticationMethod = MethodSpec.methodBuilder("withAuthentication")
+					.addModifiers(Modifier.PUBLIC).addStatement("this.authentication = authentication")
+					.addStatement("return this").returns(ClassName.get("", builderName))
+					.addParameter(Authentication.class, "authentication").build();
+			innerBuilderMethods.add(withAuthenticationMethod);
 			// Get fields from params
 			params.forEach(param -> {
 				String paramName = stringCaseUtility.toCamelCase(param.getName());
 				String paramType = param.getType();
 				System.out.println(stringCaseUtility.toCamelCase(paramName + ":" + paramType));
-				FieldSpec field = FieldSpec.builder(getParameterType(param), paramName.trim(), Modifier.PRIVATE)
-						.build();
+				FieldSpec field = null;
+				if (COMPLEX_TYPES.containsKey(param.getName().toUpperCase())) {
+					field = COMPLEX_TYPES.get(param.getName().toUpperCase());
+				} else {
+					field = FieldSpec.builder(getParameterType(param), paramName.trim(), Modifier.PRIVATE).build();
+				}
 				fields.add(field);
-
 				// with* methods of builder
 				MethodSpec withMethod = MethodSpec.methodBuilder("with" + stringCaseUtility.firstUpperCase(field.name))
 						.addModifiers(Modifier.PUBLIC).addStatement("this." + field.name + " = " + field.name)
 						.addStatement("return this").returns(ClassName.get("", builderName))
-						.addParameter(getParameterType(param), field.name).build();
+						.addParameter(field.type, field.name).build();
 				innerBuilderMethods.add(withMethod);
 			});
+			
 			System.out.println("------------------------------------------------------------");
 
 			// Add to payload block
@@ -104,7 +133,8 @@ public class RequestGeneratorTest {
 
 			// build() block of Builder
 			StringBuilder builderBuildSatements = new StringBuilder();
-			builderBuildSatements.append(className + " request = new " + className + "()\n");
+			builderBuildSatements.append(className + " request = new " + className + "();\n");
+			builderBuildSatements.append("request.authentication = this.authentication;\n");
 			fields.stream().forEach(field -> {
 				builderBuildSatements.append("request." + field.name + " = this." + field.name + ";\n");
 			});
@@ -115,14 +145,16 @@ public class RequestGeneratorTest {
 			MethodSpec buildMethod = MethodSpec.methodBuilder("build").returns(ClassName.get("", className))
 					.addModifiers(Modifier.PUBLIC).addStatement(builderBuildStatementBlock).build();
 			// Class Builder
+			List<FieldSpec> builderFields = new ArrayList<>(fields);
+			builderFields.add(FieldSpec.builder(Authentication.class, "authentication", Modifier.PRIVATE).build()); //builder has additional authentication attribute
 			TypeSpec builder = TypeSpec.classBuilder(builderName)
-					.addModifiers(Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL).addFields(fields)
+					.addModifiers(Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL).addFields(builderFields)
 					.addMethods(innerBuilderMethods).addMethod(buildMethod).build();
 
 			// builder() method of Request
 			ClassName builderClassName = ClassName.get("", builderName);
 			MethodSpec builderMethod = MethodSpec.methodBuilder("builder").returns(builderClassName)
-					.addModifiers(Modifier.PUBLIC).addStatement("return new " + builderName + "()").build();
+					.addModifiers(Modifier.PUBLIC).addModifiers(Modifier.STATIC).addStatement("return new " + builderName + "()").build();
 
 			// Main Class
 			AnnotationSpec annotation = AnnotationSpec.builder(ResponseInfo.class)
@@ -131,21 +163,16 @@ public class RequestGeneratorTest {
 					.addMethod(MethodSpec.constructorBuilder().addModifiers(Modifier.PRIVATE).build()).addType(builder)
 					.addModifiers(Modifier.PUBLIC).addFields(fields).addMethod(applyRequestParams)
 					.addMethod(actionMethod).addMethod(builderMethod).superclass(ApiRequest.class).build();
-			JavaFile javaFile = JavaFile.builder("com.github.msu.sdk.request", mainClass).build();
+			JavaFile javaFile = JavaFile.builder("com.github.msu.sdk.request.generated", mainClass).build();
 
 			try {
 				// Save class to path
 				//javaFile.writeTo(Paths.get("C:\\Users\\DELL\\Asseco\\msu-api-sdk\\src\\main\\java\\com\\github\\msu\\sdk\\request"));
-				URL pathname = this.getClass().getClassLoader().getResource("com/github/msu/sdk/request/generated");
-				System.out.println(pathname);
-				javaFile.writeTo(new File(pathname.getFile()));
+				javaFile.writeTo(Paths.get(System.getProperty("user.dir") + "/src/main/java"));
 				//javaFile.writeTo(System.out);
 			} catch (IOException e) {
 				e.printStackTrace();
-			}
-			
-			System.out.println("Enums:");
-			System.out.println(Arrays.toString(enums.toArray(new String[0])));
+			} 
 		});
 		// TODO
 	}

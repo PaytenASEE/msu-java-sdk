@@ -11,7 +11,7 @@ import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Currency;
 import com.github.msu.sdk.request.enumerated.Param;
 import com.github.msu.sdk.request.model.Point;
-import com.github.msu.sdk.response.model.SaleResponse;
+import com.github.msu.sdk.response.SaleResponse;
 import com.github.msu.sdk.util.ResponseInfo;
 
 @ResponseInfo(responseClass = SaleResponse.class)

@@ -7,7 +7,7 @@ import com.github.msu.sdk.authentication.Authentication;
 import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.Currency;
 import com.github.msu.sdk.request.model.Point;
-import com.github.msu.sdk.response.model.PreauthResponse;
+import com.github.msu.sdk.response.PreauthResponse;
 import com.github.msu.sdk.util.ResponseInfo;
 
 @ResponseInfo(responseClass = PreauthResponse.class)
