@@ -1,8 +1,9 @@
 package com.github.msu.sdk.generator;
 
+import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.math.BigDecimal;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -16,7 +17,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.msu.sdk.generator.MsuApiMetadata.Action;
-import com.github.msu.sdk.generator.MsuApiMetadata.Action.Params;
+import com.github.msu.sdk.request.base.ApiRequest;
 import com.github.msu.sdk.request.enumerated.Param;
 import com.github.msu.sdk.util.ResponseInfo;
 import com.squareup.javapoet.AnnotationSpec;
@@ -31,13 +32,16 @@ import com.squareup.javapoet.TypeSpec;
 public class RequestGeneratorTest {
 	MsuApiMetadataLoader metadataLoader;
 	StringCaseUtility stringCaseUtility;
-
+	Set<String> enums = new HashSet<>();
+	
 	static final Set<String> BOOLEAN_PARAMS = new HashSet<>(
 			Arrays.asList("SAVECARD", "ISREFUNDABLE", "FORGROUP", "APPLYFORDEBITCREDITCARD", "APPLYFORCREDITCARD",
 					"APPLYFORBUSINESSCARD", "INCLUDEDEALERS", "ISCOMMISSIONINCLUDED"));
 	static final Set<String> AUTH_PARAMS = new HashSet<>(
-			Arrays.asList("SESSIONTOKEN", "MERCHANTUSER", "MERCHANTPASSWORD", "MERCHANT"));
+			Arrays.asList("ACTION", "SESSIONTOKEN", "MERCHANTUSER", "MERCHANTPASSWORD", "MERCHANT"));
 
+	static final Set<String> IGNORABLE_ENUMS = new HashSet<>(Arrays.asList("ROLE", "PERMISSION", "FEATURE"));
+	
 	@Before
 	public void setUp() {
 		metadataLoader = new MsuApiMetadataLoader();
@@ -48,7 +52,7 @@ public class RequestGeneratorTest {
 	@Test
 	public void testMetadataLoader() throws IOException {
 		List<Action> actions = metadataLoader.getMsuApiMetadata().getAction();
-		actions = actions.stream().filter(a -> a.getName().equalsIgnoreCase("SALE")).collect(Collectors.toList()); // uncomment
+		//actions = actions.stream().filter(a -> a.getName().equalsIgnoreCase("SALE")).collect(Collectors.toList()); // comment
 																													// for
 																													// all
 																													// actions
@@ -82,23 +86,19 @@ public class RequestGeneratorTest {
 			});
 			System.out.println("------------------------------------------------------------");
 
-			// Remove first field -> ACTION field
-			fields.remove(0);
-
 			// Add to payload block
 			StringBuilder addToPayload = new StringBuilder();
 			fields.stream().forEach(field -> {
-				addToPayload.append("addToPayload(Param." + Param.valueOf(field.name.toUpperCase()) + "," + "this."
+				addToPayload.append("addToPayload(com.github.msu.sdk.request.enumerated.Param." + Param.valueOf(field.name.toUpperCase()) + "," + "this."
 						+ field.name + ");").append("\n");
 			});
 			CodeBlock applyRequestParamBody = CodeBlock.builder().add(addToPayload.toString()).build();
-
 			// applyRequestParams() method of Request
 			MethodSpec applyRequestParams = MethodSpec.methodBuilder("applyRequestParams").addModifiers(Modifier.PUBLIC)
 					.addCode(applyRequestParamBody).addAnnotation(Override.class).build();
 
 			// action() method of Request
-			MethodSpec actionMethod = MethodSpec.methodBuilder("action")
+			MethodSpec actionMethod = MethodSpec.methodBuilder("apiAction")
 					.returns(com.github.msu.sdk.request.enumerated.ApiAction.class).addModifiers(Modifier.PUBLIC)
 					.addAnnotation(Override.class).addStatement("return ApiAction." + actionName.toUpperCase()).build();
 
@@ -126,33 +126,43 @@ public class RequestGeneratorTest {
 
 			// Main Class
 			AnnotationSpec annotation = AnnotationSpec.builder(ResponseInfo.class)
-					.addMember("responseClass", actionName + "Response.class").build();
+					.addMember("responseClass", "com.github.msu.sdk.response." + actionName + "Response.class").build();
 			TypeSpec mainClass = TypeSpec.classBuilder(className).addAnnotation(annotation)
 					.addMethod(MethodSpec.constructorBuilder().addModifiers(Modifier.PRIVATE).build()).addType(builder)
 					.addModifiers(Modifier.PUBLIC).addFields(fields).addMethod(applyRequestParams)
-					.addMethod(actionMethod).addMethod(builderMethod).build();
+					.addMethod(actionMethod).addMethod(builderMethod).superclass(ApiRequest.class).build();
 			JavaFile javaFile = JavaFile.builder("com.github.msu.sdk.request", mainClass).build();
 
 			try {
 				// Save class to path
-				// javaFile.writeTo(Paths.get("C:\\Users\\DELL\\Asseco\\msu-api-sdk\\src\\main\\java\\com\\github\\msu\\sdk\\request"));
-				javaFile.writeTo(System.out);
+				//javaFile.writeTo(Paths.get("C:\\Users\\DELL\\Asseco\\msu-api-sdk\\src\\main\\java\\com\\github\\msu\\sdk\\request"));
+				URL pathname = this.getClass().getClassLoader().getResource("com/github/msu/sdk/request/generated");
+				System.out.println(pathname);
+				javaFile.writeTo(new File(pathname.getFile()));
+				//javaFile.writeTo(System.out);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
+			System.out.println("Enums:");
+			System.out.println(Arrays.toString(enums.toArray(new String[0])));
 		});
 		// TODO
 	}
 
-	private static TypeName getParameterType(com.github.msu.sdk.generator.MsuApiMetadata.Action.Params.Param param) {
+	private TypeName getParameterType(com.github.msu.sdk.generator.MsuApiMetadata.Action.Params.Param param) {
 		if (BOOLEAN_PARAMS.contains(param.getName().toUpperCase())) {
 			return TypeName.BOOLEAN;
+		}
+		if(IGNORABLE_ENUMS.contains(param.getName().toUpperCase())) {
+			return TypeName.get(String.class);
 		}
 		switch (param.getType()) {
 		case "decimal":
 			return TypeName.get(BigDecimal.class);
 		case "enum":
 			String enumClass = param.getEnumClass();
+			enums.add(enumClass);
 			return ClassName.get("com.github.msu.sdk.request.enumerated",
 					enumClass.substring(enumClass.lastIndexOf('.') + 1, enumClass.length()));
 		default:
