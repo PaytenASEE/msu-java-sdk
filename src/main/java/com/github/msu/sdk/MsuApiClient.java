@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,6 +26,8 @@ public class MsuApiClient {
 	private static final Set<String> SHOULD_MASK_PARAMS = new HashSet<>(Arrays.asList(Param.CARDPAN.name(), Param.CARDCVV.name(), Param.CARD_EXPIRY.name(),
 			Param.CARDEXPIRY.name(), Param.MERCHANTPASSWORD.name(), Param.MERCHANTUSERPASSWORD.name()));
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(MsuApiClient.class);
+	
 	private MsuApiClient() {
 		mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
 	}
@@ -56,7 +61,7 @@ public class MsuApiClient {
 			apiResponse.setRawResponse(responseJSON);
 			return apiResponse;
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOGGER.error("IO Error while making request to {}", this.url, e);
 			return null;
 		} finally {
 			log(apiRequest, apiResponse, System.currentTimeMillis() - before);
@@ -100,10 +105,6 @@ public class MsuApiClient {
 		sb.append(System.lineSeparator());
 		sb.append("\t").append(response == null ? "No Response!" : response.getRawResponse());
 		sb.append(System.lineSeparator());
-		System.out.println(sb);
-	}
-
-	public void logResponse(ApiResponse apiResponse) {
-		System.out.println(apiResponse.getRawResponse());
+		LOGGER.info(sb.toString());
 	}
 }
