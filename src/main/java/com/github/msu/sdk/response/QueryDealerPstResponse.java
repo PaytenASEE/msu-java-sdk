@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.msu.sdk.response.model.DealerPST;
 
 
-public class QueryDealerPSTResponse extends ApiResponse {
+public class QueryDealerPstResponse extends ApiResponse {
 	@JsonProperty(value = "dealerPSTList")
 	@XmlElementWrapper(name = "dealerPSTList")
 	@XmlElement(name = "dealerPST")

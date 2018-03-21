@@ -58,7 +58,7 @@ public class RequestGeneratorTest {
 							ParameterizedTypeName.get(ClassName.get(List.class), ClassName.get(OrderItem.class)),
 							"orderItems", Modifier.PRIVATE).build());
 			put("EXTRA", FieldSpec.builder(ParameterizedTypeName.get(ClassName.get(Map.class),
-					ClassName.get(String.class), ClassName.get(String.class)), "orderItems", Modifier.PRIVATE).build());
+					ClassName.get(String.class), ClassName.get(String.class)), "extra", Modifier.PRIVATE).build());
 		}
 	};
 	

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.msu.sdk.response.model.RecurringPayment;
 import com.github.msu.sdk.response.model.RecurringPlan;
 
-public class QueryRecurringPlanSummaryResponse extends ApiResponse {
+public class QueryRecurringPlanResponse extends ApiResponse {
 	@JsonProperty(value = "recurringPlanList")
 	@XmlElementWrapper(name = "recurringPlanList")
 	@XmlElement(name = "recurringPlanList")

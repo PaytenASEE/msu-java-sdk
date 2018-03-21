@@ -6,22 +6,18 @@ import java.util.List;
 
 public class StringCaseUtility {
     private List<String> dictionary;
-    private final String [] allWords = {"merchant", "user", "date", "action", "password", "customer",
-            "session", "type", "return", "url", "payment", "id", "amount", "currency", "email",
-            "name", "phone", "agent", "expiry", "language", "campaign", "code", "query", "input",
-            "items", "extra", "order", "bill", "add", "edit", "enable", "disable", "address", "line", "city", "postal", "country",
-            "token", "holder", "save", "card", "is", "refundable", "installments", "commission", "included",
-            "points", "campaigns", "initiate", "business", "cvv", "threat", "metrix", "dealer", "sub",
-            "status", "limit", "offset", "start", "end", "pan", "result", "apply", "rate", "dto", "from",
-            "bin", "api", "gate", "default", "group", "notification", "channels", "recurring", "count", "pay",
-            "by", "link", "displayed", "content", "split", "codes", "fax", "reason", "locked", "role",
-            "confirm", "delete", "field", "integration", "refund", "invoice", "due", "recover", "rule",
-            "output", "this", "on", "state", "recurrence", "plan", "page", "interim", "tmx", "code", "edit",
-            "to", "void", "pre","post", "auth", "system", "old", "new", "issue", "check", "company", "approve", "reject", "transaction", "pg",
-            "tran", "initiator", "ship", "recovery", "feature", "reset", "lower", "upper", "permission",
-            "description", "pst", "max", "min", "re", "time", "zone", "parent", "extend", "tckn", "vkn", "contact", 
-            "online", "offline", "message", "error", "text", "compay", "response", "request", "eft", "bkm", "policy",
-            "gate", "3d", "key", "executive", "report", "interest", "valid", "for", "debit", "e", "wallet"};
+	private final String[] allWords = { "merchant", "user", "date", "action", "password", "customer", "session", "type", "return", "url", "payment", "id",
+			"amount", "currency", "email", "name", "phone", "agent", "expiry", "language", "campaign", "code", "query", "input", "items", "extra", "order",
+			"bill", "add", "edit", "enable", "disable", "address", "line", "city", "postal", "country", "token", "holder", "save", "card", "is", "refundable",
+			"installments", "commission", "included", "points", "campaigns", "initiate", "business", "cvv", "threat", "metrix", "dealer", "sub", "status",
+			"limit", "offset", "start", "end", "pan", "result", "apply", "rate", "dto", "from", "bin", "api", "gate", "default", "group", "notification",
+			"channels", "recurring", "count", "pay", "by", "link", "displayed", "content", "split", "codes", "fax", "reason", "locked", "role", "confirm",
+			"delete", "field", "integration", "refund", "invoice", "due", "recover", "rule", "output", "this", "on", "state", "recurrence", "plan", "page",
+			"interim", "tmx", "code", "edit", "to", "void", "pre", "post", "auth", "read", "remove", "system", "old", "new", "issue", "check", "company",
+			"approve", "reject", "transaction", "pg", "tran", "initiator", "ship", "recovery", "feature", "reset", "lower", "upper", "permission",
+			"description", "pst", "max", "min", "re", "time", "zone", "parent", "extend", "tckn", "vkn", "contact", "online", "offline", "message", "error",
+			"text", "compay", "response", "request", "eft", "bkm", "policy", "gate", "3d", "key", "executive", "report", "interest", "valid", "for", "debit",
+			"e", "wallet" };
     //Pls add missing words!
 
     //QueryTransactionStats e gabon included dhe include!

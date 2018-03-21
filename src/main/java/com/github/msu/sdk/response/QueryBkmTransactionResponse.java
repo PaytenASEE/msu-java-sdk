@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlElement;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.msu.sdk.response.model.Transaction;
 
-public class QueryBKMTransactionResponse extends ApiResponse {
+public class QueryBkmTransactionResponse extends ApiResponse {
     @JsonProperty(value = "bkmTransaction")
     @XmlElement(name = "bkmTransaction")
     private BkmTransactionResponse bkmTransactionVO;
