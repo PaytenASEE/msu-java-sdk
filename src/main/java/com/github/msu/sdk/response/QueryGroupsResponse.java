@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.msu.sdk.response.model.MerchantGroup;
 
 
-public class QueryGroupResponse extends ApiResponse {
+public class QueryGroupsResponse extends ApiResponse {
 	@JsonProperty(value = "groupList")
 	@XmlElementWrapper(name = "groupList")
 	@XmlElement(name = "groupList")

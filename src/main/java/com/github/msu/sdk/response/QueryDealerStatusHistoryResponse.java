@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.msu.sdk.response.model.DealerStatusHistory;
 
-public class QueryDealerStatusHistory extends ApiResponse {
+public class QueryDealerStatusHistoryResponse extends ApiResponse {
 	@JsonProperty(value = "dealerStatusHistoryList")
 	@XmlElementWrapper(name = "dealerStatusHistoryList")
 	@XmlElement(name = "dealerStatusHistory")

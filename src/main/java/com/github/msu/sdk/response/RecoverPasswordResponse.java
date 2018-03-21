@@ -1,6 +1,6 @@
 package com.github.msu.sdk.response;
 
-public class PasswordRecoveryResponse extends ApiResponse {
+public class RecoverPasswordResponse extends ApiResponse {
 	private String recoveryToken;
 	private String expiryDate;
 

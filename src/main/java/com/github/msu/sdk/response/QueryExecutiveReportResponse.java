@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.github.msu.sdk.request.enumerated.Currency;
 
-public class ExecutiveReportResponse extends ApiResponse {
+public class QueryExecutiveReportResponse extends ApiResponse {
 	private List<TransactionStatVO> transactionStats = new ArrayList<>();
 
 	public List<TransactionStatVO> getTransactionStats() {
@@ -17,7 +17,7 @@ public class ExecutiveReportResponse extends ApiResponse {
 		this.transactionStats = transactionStats;
 	}
 
-	public ExecutiveReportResponse() {
+	public QueryExecutiveReportResponse() {
 		// Constructor
 	}
 

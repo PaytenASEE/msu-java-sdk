@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.msu.sdk.response.model.SplitPayment;
 
-public class QuerySplitPaymentServiceResponse extends ApiResponse {
+public class QuerySplitPaymentResponse extends ApiResponse {
 	@JsonProperty(value = "splitPaymentList")
 	@XmlElementWrapper(name = "splitPaymentList")
 	@XmlElement(name = "splitPaymentList")

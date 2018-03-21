@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.msu.sdk.response.model.PayByLinkPayment;
 
-public class QueryPayByLinkPayment extends ApiResponse {
+public class QueryPayByLinkPaymentResponse extends ApiResponse {
 	@JsonProperty(value = "payByLinkPaymentList")
 	@XmlElementWrapper(name = "payByLinkPaymentList")
 	@XmlElement(name = "payByLinkPaymentList")

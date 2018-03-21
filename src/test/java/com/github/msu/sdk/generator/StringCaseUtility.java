@@ -13,11 +13,11 @@ public class StringCaseUtility {
 			"limit", "offset", "start", "end", "pan", "result", "apply", "rate", "dto", "from", "bin", "api", "gate", "default", "group", "notification",
 			"channels", "recurring", "count", "pay", "by", "link", "displayed", "content", "split", "codes", "fax", "reason", "locked", "role", "confirm",
 			"delete", "field", "integration", "refund", "invoice", "due", "recover", "rule", "output", "this", "on", "state", "recurrence", "plan", "page",
-			"interim", "tmx", "code", "edit", "to", "void", "pre", "post", "auth", "read", "remove", "system", "old", "new", "issue", "check", "company",
+			"interim", "tmx", "code", "edit", "to", "void", "preauth", "postauth", "auth", "read", "remove", "system", "old", "new", "issue", "check", "company",
 			"approve", "reject", "transaction", "pg", "tran", "initiator", "ship", "recovery", "feature", "reset", "lower", "upper", "permission",
 			"description", "pst", "max", "min", "re", "time", "zone", "parent", "extend", "tckn", "vkn", "contact", "online", "offline", "message", "error",
 			"text", "compay", "response", "request", "eft", "bkm", "policy", "gate", "3d", "key", "executive", "report", "interest", "valid", "for", "debit",
-			"e", "wallet" };
+			"e", "wallet", "resend" };
     //Pls add missing words!
 
     //QueryTransactionStats e gabon included dhe include!

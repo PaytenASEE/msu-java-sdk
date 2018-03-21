@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonInclude(Include.NON_NULL)
-public class ExtendSessionResponse extends ApiResponse {
+public class SessionExtendResponse extends ApiResponse {
 	private String token;
 	private String expiry;
 
