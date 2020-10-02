@@ -7,14 +7,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.github.msu.sdk.request.enumerated.ApiAction;
+import com.github.msu.sdk.request.enumerated.ProxyPaymentTool;
 import com.github.msu.sdk.response.misc.ResponseCode;
 import com.github.msu.sdk.response.misc.ResponseMessage;
+
+import java.util.Map;
 
 @JsonInclude(Include.NON_NULL)
 @XmlRootElement(name = "response")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ApiResponse {
-	private ApiAction apiAction;
+	private ApiAction action;
 	private String apiMerchantId;
 	private String paymentSystem;
 	private String paymentSystemType;
@@ -24,6 +27,7 @@ public class ApiResponse {
 	private String pgTranId;
 	private String pgTranRefId;
 	private String pgOrderId;
+	private String pgTranApprCode;
 	private String sessionToken;
 	private String cardToken;
 	private String errorCode;
@@ -37,18 +41,25 @@ public class ApiResponse {
 	private String tmxRiskRating;
 	private String tmxPolicyScore;
 	private String tmxReasonCode;
+	private String tmxPolicy;
 	private String tmxSessionQueryOutput;
 	private String transactionId;
 	private String spc;
+	private String shouldDo3D;
+	private String isCardSavable;
+	private String panLast4;
+	private String cardBin;
+	private Map<String, String> bankResponseExtras;
+	private ProxyPaymentTool proxyPaymentTool;
 
 	private String rawResponse;
-	
+
 	public ApiAction getAction() {
-		return apiAction;
+		return action;
 	}
 
-	public void setAction(ApiAction apiAction) {
-		this.apiAction = apiAction;
+	public void setAction(ApiAction action) {
+		this.action = action;
 	}
 
 	public String getApiMerchantId() {
@@ -113,6 +124,14 @@ public class ApiResponse {
 
 	public void setPgOrderId(String pgOrderId) {
 		this.pgOrderId = pgOrderId;
+	}
+
+	public String getPgTranApprCode() {
+		return pgTranApprCode;
+	}
+
+	public void setPgTranApprCode(String pgTranApprCode) {
+		this.pgTranApprCode = pgTranApprCode;
 	}
 
 	public String getSessionToken() {
@@ -199,6 +218,14 @@ public class ApiResponse {
 		return tmxPolicyScore;
 	}
 
+	public String getTmxPolicy() {
+		return tmxPolicy;
+	}
+
+	public void setTmxPolicy(String tmxPolicy) {
+		this.tmxPolicy = tmxPolicy;
+	}
+
 	public void setTmxReviewStatus(String tmxReviewStatus) {
 		this.tmxReviewStatus = tmxReviewStatus;
 	}
@@ -252,7 +279,7 @@ public class ApiResponse {
 		this.responseCode = ResponseCode.DECLINEDCODE;
 		this.responseMsg = ResponseMessage.DECLINEDMESSAGE;
 	}
-	
+
 	public String getSpc() {
 		return spc;
 	}
@@ -261,20 +288,71 @@ public class ApiResponse {
 		this.spc = spc;
 	}
 
+	public String getShouldDo3D() {
+		return shouldDo3D;
+	}
+
+	public void setShouldDo3D(String shouldDo3D) {
+		this.shouldDo3D = shouldDo3D;
+	}
+
+	public String getIsCardSavable() {
+		return isCardSavable;
+	}
+
+	public void setIsCardSavable(String isCardSavable) {
+		this.isCardSavable = isCardSavable;
+	}
+
+	public String getPanLast4() {
+		return panLast4;
+	}
+
+	public void setPanLast4(String panLast4) {
+		this.panLast4 = panLast4;
+	}
+
+	public String getCardBin() {
+		return cardBin;
+	}
+
+	public void setCardBin(String cardBin) {
+		this.cardBin = cardBin;
+	}
+
+	public Map<String, String> getBankResponseExtras() {
+		return bankResponseExtras;
+	}
+
+	public void setBankResponseExtras(Map<String, String> bankResponseExtras) {
+		this.bankResponseExtras = bankResponseExtras;
+	}
+
+	public ProxyPaymentTool getProxyPaymentTool() {
+		return proxyPaymentTool;
+	}
+
+	public void setProxyPaymentTool(ProxyPaymentTool proxyPaymentTool) {
+		this.proxyPaymentTool = proxyPaymentTool;
+	}
+
+	public static ApiResponse approved(){
+		ApiResponse apiResponse = new ApiResponse();
+		apiResponse.setSuccessResponseParams();
+		return apiResponse;
+	}
+
+	public static ApiResponse declined(){
+		ApiResponse apiServiceVO = new ApiResponse();
+		apiServiceVO.setDeclinedResponseParams();
+		return apiServiceVO;
+	}
+
 	public String getRawResponse() {
 		return rawResponse;
 	}
 
 	public void setRawResponse(String rawResponse) {
 		this.rawResponse = rawResponse;
-	}
-
-	@Override
-	public String toString() {
-		return this.rawResponse;
-	}
-	
-	public boolean isApproved() {
-		return this.responseCode == ResponseCode.APPROVEDCODE;
 	}
 }

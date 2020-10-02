@@ -33,7 +33,6 @@ public class SaleRequest extends ApiRequest {
 	protected String customerPhone;
 	protected boolean saveCard;
 	protected boolean isRefundable;
-	protected boolean isCommissionIncluded;
 	protected String cardSaveName;
 	protected int installments;
 	protected String paymentSystem;
@@ -74,7 +73,6 @@ public class SaleRequest extends ApiRequest {
 		this.customerPhone = builder.customerPhone;
 		this.saveCard = builder.saveCard;
 		this.isRefundable = builder.isRefundable;
-		this.isCommissionIncluded = builder.isCommissionIncluded;
 		this.cardSaveName = builder.cardSaveName;
 		this.installments = builder.installments;
 		this.paymentSystem = builder.paymentSystem;
@@ -122,7 +120,6 @@ public class SaleRequest extends ApiRequest {
 		addToPayload(Param.CUSTOMERPHONE, this.customerPhone);
 		addToPayload(Param.SAVECARD, this.saveCard);
 		addToPayload(Param.ISREFUNDABLE, this.isRefundable);
-		addToPayload(Param.ISCOMMISSIONINCLUDED, this.isCommissionIncluded);
 		addToPayload(Param.CARDSAVENAME, this.cardSaveName);
 		addToPayload(Param.INSTALLMENTS, this.installments);
 		addToPayload(Param.PAYMENTSYSTEM, this.paymentSystem);
@@ -165,7 +162,6 @@ public class SaleRequest extends ApiRequest {
 		protected String customerPhone;
 		protected boolean saveCard;
 		protected boolean isRefundable;
-		protected boolean isCommissionIncluded;
 		protected String cardSaveName;
 		protected int installments = 1;
 		protected String paymentSystem;
@@ -269,11 +265,6 @@ public class SaleRequest extends ApiRequest {
 		
 		public SaleRequestBuilder withIsRefundable(boolean isRefundable) {
 			this.isRefundable = isRefundable;
-			return this;
-		}
-		
-		public SaleRequestBuilder withIsCommissionIncluded(boolean isCommissionIncluded) {
-			this.isCommissionIncluded = isCommissionIncluded;
 			return this;
 		}
 		

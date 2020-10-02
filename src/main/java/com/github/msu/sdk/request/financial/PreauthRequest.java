@@ -127,12 +127,6 @@ public class PreauthRequest extends SaleRequest {
 		}
 
 		@Override
-		public PreauthRequestBuilder withIsCommissionIncluded(boolean isCommissionIncluded) {
-			this.isCommissionIncluded = isCommissionIncluded;
-			return this;
-		}
-
-		@Override
 		public PreauthRequestBuilder withCardSaveName(String cardSaveName) {
 			this.cardSaveName = cardSaveName;
 			return this;

@@ -167,8 +167,8 @@ public class RequestGeneratorTest {
 
 			try {
 				// Save class to path
-				//javaFile.writeTo(Paths.get("C:\\Users\\DELL\\Asseco\\msu-api-sdk\\src\\main\\java\\com\\github\\msu\\sdk\\request"));
-				javaFile.writeTo(Paths.get(System.getProperty("user.dir") + "/src/main/java"));
+				javaFile.writeTo(Paths.get("/home/isah/npd/client.sdk/msu-api-sdk/src/main/java/com/github/msu/sdk/generated"));
+				//javaFile.writeTo(Paths.get(System.getProperty("user.dir") + "/src/main/java"));
 				//javaFile.writeTo(System.out);
 			} catch (IOException e) {
 				e.printStackTrace();

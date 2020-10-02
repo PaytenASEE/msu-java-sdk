@@ -2,7 +2,11 @@ package com.github.msu.sdk.request.enumerated;
 
 import java.util.Locale;
 
-
+/**
+ * Currency See http://en.wikipedia.org/wiki/ISO_4217 for details
+ *
+ * @author Anil Tangul <anil.tangul@asseco-see.com.tr>
+ */
 public enum Currency {
     TRY(new String[] { "TL", "TRL" }, "949", 2, "Turkish Lira"), //
     USD(new String[] { "$" }, "840", 2, "United States Dollar"), //
@@ -40,7 +44,7 @@ public enum Currency {
     /**
      * Returns currency code The parameter should be defined as in ISO_4217 standards. See
      * http://en.wikipedia.org/wiki/ISO_4217 for details.
-     * 
+     *
      * @param currencyCode
      * @return
      */
@@ -50,16 +54,16 @@ public enum Currency {
             return currency;
         currencyCode = currencyCode.toUpperCase(Locale.ENGLISH);
         Currency[] currencies = values();
-		for (int i = 0; i < currencies.length; i++) {
-			for (int j = 0; j < currencies[i].validAbbreviations.length; j++) {
-				if (currencyCode.contentEquals(currencies[i].validAbbreviations[j])) {
-					return currencies[i];
-				}
-			}
-			if (currencyCode.contentEquals(currencies[i].getNumcode())) {
-				return currencies[i];
-			}
-		}
+        for (int i = 0; i < currencies.length; i++) {
+            for (int j = 0; j < currencies[i].validAbbreviations.length; j++) {
+                if (currencyCode.contentEquals(currencies[i].validAbbreviations[j])) {
+                    return currencies[i];
+                }
+            }
+            if (currencyCode.contentEquals(currencies[i].getNumcode())) {
+                return currencies[i];
+            }
+        }
         return null;
     }
 

@@ -1,5 +1,11 @@
 package com.github.msu.sdk.request.enumerated;
 
+
+/**
+ * SplitPaymentType, saved on Session 
+ * 
+ * @author Alketa Fazliu <alketa.fazliu@asseco-see.com>
+ */
 public enum SplitPaymentType {
 	OPEN, ORDER, INVOICE;
 	

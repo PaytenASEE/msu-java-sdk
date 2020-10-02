@@ -21,124 +21,84 @@ public class Installment {
 	private String startDateISO;
 	private String endDateISO;
 	private String name;
+	private String paymentSystemName;
+	private String paymentSystemType;
+	private String commissionStatus;
+	private Commission commission;
 
 	public Installment() {
-	}
-
-	public static class Builder {
-		private String count;
-		private String status;
-		private BigDecimal interestRate;
-		private BigDecimal discountRate;
-		private BigDecimal commissionRate;
-		private String startDate;
-		private String endDate;
-		private String startDateISO;
-		private String endDateISO;
-		private String name;
-
-		public Builder count(String count) {
-			this.count = count;
-			return this;
-		}
-
-		public Builder status(String status) {
-			this.status = status;
-			return this;
-		}
-
-		public Builder interestRate(BigDecimal interestRate) {
-			this.interestRate = interestRate;
-			return this;
-		}
-
-		public Builder discountRate(BigDecimal discountRate) {
-			this.discountRate = discountRate;
-			return this;
-		}
-
-		public Builder commissionRate(BigDecimal commissionRate) {
-			this.commissionRate = commissionRate;
-			return this;
-		}
-
-		public Builder startDate(String startDate) {
-			this.startDate = startDate;
-			return this;
-		}
-
-		public Builder endDate(String endDate) {
-			this.endDate = endDate;
-			return this;
-		}
-
-		public Builder startDateISO(String startDateISO) {
-			this.startDateISO = startDateISO;
-			return this;
-		}
-
-		public Builder endDateISO(String endDateISO) {
-			this.endDateISO = endDateISO;
-			return this;
-		}
-
-		public Builder name(String name) {
-			this.name = name;
-			return this;
-		}
-
-		public Installment build() {
-			return new Installment(this);
-		}
-	}
-
-	private Installment(Builder builder) {
-		this.count = builder.count;
-		this.status = builder.status;
-		this.interestRate = builder.interestRate;
-		this.discountRate = builder.discountRate;
-		this.commissionRate = builder.commissionRate;
-		this.startDate = builder.startDate;
-		this.endDate = builder.endDate;
-		this.startDateISO = builder.startDateISO;
-		this.endDateISO = builder.endDateISO;
-		this.name = builder.name;
 	}
 
 	public String getCount() {
 		return count;
 	}
 
+	public void setCount(String count) {
+		this.count = count;
+	}
+
 	public String getStatus() {
 		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public BigDecimal getInterestRate() {
 		return interestRate;
 	}
 
+	public void setInterestRate(BigDecimal interestRate) {
+		this.interestRate = interestRate;
+	}
+
 	public BigDecimal getDiscountRate() {
 		return discountRate;
+	}
+
+	public void setDiscountRate(BigDecimal discountRate) {
+		this.discountRate = discountRate;
 	}
 
 	public BigDecimal getCommissionRate() {
 		return commissionRate;
 	}
 
+	public void setCommissionRate(BigDecimal commissionRate) {
+		this.commissionRate = commissionRate;
+	}
+
 	public String getStartDate() {
 		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
 
 	public String getEndDate() {
 		return endDate;
 	}
 
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
 	public String getStartDateISO() {
 		return startDateISO;
 	}
 
+	public void setStartDateISO(String startDateISO) {
+		this.startDateISO = startDateISO;
+	}
+
 	public String getEndDateISO() {
 		return endDateISO;
+	}
+
+	public void setEndDateISO(String endDateISO) {
+		this.endDateISO = endDateISO;
 	}
 
 	public String getName() {
@@ -147,5 +107,37 @@ public class Installment {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getPaymentSystemName() {
+		return paymentSystemName;
+	}
+
+	public void setPaymentSystemName(String paymentSystemName) {
+		this.paymentSystemName = paymentSystemName;
+	}
+
+	public String getPaymentSystemType() {
+		return paymentSystemType;
+	}
+
+	public void setPaymentSystemType(String paymentSystemType) {
+		this.paymentSystemType = paymentSystemType;
+	}
+
+	public String getCommissionStatus() {
+		return commissionStatus;
+	}
+
+	public void setCommissionStatus(String commissionStatus) {
+		this.commissionStatus = commissionStatus;
+	}
+
+	public Commission getCommission() {
+		return commission;
+	}
+
+	public void setCommission(Commission commission) {
+		this.commission = commission;
 	}
 }
