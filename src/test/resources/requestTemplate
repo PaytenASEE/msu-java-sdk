@@ -1,10 +1,10 @@
 package com.github.msu.sdk.request;
 
-import com.github.msu.sdk.request.base.ApiRequest;
-import com.github.msu.sdk.request.enumerated.ApiAction;
-import com.github.msu.sdk.request.enumerated.Param;
+import ApiRequest;
+import ApiAction;
+import Param;
 import com.github.msu.sdk.response.{ACTION_NAME_CAMEL_CASE}Response;
-import com.github.msu.sdk.util.ResponseInfo;
+import ResponseInfo;
 
 @ResponseInfo(responseClass = {ACTION_NAME_CAMEL_CASE}Response.class)
 public class {ACTION_NAME_CAMEL_CASE}Request extends ApiRequest {
