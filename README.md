@@ -42,64 +42,103 @@ MsuApiClient msuClient = new MsuApiClientBuilder().withDefaultAuthentication(use
 
 ```java
 SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurrency(Currency.TRY)
-		.withAmount(new BigDecimal("100.00")).withCustomer("customer-3828342004")
-		.withMerchantPaymentId("payment-1834832985932").withReturnUrl("http://www.returnurl.com").build();
-SessionTokenResponse sessionTokenResponse = msuClient.doRequest(sessionTokenRequest);
+        .withSessionType(SessionType.PAYMENTSESSION)
+        .withAmount(new BigDecimal("100.00"))
+        .withCustomer("customer-3828342004")
+        .withMerchantPaymentId("payment-8945456121")
+        .withReturnUrl("http://www.returnurl.com")
+        .build();
+SessionTokenResponse sessionTokenResponse = client.doRequest(sessionTokenRequest);
 ```
 A session token request can be created and used for subsequent requests for as long as it's not expired. If session token authentication is not set on request, `defaultAuthentication` set on the client is used.
 Here's a PREAUTH request authenticated with a session token.
 ```java
 SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurrency(Currency.TRY)
-		.withAmount(new BigDecimal("100.00")).withCustomer("customer-3828342004")
-		.withMerchantPaymentId("payment-1834832985932").withReturnUrl("http://www.returnurl.com").build();
-SessionTokenResponse sessionTokenResponse = msuClient.doRequest(sessionTokenRequest);
+        .withSessionType(SessionType.PAYMENTSESSION)
+        .withAmount(new BigDecimal("100.00"))
+        .withCustomer("customer-3828342004")
+        .withMerchantPaymentId("payment-8945456121")
+        .withReturnUrl("http://www.returnurl.com")
+        .build();
+SessionTokenResponse sessionTokenResponse = client.doRequest(sessionTokenRequest);
 
-Authentication sessionTokenAuthentication = SessionTokenAuthentication.sessionTokenAuthentication()
-		.withToken(sessionTokenResponse.getSessionToken()).build();
+Authentication sessionTokenAuthentication = SessionTokenAuthentication
+        .sessionTokenAuthentication()
+        .withToken(sessionTokenResponse.getSessionToken())
+        .build();
 
 // preauth request uses previously created token
-PreauthRequest preauthRequest =  PreauthRequest.builder().withAuthentication(sessionTokenAuthentication)
-		.withNameOnCard("Filan Fisteku").withCardPan("4022774022774026").withCardExpiry("02.2021")
-		.withCardCvv("000").build();
+PreauthRequest preauthRequest =  PreauthRequest.builder()
+    .withAuthentication(sessionTokenAuthentication)
+    .withNameOnCard("Filan Fisteku")
+    .withCardPan("4022774022774026")
+    .withCardExpiry("02.2026")
+    .withCardCvv("000")
+    .build();
 PreauthResponse preauthResponse = msuClient.doRequest(preauthRequest);
-// can do other requests with the same token
+
+// or preauth without token (using credential auth)
+PreauthRequest preauthRequest =  PreauthRequest.builder()
+    .withNameOnCard("Filan Fisteku")
+    .withAmount(new BigDecimal("240.55"))
+    .withCurrency(Currency.TRY)
+    .withCustomer("merchant-customer-id")
+    .withMerchantPaymentId(String.valueOf(new Random().nextInt(16)))
+    .withCardPan("4022774022774026")
+    .withCardExpiry("02.2026")
+    .withCardCvv("000")
+    .build();
 ```
 
 - Query Transaction request
 
 ```java
 // query transactions by date and status
-QueryTransactionRequest request = QueryTransactionRequest.builder().withTransactionStatus("AP")
-        .withStartDate("01-01-2016 01:00").withEndDate("05-05-2016 20:00").withOffset("100").withLimit("20").build();
+QueryTransactionRequest request = QueryTransactionRequest.builder()
+    .withTransactionStatus("AP")
+    .withStartDate("01-01-2016 01:00")
+    .withEndDate("05-05-2016 20:00")
+    .withOffset("100")
+    .withLimit("20")
+    .build();
 QueryTransactionResponse response = msuClient.doRequest(request);
 ```
 
 - Query Installment request
 
 ```java
-QueryInstallmentRequest request = QueryInstallmentRequest.builder().withPaymentSystem("Odeabank")
-                .withPaymentSystemType("ODEABANK").withStatus("OK").build();
+QueryInstallmentRequest request = QueryInstallmentRequest.builder()
+    .withPaymentSystem("Odeabank")
+    .withPaymentSystemType("ODEABANK")
+    .withStatus("OK")
+    .build();
 QueryInstallmentResponse response = msuClient.doRequest(request);
 ```
 
 - Query Card request
 
 ```java
-QueryCardRequest request = QueryCardRequest.builder().withCustomer("CUSTOMER").build();
+QueryCardRequest request = QueryCardRequest.builder()
+    .withCustomer("CUSTOMER")
+    .build();
 QueryCardResponse response = msuClient.doRequest(request);
 ```
 
 - Query Card Expiry request
 
 ```java
-QueryCardExpiryRequest request = QueryCardExpiryRequest.builder().withCustomer("CUSTOMER").build();
+QueryCardExpiryRequest request = QueryCardExpiryRequest.builder()
+    .withCustomer("CUSTOMER")
+    .build();
 QueryCardResponse response = msuClient.doRequest(request);
 ```
 
 - Query Customer request
 
 ```java
-QueryCustomerRequest request = QueryCustomerRequest.builder().withCustomer("CUSTOMER").build(); // by MerchantCustomerId
+QueryCustomerRequest request = QueryCustomerRequest.builder()
+    .withCustomer("CUSTOMER") // by MerchantCustomerId
+    .build(); 
 QueryCustomerResponse response = msuClient.doRequest(request);
 ```
 
@@ -112,8 +151,10 @@ QueryMerchantResponse queryMerchantResponse = msuClient.doRequest(queryMerchantR
 - Query Merchant Content request
 
 ```java
-QueryMerchantContentRequest queryMerchantContentRequest = QueryMerchantContentRequest.builder().withLanguage("en")
-	.withMessageContentType("contact").build();
+QueryMerchantContentRequest queryMerchantContentRequest = QueryMerchantContentRequest.builder()
+    .withLanguage("en")
+	.withMessageContentType("contact")
+    .build();
 QueryMerchantContentResponse queryMerchantContentResponse = msuClient.doRequest(queryMerchantContentRequest);
 ```
 
@@ -121,46 +162,8 @@ QueryMerchantContentResponse queryMerchantContentResponse = msuClient.doRequest(
 
 ```java
 QueryMessageContentRequest request = QueryMessageContentRequest.builder()
-    .withLanguage("en").withMessageContentType("contact").build();
+    .withLanguage("en")
+    .withMessageContentType("contact")
+    .build();
 QueryMessageContentResponse response = msuClient.doRequest(request);
-```
-
-- Query Merchant Status History request
-
-```java
-QueryMerchantStatusHistoryRequest request = QueryMerchantStatusHistoryRequest.builder().withStatus("OK")
-                .withStartDate("08-03-2017 18:00").withEndDate("08-03-2018 18:00").build();
-QueryMerchantStatusHistoryResponse response = msuClient.doRequest(request);
-```
-
-- Query Merchant User request
-
-```java
-QueryMerchantUserRequest request = QueryMerchantUserRequest.builder()
-		.withMerchantUserEmail("apiuser@testmerchant.com").withRole("mapiu").build();
-QueryMerchantUserResponse response = msuClient.doRequest(request);
-```
-
-- Query User Role Permission request
-
-```java
-QueryUserRolePermissionRequest request = QueryUserRolePermissionRequest.builder().withRole("MSADM")
-                .withPermission("API_QUERYMERCHANT").build();
-QueryUserRolePermissionResponse response = msuClient.doRequest(request);
-```
-
-- Query Dealer request
-
-```java
-QueryDealerRequest request = QueryDealerRequest.builder().withDealerCode("test")
-             .withParentDealerCode("").build();
-QueryDealerResponse response = msuClient.doRequest(request);
-```
-
-- Query Transaction Rule Request
-
-```java
-QueryTransactionRuleRequest request = QueryTransactionRuleRequest.builder()
-            .withDealerCode("test").build();
-QueryTransactionRuleResponse response = msuClient.doRequest(request);
 ```

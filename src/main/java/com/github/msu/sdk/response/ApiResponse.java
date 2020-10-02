@@ -3,9 +3,11 @@ package com.github.msu.sdk.response;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.github.msu.sdk.request.enumerated.ApiAction;
 import com.github.msu.sdk.request.enumerated.ProxyPaymentTool;
 import com.github.msu.sdk.response.misc.ResponseCode;
@@ -16,6 +18,8 @@ import java.util.Map;
 @JsonInclude(Include.NON_NULL)
 @XmlRootElement(name = "response")
 @XmlAccessorType(XmlAccessType.FIELD)
+@JsonPropertyOrder({"responseCode", "responseMsg", "pgTranErrorCode"})
+@XmlType(propOrder = {"responseCode", "responseMsg", "pgTranErrorCode"})
 public class ApiResponse {
 	private ApiAction action;
 	private String apiMerchantId;
