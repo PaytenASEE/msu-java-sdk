@@ -14,6 +14,9 @@ public class BaseIntegrationTest {
 	public void setUp() {
 		Authentication userCredentialsAuthentication = new UserCredentialsAuthentication(
 				new StaticCredentialsProvider("testmerchant", "apiuser@testmerchant.com", "Pluto321`"));
-		client = MsuApiClient.builder().withDefaultAuthentication(userCredentialsAuthentication).build();
+		client = MsuApiClient.builder()
+//				.withUrl("http://localhost:8090/msu/api/v2")
+				.withDefaultAuthentication(userCredentialsAuthentication)
+				.build();
 	}
 }

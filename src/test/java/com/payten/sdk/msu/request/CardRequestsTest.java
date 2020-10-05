@@ -8,14 +8,14 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-public class CardTest extends BaseIntegrationTest{
+public class CardRequestsTest extends BaseIntegrationTest{
     @Test
     public void testQueryCard(){
-        QueryCardRequest queryCardRequest = QueryCardRequest.builder()
+        QueryCardRequest request = QueryCardRequest.builder()
                 .withCustomer("isahb")
                 .build();
 
-        QueryCardResponse queryCardResponse = client.doRequest(queryCardRequest);
-        assertThat(queryCardResponse, is(notNullValue()));
+        QueryCardResponse response = client.doRequest(request);
+        assertThat(response, is(notNullValue()));
     }
 }

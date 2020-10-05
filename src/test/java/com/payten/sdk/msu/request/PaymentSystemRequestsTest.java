@@ -8,16 +8,18 @@ import java.math.BigDecimal;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
-public class QueryPaymentSystemsRequestTest extends BaseIntegrationTest {
+public class PaymentSystemRequestsTest extends BaseIntegrationTest{
     @Test
-    public void testQueryPaymentSystems() {
+    public void queryPaymentSystems(){
         QueryPaymentSystemsRequest queryPaymentSystemsRequest = QueryPaymentSystemsRequest.builder()
                 .withBin("402277")
-                .withAmount(new BigDecimal("150.00"))
+                .withAmount(new BigDecimal("322.00"))
                 .build();
+
         QueryPaymentSystemsResponse queryPaymentSystemsResponse = client.doRequest(queryPaymentSystemsRequest);
         assertThat(queryPaymentSystemsResponse, is(notNullValue()));
     }
+    
 }

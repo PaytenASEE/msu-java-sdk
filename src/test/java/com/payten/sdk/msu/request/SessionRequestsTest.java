@@ -16,7 +16,7 @@ import com.payten.sdk.msu.response.QuerySessionResponse;
 import com.payten.sdk.msu.response.SessionTokenResponse;
 import org.junit.Test;
 
-public class SessionRequestTest extends BaseIntegrationTest {
+public class SessionRequestsTest extends BaseIntegrationTest {
 	
 	@Test
 	public void testSessionToken() {

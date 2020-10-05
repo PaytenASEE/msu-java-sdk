@@ -12,4 +12,8 @@ public class ListPaymentSystemsResponse extends ApiResponse {
 	@XmlElement(name = "paymentSystems")
 	private List<PaymentSystemForMerchant> paymentSystems;
 
+	@JsonProperty(value = "defaultPaymentSystemWithInstallments")
+	@XmlElement(name = "defaultPaymentSystemWithInstallments")
+	private PaymentSystemForMerchant defaultPaymentSystemWithInstallments;
+
 }

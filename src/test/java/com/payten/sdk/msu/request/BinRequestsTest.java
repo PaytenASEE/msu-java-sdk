@@ -8,13 +8,13 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-public class BinRequestTest extends BaseIntegrationTest{
+public class BinRequestsTest extends BaseIntegrationTest{
     @Test
     public void testQueryBin(){
-        QueryBinRequest queryBinRequest = QueryBinRequest.builder()
+        QueryBinRequest request = QueryBinRequest.builder()
                 .withBin("402277")
                 .build();
-        QueryBinResponse queryBinResponse = client.doRequest(queryBinRequest);
-        assertThat(queryBinResponse, is(notNullValue()));
+        QueryBinResponse response = client.doRequest(request);
+        assertThat(response, is(notNullValue()));
     }
 }
