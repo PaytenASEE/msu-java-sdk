@@ -18,6 +18,7 @@ public class PaymentSystemForInstallment implements Comparable<PaymentSystemForI
 	private String type;
 	private String eftCode;
 	private String status;
+	private Boolean adjustRates;
 	@JsonProperty(value = "paymentSystem")
 	@XmlElement(name = "paymentSystem")
 	private int ordinal;
@@ -34,24 +35,56 @@ public class PaymentSystemForInstallment implements Comparable<PaymentSystemForI
 		return name;
 	}
 
-	public int getOrdinal() {
-		return ordinal;
-	}
-
-	public List<Installment> getInstallments() {
-		return installments;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getType() {
 		return type;
 	}
 
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public String getEftCode() {
 		return eftCode;
 	}
 
+	public void setEftCode(String eftCode) {
+		this.eftCode = eftCode;
+	}
+
 	public String getStatus() {
 		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Boolean getAdjustRates() {
+		return adjustRates;
+	}
+
+	public void setAdjustRates(Boolean adjustRates) {
+		this.adjustRates = adjustRates;
+	}
+
+	public int getOrdinal() {
+		return ordinal;
+	}
+
+	public void setOrdinal(int ordinal) {
+		this.ordinal = ordinal;
+	}
+
+	public List<Installment> getInstallments() {
+		return installments;
+	}
+
+	public void setInstallments(List<Installment> installments) {
+		this.installments = installments;
 	}
 
 	@Override

@@ -13,8 +13,10 @@ public class Card {
 	private String cardOwnerMasked;
 	private String cardOwner;
 	private String PAN;
+	private String panIin;
 	private String panLast4;
 	private String customer;
+	private String cardHash;
 	private String cardBin;
 	private String cardbrand;
 	private String cardType;
@@ -27,6 +29,11 @@ public class Card {
 	private String cardStatus;
 	private String cardExpiry;
 	private String cardName;
+	private String count;
+	private String dealerCode;
+	private String createdDate;
+	private String lastUpdateDate;
+	private String cutoffDay;
 
 	public Card() {}
 
@@ -46,6 +53,30 @@ public class Card {
 		this.cardOwnerMasked = cardOwnerMasked;
 	}
 
+	public String getCardOwner() {
+		return cardOwner;
+	}
+
+	public void setCardOwner(String cardOwner) {
+		this.cardOwner = cardOwner;
+	}
+
+	public String getPAN() {
+		return PAN;
+	}
+
+	public void setPAN(String PAN) {
+		this.PAN = PAN;
+	}
+
+	public String getPanIin() {
+		return panIin;
+	}
+
+	public void setPanIin(String panIin) {
+		this.panIin = panIin;
+	}
+
 	public String getPanLast4() {
 		return panLast4;
 	}
@@ -60,6 +91,14 @@ public class Card {
 
 	public void setCustomer(String customer) {
 		this.customer = customer;
+	}
+
+	public String getCardHash() {
+		return cardHash;
+	}
+
+	public void setCardHash(String cardHash) {
+		this.cardHash = cardHash;
 	}
 
 	public String getCardBin() {
@@ -150,22 +189,6 @@ public class Card {
 		this.cardExpiry = cardExpiry;
 	}
 
-	public String getCardOwner() {
-		return cardOwner;
-	}
-
-	public void setCardOwner(String cardOwner) {
-		this.cardOwner = cardOwner;
-	}
-
-	public String getPAN() {
-		return PAN;
-	}
-
-	public void setPAN(String pAN) {
-		PAN = pAN;
-	}
-
 	public String getCardName() {
 		return cardName;
 	}
@@ -174,139 +197,43 @@ public class Card {
 		this.cardName = cardName;
 	}
 
-	public static class Builder {
-		private String cardToken;
-		private String cardOwnerMasked;
-		private String cardOwner;
-		private String PAN;
-		private String panLast4;
-		private String customer;
-		private String cardBin;
-		private String cardbrand;
-		private String cardType;
-		private String cardLevel;
-		private String cardNetwork;
-		private String cardIssuer;
-		private String cardVirtual;
-		private String cardCountryIso;
-		private String cardPaymentSystem;
-		private String cardStatus;
-		private String cardExpiry;
-		private String cardName;
-
-		public Builder cardToken(String cardToken) {
-			this.cardToken = cardToken;
-			return this;
-		}
-
-		public Builder cardOwnerMasked(String cardOwnerMasked) {
-			this.cardOwnerMasked = cardOwnerMasked;
-			return this;
-		}
-
-		public Builder cardOwner(String cardOwner) {
-			this.cardOwner = cardOwner;
-			return this;
-		}
-
-		public Builder PAN(String PAN) {
-			this.PAN = PAN;
-			return this;
-		}
-
-		public Builder panLast4(String panLast4) {
-			this.panLast4 = panLast4;
-			return this;
-		}
-
-		public Builder customer(String customer) {
-			this.customer = customer;
-			return this;
-		}
-
-		public Builder cardBin(String cardBin) {
-			this.cardBin = cardBin;
-			return this;
-		}
-
-		public Builder cardbrand(String cardbrand) {
-			this.cardbrand = cardbrand;
-			return this;
-		}
-
-		public Builder cardType(String cardType) {
-			this.cardType = cardType;
-			return this;
-		}
-
-		public Builder cardLevel(String cardLevel) {
-			this.cardLevel = cardLevel;
-			return this;
-		}
-
-		public Builder cardNetwork(String cardNetwork) {
-			this.cardNetwork = cardNetwork;
-			return this;
-		}
-
-		public Builder cardIssuer(String cardIssuer) {
-			this.cardIssuer = cardIssuer;
-			return this;
-		}
-
-		public Builder cardVirtual(String cardVirtual) {
-			this.cardVirtual = cardVirtual;
-			return this;
-		}
-
-		public Builder cardCountryIso(String cardCountryIso) {
-			this.cardCountryIso = cardCountryIso;
-			return this;
-		}
-
-		public Builder cardPaymentSystem(String cardPaymentSystem) {
-			this.cardPaymentSystem = cardPaymentSystem;
-			return this;
-		}
-
-		public Builder cardStatus(String cardStatus) {
-			this.cardStatus = cardStatus;
-			return this;
-		}
-
-		public Builder cardExpiry(String cardExpiry) {
-			this.cardExpiry = cardExpiry;
-			return this;
-		}
-
-		public Builder cardName(String cardName) {
-			this.cardName = cardName;
-			return this;
-		}
-
-		public Card build() {
-			return new Card(this);
-		}
+	public String getCount() {
+		return count;
 	}
 
-	private Card(Builder builder) {
-		this.cardToken = builder.cardToken;
-		this.cardOwnerMasked = builder.cardOwnerMasked;
-		this.cardOwner = builder.cardOwner;
-		this.PAN = builder.PAN;
-		this.panLast4 = builder.panLast4;
-		this.customer = builder.customer;
-		this.cardBin = builder.cardBin;
-		this.cardbrand = builder.cardbrand;
-		this.cardType = builder.cardType;
-		this.cardLevel = builder.cardLevel;
-		this.cardNetwork = builder.cardNetwork;
-		this.cardIssuer = builder.cardIssuer;
-		this.cardVirtual = builder.cardVirtual;
-		this.cardCountryIso = builder.cardCountryIso;
-		this.cardPaymentSystem = builder.cardPaymentSystem;
-		this.cardStatus = builder.cardStatus;
-		this.cardExpiry = builder.cardExpiry;
-		this.cardName = builder.cardName;
+	public void setCount(String count) {
+		this.count = count;
+	}
+
+	public String getDealerCode() {
+		return dealerCode;
+	}
+
+	public void setDealerCode(String dealerCode) {
+		this.dealerCode = dealerCode;
+	}
+
+	public String getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public String getCutoffDay() {
+		return cutoffDay;
+	}
+
+	public void setCutoffDay(String cutoffDay) {
+		this.cutoffDay = cutoffDay;
 	}
 }
