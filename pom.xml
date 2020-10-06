@@ -5,6 +5,14 @@
 	<artifactId>msu-java-sdk</artifactId>
 	<version>1.0.0</version>
 	<name>MerchantSafe Unipay API SDK - Java</name>
+	<description>Java SDK for MSU API</description>
+	<url>https://github.com/PaytenASEE/msu-java-sdk</url>
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
