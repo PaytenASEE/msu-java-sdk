@@ -3,7 +3,6 @@ package com.merchantsafeunipay.sdk.request.apiv2.paymentsystem;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.*;
-import com.payten.sdk.msu.request.enumerated.*;
 import com.merchantsafeunipay.sdk.response.PaymentSystemEditResponse;
 import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
