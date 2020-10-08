@@ -5,6 +5,7 @@ syntax: glob
 .classpath
 .project
 .settings
+.deploy
 target
 .idea
 *.orig

@@ -6,6 +6,7 @@ import com.merchantsafeunipay.sdk.request.enumerated.DealerPortalLandingPage;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import java.math.BigDecimal;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -21,6 +22,7 @@ public class QueryMerchantProfileResponse extends ApiResponse {
     private BigDecimal minAmountInstallment;
     private String returnUrl;
     private DealerPortalLandingPage dealerPortalLandingPage;
+    private List<String> transactionTypeSelectionAvailabilities;
 
     public String getMerchantBussinesId() {
         return merchantBussinesId;
@@ -108,5 +110,13 @@ public class QueryMerchantProfileResponse extends ApiResponse {
 
     public void setDealerPortalLandingPage(DealerPortalLandingPage dealerPortalLandingPage) {
         this.dealerPortalLandingPage = dealerPortalLandingPage;
+    }
+
+    public List<String> getTransactionTypeSelectionAvailabilities() {
+        return transactionTypeSelectionAvailabilities;
+    }
+
+    public void setTransactionTypeSelectionAvailabilities(List<String> transactionTypeSelectionAvailabilities) {
+        this.transactionTypeSelectionAvailabilities = transactionTypeSelectionAvailabilities;
     }
 }

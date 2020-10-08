@@ -20,6 +20,7 @@ import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.model.Point;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
@@ -69,6 +70,7 @@ public class RequestGeneratorTest {
 	}
 
 	@Test
+	@Ignore
 	public void testMetadataLoader() throws IOException {
 		List<MsuApiMetadata.Action> actions = metadataLoader.getMsuApiMetadata().getAction();
 		//actions = actions.stream().filter(a -> a.getName().equalsIgnoreCase("SALE")).collect(Collectors.toList()); // comment
