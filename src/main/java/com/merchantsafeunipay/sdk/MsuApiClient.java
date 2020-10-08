@@ -142,11 +142,17 @@ public class MsuApiClient {
         if (response == null) {
             sb.append("No Response! ");
         } else {
-            sb.append(this.prettyPrintRequests ? mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response) : response.getRawResponse());
+            sb.append(this.prettyPrintRequests ? mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response) : getRawResponseTruncated(response));
         }
         sb.append(separator);
         sb.append(this.prettyPrintRequests ? "--------------------------------------------------------" : "");
         LOGGER.info(sb.toString());
+    }
+
+    private String getRawResponseTruncated(ApiResponse response) {
+        String rawResponse = response.getRawResponse();
+        int maxLength = 1024;
+        return rawResponse.length() > maxLength ? rawResponse.substring(0, maxLength) + "...(TRUNCATED)": rawResponse;
     }
 
     private String getHost() {
