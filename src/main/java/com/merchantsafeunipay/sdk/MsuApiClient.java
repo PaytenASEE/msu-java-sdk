@@ -6,23 +6,27 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
-import com.merchantsafeunipay.sdk.request.enumerated.Param;
-import com.merchantsafeunipay.sdk.response.ApiResponse;
 import com.merchantsafeunipay.sdk.http.HttpRequestMaker;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
+import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.response.ApiResponse;
 import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 public class MsuApiClient {
     private Authentication defaultAuthentication;
-    private String url = "https://neon-app.asseco-see.com.tr/msu/api/v2";
+    private String url = "https://test.merchantsafeunipay.com/msu/api/v2";
     private ObjectMapper mapper = new ObjectMapper();
+    private boolean prettyPrintRequests = false;
+
     private static final Set<String> MUST_MASK = new HashSet<>(Arrays.asList(Param.CARDPAN.name(), Param.CARDCVV.name(), Param.CARD_EXPIRY.name(),
             Param.CARDEXPIRY.name(), Param.MERCHANTPASSWORD.name(), Param.MERCHANTUSERPASSWORD.name()));
 
@@ -58,7 +62,7 @@ public class MsuApiClient {
         T apiResponse = null;
         try {
             apiResponse = (T) responseClass.cast(reader.readValue(responseJSON));
-            // apiResponse.setRawResponse(responseJSON);
+            apiResponse.setRawResponse(responseJSON);
             return apiResponse;
         } catch (IOException e) {
             LOGGER.error("IO Error while making request to {}", this.url, e);
@@ -74,7 +78,8 @@ public class MsuApiClient {
 
     public static class MsuApiClientBuilder {
         private Authentication defaultAuthentication;
-        private String url = "https://neon-app.asseco-see.com.tr/msu/api/v2";
+        private String url = "https://test.merchantsafeunipay.com/msu/api/v2";
+        private boolean prettyPrintRequests = false;
 
         public MsuApiClientBuilder withDefaultAuthentication(Authentication defaultAuthentication) {
             this.defaultAuthentication = defaultAuthentication;
@@ -86,41 +91,70 @@ public class MsuApiClient {
             return this;
         }
 
+        public MsuApiClientBuilder withPrettyPrintRequests(boolean prettyPrintRequests) {
+            this.prettyPrintRequests = prettyPrintRequests;
+            return this;
+        }
+
         public MsuApiClient build() {
             MsuApiClient client = new MsuApiClient();
             client.defaultAuthentication = this.defaultAuthentication;
             client.url = url;
+            client.prettyPrintRequests = prettyPrintRequests;
             return client;
         }
     }
 
     public void log(ApiRequest request, ApiResponse response, long totalTimeMs) throws JsonProcessingException {
         String responseCode = response != null ? response.getResponseCode() : "N/A";
-        String errorCode = response!= null ? response.getErrorCode() : "N/A";
+        String responseMsg = response != null ? response.getResponseMsg() : "N/A";
+        String errorCode = response != null ? response.getErrorCode() : "N/A";
         String errorMsg = response != null ? response.getErrorMsg() : "N/A";
-        String header = String.format("%s -> responseCode: %s, errorCode: %s, errorMsg: %s(Request elapsed time: %d ms)",
-                request.apiAction().name(), responseCode, errorCode, errorMsg, totalTimeMs);
+        String actionName = request.apiAction().name();
+        String host = getHost();
+        StringBuilder header = new StringBuilder(String.format("%s@%s -> responseCode: %s - %s (Request elapsed time: %d ms)",
+                actionName, host, responseCode, responseMsg, totalTimeMs));
+        if (!"00".equals(responseCode)) {
+            header.append(String.format(", errorCode: %s, errorMsg: %s", errorCode, errorMsg));
+        }
+        String separator = this.prettyPrintRequests ? System.lineSeparator() : " ";
         StringBuilder sb = new StringBuilder(header)
-                .append(System.lineSeparator())
-                .append("----------------- Request/Response Details -----------------")
-                .append(System.lineSeparator())
-                .append("- Authentication: ")
+                .append(separator)
+                .append(this.prettyPrintRequests ? "----------------- Request/Response Details -----------------" : "")
+                .append(separator)
+                .append("- Authentication -> ")
                 .append(request.getAuthentication())
-                .append(System.lineSeparator())
-                .append("- Request Body:")
-                .append(System.lineSeparator());
+                .append(separator)
+                .append("- Request Body -> ")
+                .append(separator);
         request.getFormUrlEncodedData().forEach((k, v) -> {
             if (v != null) {
-                sb.append("\t").append(k).append(": ").append(MUST_MASK.contains(k) ? "********" : v);
-                sb.append(System.lineSeparator());
+                sb.append(this.prettyPrintRequests ? "\t" : " ")
+                        .append(k)
+                        .append(": ")
+                        .append(MUST_MASK.contains(k) ? "********" : v);
+                sb.append(this.prettyPrintRequests ? System.lineSeparator() : ", ");
             }
         });
         sb.append(System.lineSeparator());
-        sb.append("- Response Body:");
-        sb.append(System.lineSeparator());
-        sb.append(response == null ? "No Response!" : mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response));
-        sb.append(System.lineSeparator());
-        sb.append("--------------------------------------------------------");
+        sb.append("- Response Body -> ");
+        sb.append(separator);
+        if (response == null) {
+            sb.append("No Response! ");
+        } else {
+            sb.append(this.prettyPrintRequests ? mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response) : response.getRawResponse());
+        }
+        sb.append(separator);
+        sb.append(this.prettyPrintRequests ? "--------------------------------------------------------" : "");
         LOGGER.info(sb.toString());
+    }
+
+    private String getHost() {
+        try {
+            return new URL(this.url).getHost();
+        } catch (MalformedURLException e) {
+            LOGGER.error("Couldn't parse url {}", this.url);
+            throw new RuntimeException(e);
+        }
     }
 }

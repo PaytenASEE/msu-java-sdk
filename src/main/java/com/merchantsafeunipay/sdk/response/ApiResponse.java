@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -55,6 +56,8 @@ public class ApiResponse {
 	private String cardBin;
 	private Map<String, String> bankResponseExtras;
 	private ProxyPaymentTool proxyPaymentTool;
+	@JsonIgnore
+	private String rawResponse;
 
 	public ApiAction getAction() {
 		return action;
@@ -336,6 +339,14 @@ public class ApiResponse {
 
 	public void setProxyPaymentTool(ProxyPaymentTool proxyPaymentTool) {
 		this.proxyPaymentTool = proxyPaymentTool;
+	}
+
+	public void setRawResponse(String rawResponse) {
+		this.rawResponse = rawResponse;
+	}
+
+	public String getRawResponse() {
+		return this.rawResponse;
 	}
 
 	public static ApiResponse approved(){

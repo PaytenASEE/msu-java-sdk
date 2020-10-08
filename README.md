@@ -3,7 +3,15 @@
 [API Documentation](https://test.merchantsafeunipay.com/msu/api/v2/doc)
 
 
-Credential Storage is supported in three Locations
+### Include in classpath:
+```xml
+<dependency>
+    <groupId>com.merchantsafeunipay</groupId>
+    <artifactId>msu-java-sdk</artifactId>
+    <version>1.0.2</version>
+</dependency>
+```
+#####Credential Storage is supported in three locations:
 - Property File in Classpath (i.e. `src/main/resources/msuCredentials.properties`) 
 ```
   merchantBusinessId=testmerchant
@@ -34,9 +42,13 @@ Authentication userCredentialsAuthentication = new UserCredentialsAuthentication
 
 ## Setting Up The Client
 ```java
-MsuApiClient msuClient = new MsuApiClientBuilder().withDefaultAuthentication(userCredentialsAuthentication)
-		.build();
+MsuApiClient msuClient = new MsuApiClientBuilder()
+    .withDefaultAuthentication(userCredentialsAuthentication)
+    .withUrl("https://neon-app.asseco-see.com.tr/msu/api/v2") // if not set, TEST env url is used
+    .withPrettyPrintRequests(true) // default false - to avoid console cluttering
+    .build();
 ```
+
 ## Sending Requests
 - Session Token request
 
@@ -51,10 +63,11 @@ SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurr
 SessionTokenResponse sessionTokenResponse = client.doRequest(sessionTokenRequest);
 ```
 A session token request can be created and used for subsequent requests for as long as it's not expired. If session token authentication is not set on request, `defaultAuthentication` set on the client is used.
-Here's a PREAUTH request authenticated with a session token.
+Here's a Preauth request authenticated with a session token.
 ```java
-SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurrency(Currency.TRY)
+SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder()
         .withSessionType(SessionType.PAYMENTSESSION)
+        .withCurrency(Currency.TRY)
         .withAmount(new BigDecimal("100.00"))
         .withCustomer("customer-3828342004")
         .withMerchantPaymentId("payment-8945456121")
@@ -77,7 +90,9 @@ PreauthRequest preauthRequest =  PreauthRequest.builder()
     .build();
 PreauthResponse preauthResponse = msuClient.doRequest(preauthRequest);
 
-// or preauth without token (using credential auth)
+```
+- Preauth (without session token)
+```java
 PreauthRequest preauthRequest =  PreauthRequest.builder()
     .withNameOnCard("Filan Fisteku")
     .withAmount(new BigDecimal("240.55"))
@@ -89,7 +104,6 @@ PreauthRequest preauthRequest =  PreauthRequest.builder()
     .withCardCvv("000")
     .build();
 ```
-
 - Query Transaction request
 
 ```java
@@ -167,3 +181,5 @@ QueryMessageContentRequest request = QueryMessageContentRequest.builder()
     .build();
 QueryMessageContentResponse response = msuClient.doRequest(request);
 ```
+
+All other requests are issues in similar fashion, you can browse `com.merchantsafeunipay.sdk.request.apiv2` to see request classes and check `com.merchantsafeunipay.sdk.response` for respective response classes.
