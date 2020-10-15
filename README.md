@@ -76,7 +76,7 @@ SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder()
 SessionTokenResponse sessionTokenResponse = client.doRequest(sessionTokenRequest);
 
 Authentication sessionTokenAuthentication = SessionTokenAuthentication
-        .sessionTokenAuthentication()
+        .builder()
         .withToken(sessionTokenResponse.getSessionToken())
         .build();
 
