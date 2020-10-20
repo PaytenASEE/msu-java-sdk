@@ -8,7 +8,7 @@
 <dependency>
     <groupId>com.merchantsafeunipay</groupId>
     <artifactId>msu-java-sdk</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 </dependency>
 ```
 ### Credential Storage is supported in three locations:
