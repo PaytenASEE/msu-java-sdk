@@ -49,6 +49,18 @@ MsuApiClient msuClient = new MsuApiClientBuilder()
     .build();
 ```
 
+### Setting Custom Executor For Asynchronous Programming
+```java
+ExecutorService executor = Executors.newCachedThreadPool();
+
+MsuApiClient msuClient = new MsuApiClientBuilder()
+    .withDefaultAuthentication(userCredentialsAuthentication)
+    .withUrl("https://neon-app.asseco-see.com.tr/msu/api/v2") // if not set, TEST env url is used
+    .withPrettyPrintRequests(true) // default false - to avoid console cluttering
+    .withExecutor(executor) // ForkJoinPool.commonPool() is used by default if no executor is provided
+    .build();
+```
+
 ## Sending Requests
 - Session Token request
 
@@ -180,6 +192,38 @@ QueryMessageContentRequest request = QueryMessageContentRequest.builder()
     .withMessageContentType("contact")
     .build();
 QueryMessageContentResponse response = msuClient.doRequest(request);
+```
+
+### Sending Asynchronous Requests
+
+- Session Token Request With Callbacks
+
+```java
+SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurrency(Currency.TRY)
+        .withSessionType(SessionType.PAYMENTSESSION)
+        .withAmount(new BigDecimal("100.00"))
+        .withCustomer("customer-3828342004")
+        .withMerchantPaymentId("payment-8945456121")
+        .withReturnUrl("http://www.returnurl.com")
+        .build();
+client.<SessionTokenResponse>doRequestAsync(sessionTokenRequest, (response) -> {
+    String sessionToken = response.getSessionToken();
+});
+```
+
+- Session Token Request With `CompletableFuture`
+
+```java
+SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurrency(Currency.TRY)
+        .withSessionType(SessionType.PAYMENTSESSION)
+        .withAmount(new BigDecimal("100.00"))
+        .withCustomer("customer-3828342004")
+        .withMerchantPaymentId("payment-8945456121")
+        .withReturnUrl("http://www.returnurl.com")
+        .build();
+client.<SessionTokenResponse>doRequestAsync(sessionTokenRequest)
+	.thenApplyAsync(SessionTokenResponse::getSessionToken)
+	.thenAccept(System.out::println);
 ```
 
 All other requests are issues in similar fashion, you can browse `com.merchantsafeunipay.sdk.request.apiv2` to see request classes and check `com.merchantsafeunipay.sdk.response` for respective response classes.
