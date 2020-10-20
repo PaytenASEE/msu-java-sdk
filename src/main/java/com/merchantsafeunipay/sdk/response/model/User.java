@@ -15,29 +15,61 @@ public class User {
 	private String timeZone;
 	private String lastLogin;
 	private String expiryDate;
+	private String passwordExpiryDate;
 
 	public String getName() {
 		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getStatus() {
 		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getTimeZone() {
 		return timeZone;
 	}
 
+	public void setTimeZone(String timeZone) {
+		this.timeZone = timeZone;
+	}
+
 	public String getLastLogin() {
 		return lastLogin;
+	}
+
+	public void setLastLogin(String lastLogin) {
+		this.lastLogin = lastLogin;
 	}
 
 	public String getExpiryDate() {
 		return expiryDate;
 	}
 
+	public void setExpiryDate(String expiryDate) {
+		this.expiryDate = expiryDate;
+	}
+
+	public String getPasswordExpiryDate() {
+		return passwordExpiryDate;
+	}
+
+	public void setPasswordExpiryDate(String passwordExpiryDate) {
+		this.passwordExpiryDate = passwordExpiryDate;
+	}
 }
