@@ -8,10 +8,10 @@
 <dependency>
     <groupId>com.merchantsafeunipay</groupId>
     <artifactId>msu-java-sdk</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 </dependency>
 ```
-###Credential Storage is supported in three locations:
+### Credential Storage is supported in three locations:
 - Property File in Classpath (i.e. `src/main/resources/msuCredentials.properties`) 
 ```
   merchantBusinessId=testmerchant
@@ -78,21 +78,21 @@ A session token request can be created and used for subsequent requests for as l
 Here's a Preauth request authenticated with a session token.
 ```java
 SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder()
-        .withSessionType(SessionType.PAYMENTSESSION)
-        .withCurrency(Currency.TRY)
-        .withAmount(new BigDecimal("100.00"))
-        .withCustomer("customer-3828342004")
-        .withMerchantPaymentId("payment-8945456121")
-        .withReturnUrl("http://www.returnurl.com")
-        .build();
+    .withSessionType(SessionType.PAYMENTSESSION)
+    .withCurrency(Currency.TRY)
+    .withAmount(new BigDecimal("100.00"))
+    .withCustomer("customer-3828342004")
+    .withMerchantPaymentId("payment-8945456121")
+    .withReturnUrl("http://www.returnurl.com")
+    .build();
 SessionTokenResponse sessionTokenResponse = client.doRequest(sessionTokenRequest);
 
 Authentication sessionTokenAuthentication = SessionTokenAuthentication
-        .builder()
-        .withToken(sessionTokenResponse.getSessionToken())
-        .build();
+    .builder()
+    .withToken(sessionTokenResponse.getSessionToken())
+    .build();
 
-// preauth request uses previously created token
+// preauth request using previously created token
 PreauthRequest preauthRequest =  PreauthRequest.builder()
     .withAuthentication(sessionTokenAuthentication)
     .withNameOnCard("Filan Fisteku")
@@ -100,6 +100,7 @@ PreauthRequest preauthRequest =  PreauthRequest.builder()
     .withCardExpiry("02.2026")
     .withCardCvv("000")
     .build();
+
 PreauthResponse preauthResponse = msuClient.doRequest(preauthRequest);
 
 ```
@@ -115,7 +116,54 @@ PreauthRequest preauthRequest =  PreauthRequest.builder()
     .withCardExpiry("02.2026")
     .withCardCvv("000")
     .build();
+
+PreauthResponse preauthResponse = msuClient.doRequest(preauthRequest);
 ```
+
+- Preauth + Postauth (without session token)
+```java
+PreauthRequest preauthRequest = // as above
+PreauthResponse preauthResponse = client.doRequest(preauthRequest);
+
+if(preauthResponse.isApproved()){
+    PostauthRequest postauthRequest = PostauthRequest
+            .builder()
+            .withPgTranId(preauthResponse.getPgTranId())
+            .build();
+    FinancialResponse postauthRespone = client.doRequest(postauthRequest);
+}
+```
+
+- Preauth + Void (without session token)
+```java
+PreauthRequest preauthRequest = buildPreauthRequest();
+PreauthResponse preauthResponse = client.doRequest(preauthRequest);
+
+if(preauthResponse.isApproved()){
+    VoidRequest voidRequest = VoidRequest
+            .builder()
+            .withPgTranId(preauthResponse.getPgTranId())
+            .build();
+    FinancialResponse voidResponse = client.doRequest(voidRequest);
+    assertThat(voidResponse.isApproved(), is(true));;
+}
+```
+
+- Sale + Refund (without session token)
+```java
+SaleRequest saleRequest = // build similar to preauth request
+SaleResponse saleResponse = client.doRequest(saleRequest);
+
+if(saleResponse.isApproved()){
+    RefundRequest refundRequest = RefundRequest
+            .builder()
+            .withPgTranId(saleResponse.getPgTranId())
+            .build();
+    RefundResponse refundResponse = client.doRequest(refundRequest);
+    assertThat(refundResponse.isApproved(), is(true));;
+}
+```
+
 - Query Transaction request
 
 ```java
