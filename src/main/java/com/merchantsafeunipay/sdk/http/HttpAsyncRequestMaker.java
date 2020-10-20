@@ -2,6 +2,7 @@ package com.merchantsafeunipay.sdk.http;
 
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
 public class HttpAsyncRequestMaker {
 
@@ -9,6 +10,10 @@ public class HttpAsyncRequestMaker {
 
     public HttpAsyncRequestMaker(String url) {
         this.httpRequestMaker = new HttpRequestMaker(url);
+    }
+
+    public CompletableFuture<String> send(Map<String, String> requestBody, Executor executor) {
+        return CompletableFuture.supplyAsync(() -> httpRequestMaker.send(requestBody), executor);
     }
 
     public CompletableFuture<String> send(Map<String, String> requestBody) {

@@ -22,6 +22,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ForkJoinPool;
 import java.util.function.Consumer;
 
 public class MsuApiClient {
@@ -29,6 +31,7 @@ public class MsuApiClient {
     private String url = "https://test.merchantsafeunipay.com/msu/api/v2";
     private ObjectMapper mapper = new ObjectMapper();
     private boolean prettyPrintRequests = false;
+    private Executor executor;
 
     private static final Set<String> MUST_MASK = new HashSet<>(Arrays.asList(Param.CARDPAN.name(), Param.CARDCVV.name(), Param.CARD_EXPIRY.name(),
             Param.CARDEXPIRY.name(), Param.MERCHANTPASSWORD.name(), Param.MERCHANTUSERPASSWORD.name()));
@@ -72,8 +75,10 @@ public class MsuApiClient {
     public <T extends ApiResponse> CompletableFuture<T> doRequestAsync(ApiRequest apiRequest) {
         authenticate(apiRequest);
         long before = System.currentTimeMillis();
-        CompletableFuture<T> requestFuture = new HttpAsyncRequestMaker(url)
-            .send(apiRequest.getFormUrlEncodedData())
+        Executor executorToUse = executor != null ? executor : ForkJoinPool.commonPool();
+        HttpAsyncRequestMaker asyncRequestMaker = new HttpAsyncRequestMaker(url);
+        CompletableFuture<T> requestFuture = asyncRequestMaker
+            .send(apiRequest.getFormUrlEncodedData(), executorToUse)
             .thenApplyAsync((rawResponse) -> {
                 try {
                    return getApiResponse(apiRequest, rawResponse);
@@ -81,7 +86,7 @@ public class MsuApiClient {
                     LOGGER.error("IO Error while making request to {}", this.url, e);
                     return null;
                 }
-            });
+            }, executorToUse);
         requestFuture.thenApplyAsync((response) -> {
             try {
                 log(apiRequest, response, System.currentTimeMillis() - before);
@@ -90,7 +95,7 @@ public class MsuApiClient {
                 LOGGER.error("Couldn't generate log for request", e);
                 return null;
             }
-        });
+        }, executorToUse);
         return requestFuture;
     }
 
@@ -98,6 +103,7 @@ public class MsuApiClient {
         private Authentication defaultAuthentication;
         private String url = "https://test.merchantsafeunipay.com/msu/api/v2";
         private boolean prettyPrintRequests = false;
+        private Executor executor;
 
         public MsuApiClientBuilder withDefaultAuthentication(Authentication defaultAuthentication) {
             this.defaultAuthentication = defaultAuthentication;
@@ -114,11 +120,17 @@ public class MsuApiClient {
             return this;
         }
 
+        public MsuApiClientBuilder withExecutor(Executor executor) {
+            this.executor = executor;
+            return this;
+        }
+
         public MsuApiClient build() {
             MsuApiClient client = new MsuApiClient();
             client.defaultAuthentication = this.defaultAuthentication;
             client.url = url;
             client.prettyPrintRequests = prettyPrintRequests;
+            client.executor = executor;
             return client;
         }
     }
