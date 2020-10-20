@@ -2,9 +2,7 @@ package com.merchantsafeunipay.sdk.request;
 
 import com.merchantsafeunipay.sdk.request.apiv2.financial.*;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
-import com.merchantsafeunipay.sdk.response.ApiResponse;
-import com.merchantsafeunipay.sdk.response.FinancialResponse;
-import com.merchantsafeunipay.sdk.response.RefundResponse;
+import com.merchantsafeunipay.sdk.response.*;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -32,7 +30,7 @@ public class FinancialRequestsTest extends BaseIntegrationTest{
     @Test
     public void testPostauthRequest(){
         PreauthRequest preauthRequest = buildPreauthRequest();
-        FinancialResponse preauthResponse = client.doRequest(preauthRequest);
+        PreauthResponse preauthResponse = client.doRequest(preauthRequest);
 
         if(preauthResponse.isApproved()){
             PostauthRequest postauthRequest = PostauthRequest
@@ -47,14 +45,14 @@ public class FinancialRequestsTest extends BaseIntegrationTest{
     @Test
     public void testVoidRequest(){
         PreauthRequest preauthRequest = buildPreauthRequest();
-        FinancialResponse preauthResponse = client.doRequest(preauthRequest);
+        PreauthResponse preauthResponse = client.doRequest(preauthRequest);
 
         if(preauthResponse.isApproved()){
-            VoidRequest postauthRequest = VoidRequest
+            VoidRequest voidRequest = VoidRequest
                     .builder()
                     .withPgTranId(preauthResponse.getPgTranId())
                     .build();
-            FinancialResponse voidResponse = client.doRequest(postauthRequest);
+            FinancialResponse voidResponse = client.doRequest(voidRequest);
             assertThat(voidResponse.isApproved(), is(true));;
         }
     }
@@ -63,7 +61,7 @@ public class FinancialRequestsTest extends BaseIntegrationTest{
     @Ignore // TODO find a valid card
     public void testRefundRequest(){
         SaleRequest saleRequest = buildSaleRequest();
-        FinancialResponse saleResponse = client.doRequest(saleRequest);
+        SaleResponse saleResponse = client.doRequest(saleRequest);
 
         if(saleResponse.isApproved()){
             RefundRequest refundRequest = RefundRequest
