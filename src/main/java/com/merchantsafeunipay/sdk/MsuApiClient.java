@@ -77,26 +77,25 @@ public class MsuApiClient {
         long before = System.currentTimeMillis();
         Executor executorToUse = executor != null ? executor : ForkJoinPool.commonPool();
         HttpAsyncRequestMaker asyncRequestMaker = new HttpAsyncRequestMaker(url);
-        CompletableFuture<T> requestFuture = asyncRequestMaker
+        return asyncRequestMaker
             .send(apiRequest.getFormUrlEncodedData(), executorToUse)
-            .thenApplyAsync((rawResponse) -> {
+            .<T>thenApplyAsync((rawResponse) -> {
                 try {
                    return getApiResponse(apiRequest, rawResponse);
                 } catch (JsonProcessingException e) {
                     LOGGER.error("IO Error while making request to {}", this.url, e);
                     return null;
                 }
+            }, executorToUse)
+            .thenApplyAsync((response) -> {
+                try {
+                    log(apiRequest, response, System.currentTimeMillis() - before);
+                    return response;
+                } catch (JsonProcessingException e) {
+                    LOGGER.error("Couldn't generate log for request", e);
+                    return null;
+                }
             }, executorToUse);
-        requestFuture.thenApplyAsync((response) -> {
-            try {
-                log(apiRequest, response, System.currentTimeMillis() - before);
-                return response;
-            } catch (JsonProcessingException e) {
-                LOGGER.error("Couldn't generate log for request", e);
-                return null;
-            }
-        }, executorToUse);
-        return requestFuture;
     }
 
     public static class MsuApiClientBuilder {
