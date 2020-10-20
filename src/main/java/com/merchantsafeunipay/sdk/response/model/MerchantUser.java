@@ -1,5 +1,6 @@
 package com.merchantsafeunipay.sdk.response.model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -17,7 +18,8 @@ public class MerchantUser {
 	private String status;
 	private String merchantUserId;
 	private String activationHash;
-	private List<Dealer> dealers;
+	private boolean gdprEnabled;
+	private List<Dealer> dealers = new LinkedList<>();
 
 	public MerchantUser() {}
 
@@ -43,5 +45,13 @@ public class MerchantUser {
 
 	public List<Dealer> getDealers() {
 		return dealers;
+	}
+
+	public boolean isGdprEnabled() {
+		return gdprEnabled;
+	}
+
+	public void setGdprEnabled(boolean gdprEnabled) {
+		this.gdprEnabled = gdprEnabled;
 	}
 }

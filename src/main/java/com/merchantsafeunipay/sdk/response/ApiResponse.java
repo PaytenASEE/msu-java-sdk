@@ -285,6 +285,10 @@ public class ApiResponse {
 		this.responseMsg = ResponseMessage.DECLINEDMESSAGE;
 	}
 
+	public boolean isApproved(){
+		return ResponseCode.APPROVEDCODE.equals(this.responseCode);
+	}
+
 	public String getSpc() {
 		return spc;
 	}

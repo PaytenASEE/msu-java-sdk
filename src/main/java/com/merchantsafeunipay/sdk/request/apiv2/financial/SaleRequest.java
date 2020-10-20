@@ -57,7 +57,7 @@ public class SaleRequest extends ApiRequest {
 
     private boolean saveCard;
 
-    private boolean isRefundable;
+    private boolean isRefundable = true;
 
     private YesNo reflectCommission;
 
@@ -212,7 +212,7 @@ public class SaleRequest extends ApiRequest {
 
         private boolean saveCard;
 
-        private boolean isRefundable;
+        private boolean isRefundable = true;
 
         private YesNo reflectCommission;
 
