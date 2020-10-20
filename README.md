@@ -11,7 +11,7 @@
     <version>1.0.2</version>
 </dependency>
 ```
-####Credential Storage is supported in three locations:
+###Credential Storage is supported in three locations:
 - Property File in Classpath (i.e. `src/main/resources/msuCredentials.properties`) 
 ```
   merchantBusinessId=testmerchant
