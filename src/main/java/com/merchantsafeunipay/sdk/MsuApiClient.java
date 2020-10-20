@@ -68,8 +68,9 @@ public class MsuApiClient {
     }
 
     public <T extends ApiResponse> void doRequestAsync(ApiRequest apiRequest, Consumer<T> callback) {
+        Executor executorToUse = executor != null ? executor : ForkJoinPool.commonPool();
         CompletableFuture<T> requestFuture = doRequestAsync(apiRequest);
-        requestFuture.thenAcceptAsync(callback);
+        requestFuture.thenAcceptAsync(callback, executorToUse);
     }
 
     public <T extends ApiResponse> CompletableFuture<T> doRequestAsync(ApiRequest apiRequest) {
