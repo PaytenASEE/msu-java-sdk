@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.http.HttpRequestMaker;
-import com.merchantsafeunipay.sdk.http.HttpAsyncRequestMaker;
+import com.merchantsafeunipay.sdk.http.async.HttpAsyncRequestMaker;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.ApiResponse;

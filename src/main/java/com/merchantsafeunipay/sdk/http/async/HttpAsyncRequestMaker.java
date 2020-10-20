@@ -1,4 +1,6 @@
-package com.merchantsafeunipay.sdk.http;
+package com.merchantsafeunipay.sdk.http.async;
+
+import com.merchantsafeunipay.sdk.http.HttpRequestMaker;
 
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
