@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.http.HttpRequestMaker;
+import com.merchantsafeunipay.sdk.http.async.HttpAsyncRequestMaker;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.ApiResponse;
@@ -20,6 +21,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 public class MsuApiClient {
     private Authentication defaultAuthentication;
@@ -40,29 +42,14 @@ public class MsuApiClient {
         return new MsuApiClientBuilder();
     }
 
-    @SuppressWarnings("unchecked")
     public <T extends ApiResponse> T doRequest(ApiRequest apiRequest) {
-        Authentication requestAuthentication = apiRequest.getAuthentication();
-        // request authentication has priority
-        if (requestAuthentication != null) {
-            requestAuthentication.authenticate(apiRequest);
-        } else {
-            defaultAuthentication.authenticate(apiRequest);
-            apiRequest.setAuthentication(defaultAuthentication); // for logging later
-        }
-        Class<?> responseClass = ApiResponse.class;
-        if (apiRequest.getClass().isAnnotationPresent(ResponseInfo.class)) {
-            final ResponseInfo responseInfo = apiRequest.getClass().getAnnotation(ResponseInfo.class);
-            responseClass = responseInfo.responseClass();
-        }
-        ObjectReader reader = mapper.readerFor(responseClass);
+        authenticate(apiRequest);
         HttpRequestMaker httpRequestMaker = new HttpRequestMaker(url);
         long before = System.currentTimeMillis();
         String responseJSON = httpRequestMaker.send(apiRequest.getFormUrlEncodedData());
         T apiResponse = null;
         try {
-            apiResponse = (T) responseClass.cast(reader.readValue(responseJSON));
-            apiResponse.setRawResponse(responseJSON);
+            apiResponse = getApiResponse(apiRequest, responseJSON);
             return apiResponse;
         } catch (IOException e) {
             LOGGER.error("IO Error while making request to {}", this.url, e);
@@ -74,6 +61,31 @@ public class MsuApiClient {
                 LOGGER.error("Couldn't generate log for request", e);
             }
         }
+    }
+
+    public <T extends ApiResponse> CompletableFuture<T> doRequestFuture(ApiRequest apiRequest) {
+        authenticate(apiRequest);
+        long before = System.currentTimeMillis();
+        CompletableFuture<T> requestFuture = new HttpAsyncRequestMaker(url)
+            .send(apiRequest.getFormUrlEncodedData())
+            .thenApplyAsync((rawResponse) -> {
+                try {
+                   return getApiResponse(apiRequest, rawResponse);
+                } catch (JsonProcessingException e) {
+                    LOGGER.error("IO Error while making request to {}", this.url, e);
+                    return null;
+                }
+            });
+        requestFuture.thenApplyAsync((response) -> {
+            try {
+                log(apiRequest, response, System.currentTimeMillis() - before);
+                return response;
+            } catch (JsonProcessingException e) {
+                LOGGER.error("Couldn't generate log for request", e);
+                return null;
+            }
+        });
+        return requestFuture;
     }
 
     public static class MsuApiClientBuilder {
@@ -102,6 +114,37 @@ public class MsuApiClient {
             client.url = url;
             client.prettyPrintRequests = prettyPrintRequests;
             return client;
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private <T extends ApiResponse> T getApiResponse(ApiRequest apiRequest, String responseJSON)
+            throws JsonProcessingException {
+        Class<?> responseClass = getResponseClass(apiRequest);
+        T apiResponse;
+        ObjectReader reader = mapper.readerFor(responseClass);
+        apiResponse = (T) responseClass.cast(reader.readValue(responseJSON));
+        apiResponse.setRawResponse(responseJSON);
+        return apiResponse;
+    }
+
+    private Class<?> getResponseClass(ApiRequest apiRequest) {
+        Class<?> responseClass = ApiResponse.class;
+        if (apiRequest.getClass().isAnnotationPresent(ResponseInfo.class)) {
+            final ResponseInfo responseInfo = apiRequest.getClass().getAnnotation(ResponseInfo.class);
+            responseClass = responseInfo.responseClass();
+        }
+        return responseClass;
+    }
+
+    private void authenticate(ApiRequest apiRequest) {
+        Authentication requestAuthentication = apiRequest.getAuthentication();
+        // request authentication has priority
+        if (requestAuthentication != null) {
+            requestAuthentication.authenticate(apiRequest);
+        } else {
+            defaultAuthentication.authenticate(apiRequest);
+            apiRequest.setAuthentication(defaultAuthentication); // for logging later
         }
     }
 
