@@ -7,8 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.http.HttpRequestMaker;
-import com.merchantsafeunipay.sdk.http.async.ApiResponseAsyncCallback;
-import com.merchantsafeunipay.sdk.http.async.HttpAsyncRequestMaker;
+import com.merchantsafeunipay.sdk.http.HttpAsyncRequestMaker;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.ApiResponse;
@@ -23,6 +22,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
 public class MsuApiClient {
     private Authentication defaultAuthentication;
@@ -64,9 +64,9 @@ public class MsuApiClient {
         }
     }
 
-    public <T extends ApiResponse> void doRequestAsync(ApiRequest apiRequest, ApiResponseAsyncCallback<T> callback) {
+    public <T extends ApiResponse> void doRequestAsync(ApiRequest apiRequest, Consumer<T> callback) {
         CompletableFuture<T> requestFuture = doRequestAsync(apiRequest);
-        requestFuture.thenAcceptAsync(callback::handleResponse);
+        requestFuture.thenAcceptAsync(callback);
     }
 
     public <T extends ApiResponse> CompletableFuture<T> doRequestAsync(ApiRequest apiRequest) {
