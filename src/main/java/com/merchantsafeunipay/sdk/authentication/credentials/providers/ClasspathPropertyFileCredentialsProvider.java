@@ -23,11 +23,11 @@ public class ClasspathPropertyFileCredentialsProvider implements MsuCredentialsP
             throw new RuntimeException("Could not find msuCredentials.properties in classpath!");
         }
         String merchantBusinessId = props.getProperty("merchantBusinessId");
-        String email = props.getProperty("merchantuser");
-        String password = props.getProperty("merchantpassword");
+        String email = props.getProperty("merchantUser");
+        String password = props.getProperty("merchantPassword");
         Validate.notEmpty(merchantBusinessId, "merchantBusinessId is empty in property file!");
-        Validate.notEmpty(email, "merchantuser is empty in property file!");
-        Validate.notEmpty(password, "merchantpassword is empty in property file!");
+        Validate.notEmpty(email, "merchantUser is empty in property file!");
+        Validate.notEmpty(password, "merchantPassword is empty in property file!");
         return new MsuCredentials(merchantBusinessId, email, password);
     }
 }

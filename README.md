@@ -15,8 +15,8 @@
 - Property File in Classpath (i.e. `src/main/resources/msuCredentials.properties`) 
 ```
   merchantBusinessId=testmerchant
-  merchantuser=apiuser@testmerchant.com
-  merchantpassword=******
+  merchantUser=apiuser@testmerchant.com
+  merchantPassword=******
 ```
 ```java
 Authentication userCredentialsAuthentication = new UserCredentialsAuthentication(
