@@ -15,6 +15,14 @@ public class CustomField {
     private String integrationCode;
     private String value;
 
+    public CustomField() {
+    }
+
+    public CustomField(String integrationCode, String value) {
+        this.integrationCode = integrationCode;
+        this.value = value;
+    }
+
     public String getValue() {
         return value;
     }

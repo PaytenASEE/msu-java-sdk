@@ -1,115 +1,94 @@
 package com.merchantsafeunipay.sdk.request.apiv2.financial;
 
-import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
-import com.merchantsafeunipay.sdk.request.enumerated.TransactionSubStatus;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
+import com.merchantsafeunipay.sdk.response.CustomerAddResponse;
 import com.merchantsafeunipay.sdk.response.RefundResponse;
+import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
 import java.math.BigDecimal;
-
 @ResponseInfo(
-        responseClass = RefundResponse.class
+		responseClass = RefundResponse.class
 )
 public class RefundRequest extends ApiRequest {
-    private BigDecimal amount;
+	private String pgTranId;
+	private BigDecimal amount;
+	private Currency currency;
+	private String merchantPaymentId;
+	private String substatus;
+	private String initiatorMerchantBusinessId;
 
-    private Currency currency;
+	public RefundRequest(RefundRequestBuilder builder) {
+		super();
+		this.pgTranId = builder.pgTranId;
+		this.amount = builder.amount;
+		this.currency = builder.currency;
+		this.merchantPaymentId = builder.merchantPaymentId;
+		this.substatus = builder.substatus;
+		this.initiatorMerchantBusinessId = builder.initiatorMerchantBusinessId;
+	}
+	
+	@Override
+	public ApiAction apiAction() {
+		return ApiAction.REFUND;
+	}
 
-    private String pgTranId;
+	@Override
+	public void applyRequestParams() {
+		addToPayload(Param.PGTRANID, this.pgTranId);
+		addToPayload(Param.MERCHANTPAYMENTID, this.merchantPaymentId);
+		addToPayload(Param.INITIATORMERCHANTBUSINESSID, this.initiatorMerchantBusinessId);
+		addToPayload(Param.CURRENCY, this.currency);
+		addToPayload(Param.AMOUNT, this.amount);
+		addToPayload(Param.SUBSTATUS, this.substatus);
+	}
 
-    private String merchantPaymentId;
+	public static RefundRequestBuilder builder() {
+		return new RefundRequestBuilder();
+	}
+	
+	public static class RefundRequestBuilder {
+		private String pgTranId;
+		private BigDecimal amount;
+		private Currency currency;
+		private String merchantPaymentId;
+		private String substatus;
+		private String initiatorMerchantBusinessId;
 
-    private TransactionSubStatus subStatus;
+		public RefundRequestBuilder withPgTranId(String pgTranId) {
+			this.pgTranId = pgTranId;
+			return this;
+		}
 
-    private String initiatorMerchantBusinessId;
+		public RefundRequestBuilder withAmount(BigDecimal amount) {
+			this.amount = amount;
+			return this;
+		}
 
-    private RefundRequest() {
-    }
+		public RefundRequestBuilder withCurrency(Currency currency) {
+			this.currency = currency;
+			return this;
+		}
 
-    public static RefundRequestBuilder builder() {
-        return new RefundRequestBuilder();
-    }
+		public RefundRequestBuilder withMerchantPaymentId(String merchantPaymentId) {
+			this.merchantPaymentId = merchantPaymentId;
+			return this;
+		}
 
-    @Override
-    public void applyRequestParams() {
-        addToPayload(Param.AMOUNT, this.amount);
-        addToPayload(Param.CURRENCY, this.currency);
-        addToPayload(Param.PGTRANID, this.pgTranId);
-        addToPayload(Param.MERCHANTPAYMENTID, this.merchantPaymentId);
-        addToPayload(Param.SUBSTATUS, this.subStatus);
-        addToPayload(Param.INITIATORMERCHANTBUSINESSID, this.initiatorMerchantBusinessId);
-    }
+		public RefundRequestBuilder withSubstatus(String substatus) {
+			this.substatus = substatus;
+			return this;
+		}
 
-    @Override
-    public ApiAction apiAction() {
-        return ApiAction.REFUND;
-    }
+		public RefundRequestBuilder withInitiatorMerchantBusinessId(String initiatorMerchantBusinessId) {
+			this.initiatorMerchantBusinessId = initiatorMerchantBusinessId;
+			return this;
+		}
 
-    public static final class RefundRequestBuilder {
-        private BigDecimal amount;
-
-        private Currency currency;
-
-        private String pgTranId;
-
-        private String merchantPaymentId;
-
-        private TransactionSubStatus subStatus;
-
-        private String initiatorMerchantBusinessId;
-
-        private Authentication authentication;
-
-        public RefundRequestBuilder withAuthentication(Authentication authentication) {
-            this.authentication = authentication;
-            return this;
-        }
-
-        public RefundRequestBuilder withAmount(BigDecimal amount) {
-            this.amount = amount;
-            return this;
-        }
-
-        public RefundRequestBuilder withCurrency(Currency currency) {
-            this.currency = currency;
-            return this;
-        }
-
-        public RefundRequestBuilder withPgTranId(String pgTranId) {
-            this.pgTranId = pgTranId;
-            return this;
-        }
-
-        public RefundRequestBuilder withMerchantPaymentId(String merchantPaymentId) {
-            this.merchantPaymentId = merchantPaymentId;
-            return this;
-        }
-
-        public RefundRequestBuilder withSubStatus(TransactionSubStatus subStatus) {
-            this.subStatus = subStatus;
-            return this;
-        }
-
-        public RefundRequestBuilder withInitiatorMerchantBusinessId(
-                String initiatorMerchantBusinessId) {
-            this.initiatorMerchantBusinessId = initiatorMerchantBusinessId;
-            return this;
-        }
-
-        public RefundRequest build() {
-            RefundRequest request = new RefundRequest();
-            request.authentication = this.authentication;
-            request.amount = this.amount;
-            request.currency = this.currency;
-            request.pgTranId = this.pgTranId;
-            request.merchantPaymentId = this.merchantPaymentId;
-            request.subStatus = this.subStatus;
-            request.initiatorMerchantBusinessId = this.initiatorMerchantBusinessId;
-            return request;
-        }
-    }
+		public RefundRequest build() {
+			return new RefundRequest(this);
+		}
+	}
 }

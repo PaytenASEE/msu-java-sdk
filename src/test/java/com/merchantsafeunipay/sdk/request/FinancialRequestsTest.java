@@ -3,10 +3,12 @@ package com.merchantsafeunipay.sdk.request;
 import com.merchantsafeunipay.sdk.request.apiv2.financial.*;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
 import com.merchantsafeunipay.sdk.response.*;
+import com.merchantsafeunipay.sdk.response.model.CustomField;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.UUID;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -19,6 +21,13 @@ public class FinancialRequestsTest extends BaseIntegrationTest{
     public static final String CARD_EXPIRY = "02.2025";
     public static final String CARD_CVV = "123";
     public static final String QNB_FINANSBANK = "QNB Finansbank";
+
+    @Test
+    public void testSaleRequest(){
+        SaleRequest saleRequest = buildSaleRequest();
+        ApiResponse apiResponse = client.doRequest(saleRequest);
+        assertThat(apiResponse, is(notNullValue()));
+    }
 
     @Test
     public void testPreauthRequest(){
@@ -37,7 +46,7 @@ public class FinancialRequestsTest extends BaseIntegrationTest{
                     .builder()
                     .withPgTranId(preauthResponse.getPgTranId())
                     .build();
-            FinancialResponse postauthRespone = client.doRequest(postauthRequest);
+            PostauthResponse postauthRespone = client.doRequest(postauthRequest);
             assertThat(postauthRespone.isApproved(), is(true));
         }
     }
@@ -52,7 +61,7 @@ public class FinancialRequestsTest extends BaseIntegrationTest{
                     .builder()
                     .withPgTranId(preauthResponse.getPgTranId())
                     .build();
-            FinancialResponse voidResponse = client.doRequest(voidRequest);
+            VoidResponse voidResponse = client.doRequest(voidRequest);
             assertThat(voidResponse.isApproved(), is(true));;
         }
     }

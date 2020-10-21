@@ -3,9 +3,9 @@ package com.merchantsafeunipay.sdk.request.apiv2.financial;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.PostauthResponse;
+import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
 import java.math.BigDecimal;
 
@@ -14,26 +14,25 @@ import java.math.BigDecimal;
 )
 public class PostauthRequest extends ApiRequest {
     private String pgTranId;
-
     private String merchantPaymentId;
-
+    private String initiatorMerchantBusinessId;
     private BigDecimal amount;
 
-    private String initiatorMerchantBusinessId;
-
-    private PostauthRequest() {
-    }
-
-    public static PostauthRequestBuilder builder() {
-        return new PostauthRequestBuilder();
+    private PostauthRequest(PostauthRequestBuilder builder) {
+        super();
+        this.pgTranId = builder.pgTranId;
+        this.merchantPaymentId = builder.merchantPaymentId;
+        this.initiatorMerchantBusinessId = builder.initiatorMerchantBusinessId;
+        this.amount = builder.amount;
+        this.authentication = builder.authentication;
     }
 
     @Override
     public void applyRequestParams() {
         addToPayload(Param.PGTRANID, this.pgTranId);
         addToPayload(Param.MERCHANTPAYMENTID, this.merchantPaymentId);
-        addToPayload(Param.AMOUNT, this.amount);
         addToPayload(Param.INITIATORMERCHANTBUSINESSID, this.initiatorMerchantBusinessId);
+        addToPayload(Param.AMOUNT, this.amount);
     }
 
     @Override
@@ -41,21 +40,12 @@ public class PostauthRequest extends ApiRequest {
         return ApiAction.POSTAUTH;
     }
 
-    public static final class PostauthRequestBuilder {
+    public static class PostauthRequestBuilder {
         private String pgTranId;
-
         private String merchantPaymentId;
-
-        private BigDecimal amount;
-
         private String initiatorMerchantBusinessId;
-
+        private BigDecimal amount;
         private Authentication authentication;
-
-        public PostauthRequestBuilder withAuthentication(Authentication authentication) {
-            this.authentication = authentication;
-            return this;
-        }
 
         public PostauthRequestBuilder withPgTranId(String pgTranId) {
             this.pgTranId = pgTranId;
@@ -67,25 +57,27 @@ public class PostauthRequest extends ApiRequest {
             return this;
         }
 
+        public PostauthRequestBuilder withInitiatorMerchantBusinessId(String initiatorMerchantBusinessId) {
+            this.initiatorMerchantBusinessId = initiatorMerchantBusinessId;
+            return this;
+        }
+
         public PostauthRequestBuilder withAmount(BigDecimal amount) {
             this.amount = amount;
             return this;
         }
 
-        public PostauthRequestBuilder withInitiatorMerchantBusinessId(
-                String initiatorMerchantBusinessId) {
-            this.initiatorMerchantBusinessId = initiatorMerchantBusinessId;
+        public PostauthRequestBuilder withAuthentication(Authentication authentication) {
+            this.authentication = authentication;
             return this;
         }
 
         public PostauthRequest build() {
-            PostauthRequest request = new PostauthRequest();
-            request.authentication = this.authentication;
-            request.pgTranId = this.pgTranId;
-            request.merchantPaymentId = this.merchantPaymentId;
-            request.amount = this.amount;
-            request.initiatorMerchantBusinessId = this.initiatorMerchantBusinessId;
-            return request;
+            return new PostauthRequest(this);
         }
+    }
+
+    public static PostauthRequestBuilder builder() {
+        return new PostauthRequestBuilder();
     }
 }
