@@ -3,44 +3,44 @@ package com.merchantsafeunipay.sdk.request.model;
 import java.math.BigDecimal;
 
 public class Point {
-	private String name;
-	private BigDecimal value;
+    private String name;
+    private BigDecimal value;
 
-	private Point(String name, BigDecimal value) {
-		super();
-		this.name = name;
-		this.value = value;
-	}
+    private Point(String name, BigDecimal value) {
+        super();
+        this.name = name;
+        this.value = value;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public static PointBuilder point() {
+        return new PointBuilder();
+    }
 
-	public BigDecimal getValue() {
-		return value;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public static class PointBuilder {
-		private String name;
-		private BigDecimal value;
+    public BigDecimal getValue() {
+        return value;
+    }
 
-		public PointBuilder withName(String name) {
-			this.name = name;
-			return this;
-		}
+    public static class PointBuilder {
+        private String name;
+        private BigDecimal value;
 
-		public PointBuilder withValue(BigDecimal value) {
-			this.value = value;
-			return this;
-		}
+        public PointBuilder withName(String name) {
+            this.name = name;
+            return this;
+        }
 
-		public Point build() {
-			return new Point(name, value);
-		}
-	}
+        public PointBuilder withValue(BigDecimal value) {
+            this.value = value;
+            return this;
+        }
 
-	public static PointBuilder point() {
-		return new PointBuilder();
-	}
+        public Point build() {
+            return new Point(name, value);
+        }
+    }
 
 }

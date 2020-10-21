@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.dealer;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.DealerTypeDeleteResponse;
 
-@ResponseInfo(
-        responseClass = DealerTypeDeleteResponse.class
-)
-public class DealerTypeDeleteRequest extends ApiRequest {
+public class DealerTypeDeleteRequest extends ApiRequest<DealerTypeDeleteResponse> {
     private String dealerTypeName;
 
     private DealerTypeDeleteRequest() {
@@ -18,6 +14,11 @@ public class DealerTypeDeleteRequest extends ApiRequest {
 
     public static DealerTypeDeleteRequestBuilder builder() {
         return new DealerTypeDeleteRequestBuilder();
+    }
+
+    @Override
+    public Class<DealerTypeDeleteResponse> responseClass() {
+        return DealerTypeDeleteResponse.class;
     }
 
     @Override

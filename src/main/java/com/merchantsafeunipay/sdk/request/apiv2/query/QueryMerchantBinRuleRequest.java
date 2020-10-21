@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.query;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryMerchantBinRuleResponse;
 
-@ResponseInfo(
-        responseClass = QueryMerchantBinRuleResponse.class
-)
-public class QueryMerchantBinRuleRequest extends ApiRequest {
+public class QueryMerchantBinRuleRequest extends ApiRequest<QueryMerchantBinRuleResponse> {
     private String ruleName;
 
     private QueryMerchantBinRuleRequest() {
@@ -18,6 +14,11 @@ public class QueryMerchantBinRuleRequest extends ApiRequest {
 
     public static QueryMerchantBinRuleRequestBuilder builder() {
         return new QueryMerchantBinRuleRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryMerchantBinRuleResponse> responseClass() {
+        return QueryMerchantBinRuleResponse.class;
     }
 
     @Override

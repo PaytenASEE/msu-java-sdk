@@ -4,16 +4,12 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.ShouldDo3DResponse;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = ShouldDo3DResponse.class
-)
-public class ShouldDo3DRequest extends ApiRequest {
+public class ShouldDo3DRequest extends ApiRequest<ShouldDo3DResponse> {
     private String cardToken;
 
     private String bin;
@@ -27,6 +23,11 @@ public class ShouldDo3DRequest extends ApiRequest {
 
     public static ShouldDo3dRequestBuilder builder() {
         return new ShouldDo3dRequestBuilder();
+    }
+
+    @Override
+    public Class<ShouldDo3DResponse> responseClass() {
+        return ShouldDo3DResponse.class;
     }
 
     @Override

@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.transaction;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.CompayTransactionEditResponse;
 
-@ResponseInfo(
-        responseClass = CompayTransactionEditResponse.class
-)
-public class CompayTransactionEditRequest extends ApiRequest {
+public class CompayTransactionEditRequest extends ApiRequest<CompayTransactionEditResponse> {
     private String compayToken;
 
     private String installments;
@@ -40,6 +36,11 @@ public class CompayTransactionEditRequest extends ApiRequest {
 
     public static CompayTransactionEditRequestBuilder builder() {
         return new CompayTransactionEditRequestBuilder();
+    }
+
+    @Override
+    public Class<CompayTransactionEditResponse> responseClass() {
+        return CompayTransactionEditResponse.class;
     }
 
     @Override

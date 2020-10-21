@@ -1,54 +1,54 @@
 package com.merchantsafeunipay.sdk.response;
 
+import com.merchantsafeunipay.sdk.request.enumerated.Currency;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.merchantsafeunipay.sdk.request.enumerated.Currency;
-
 public class QueryExecutiveReportResponse extends ApiResponse {
-	private List<TransactionStatVO> transactionStats = new ArrayList<>();
+    private List<TransactionStatVO> transactionStats = new ArrayList<>();
 
-	public List<TransactionStatVO> getTransactionStats() {
-		return transactionStats;
-	}
+    public QueryExecutiveReportResponse() {
+        // Constructor
+    }
 
-	public void setTransactionStats(List<TransactionStatVO> transactionStats) {
-		this.transactionStats = transactionStats;
-	}
+    public List<TransactionStatVO> getTransactionStats() {
+        return transactionStats;
+    }
 
-	public QueryExecutiveReportResponse() {
-		// Constructor
-	}
+    public void setTransactionStats(List<TransactionStatVO> transactionStats) {
+        this.transactionStats = transactionStats;
+    }
 
-	public class TransactionStatVO {
-		private String type;
-		private long count;
-		private BigDecimal sum;
-		private Currency currency;
+    public class TransactionStatVO {
+        private String type;
+        private long count;
+        private BigDecimal sum;
+        private Currency currency;
 
-		public TransactionStatVO(String type, long count, BigDecimal sum, Currency currency) {
-			super();
-			this.type = type;
-			this.count = count;
-			this.sum = sum;
-			this.currency = currency;
-		}
+        public TransactionStatVO(String type, long count, BigDecimal sum, Currency currency) {
+            super();
+            this.type = type;
+            this.count = count;
+            this.sum = sum;
+            this.currency = currency;
+        }
 
-		public String getType() {
-			return type;
-		}
+        public String getType() {
+            return type;
+        }
 
-		public long getCount() {
-			return count;
-		}
+        public long getCount() {
+            return count;
+        }
 
-		public BigDecimal getSum() {
-			return sum;
-		}
+        public BigDecimal getSum() {
+            return sum;
+        }
 
-		public Currency getCurrency() {
-			return currency;
-		}
-	}
+        public Currency getCurrency() {
+            return currency;
+        }
+    }
 }

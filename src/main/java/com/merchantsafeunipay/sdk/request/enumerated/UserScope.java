@@ -3,9 +3,9 @@ package com.merchantsafeunipay.sdk.request.enumerated;
 
 public enum UserScope {
 
-	SYSTEM,
+    SYSTEM,
 
-	MERCHANT,
+    MERCHANT,
 
-	MERCHANTGROUP;
+    MERCHANTGROUP;
 }

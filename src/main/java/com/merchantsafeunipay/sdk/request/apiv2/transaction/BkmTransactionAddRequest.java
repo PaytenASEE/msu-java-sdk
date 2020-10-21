@@ -3,15 +3,11 @@ package com.merchantsafeunipay.sdk.request.apiv2.transaction;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.request.enumerated.TransactionType;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.request.enumerated.TransactionType;
 import com.merchantsafeunipay.sdk.response.BkmTransactionAddResponse;
 
-@ResponseInfo(
-        responseClass = BkmTransactionAddResponse.class
-)
-public class BkmTransactionAddRequest extends ApiRequest {
+public class BkmTransactionAddRequest extends ApiRequest<BkmTransactionAddResponse> {
     private String bkmToken;
 
     private String customerIp;
@@ -23,6 +19,11 @@ public class BkmTransactionAddRequest extends ApiRequest {
 
     public static BkmTransactionAddRequestBuilder builder() {
         return new BkmTransactionAddRequestBuilder();
+    }
+
+    @Override
+    public Class<BkmTransactionAddResponse> responseClass() {
+        return BkmTransactionAddResponse.class;
     }
 
     @Override

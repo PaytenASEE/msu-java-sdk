@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.reconciliation;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.ReconciliationSchemaEditResponse;
 
-@ResponseInfo(
-        responseClass = ReconciliationSchemaEditResponse.class
-)
-public class ReconciliationSchemaEditRequest extends ApiRequest {
+public class ReconciliationSchemaEditRequest extends ApiRequest<ReconciliationSchemaEditResponse> {
     private String settings;
 
     private ReconciliationSchemaEditRequest() {
@@ -18,6 +14,11 @@ public class ReconciliationSchemaEditRequest extends ApiRequest {
 
     public static ReConciliationschemaeditRequestBuilder builder() {
         return new ReConciliationschemaeditRequestBuilder();
+    }
+
+    @Override
+    public Class<ReconciliationSchemaEditResponse> responseClass() {
+        return ReconciliationSchemaEditResponse.class;
     }
 
     @Override

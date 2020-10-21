@@ -3,17 +3,13 @@ package com.merchantsafeunipay.sdk.request.apiv2.session;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.EditSessionResponse;
 
 import java.math.BigDecimal;
 import java.util.Map;
 
-@ResponseInfo(
-        responseClass = EditSessionResponse.class
-)
-public class EditSessionRequest extends ApiRequest {
+public class EditSessionRequest extends ApiRequest<EditSessionResponse> {
     private String interimPageUrl;
 
     private String merchantPaymentId;
@@ -29,6 +25,11 @@ public class EditSessionRequest extends ApiRequest {
 
     public static EditSessionRequestBuilder builder() {
         return new EditSessionRequestBuilder();
+    }
+
+    @Override
+    public Class<EditSessionResponse> responseClass() {
+        return EditSessionResponse.class;
     }
 
     @Override

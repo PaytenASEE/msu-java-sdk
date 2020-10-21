@@ -15,21 +15,21 @@ import java.util.Set;
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonInclude(Include.NON_NULL)
 public class QuerySharedPaymentSystemResponse extends ApiResponse {
-	@JsonProperty(value = "sharedPaymentSystems")
-	@XmlElementWrapper(name = "sharedPaymentSystems")
-	@XmlElement(name = "sharedPaymentSystem")
-	private Set<MerchantSharedPaymentSystem> sharedPaymentSystems = new HashSet<>();
+    @JsonProperty(value = "sharedPaymentSystems")
+    @XmlElementWrapper(name = "sharedPaymentSystems")
+    @XmlElement(name = "sharedPaymentSystem")
+    private Set<MerchantSharedPaymentSystem> sharedPaymentSystems = new HashSet<>();
 
-	public QuerySharedPaymentSystemResponse(Set<MerchantSharedPaymentSystem> sharedPaymentSystems) {
-		super();
-		this.sharedPaymentSystems = sharedPaymentSystems;
-	}
+    public QuerySharedPaymentSystemResponse(Set<MerchantSharedPaymentSystem> sharedPaymentSystems) {
+        super();
+        this.sharedPaymentSystems = sharedPaymentSystems;
+    }
 
-	public Set<MerchantSharedPaymentSystem> getSharedPaymentSystems() {
-		return sharedPaymentSystems;
-	}
+    public Set<MerchantSharedPaymentSystem> getSharedPaymentSystems() {
+        return sharedPaymentSystems;
+    }
 
-	public void setSharedPaymentSystems(Set<MerchantSharedPaymentSystem> sharedPaymentSystems) {
-		this.sharedPaymentSystems = sharedPaymentSystems;
-	}
+    public void setSharedPaymentSystems(Set<MerchantSharedPaymentSystem> sharedPaymentSystems) {
+        this.sharedPaymentSystems = sharedPaymentSystems;
+    }
 }

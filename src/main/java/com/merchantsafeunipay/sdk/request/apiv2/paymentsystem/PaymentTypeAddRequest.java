@@ -3,17 +3,13 @@ package com.merchantsafeunipay.sdk.request.apiv2.paymentsystem;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.request.enumerated.Status;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.request.enumerated.Status;
 import com.merchantsafeunipay.sdk.response.PaymentTypeAddResponse;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = PaymentTypeAddResponse.class
-)
-public class PaymentTypeAddRequest extends ApiRequest {
+public class PaymentTypeAddRequest extends ApiRequest<PaymentTypeAddResponse> {
     private String paymentSystem;
 
     private String name;
@@ -45,6 +41,11 @@ public class PaymentTypeAddRequest extends ApiRequest {
 
     public static PaymentTypeAddRequestBuilder builder() {
         return new PaymentTypeAddRequestBuilder();
+    }
+
+    @Override
+    public Class<PaymentTypeAddResponse> responseClass() {
+        return PaymentTypeAddResponse.class;
     }
 
     @Override

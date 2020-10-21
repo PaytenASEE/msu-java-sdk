@@ -34,9 +34,9 @@ public enum PPolicy {
      */
     THD_BASED_ON_LIMIT;
 
-    public static PPolicy fromString(String input){
-        for(PPolicy s: values()){
-            if(s.name().equals(input))
+    public static PPolicy fromString(String input) {
+        for (PPolicy s : values()) {
+            if (s.name().equals(input))
                 return s;
         }
         return null;

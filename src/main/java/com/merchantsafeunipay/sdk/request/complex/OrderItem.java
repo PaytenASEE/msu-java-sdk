@@ -3,97 +3,97 @@ package com.merchantsafeunipay.sdk.request.complex;
 import java.math.BigDecimal;
 
 public class OrderItem {
-	private String code;
-	private String name;
-	private String description;
-	private BigDecimal amount;
-	private Integer quantity;
+    private String code;
+    private String name;
+    private String description;
+    private BigDecimal amount;
+    private Integer quantity;
 
-	public OrderItem() {
-	}
+    public OrderItem() {
+    }
 
-	public String getCode() {
-		return code;
-	}
+    private OrderItem(Builder builder) {
+        this.code = builder.code;
+        this.name = builder.name;
+        this.description = builder.description;
+        this.amount = builder.amount;
+        this.quantity = builder.quantity;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public BigDecimal getAmount() {
-		return amount;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setAmount(BigDecimal price) {
-		this.amount = price;
-	}
+    public BigDecimal getAmount() {
+        return amount;
+    }
 
-	public Integer getQuantity() {
-		return quantity;
-	}
+    public void setAmount(BigDecimal price) {
+        this.amount = price;
+    }
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
+    public Integer getQuantity() {
+        return quantity;
+    }
 
-	public static class Builder {
-		private String code;
-		private String name;
-		private String description;
-		private BigDecimal amount;
-		private Integer quantity;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 
-		public Builder code(String code) {
-			this.code = code;
-			return this;
-		}
+    public static class Builder {
+        private String code;
+        private String name;
+        private String description;
+        private BigDecimal amount;
+        private Integer quantity;
 
-		public Builder name(String name) {
-			this.name = name;
-			return this;
-		}
+        public Builder code(String code) {
+            this.code = code;
+            return this;
+        }
 
-		public Builder description(String description) {
-			this.description = description;
-			return this;
-		}
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
 
-		public Builder amount(BigDecimal amount) {
-			this.amount = amount;
-			return this;
-		}
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
 
-		public Builder quantity(Integer quantity) {
-			this.quantity = quantity;
-			return this;
-		}
+        public Builder amount(BigDecimal amount) {
+            this.amount = amount;
+            return this;
+        }
 
-		public OrderItem build() {
-			return new OrderItem(this);
-		}
-	}
+        public Builder quantity(Integer quantity) {
+            this.quantity = quantity;
+            return this;
+        }
 
-	private OrderItem(Builder builder) {
-		this.code = builder.code;
-		this.name = builder.name;
-		this.description = builder.description;
-		this.amount = builder.amount;
-		this.quantity = builder.quantity;
-	}
+        public OrderItem build() {
+            return new OrderItem(this);
+        }
+    }
 }

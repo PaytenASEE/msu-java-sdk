@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.query;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QuerySharedPaymentSystemResponse;
 
-@ResponseInfo(
-        responseClass = QuerySharedPaymentSystemResponse.class
-)
-public class QuerySharedPaymentSystemRequest extends ApiRequest {
+public class QuerySharedPaymentSystemRequest extends ApiRequest<QuerySharedPaymentSystemResponse> {
     private String associatedMerchant;
 
     private QuerySharedPaymentSystemRequest() {
@@ -18,6 +14,11 @@ public class QuerySharedPaymentSystemRequest extends ApiRequest {
 
     public static QuerySharedPaymentSystemRequestBuilder builder() {
         return new QuerySharedPaymentSystemRequestBuilder();
+    }
+
+    @Override
+    public Class<QuerySharedPaymentSystemResponse> responseClass() {
+        return QuerySharedPaymentSystemResponse.class;
     }
 
     @Override

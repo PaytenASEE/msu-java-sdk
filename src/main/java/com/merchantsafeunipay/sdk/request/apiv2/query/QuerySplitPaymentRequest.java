@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QuerySplitPaymentResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QuerySplitPaymentResponse.class
-)
-public class QuerySplitPaymentRequest extends ApiRequest {
+public class QuerySplitPaymentRequest extends ApiRequest<QuerySplitPaymentResponse> {
     private String splitPaymentCode;
 
     private String startDate;
@@ -26,6 +22,11 @@ public class QuerySplitPaymentRequest extends ApiRequest {
 
     public static QuerySplitPaymentRequestBuilder builder() {
         return new QuerySplitPaymentRequestBuilder();
+    }
+
+    @Override
+    public Class<QuerySplitPaymentResponse> responseClass() {
+        return QuerySplitPaymentResponse.class;
     }
 
     @Override

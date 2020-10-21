@@ -3,19 +3,17 @@ package com.merchantsafeunipay.sdk.request;
 import com.merchantsafeunipay.sdk.request.apiv2.financial.*;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
 import com.merchantsafeunipay.sdk.response.*;
-import com.merchantsafeunipay.sdk.response.model.CustomField;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.UUID;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-public class FinancialRequestsTest extends BaseIntegrationTest{
+public class FinancialRequestsTest extends BaseIntegrationTest {
 
     public static final String CARD_PAN = "4155650100416111";
     public static final String CARD_EXPIRY = "02.2025";
@@ -23,25 +21,25 @@ public class FinancialRequestsTest extends BaseIntegrationTest{
     public static final String QNB_FINANSBANK = "QNB Finansbank";
 
     @Test
-    public void testSaleRequest(){
+    public void testSaleRequest() {
         SaleRequest saleRequest = buildSaleRequest();
-        ApiResponse apiResponse = client.doRequest(saleRequest);
+        SaleResponse apiResponse = client.doRequest(saleRequest);
         assertThat(apiResponse, is(notNullValue()));
     }
 
     @Test
-    public void testPreauthRequest(){
+    public void testPreauthRequest() {
         PreauthRequest preauthRequest = buildPreauthRequest();
-        ApiResponse apiResponse = client.doRequest(preauthRequest);
+        PreauthResponse apiResponse = client.doRequest(preauthRequest);
         assertThat(apiResponse, is(notNullValue()));
     }
 
     @Test
-    public void testPostauthRequest(){
+    public void testPostauthRequest() {
         PreauthRequest preauthRequest = buildPreauthRequest();
         PreauthResponse preauthResponse = client.doRequest(preauthRequest);
 
-        if(preauthResponse.isApproved()){
+        if (preauthResponse.isApproved()) {
             PostauthRequest postauthRequest = PostauthRequest
                     .builder()
                     .withPgTranId(preauthResponse.getPgTranId())
@@ -52,33 +50,35 @@ public class FinancialRequestsTest extends BaseIntegrationTest{
     }
 
     @Test
-    public void testVoidRequest(){
+    public void testVoidRequest() {
         PreauthRequest preauthRequest = buildPreauthRequest();
         PreauthResponse preauthResponse = client.doRequest(preauthRequest);
 
-        if(preauthResponse.isApproved()){
+        if (preauthResponse.isApproved()) {
             VoidRequest voidRequest = VoidRequest
                     .builder()
                     .withPgTranId(preauthResponse.getPgTranId())
                     .build();
             VoidResponse voidResponse = client.doRequest(voidRequest);
-            assertThat(voidResponse.isApproved(), is(true));;
+            assertThat(voidResponse.isApproved(), is(true));
+            ;
         }
     }
 
     @Test
     @Ignore // TODO find a valid card
-    public void testRefundRequest(){
+    public void testRefundRequest() {
         SaleRequest saleRequest = buildSaleRequest();
         SaleResponse saleResponse = client.doRequest(saleRequest);
 
-        if(saleResponse.isApproved()){
+        if (saleResponse.isApproved()) {
             RefundRequest refundRequest = RefundRequest
                     .builder()
                     .withPgTranId(saleResponse.getPgTranId())
                     .build();
             RefundResponse refundResponse = client.doRequest(refundRequest);
-            assertThat(refundResponse.isApproved(), is(true));;
+            assertThat(refundResponse.isApproved(), is(true));
+            ;
         }
     }
 

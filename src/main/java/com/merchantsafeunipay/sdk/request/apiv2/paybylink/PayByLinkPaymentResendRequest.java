@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.PayByLinkPaymentResendResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = PayByLinkPaymentResendResponse.class
-)
-public class PayByLinkPaymentResendRequest extends ApiRequest {
+public class PayByLinkPaymentResendRequest extends ApiRequest<PayByLinkPaymentResendResponse> {
     private String payByLinkToken;
 
     private String notificationChannels;
@@ -20,6 +16,11 @@ public class PayByLinkPaymentResendRequest extends ApiRequest {
 
     public static PayByLinkPaymentResendRequestBuilder builder() {
         return new PayByLinkPaymentResendRequestBuilder();
+    }
+
+    @Override
+    public Class<PayByLinkPaymentResendResponse> responseClass() {
+        return PayByLinkPaymentResendResponse.class;
     }
 
     @Override

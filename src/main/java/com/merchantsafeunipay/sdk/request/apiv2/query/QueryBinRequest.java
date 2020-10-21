@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryBinResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryBinResponse.class
-)
-public class QueryBinRequest extends ApiRequest {
+public class QueryBinRequest extends ApiRequest<QueryBinResponse> {
     private String bin;
 
     private String cardToken;
@@ -22,6 +18,11 @@ public class QueryBinRequest extends ApiRequest {
 
     public static QueryBinRequestBuilder builder() {
         return new QueryBinRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryBinResponse> responseClass() {
+        return QueryBinResponse.class;
     }
 
     @Override

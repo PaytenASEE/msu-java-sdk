@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryPaymentSystemRuleResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryPaymentSystemRuleResponse.class
-)
-public class QueryPaymentSystemRuleRequest extends ApiRequest {
+public class QueryPaymentSystemRuleRequest extends ApiRequest<QueryPaymentSystemRuleResponse> {
     private String ruleType;
 
     private String ruleCode;
@@ -20,6 +16,11 @@ public class QueryPaymentSystemRuleRequest extends ApiRequest {
 
     public static QueryPaymentSystemRuleRequestBuilder builder() {
         return new QueryPaymentSystemRuleRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryPaymentSystemRuleResponse> responseClass() {
+        return QueryPaymentSystemRuleResponse.class;
     }
 
     @Override

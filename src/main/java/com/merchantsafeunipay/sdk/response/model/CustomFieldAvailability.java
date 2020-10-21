@@ -14,51 +14,51 @@ import javax.xml.bind.annotation.XmlAccessorType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonInclude(Include.NON_NULL)
 public class CustomFieldAvailability {
-	private IntegrationModelv2 integrationModel;
-	private boolean required;
+    private IntegrationModelv2 integrationModel;
+    private boolean required;
 
-	public CustomFieldAvailability() {
-		// Default constructor
-	}
+    public CustomFieldAvailability() {
+        // Default constructor
+    }
 
-	public CustomFieldAvailability(Builder builder) {
-		this.integrationModel = builder.integrationModel;
-		this.required = builder.required;
-	}
+    public CustomFieldAvailability(Builder builder) {
+        this.integrationModel = builder.integrationModel;
+        this.required = builder.required;
+    }
 
-	public IntegrationModelv2 getIntegrationModel() {
-		return integrationModel;
-	}
+    public IntegrationModelv2 getIntegrationModel() {
+        return integrationModel;
+    }
 
-	public void setIntegrationModel(IntegrationModelv2 integrationModel) {
-		this.integrationModel = integrationModel;
-	}
+    public void setIntegrationModel(IntegrationModelv2 integrationModel) {
+        this.integrationModel = integrationModel;
+    }
 
-	public boolean getRequired() {
-		return required;
-	}
+    public boolean getRequired() {
+        return required;
+    }
 
-	public void setRequired(boolean required) {
-		this.required = required;
-	}
+    public void setRequired(boolean required) {
+        this.required = required;
+    }
 
 
-	public static class Builder {
-		private IntegrationModelv2 integrationModel;
-		private boolean required;
+    public static class Builder {
+        private IntegrationModelv2 integrationModel;
+        private boolean required;
 
-		public Builder integrationModel(IntegrationModelv2 integrationModel) {
-			this.integrationModel = integrationModel;
-			return this;
-		}
+        public Builder integrationModel(IntegrationModelv2 integrationModel) {
+            this.integrationModel = integrationModel;
+            return this;
+        }
 
-		public Builder required(boolean required) {
-			this.required = required;
-			return this;
-		}
+        public Builder required(boolean required) {
+            this.required = required;
+            return this;
+        }
 
-		public CustomFieldAvailability build() {
-			return new CustomFieldAvailability(this);
-		}
-	}
+        public CustomFieldAvailability build() {
+            return new CustomFieldAvailability(this);
+        }
+    }
 }

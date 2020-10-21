@@ -5,14 +5,10 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.PostauthResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = PostauthResponse.class
-)
-public class PostauthRequest extends ApiRequest {
+public class PostauthRequest extends ApiRequest<PostauthResponse> {
     private String pgTranId;
     private String merchantPaymentId;
     private String initiatorMerchantBusinessId;
@@ -25,6 +21,15 @@ public class PostauthRequest extends ApiRequest {
         this.initiatorMerchantBusinessId = builder.initiatorMerchantBusinessId;
         this.amount = builder.amount;
         this.authentication = builder.authentication;
+    }
+
+    public static PostauthRequestBuilder builder() {
+        return new PostauthRequestBuilder();
+    }
+
+    @Override
+    public Class<PostauthResponse> responseClass() {
+        return PostauthResponse.class;
     }
 
     @Override
@@ -75,9 +80,5 @@ public class PostauthRequest extends ApiRequest {
         public PostauthRequest build() {
             return new PostauthRequest(this);
         }
-    }
-
-    public static PostauthRequestBuilder builder() {
-        return new PostauthRequestBuilder();
     }
 }

@@ -7,7 +7,7 @@ package com.merchantsafeunipay.sdk.request.enumerated;
  * @author Alketa Fazliu <alketa.fazliu@asseco-see.com>
  */
 public enum ApiRequestParameter {
-	// @formatter:off
+    // @formatter:off
 	/*
 	 * Level 0 Transaction / Process information
 	 */
@@ -463,10 +463,6 @@ public enum ApiRequestParameter {
 		this.maxLength = maxLength;
 	}
 
-	public int getMaxLength() {
-		return maxLength;
-	}
-
 	public static ApiRequestParameter fromString(String name) {
 		for (ApiRequestParameter p : values()) {
 			if (p.name().equalsIgnoreCase(name)) {
@@ -474,5 +470,9 @@ public enum ApiRequestParameter {
 			}
 		}
 		return null;
+	}
+
+	public int getMaxLength() {
+		return maxLength;
 	}
 }

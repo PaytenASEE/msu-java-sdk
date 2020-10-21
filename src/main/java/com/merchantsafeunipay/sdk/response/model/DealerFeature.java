@@ -5,14 +5,14 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
 public class DealerFeature {
-	private String feature;
-	private Boolean visibility;
+    private String feature;
+    private Boolean visibility;
 
-	public String getFeature() {
-		return feature;
-	}
+    public String getFeature() {
+        return feature;
+    }
 
-	public Boolean getVisibility() {
-		return visibility;
-	}
+    public Boolean getVisibility() {
+        return visibility;
+    }
 }

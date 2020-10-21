@@ -4,12 +4,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.VoidResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = VoidResponse.class
-)
-public class VoidRequest extends ApiRequest {
+public class VoidRequest extends ApiRequest<VoidResponse> {
     private String pgTranId;
     private String merchantPaymentId;
     private String substatus;
@@ -23,9 +19,18 @@ public class VoidRequest extends ApiRequest {
         this.initiatorMerchantBusinessId = builder.initiatorMerchantBusinessId;
     }
 
+    public static VoidRequestBuilder builder() {
+        return new VoidRequestBuilder();
+    }
+
     @Override
     public ApiAction apiAction() {
         return ApiAction.VOID;
+    }
+
+    @Override
+    public Class<VoidResponse> responseClass() {
+        return VoidResponse.class;
     }
 
     @Override
@@ -34,10 +39,6 @@ public class VoidRequest extends ApiRequest {
         addToPayload(Param.MERCHANTPAYMENTID, this.merchantPaymentId);
         addToPayload(Param.SUBSTATUS, this.substatus);
         addToPayload(Param.INITIATORMERCHANTBUSINESSID, this.initiatorMerchantBusinessId);
-    }
-
-    public static VoidRequestBuilder builder() {
-        return new VoidRequestBuilder();
     }
 
     public static class VoidRequestBuilder {

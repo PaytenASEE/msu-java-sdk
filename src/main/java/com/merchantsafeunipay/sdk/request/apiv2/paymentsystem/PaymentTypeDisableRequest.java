@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.paymentsystem;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.PaymentTypeDisableResponse;
 
-@ResponseInfo(
-        responseClass = PaymentTypeDisableResponse.class
-)
-public class PaymentTypeDisableRequest extends ApiRequest {
+public class PaymentTypeDisableRequest extends ApiRequest<PaymentTypeDisableResponse> {
     private String paymentSystem;
 
     private String installments;
@@ -20,6 +16,11 @@ public class PaymentTypeDisableRequest extends ApiRequest {
 
     public static PaymentTypeDisableRequestBuilder builder() {
         return new PaymentTypeDisableRequestBuilder();
+    }
+
+    @Override
+    public Class<PaymentTypeDisableResponse> responseClass() {
+        return PaymentTypeDisableResponse.class;
     }
 
     @Override

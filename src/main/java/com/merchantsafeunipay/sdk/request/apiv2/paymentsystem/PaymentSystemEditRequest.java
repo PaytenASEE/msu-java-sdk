@@ -4,12 +4,8 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.*;
 import com.merchantsafeunipay.sdk.response.PaymentSystemEditResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = PaymentSystemEditResponse.class
-)
-public class PaymentSystemEditRequest extends ApiRequest {
+public class PaymentSystemEditRequest extends ApiRequest<PaymentSystemEditResponse> {
     private PaymentSystemType paymentSystemType;
 
     private String paymentSystem;
@@ -41,6 +37,11 @@ public class PaymentSystemEditRequest extends ApiRequest {
 
     public static PaymentSystemEditRequestBuilder builder() {
         return new PaymentSystemEditRequestBuilder();
+    }
+
+    @Override
+    public Class<PaymentSystemEditResponse> responseClass() {
+        return PaymentSystemEditResponse.class;
     }
 
     @Override

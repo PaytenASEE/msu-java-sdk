@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.transaction;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.RejectTransactionResponse;
 
-@ResponseInfo(
-        responseClass = RejectTransactionResponse.class
-)
-public class RejectTransactionRequest extends ApiRequest {
+public class RejectTransactionRequest extends ApiRequest<RejectTransactionResponse> {
     private String merchantPaymentId;
 
     private RejectTransactionRequest() {
@@ -18,6 +14,11 @@ public class RejectTransactionRequest extends ApiRequest {
 
     public static RejectTransactionRequestBuilder builder() {
         return new RejectTransactionRequestBuilder();
+    }
+
+    @Override
+    public Class<RejectTransactionResponse> responseClass() {
+        return RejectTransactionResponse.class;
     }
 
     @Override

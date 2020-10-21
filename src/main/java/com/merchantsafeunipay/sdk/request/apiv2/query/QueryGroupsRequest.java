@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryGroupsResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryGroupsResponse.class
-)
-public class QueryGroupsRequest extends ApiRequest {
+public class QueryGroupsRequest extends ApiRequest<QueryGroupsResponse> {
     private String merchantGroupName;
 
     private String merchantBusinessId;
@@ -20,6 +16,11 @@ public class QueryGroupsRequest extends ApiRequest {
 
     public static QueryGroupsRequestBuilder builder() {
         return new QueryGroupsRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryGroupsResponse> responseClass() {
+        return QueryGroupsResponse.class;
     }
 
     @Override

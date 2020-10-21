@@ -8,16 +8,12 @@ import com.merchantsafeunipay.sdk.request.enumerated.Currency;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.enumerated.SessionType;
 import com.merchantsafeunipay.sdk.response.PayByLinkPaymentResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-@ResponseInfo(
-        responseClass = PayByLinkPaymentResponse.class
-)
-public class PayByLinkPaymentRequest extends ApiRequest {
+public class PayByLinkPaymentRequest extends ApiRequest<PayByLinkPaymentResponse> {
     private String sessionExpiry;
 
     private SessionType sessionType;
@@ -59,6 +55,11 @@ public class PayByLinkPaymentRequest extends ApiRequest {
 
     public static PayByLinkPaymentRequestBuilder builder() {
         return new PayByLinkPaymentRequestBuilder();
+    }
+
+    @Override
+    public Class<PayByLinkPaymentResponse> responseClass() {
+        return PayByLinkPaymentResponse.class;
     }
 
     @Override

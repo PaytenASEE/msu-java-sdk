@@ -5,6 +5,7 @@ public class ResponseCode {
     public static final String WAITINGFORAPPROVALCODE = "01";
     public static final String DECLINEDCODE = "99";
     public static final String GENERALERRORCODE = "98";
-    
-    private ResponseCode() {}
+
+    private ResponseCode() {
+    }
 }

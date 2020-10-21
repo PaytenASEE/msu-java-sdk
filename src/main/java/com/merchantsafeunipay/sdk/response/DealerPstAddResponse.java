@@ -1,3 +1,4 @@
 package com.merchantsafeunipay.sdk.response;
 
-public class DealerPstAddResponse extends ApiResponse {}
+public class DealerPstAddResponse extends ApiResponse {
+}

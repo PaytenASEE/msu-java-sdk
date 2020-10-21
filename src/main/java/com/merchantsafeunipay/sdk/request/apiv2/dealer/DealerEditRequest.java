@@ -5,13 +5,9 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.enumerated.YesNo;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.response.DealerEditResponse;
 
-@ResponseInfo(
-        responseClass = DealerEditResponse.class
-)
-public class DealerEditRequest extends ApiRequest {
+public class DealerEditRequest extends ApiRequest<DealerEditResponse> {
     private String dealerCode;
 
     private String name;
@@ -45,6 +41,11 @@ public class DealerEditRequest extends ApiRequest {
 
     public static DealerEditRequestBuilder builder() {
         return new DealerEditRequestBuilder();
+    }
+
+    @Override
+    public Class<DealerEditResponse> responseClass() {
+        return DealerEditResponse.class;
     }
 
     @Override

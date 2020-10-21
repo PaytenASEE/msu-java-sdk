@@ -26,99 +26,99 @@ public class MerchantProfile extends ApiResponse {
     private DealerPortalLandingPage dealerPortalLandingPage;
     private List<String> transactionTypeSelectionAvailabilities;
 
-	public String getMerchantBussinesId() {
-		return merchantBussinesId;
-	}
+    public String getMerchantBussinesId() {
+        return merchantBussinesId;
+    }
 
-	public void setMerchantBussinesId(String merchantBussinesId) {
-		this.merchantBussinesId = merchantBussinesId;
-	}
+    public void setMerchantBussinesId(String merchantBussinesId) {
+        this.merchantBussinesId = merchantBussinesId;
+    }
 
-	public String getSmtpEmail() {
-		return smtpEmail;
-	}
+    public String getSmtpEmail() {
+        return smtpEmail;
+    }
 
-	public void setSmtpEmail(String smtpEmail) {
-		this.smtpEmail = smtpEmail;
-	}
+    public void setSmtpEmail(String smtpEmail) {
+        this.smtpEmail = smtpEmail;
+    }
 
-	public String getSmtpPass() {
-		return smtpPass;
-	}
+    public String getSmtpPass() {
+        return smtpPass;
+    }
 
-	public void setSmtpPass(String smtpPass) {
-		this.smtpPass = smtpPass;
-	}
+    public void setSmtpPass(String smtpPass) {
+        this.smtpPass = smtpPass;
+    }
 
-	public String getSmtpHost() {
-		return smtpHost;
-	}
+    public String getSmtpHost() {
+        return smtpHost;
+    }
 
-	public void setSmtpHost(String smtpHost) {
-		this.smtpHost = smtpHost;
-	}
+    public void setSmtpHost(String smtpHost) {
+        this.smtpHost = smtpHost;
+    }
 
-	public Integer getSmtpPort() {
-		return smtpPort;
-	}
+    public Integer getSmtpPort() {
+        return smtpPort;
+    }
 
-	public void setSmtpPort(Integer smtpPort) {
-		this.smtpPort = smtpPort;
-	}
+    public void setSmtpPort(Integer smtpPort) {
+        this.smtpPort = smtpPort;
+    }
 
-	public Boolean getSmtpEnableTls() {
-		return smtpEnableTls;
-	}
+    public Boolean getSmtpEnableTls() {
+        return smtpEnableTls;
+    }
 
-	public void setSmtpEnableTls(Boolean smtpEnableTls) {
-		this.smtpEnableTls = smtpEnableTls;
-	}
+    public void setSmtpEnableTls(Boolean smtpEnableTls) {
+        this.smtpEnableTls = smtpEnableTls;
+    }
 
-	public String getPaymentPageUrl() {
-		return paymentPageUrl;
-	}
+    public String getPaymentPageUrl() {
+        return paymentPageUrl;
+    }
 
-	public void setPaymentPageUrl(String paymentPageUrl) {
-		this.paymentPageUrl = paymentPageUrl;
-	}
+    public void setPaymentPageUrl(String paymentPageUrl) {
+        this.paymentPageUrl = paymentPageUrl;
+    }
 
-	public String getRecurringPaymentPageUrl() {
-		return recurringPaymentPageUrl;
-	}
+    public String getRecurringPaymentPageUrl() {
+        return recurringPaymentPageUrl;
+    }
 
-	public void setRecurringPaymentPageUrl(String recurringPaymentPageUrl) {
-		this.recurringPaymentPageUrl = recurringPaymentPageUrl;
-	}
+    public void setRecurringPaymentPageUrl(String recurringPaymentPageUrl) {
+        this.recurringPaymentPageUrl = recurringPaymentPageUrl;
+    }
 
-	public BigDecimal getMinAmountInstallment() {
-		return minAmountInstallment;
-	}
+    public BigDecimal getMinAmountInstallment() {
+        return minAmountInstallment;
+    }
 
-	public void setMinAmountInstallment(BigDecimal minAmountInstallment) {
-		this.minAmountInstallment = minAmountInstallment;
-	}
+    public void setMinAmountInstallment(BigDecimal minAmountInstallment) {
+        this.minAmountInstallment = minAmountInstallment;
+    }
 
-	public String getReturnUrl() {
-		return returnUrl;
-	}
+    public String getReturnUrl() {
+        return returnUrl;
+    }
 
-	public void setReturnUrl(String returnUrl) {
-		this.returnUrl = returnUrl;
-	}
+    public void setReturnUrl(String returnUrl) {
+        this.returnUrl = returnUrl;
+    }
 
-	public DealerPortalLandingPage getDealerPortalLandingPage() {
-		return dealerPortalLandingPage;
-	}
+    public DealerPortalLandingPage getDealerPortalLandingPage() {
+        return dealerPortalLandingPage;
+    }
 
-	public void setDealerPortalLandingPage(DealerPortalLandingPage dealerPortalLandingPage) {
-		this.dealerPortalLandingPage = dealerPortalLandingPage;
-	}
+    public void setDealerPortalLandingPage(DealerPortalLandingPage dealerPortalLandingPage) {
+        this.dealerPortalLandingPage = dealerPortalLandingPage;
+    }
 
-	public List<String> getTransactionTypeSelectionAvailabilities() {
-		return transactionTypeSelectionAvailabilities;
-	}
+    public List<String> getTransactionTypeSelectionAvailabilities() {
+        return transactionTypeSelectionAvailabilities;
+    }
 
-	public void setTransactionTypeSelectionAvailabilities(List<String> transactionTypeSelectionAvailabilities) {
-		this.transactionTypeSelectionAvailabilities = transactionTypeSelectionAvailabilities;
-	}
+    public void setTransactionTypeSelectionAvailabilities(List<String> transactionTypeSelectionAvailabilities) {
+        this.transactionTypeSelectionAvailabilities = transactionTypeSelectionAvailabilities;
+    }
 }

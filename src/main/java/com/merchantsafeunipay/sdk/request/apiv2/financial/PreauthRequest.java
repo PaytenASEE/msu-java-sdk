@@ -3,13 +3,20 @@ package com.merchantsafeunipay.sdk.request.apiv2.financial;
 import com.merchantsafeunipay.sdk.request.apiv2.financial.internal.PrimaryTransactionRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.response.PreauthResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(responseClass = PreauthResponse.class)
-public class PreauthRequest extends PrimaryTransactionRequest {
+public class PreauthRequest extends PrimaryTransactionRequest<PreauthResponse> {
 
     protected PreauthRequest(PreauthRequestBuilder builder) {
         super(builder);
+    }
+
+    public static PreauthRequestBuilder builder() {
+        return new PreauthRequestBuilder();
+    }
+
+    @Override
+    public Class<PreauthResponse> responseClass() {
+        return PreauthResponse.class;
     }
 
     @Override
@@ -28,9 +35,5 @@ public class PreauthRequest extends PrimaryTransactionRequest {
         public PreauthRequestBuilder self() {
             return this;
         }
-    }
-
-    public static PreauthRequestBuilder builder() {
-        return new PreauthRequestBuilder();
     }
 }

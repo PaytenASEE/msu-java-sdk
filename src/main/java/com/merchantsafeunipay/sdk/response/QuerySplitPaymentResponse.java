@@ -1,21 +1,20 @@
 package com.merchantsafeunipay.sdk.response;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.merchantsafeunipay.sdk.response.model.SplitPayment;
 
-public class QuerySplitPaymentResponse extends ApiResponse {
-	@JsonProperty(value = "splitPaymentList")
-	@XmlElementWrapper(name = "splitPaymentList")
-	@XmlElement(name = "splitPaymentList")
-	private List<SplitPayment> splitPaymentList = new ArrayList<>();
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import java.util.ArrayList;
+import java.util.List;
 
-	public List<SplitPayment> getSplitPaymentList() {
-		return splitPaymentList;
-	}
+public class QuerySplitPaymentResponse extends ApiResponse {
+    @JsonProperty(value = "splitPaymentList")
+    @XmlElementWrapper(name = "splitPaymentList")
+    @XmlElement(name = "splitPaymentList")
+    private List<SplitPayment> splitPaymentList = new ArrayList<>();
+
+    public List<SplitPayment> getSplitPaymentList() {
+        return splitPaymentList;
+    }
 }

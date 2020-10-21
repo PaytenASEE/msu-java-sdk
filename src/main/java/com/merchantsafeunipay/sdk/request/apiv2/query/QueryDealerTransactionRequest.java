@@ -4,16 +4,12 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryDealerTransactionResponse;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = QueryDealerTransactionResponse.class
-)
-public class QueryDealerTransactionRequest extends ApiRequest {
+public class QueryDealerTransactionRequest extends ApiRequest<QueryDealerTransactionResponse> {
     private String dealerCode;
 
     private String dealerCodes;
@@ -51,6 +47,11 @@ public class QueryDealerTransactionRequest extends ApiRequest {
 
     public static QueryDealerTransactionRequestBuilder builder() {
         return new QueryDealerTransactionRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryDealerTransactionResponse> responseClass() {
+        return QueryDealerTransactionResponse.class;
     }
 
     @Override

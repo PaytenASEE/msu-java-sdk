@@ -3,15 +3,11 @@ package com.merchantsafeunipay.sdk.request.apiv2.dealer;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.request.enumerated.PaymentSystemType;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.request.enumerated.PaymentSystemType;
 import com.merchantsafeunipay.sdk.response.DealerPstEditResponse;
 
-@ResponseInfo(
-        responseClass = DealerPstEditResponse.class
-)
-public class DealerPstEditRequest extends ApiRequest {
+public class DealerPstEditRequest extends ApiRequest<DealerPstEditResponse> {
     private String subMerchantCode;
 
     private String bankmerchantid;
@@ -31,6 +27,11 @@ public class DealerPstEditRequest extends ApiRequest {
 
     public static DealerPstEditRequestBuilder builder() {
         return new DealerPstEditRequestBuilder();
+    }
+
+    @Override
+    public Class<DealerPstEditResponse> responseClass() {
+        return DealerPstEditResponse.class;
     }
 
     @Override

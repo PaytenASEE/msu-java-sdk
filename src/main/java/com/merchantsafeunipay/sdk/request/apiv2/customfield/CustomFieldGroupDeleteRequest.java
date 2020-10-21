@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.customfield;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.BaseCustomFieldGroupResponse;
 
-@ResponseInfo(
-        responseClass = BaseCustomFieldGroupResponse.class
-)
-public class CustomFieldGroupDeleteRequest extends ApiRequest {
+public class CustomFieldGroupDeleteRequest extends ApiRequest<BaseCustomFieldGroupResponse> {
     private String code;
 
     private CustomFieldGroupDeleteRequest() {
@@ -18,6 +14,11 @@ public class CustomFieldGroupDeleteRequest extends ApiRequest {
 
     public static CustomFieldGroupDeleteRequestBuilder builder() {
         return new CustomFieldGroupDeleteRequestBuilder();
+    }
+
+    @Override
+    public Class<BaseCustomFieldGroupResponse> responseClass() {
+        return BaseCustomFieldGroupResponse.class;
     }
 
     @Override

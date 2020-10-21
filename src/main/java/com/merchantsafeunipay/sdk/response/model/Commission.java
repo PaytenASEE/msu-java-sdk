@@ -1,69 +1,69 @@
 package com.merchantsafeunipay.sdk.response.model;
 
-import java.math.BigDecimal;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.merchantsafeunipay.sdk.request.enumerated.CommissionType;
 
+import java.math.BigDecimal;
+
 public class Commission {
-	private BigDecimal rate;
-	private Boolean adjust = Boolean.FALSE;
-	private CommissionType type;
-	@JsonInclude(Include.NON_NULL)
-	private BigDecimal appliedCommissionRate;
-	@JsonInclude(Include.NON_NULL)
-	private BigDecimal finalAmount;
-	
+    private BigDecimal rate;
+    private Boolean adjust = Boolean.FALSE;
+    private CommissionType type;
+    @JsonInclude(Include.NON_NULL)
+    private BigDecimal appliedCommissionRate;
+    @JsonInclude(Include.NON_NULL)
+    private BigDecimal finalAmount;
 
-	public Commission() {
-		super();
-	}
 
-	public Commission(BigDecimal rate, Boolean adjust, CommissionType type) {
-		super();
-		this.rate = rate;
-		this.adjust = adjust;
-		this.type = type;
-	}
+    public Commission() {
+        super();
+    }
 
-	public BigDecimal getRate() {
-		return rate;
-	}
+    public Commission(BigDecimal rate, Boolean adjust, CommissionType type) {
+        super();
+        this.rate = rate;
+        this.adjust = adjust;
+        this.type = type;
+    }
 
-	public Boolean getAdjust() {
-		return adjust;
-	}
+    public BigDecimal getRate() {
+        return rate;
+    }
 
-	public CommissionType getType() {
-		return type;
-	}
+    public void setRate(BigDecimal rate) {
+        this.rate = rate;
+    }
 
-	public BigDecimal getAppliedCommissionRate() {
-		return appliedCommissionRate;
-	}
+    public Boolean getAdjust() {
+        return adjust;
+    }
 
-	public void setAppliedCommissionRate(BigDecimal appliedCommissionRate) {
-		this.appliedCommissionRate = appliedCommissionRate;
-	}
+    public void setAdjust(Boolean adjust) {
+        this.adjust = adjust;
+    }
 
-	public BigDecimal getFinalAmount() {
-		return finalAmount;
-	}
+    public CommissionType getType() {
+        return type;
+    }
 
-	public void setFinalAmount(BigDecimal finalAmount) {
-		this.finalAmount = finalAmount;
-	}
+    public void setType(CommissionType type) {
+        this.type = type;
+    }
 
-	public void setRate(BigDecimal rate) {
-		this.rate = rate;
-	}
+    public BigDecimal getAppliedCommissionRate() {
+        return appliedCommissionRate;
+    }
 
-	public void setAdjust(Boolean adjust) {
-		this.adjust = adjust;
-	}
+    public void setAppliedCommissionRate(BigDecimal appliedCommissionRate) {
+        this.appliedCommissionRate = appliedCommissionRate;
+    }
 
-	public void setType(CommissionType type) {
-		this.type = type;
-	}
+    public BigDecimal getFinalAmount() {
+        return finalAmount;
+    }
+
+    public void setFinalAmount(BigDecimal finalAmount) {
+        this.finalAmount = finalAmount;
+    }
 }

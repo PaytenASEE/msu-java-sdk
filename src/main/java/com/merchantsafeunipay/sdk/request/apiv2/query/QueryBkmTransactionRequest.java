@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.query;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryBkmTransactionResponse;
 
-@ResponseInfo(
-        responseClass = QueryBkmTransactionResponse.class
-)
-public class QueryBkmTransactionRequest extends ApiRequest {
+public class QueryBkmTransactionRequest extends ApiRequest<QueryBkmTransactionResponse> {
     private String bkmToken;
 
     private QueryBkmTransactionRequest() {
@@ -18,6 +14,11 @@ public class QueryBkmTransactionRequest extends ApiRequest {
 
     public static QueryBkmTransactionRequestBuilder builder() {
         return new QueryBkmTransactionRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryBkmTransactionResponse> responseClass() {
+        return QueryBkmTransactionResponse.class;
     }
 
     @Override

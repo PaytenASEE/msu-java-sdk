@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.ewallet;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.EWalletAddCardResponse;
 
-@ResponseInfo(
-        responseClass = EWalletAddCardResponse.class
-)
-public class EWalletAddCardRequest extends ApiRequest {
+public class EWalletAddCardRequest extends ApiRequest<EWalletAddCardResponse> {
     private String customer;
 
     private String cardPan;
@@ -40,6 +36,11 @@ public class EWalletAddCardRequest extends ApiRequest {
 
     public static EWalletAddCardRequestBuilder builder() {
         return new EWalletAddCardRequestBuilder();
+    }
+
+    @Override
+    public Class<EWalletAddCardResponse> responseClass() {
+        return EWalletAddCardResponse.class;
     }
 
     @Override

@@ -4,13 +4,9 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
-import com.merchantsafeunipay.sdk.response.QueryCustomerResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
+import com.merchantsafeunipay.sdk.response.QuerySameCardCustomersResponse;
 
-@ResponseInfo(
-        responseClass = QueryCustomerResponse.class
-)
-public class QuerySameCardCustomersRequest extends ApiRequest {
+public class QuerySameCardCustomersRequest extends ApiRequest<QuerySameCardCustomersResponse> {
     private String panIin;
 
     private String panLast4;
@@ -22,6 +18,11 @@ public class QuerySameCardCustomersRequest extends ApiRequest {
 
     public static QuerySameCardCustomersRequestBuilder builder() {
         return new QuerySameCardCustomersRequestBuilder();
+    }
+
+    @Override
+    public Class<QuerySameCardCustomersResponse> responseClass() {
+        return QuerySameCardCustomersResponse.class;
     }
 
     @Override

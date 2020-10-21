@@ -1,237 +1,234 @@
 package com.merchantsafeunipay.sdk.response.model;
 
-import java.math.BigDecimal;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.merchantsafeunipay.sdk.request.enumerated.CardPanType;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.merchantsafeunipay.sdk.request.enumerated.CardPanType;
-import com.merchantsafeunipay.sdk.response.BaseCustomFieldResponse;
+import java.math.BigDecimal;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonInclude(Include.NON_NULL)
 public class Session {
-	private String token;
-	private String apiAction;
-	private String merchantPaymentId;
-	private BigDecimal firstAmount;
-	private BigDecimal amount;
-	private String currency;
-	private String returnUrl;
-	private String interimPageUrl;
-	private String cancelUrl;
-	private String merchantImg;
-	private String language;
-	private String timeZone;
-	private Boolean canSaveCard;
-	private int redirectWaitingTime;
-	private String threatMetrixSessionId;
-	private String extra;
-	private String status;
-	private Integer maxInstallmentCount;
-	private String sessionCreateTimestamp;
-	private String paymentSystemName;
-	private String dealerTypeName;
-	private Integer businessMaxInstallmentCount;
-	private CardPanType cardPanType;
-	private List<CustomField> customFields;
+    private String token;
+    private String apiAction;
+    private String merchantPaymentId;
+    private BigDecimal firstAmount;
+    private BigDecimal amount;
+    private String currency;
+    private String returnUrl;
+    private String interimPageUrl;
+    private String cancelUrl;
+    private String merchantImg;
+    private String language;
+    private String timeZone;
+    private Boolean canSaveCard;
+    private int redirectWaitingTime;
+    private String threatMetrixSessionId;
+    private String extra;
+    private String status;
+    private Integer maxInstallmentCount;
+    private String sessionCreateTimestamp;
+    private String paymentSystemName;
+    private String dealerTypeName;
+    private Integer businessMaxInstallmentCount;
+    private CardPanType cardPanType;
+    private List<CustomField> customFields;
 
-	public Session() {
-	}
+    public Session() {
+    }
 
-	public String getToken() {
-		return token;
-	}
+    public String getToken() {
+        return token;
+    }
 
-	public void setToken(String token) {
-		this.token = token;
-	}
+    public void setToken(String token) {
+        this.token = token;
+    }
 
-	public String getApiAction() {
-		return apiAction;
-	}
+    public String getApiAction() {
+        return apiAction;
+    }
 
-	public void setApiAction(String apiAction) {
-		this.apiAction = apiAction;
-	}
+    public void setApiAction(String apiAction) {
+        this.apiAction = apiAction;
+    }
 
-	public String getMerchantPaymentId() {
-		return merchantPaymentId;
-	}
+    public String getMerchantPaymentId() {
+        return merchantPaymentId;
+    }
 
-	public void setMerchantPaymentId(String merchantPaymentId) {
-		this.merchantPaymentId = merchantPaymentId;
-	}
+    public void setMerchantPaymentId(String merchantPaymentId) {
+        this.merchantPaymentId = merchantPaymentId;
+    }
 
-	public BigDecimal getFirstAmount() {
-		return firstAmount;
-	}
+    public BigDecimal getFirstAmount() {
+        return firstAmount;
+    }
 
-	public void setFirstAmount(BigDecimal firstAmount) {
-		this.firstAmount = firstAmount;
-	}
+    public void setFirstAmount(BigDecimal firstAmount) {
+        this.firstAmount = firstAmount;
+    }
 
-	public BigDecimal getAmount() {
-		return amount;
-	}
+    public BigDecimal getAmount() {
+        return amount;
+    }
 
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
-	}
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
 
-	public String getCurrency() {
-		return currency;
-	}
+    public String getCurrency() {
+        return currency;
+    }
 
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
 
-	public String getReturnUrl() {
-		return returnUrl;
-	}
+    public String getReturnUrl() {
+        return returnUrl;
+    }
 
-	public void setReturnUrl(String returnUrl) {
-		this.returnUrl = returnUrl;
-	}
+    public void setReturnUrl(String returnUrl) {
+        this.returnUrl = returnUrl;
+    }
 
-	public String getInterimPageUrl() {
-		return interimPageUrl;
-	}
+    public String getInterimPageUrl() {
+        return interimPageUrl;
+    }
 
-	public void setInterimPageUrl(String interimPageUrl) {
-		this.interimPageUrl = interimPageUrl;
-	}
+    public void setInterimPageUrl(String interimPageUrl) {
+        this.interimPageUrl = interimPageUrl;
+    }
 
-	public String getCancelUrl() {
-		return cancelUrl;
-	}
+    public String getCancelUrl() {
+        return cancelUrl;
+    }
 
-	public void setCancelUrl(String cancelUrl) {
-		this.cancelUrl = cancelUrl;
-	}
+    public void setCancelUrl(String cancelUrl) {
+        this.cancelUrl = cancelUrl;
+    }
 
-	public String getMerchantImg() {
-		return merchantImg;
-	}
+    public String getMerchantImg() {
+        return merchantImg;
+    }
 
-	public void setMerchantImg(String merchantImg) {
-		this.merchantImg = merchantImg;
-	}
+    public void setMerchantImg(String merchantImg) {
+        this.merchantImg = merchantImg;
+    }
 
-	public String getLanguage() {
-		return language;
-	}
+    public String getLanguage() {
+        return language;
+    }
 
-	public void setLanguage(String language) {
-		this.language = language;
-	}
+    public void setLanguage(String language) {
+        this.language = language;
+    }
 
-	public String getTimeZone() {
-		return timeZone;
-	}
+    public String getTimeZone() {
+        return timeZone;
+    }
 
-	public void setTimeZone(String timeZone) {
-		this.timeZone = timeZone;
-	}
+    public void setTimeZone(String timeZone) {
+        this.timeZone = timeZone;
+    }
 
-	public Boolean getCanSaveCard() {
-		return canSaveCard;
-	}
+    public Boolean getCanSaveCard() {
+        return canSaveCard;
+    }
 
-	public void setCanSaveCard(Boolean canSaveCard) {
-		this.canSaveCard = canSaveCard;
-	}
+    public void setCanSaveCard(Boolean canSaveCard) {
+        this.canSaveCard = canSaveCard;
+    }
 
-	public int getRedirectWaitingTime() {
-		return redirectWaitingTime;
-	}
+    public int getRedirectWaitingTime() {
+        return redirectWaitingTime;
+    }
 
-	public void setRedirectWaitingTime(int redirectWaitingTime) {
-		this.redirectWaitingTime = redirectWaitingTime;
-	}
+    public void setRedirectWaitingTime(int redirectWaitingTime) {
+        this.redirectWaitingTime = redirectWaitingTime;
+    }
 
-	public String getThreatMetrixSessionId() {
-		return threatMetrixSessionId;
-	}
+    public String getThreatMetrixSessionId() {
+        return threatMetrixSessionId;
+    }
 
-	public void setThreatMetrixSessionId(String threatMetrixSessionId) {
-		this.threatMetrixSessionId = threatMetrixSessionId;
-	}
+    public void setThreatMetrixSessionId(String threatMetrixSessionId) {
+        this.threatMetrixSessionId = threatMetrixSessionId;
+    }
 
-	public String getExtra() {
-		return extra;
-	}
+    public String getExtra() {
+        return extra;
+    }
 
-	public void setExtra(String extra) {
-		this.extra = extra;
-	}
+    public void setExtra(String extra) {
+        this.extra = extra;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	public Integer getMaxInstallmentCount() {
-		return maxInstallmentCount;
-	}
+    public Integer getMaxInstallmentCount() {
+        return maxInstallmentCount;
+    }
 
-	public void setMaxInstallmentCount(Integer maxInstallmentCount) {
-		this.maxInstallmentCount = maxInstallmentCount;
-	}
+    public void setMaxInstallmentCount(Integer maxInstallmentCount) {
+        this.maxInstallmentCount = maxInstallmentCount;
+    }
 
-	public String getSessionCreateTimestamp() {
-		return sessionCreateTimestamp;
-	}
+    public String getSessionCreateTimestamp() {
+        return sessionCreateTimestamp;
+    }
 
-	public void setSessionCreateTimestamp(String sessionCreateTimestamp) {
-		this.sessionCreateTimestamp = sessionCreateTimestamp;
-	}
+    public void setSessionCreateTimestamp(String sessionCreateTimestamp) {
+        this.sessionCreateTimestamp = sessionCreateTimestamp;
+    }
 
-	public String getPaymentSystemName() {
-		return paymentSystemName;
-	}
+    public String getPaymentSystemName() {
+        return paymentSystemName;
+    }
 
-	public void setPaymentSystemName(String paymentSystemName) {
-		this.paymentSystemName = paymentSystemName;
-	}
+    public void setPaymentSystemName(String paymentSystemName) {
+        this.paymentSystemName = paymentSystemName;
+    }
 
-	public String getDealerTypeName() {
-		return dealerTypeName;
-	}
+    public String getDealerTypeName() {
+        return dealerTypeName;
+    }
 
-	public void setDealerTypeName(String dealerTypeName) {
-		this.dealerTypeName = dealerTypeName;
-	}
+    public void setDealerTypeName(String dealerTypeName) {
+        this.dealerTypeName = dealerTypeName;
+    }
 
-	public Integer getBusinessMaxInstallmentCount() {
-		return businessMaxInstallmentCount;
-	}
+    public Integer getBusinessMaxInstallmentCount() {
+        return businessMaxInstallmentCount;
+    }
 
-	public void setBusinessMaxInstallmentCount(Integer businessMaxInstallmentCount) {
-		this.businessMaxInstallmentCount = businessMaxInstallmentCount;
-	}
+    public void setBusinessMaxInstallmentCount(Integer businessMaxInstallmentCount) {
+        this.businessMaxInstallmentCount = businessMaxInstallmentCount;
+    }
 
-	public CardPanType getCardPanType() {
-		return cardPanType;
-	}
+    public CardPanType getCardPanType() {
+        return cardPanType;
+    }
 
-	public void setCardPanType(CardPanType cardPanType) {
-		this.cardPanType = cardPanType;
-	}
+    public void setCardPanType(CardPanType cardPanType) {
+        this.cardPanType = cardPanType;
+    }
 
-	public List<CustomField> getCustomFields() {
-		return customFields;
-	}
+    public List<CustomField> getCustomFields() {
+        return customFields;
+    }
 
-	public void setCustomFields(List<CustomField> customFields) {
-		this.customFields = customFields;
-	}
+    public void setCustomFields(List<CustomField> customFields) {
+        this.customFields = customFields;
+    }
 }

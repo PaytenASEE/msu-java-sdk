@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * RecurringPlanStatus
- * 
+ *
  * @author Alketa Fazliu <alketa.fazliu@asseco-see.com>
  */
 public enum RecurringPlanStatus {
@@ -23,15 +23,15 @@ public enum RecurringPlanStatus {
         }
         return null;
     }
-    
-    public static List<RecurringPlanStatus> getSortedRecurringPlanStatuses(RecurringPlanStatus... status){
-    	List<RecurringPlanStatus> currencies = Arrays.asList(status);
-    	currencies.sort(new Comparator<RecurringPlanStatus>() {
-			@Override
-			public int compare(RecurringPlanStatus o1, RecurringPlanStatus o2) {
-				return o1.name().compareTo(o2.name());
-			}
-		});
-    	return currencies;
+
+    public static List<RecurringPlanStatus> getSortedRecurringPlanStatuses(RecurringPlanStatus... status) {
+        List<RecurringPlanStatus> currencies = Arrays.asList(status);
+        currencies.sort(new Comparator<RecurringPlanStatus>() {
+            @Override
+            public int compare(RecurringPlanStatus o1, RecurringPlanStatus o2) {
+                return o1.name().compareTo(o2.name());
+            }
+        });
+        return currencies;
     }
 }

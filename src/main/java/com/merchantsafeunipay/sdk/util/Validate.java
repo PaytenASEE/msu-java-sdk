@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
  * </pre>
  *
  * <p>#ThreadSafe#</p>
+ *
  * @version $Id: Validate.java 1583482 2014-03-31 22:54:57Z niallp $
  * @see java.lang.String#format(String, Object...)
  * @since 2.0
@@ -30,23 +31,23 @@ import java.util.regex.Pattern;
 public class Validate {
 
     private static final String DEFAULT_EXCLUSIVE_BETWEEN_EX_MESSAGE =
-        "The value %s is not in the specified exclusive range of %s to %s";
+            "The value %s is not in the specified exclusive range of %s to %s";
     private static final String DEFAULT_INCLUSIVE_BETWEEN_EX_MESSAGE =
-        "The value %s is not in the specified inclusive range of %s to %s";
+            "The value %s is not in the specified inclusive range of %s to %s";
     private static final String DEFAULT_MATCHES_PATTERN_EX = "The string %s does not match the pattern %s";
     private static final String DEFAULT_IS_NULL_EX_MESSAGE = "The validated object is null";
     private static final String DEFAULT_IS_TRUE_EX_MESSAGE = "The validated expression is false";
     private static final String DEFAULT_NOT_BLANK_EX_MESSAGE = "The validated character sequence is blank";
     private static final String DEFAULT_NOT_EMPTY_ARRAY_EX_MESSAGE = "The validated array is empty";
     private static final String DEFAULT_NOT_EMPTY_CHAR_SEQUENCE_EX_MESSAGE =
-        "The validated character sequence is empty";
+            "The validated character sequence is empty";
     private static final String DEFAULT_NOT_EMPTY_COLLECTION_EX_MESSAGE = "The validated collection is empty";
     private static final String DEFAULT_NOT_EMPTY_MAP_EX_MESSAGE = "The validated map is empty";
     private static final String DEFAULT_VALID_INDEX_ARRAY_EX_MESSAGE = "The validated array index is invalid: %d";
     private static final String DEFAULT_VALID_INDEX_CHAR_SEQUENCE_EX_MESSAGE =
-        "The validated character sequence index is invalid: %d";
+            "The validated character sequence index is invalid: %d";
     private static final String DEFAULT_VALID_INDEX_COLLECTION_EX_MESSAGE =
-        "The validated collection index is invalid: %d";
+            "The validated collection index is invalid: %d";
     private static final String DEFAULT_VALID_STATE_EX_MESSAGE = "The validated state is false";
     private static final String DEFAULT_IS_ASSIGNABLE_EX_MESSAGE = "Cannot assign a %s to a %s";
     private static final String DEFAULT_IS_INSTANCE_OF_EX_MESSAGE = "Expected type: %s, actual: %s";
@@ -55,7 +56,7 @@ public class Validate {
      * Constructor. This class should not normally be instantiated.
      */
     public Validate() {
-      super();
+        super();
     }
 
     // isTrue
@@ -72,9 +73,9 @@ public class Validate {
      * <p>For performance reasons, the long value is passed as a separate parameter and
      * appended to the exception message only in the case of an error.</p>
      *
-     * @param expression  the boolean expression to check
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
-     * @param value  the value to append to the message when invalid
+     * @param expression the boolean expression to check
+     * @param message    the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param value      the value to append to the message when invalid
      * @throws IllegalArgumentException if expression is {@code false}
      * @see #isTrue(boolean)
      * @see #isTrue(boolean, String, double)
@@ -97,9 +98,9 @@ public class Validate {
      * <p>For performance reasons, the double value is passed as a separate parameter and
      * appended to the exception message only in the case of an error.</p>
      *
-     * @param expression  the boolean expression to check
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
-     * @param value  the value to append to the message when invalid
+     * @param expression the boolean expression to check
+     * @param message    the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param value      the value to append to the message when invalid
      * @throws IllegalArgumentException if expression is {@code false}
      * @see #isTrue(boolean)
      * @see #isTrue(boolean, String, long)
@@ -121,9 +122,9 @@ public class Validate {
      * Validate.isTrue(i &gt;= min &amp;&amp; i &lt;= max, "The value must be between &#37;d and &#37;d", min, max);
      * Validate.isTrue(myObject.isOk(), "The object is not okay");</pre>
      *
-     * @param expression  the boolean expression to check
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
-     * @param values  the optional values for the formatted exception message, null array not recommended
+     * @param expression the boolean expression to check
+     * @param message    the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param values     the optional values for the formatted exception message, null array not recommended
      * @throws IllegalArgumentException if expression is {@code false}
      * @see #isTrue(boolean)
      * @see #isTrue(boolean, String, long)
@@ -148,7 +149,7 @@ public class Validate {
      * <p>The message of the exception is &quot;The validated expression is
      * false&quot;.</p>
      *
-     * @param expression  the boolean expression to check
+     * @param expression the boolean expression to check
      * @throws IllegalArgumentException if expression is {@code false}
      * @see #isTrue(boolean, String, long)
      * @see #isTrue(boolean, String, double)
@@ -172,8 +173,8 @@ public class Validate {
      * <p>The message of the exception is &quot;The validated object is
      * null&quot;.</p>
      *
-     * @param <T> the object type
-     * @param object  the object to check
+     * @param <T>    the object type
+     * @param object the object to check
      * @return the validated object (never {@code null} for method chaining)
      * @throws NullPointerException if the object is {@code null}
      * @see #notNull(Object, String, Object...)
@@ -188,9 +189,9 @@ public class Validate {
      *
      * <pre>Validate.notNull(myObject, "The object must not be null");</pre>
      *
-     * @param <T> the object type
+     * @param <T>     the object type
      * @param object  the object to check
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param message the {@link String#format(String, Object...)} exception message if invalid, not null
      * @param values  the optional values for the formatted exception message
      * @return the validated object (never {@code null} for method chaining)
      * @throws NullPointerException if the object is {@code null}
@@ -213,12 +214,12 @@ public class Validate {
      *
      * <pre>Validate.notEmpty(myArray, "The array must not be empty");</pre>
      *
-     * @param <T> the array type
-     * @param array  the array to check, validated not null by this method
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param <T>     the array type
+     * @param array   the array to check, validated not null by this method
+     * @param message the {@link String#format(String, Object...)} exception message if invalid, not null
      * @param values  the optional values for the formatted exception message, null array not recommended
      * @return the validated array (never {@code null} method for chaining)
-     * @throws NullPointerException if the array is {@code null}
+     * @throws NullPointerException     if the array is {@code null}
      * @throws IllegalArgumentException if the array is empty
      * @see #notEmpty(Object[])
      */
@@ -241,10 +242,10 @@ public class Validate {
      * <p>The message in the exception is &quot;The validated array is
      * empty&quot;.
      *
-     * @param <T> the array type
-     * @param array  the array to check, validated not null by this method
+     * @param <T>   the array type
+     * @param array the array to check, validated not null by this method
      * @return the validated array (never {@code null} method for chaining)
-     * @throws NullPointerException if the array is {@code null}
+     * @throws NullPointerException     if the array is {@code null}
      * @throws IllegalArgumentException if the array is empty
      * @see #notEmpty(Object[], String, Object...)
      */
@@ -262,12 +263,12 @@ public class Validate {
      *
      * <pre>Validate.notEmpty(myCollection, "The collection must not be empty");</pre>
      *
-     * @param <T> the collection type
-     * @param collection  the collection to check, validated not null by this method
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
-     * @param values  the optional values for the formatted exception message, null array not recommended
+     * @param <T>        the collection type
+     * @param collection the collection to check, validated not null by this method
+     * @param message    the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param values     the optional values for the formatted exception message, null array not recommended
      * @return the validated collection (never {@code null} method for chaining)
-     * @throws NullPointerException if the collection is {@code null}
+     * @throws NullPointerException     if the collection is {@code null}
      * @throws IllegalArgumentException if the collection is empty
      * @see #notEmpty(Object[])
      */
@@ -290,10 +291,10 @@ public class Validate {
      * <p>The message in the exception is &quot;The validated collection is
      * empty&quot;.</p>
      *
-     * @param <T> the collection type
-     * @param collection  the collection to check, validated not null by this method
+     * @param <T>        the collection type
+     * @param collection the collection to check, validated not null by this method
      * @return the validated collection (never {@code null} method for chaining)
-     * @throws NullPointerException if the collection is {@code null}
+     * @throws NullPointerException     if the collection is {@code null}
      * @throws IllegalArgumentException if the collection is empty
      * @see #notEmpty(Collection, String, Object...)
      */
@@ -311,12 +312,12 @@ public class Validate {
      *
      * <pre>Validate.notEmpty(myMap, "The map must not be empty");</pre>
      *
-     * @param <T> the map type
-     * @param map  the map to check, validated not null by this method
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param <T>     the map type
+     * @param map     the map to check, validated not null by this method
+     * @param message the {@link String#format(String, Object...)} exception message if invalid, not null
      * @param values  the optional values for the formatted exception message, null array not recommended
      * @return the validated map (never {@code null} method for chaining)
-     * @throws NullPointerException if the map is {@code null}
+     * @throws NullPointerException     if the map is {@code null}
      * @throws IllegalArgumentException if the map is empty
      * @see #notEmpty(Object[])
      */
@@ -340,9 +341,9 @@ public class Validate {
      * empty&quot;.</p>
      *
      * @param <T> the map type
-     * @param map  the map to check, validated not null by this method
+     * @param map the map to check, validated not null by this method
      * @return the validated map (never {@code null} method for chaining)
-     * @throws NullPointerException if the map is {@code null}
+     * @throws NullPointerException     if the map is {@code null}
      * @throws IllegalArgumentException if the map is empty
      * @see #notEmpty(Map, String, Object...)
      */
@@ -360,12 +361,12 @@ public class Validate {
      *
      * <pre>Validate.notEmpty(myString, "The string must not be empty");</pre>
      *
-     * @param <T> the character sequence type
-     * @param chars  the character sequence to check, validated not null by this method
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param <T>     the character sequence type
+     * @param chars   the character sequence to check, validated not null by this method
+     * @param message the {@link String#format(String, Object...)} exception message if invalid, not null
      * @param values  the optional values for the formatted exception message, null array not recommended
      * @return the validated character sequence (never {@code null} method for chaining)
-     * @throws NullPointerException if the character sequence is {@code null}
+     * @throws NullPointerException     if the character sequence is {@code null}
      * @throws IllegalArgumentException if the character sequence is empty
      * @see #notEmpty(CharSequence)
      */
@@ -389,10 +390,10 @@ public class Validate {
      * <p>The message in the exception is &quot;The validated
      * character sequence is empty&quot;.</p>
      *
-     * @param <T> the character sequence type
-     * @param chars  the character sequence to check, validated not null by this method
+     * @param <T>   the character sequence type
+     * @param chars the character sequence to check, validated not null by this method
      * @return the validated character sequence (never {@code null} method for chaining)
-     * @throws NullPointerException if the character sequence is {@code null}
+     * @throws NullPointerException     if the character sequence is {@code null}
      * @throws IllegalArgumentException if the character sequence is empty
      * @see #notEmpty(CharSequence, String, Object...)
      */
@@ -411,15 +412,14 @@ public class Validate {
      *
      * <pre>Validate.notBlank(myString, "The string must not be blank");</pre>
      *
-     * @param <T> the character sequence type
-     * @param chars  the character sequence to check, validated not null by this method
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param <T>     the character sequence type
+     * @param chars   the character sequence to check, validated not null by this method
+     * @param message the {@link String#format(String, Object...)} exception message if invalid, not null
      * @param values  the optional values for the formatted exception message, null array not recommended
      * @return the validated character sequence (never {@code null} method for chaining)
-     * @throws NullPointerException if the character sequence is {@code null}
+     * @throws NullPointerException     if the character sequence is {@code null}
      * @throws IllegalArgumentException if the character sequence is blank
      * @see #notBlank(CharSequence)
-     *
      * @since 3.0
      */
     public static <T extends CharSequence> T notBlank(final T chars, final String message, final Object... values) {
@@ -442,13 +442,12 @@ public class Validate {
      * <p>The message in the exception is &quot;The validated character
      * sequence is blank&quot;.</p>
      *
-     * @param <T> the character sequence type
-     * @param chars  the character sequence to check, validated not null by this method
+     * @param <T>   the character sequence type
+     * @param chars the character sequence to check, validated not null by this method
      * @return the validated character sequence (never {@code null} method for chaining)
-     * @throws NullPointerException if the character sequence is {@code null}
+     * @throws NullPointerException     if the character sequence is {@code null}
      * @throws IllegalArgumentException if the character sequence is blank
      * @see #notBlank(CharSequence, String, Object...)
-     *
      * @since 3.0
      */
     public static <T extends CharSequence> T notBlank(final T chars) {
@@ -467,16 +466,15 @@ public class Validate {
      * <p>If the array is {@code null}, then the message of the exception
      * is &quot;The validated object is null&quot;.</p>
      *
-     * @param <T> the array type
-     * @param array  the array to check, validated not null by this method
-     * @param index  the index to check
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param <T>     the array type
+     * @param array   the array to check, validated not null by this method
+     * @param index   the index to check
+     * @param message the {@link String#format(String, Object...)} exception message if invalid, not null
      * @param values  the optional values for the formatted exception message, null array not recommended
      * @return the validated array (never {@code null} for method chaining)
-     * @throws NullPointerException if the array is {@code null}
+     * @throws NullPointerException      if the array is {@code null}
      * @throws IndexOutOfBoundsException if the index is invalid
      * @see #validIndex(Object[], int)
-     *
      * @since 3.0
      */
     public static <T> T[] validIndex(final T[] array, final int index, final String message, final Object... values) {
@@ -500,14 +498,13 @@ public class Validate {
      * &quot;The validated array index is invalid: &quot; followed by the
      * index.</p>
      *
-     * @param <T> the array type
-     * @param array  the array to check, validated not null by this method
-     * @param index  the index to check
+     * @param <T>   the array type
+     * @param array the array to check, validated not null by this method
+     * @param index the index to check
      * @return the validated array (never {@code null} for method chaining)
-     * @throws NullPointerException if the array is {@code null}
+     * @throws NullPointerException      if the array is {@code null}
      * @throws IndexOutOfBoundsException if the index is invalid
      * @see #validIndex(Object[], int, String, Object...)
-     *
      * @since 3.0
      */
     public static <T> T[] validIndex(final T[] array, final int index) {
@@ -526,16 +523,15 @@ public class Validate {
      * <p>If the collection is {@code null}, then the message of the
      * exception is &quot;The validated object is null&quot;.</p>
      *
-     * @param <T> the collection type
-     * @param collection  the collection to check, validated not null by this method
-     * @param index  the index to check
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
-     * @param values  the optional values for the formatted exception message, null array not recommended
+     * @param <T>        the collection type
+     * @param collection the collection to check, validated not null by this method
+     * @param index      the index to check
+     * @param message    the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param values     the optional values for the formatted exception message, null array not recommended
      * @return the validated collection (never {@code null} for chaining)
-     * @throws NullPointerException if the collection is {@code null}
+     * @throws NullPointerException      if the collection is {@code null}
      * @throws IndexOutOfBoundsException if the index is invalid
      * @see #validIndex(Collection, int)
-     *
      * @since 3.0
      */
     public static <T extends Collection<?>> T validIndex(final T collection, final int index, final String message, final Object... values) {
@@ -556,14 +552,13 @@ public class Validate {
      * is &quot;The validated collection index is invalid: &quot;
      * followed by the index.</p>
      *
-     * @param <T> the collection type
-     * @param collection  the collection to check, validated not null by this method
-     * @param index  the index to check
+     * @param <T>        the collection type
+     * @param collection the collection to check, validated not null by this method
+     * @param index      the index to check
      * @return the validated collection (never {@code null} for method chaining)
-     * @throws NullPointerException if the collection is {@code null}
+     * @throws NullPointerException      if the collection is {@code null}
      * @throws IndexOutOfBoundsException if the index is invalid
      * @see #validIndex(Collection, int, String, Object...)
-     *
      * @since 3.0
      */
     public static <T extends Collection<?>> T validIndex(final T collection, final int index) {
@@ -583,16 +578,15 @@ public class Validate {
      * <p>If the character sequence is {@code null}, then the message
      * of the exception is &quot;The validated object is null&quot;.</p>
      *
-     * @param <T> the character sequence type
-     * @param chars  the character sequence to check, validated not null by this method
-     * @param index  the index to check
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param <T>     the character sequence type
+     * @param chars   the character sequence to check, validated not null by this method
+     * @param index   the index to check
+     * @param message the {@link String#format(String, Object...)} exception message if invalid, not null
      * @param values  the optional values for the formatted exception message, null array not recommended
      * @return the validated character sequence (never {@code null} for method chaining)
-     * @throws NullPointerException if the character sequence is {@code null}
+     * @throws NullPointerException      if the character sequence is {@code null}
      * @throws IndexOutOfBoundsException if the index is invalid
      * @see #validIndex(CharSequence, int)
-     *
      * @since 3.0
      */
     public static <T extends CharSequence> T validIndex(final T chars, final int index, final String message, final Object... values) {
@@ -617,14 +611,13 @@ public class Validate {
      * is &quot;The validated character sequence index is invalid: &quot;
      * followed by the index.</p>
      *
-     * @param <T> the character sequence type
-     * @param chars  the character sequence to check, validated not null by this method
-     * @param index  the index to check
+     * @param <T>   the character sequence type
+     * @param chars the character sequence to check, validated not null by this method
+     * @param index the index to check
      * @return the validated character sequence (never {@code null} for method chaining)
-     * @throws NullPointerException if the character sequence is {@code null}
+     * @throws NullPointerException      if the character sequence is {@code null}
      * @throws IndexOutOfBoundsException if the index is invalid
      * @see #validIndex(CharSequence, int, String, Object...)
-     *
      * @since 3.0
      */
     public static <T extends CharSequence> T validIndex(final T chars, final int index) {
@@ -647,10 +640,9 @@ public class Validate {
      * <p>The message of the exception is &quot;The validated state is
      * false&quot;.</p>
      *
-     * @param expression  the boolean expression to check
+     * @param expression the boolean expression to check
      * @throws IllegalStateException if expression is {@code false}
      * @see #validState(boolean, String, Object...)
-     *
      * @since 3.0
      */
     public static void validState(final boolean expression) {
@@ -667,12 +659,11 @@ public class Validate {
      *
      * <pre>Validate.validState(this.isOk(), "The state is not OK: %s", myObject);</pre>
      *
-     * @param expression  the boolean expression to check
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
-     * @param values  the optional values for the formatted exception message, null array not recommended
+     * @param expression the boolean expression to check
+     * @param message    the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param values     the optional values for the formatted exception message, null array not recommended
      * @throws IllegalStateException if expression is {@code false}
      * @see #validState(boolean)
-     *
      * @since 3.0
      */
     public static void validState(final boolean expression, final String message, final Object... values) {
@@ -692,11 +683,10 @@ public class Validate {
      *
      * <p>The syntax of the pattern is the one used in the {@link Pattern} class.</p>
      *
-     * @param input  the character sequence to validate, not null
-     * @param pattern  the regular expression pattern, not null
+     * @param input   the character sequence to validate, not null
+     * @param pattern the regular expression pattern, not null
      * @throws IllegalArgumentException if the character sequence does not match the pattern
      * @see #matchesPattern(CharSequence, String, String, Object...)
-     *
      * @since 3.0
      */
     public static void matchesPattern(final CharSequence input, final String pattern) {
@@ -714,13 +704,12 @@ public class Validate {
      *
      * <p>The syntax of the pattern is the one used in the {@link Pattern} class.</p>
      *
-     * @param input  the character sequence to validate, not null
-     * @param pattern  the regular expression pattern, not null
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param input   the character sequence to validate, not null
+     * @param pattern the regular expression pattern, not null
+     * @param message the {@link String#format(String, Object...)} exception message if invalid, not null
      * @param values  the optional values for the formatted exception message, null array not recommended
      * @throws IllegalArgumentException if the character sequence does not match the pattern
      * @see #matchesPattern(CharSequence, String)
-     *
      * @since 3.0
      */
     public static void matchesPattern(final CharSequence input, final String pattern, final String message, final Object... values) {
@@ -739,13 +728,12 @@ public class Validate {
      *
      * <pre>Validate.inclusiveBetween(0, 2, 1);</pre>
      *
-     * @param <T> the type of the argument object
-     * @param start  the inclusive start value, not null
-     * @param end  the inclusive end value, not null
-     * @param value  the object to validate, not null
+     * @param <T>   the type of the argument object
+     * @param start the inclusive start value, not null
+     * @param end   the inclusive end value, not null
+     * @param value the object to validate, not null
      * @throws IllegalArgumentException if the value falls outside the boundaries
      * @see #inclusiveBetween(Object, Object, Comparable, String, Object...)
-     *
      * @since 3.0
      */
     public static <T> void inclusiveBetween(final T start, final T end, final Comparable<T> value) {
@@ -762,15 +750,14 @@ public class Validate {
      *
      * <pre>Validate.inclusiveBetween(0, 2, 1, "Not in boundaries");</pre>
      *
-     * @param <T> the type of the argument object
-     * @param start  the inclusive start value, not null
-     * @param end  the inclusive end value, not null
-     * @param value  the object to validate, not null
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param <T>     the type of the argument object
+     * @param start   the inclusive start value, not null
+     * @param end     the inclusive end value, not null
+     * @param value   the object to validate, not null
+     * @param message the {@link String#format(String, Object...)} exception message if invalid, not null
      * @param values  the optional values for the formatted exception message, null array not recommended
      * @throws IllegalArgumentException if the value falls outside the boundaries
      * @see #inclusiveBetween(Object, Object, Comparable)
-     *
      * @since 3.0
      */
     public static <T> void inclusiveBetween(final T start, final T end, final Comparable<T> value, final String message, final Object... values) {
@@ -781,18 +768,17 @@ public class Validate {
     }
 
     /**
-    * Validate that the specified primitive value falls between the two
-    * inclusive values specified; otherwise, throws an exception.
-    *
-    * <pre>Validate.inclusiveBetween(0, 2, 1);</pre>
-    *
-    * @param start the inclusive start value
-    * @param end   the inclusive end value
-    * @param value the value to validate
-    * @throws IllegalArgumentException if the value falls outside the boundaries (inclusive)
-    *
-    * @since 3.3
-    */
+     * Validate that the specified primitive value falls between the two
+     * inclusive values specified; otherwise, throws an exception.
+     *
+     * <pre>Validate.inclusiveBetween(0, 2, 1);</pre>
+     *
+     * @param start the inclusive start value
+     * @param end   the inclusive end value
+     * @param value the value to validate
+     * @throws IllegalArgumentException if the value falls outside the boundaries (inclusive)
+     * @since 3.3
+     */
     @SuppressWarnings("boxing")
     public static void inclusiveBetween(long start, long end, long value) {
         // TODO when breaking BC, consider returning value
@@ -802,21 +788,19 @@ public class Validate {
     }
 
     /**
-    * Validate that the specified primitive value falls between the two
-    * inclusive values specified; otherwise, throws an exception with the
-    * specified message.
-    *
-    * <pre>Validate.inclusiveBetween(0, 2, 1, "Not in range");</pre>
-    *
-    * @param start the inclusive start value
-    * @param end   the inclusive end value
-    * @param value the value to validate
-    * @param message the exception message if invalid, not null
-    *
-    * @throws IllegalArgumentException if the value falls outside the boundaries
-    *
-    * @since 3.3
-    */
+     * Validate that the specified primitive value falls between the two
+     * inclusive values specified; otherwise, throws an exception with the
+     * specified message.
+     *
+     * <pre>Validate.inclusiveBetween(0, 2, 1, "Not in range");</pre>
+     *
+     * @param start   the inclusive start value
+     * @param end     the inclusive end value
+     * @param value   the value to validate
+     * @param message the exception message if invalid, not null
+     * @throws IllegalArgumentException if the value falls outside the boundaries
+     * @since 3.3
+     */
     public static void inclusiveBetween(long start, long end, long value, String message) {
         // TODO when breaking BC, consider returning value
         if (value < start || value > end) {
@@ -825,18 +809,17 @@ public class Validate {
     }
 
     /**
-    * Validate that the specified primitive value falls between the two
-    * inclusive values specified; otherwise, throws an exception.
-    *
-    * <pre>Validate.inclusiveBetween(0.1, 2.1, 1.1);</pre>
-    *
-    * @param start the inclusive start value
-    * @param end   the inclusive end value
-    * @param value the value to validate
-    * @throws IllegalArgumentException if the value falls outside the boundaries (inclusive)
-    *
-    * @since 3.3
-    */
+     * Validate that the specified primitive value falls between the two
+     * inclusive values specified; otherwise, throws an exception.
+     *
+     * <pre>Validate.inclusiveBetween(0.1, 2.1, 1.1);</pre>
+     *
+     * @param start the inclusive start value
+     * @param end   the inclusive end value
+     * @param value the value to validate
+     * @throws IllegalArgumentException if the value falls outside the boundaries (inclusive)
+     * @since 3.3
+     */
     @SuppressWarnings("boxing")
     public static void inclusiveBetween(double start, double end, double value) {
         // TODO when breaking BC, consider returning value
@@ -846,21 +829,19 @@ public class Validate {
     }
 
     /**
-    * Validate that the specified primitive value falls between the two
-    * inclusive values specified; otherwise, throws an exception with the
-    * specified message.
-    *
-    * <pre>Validate.inclusiveBetween(0.1, 2.1, 1.1, "Not in range");</pre>
-    *
-    * @param start the inclusive start value
-    * @param end   the inclusive end value
-    * @param value the value to validate
-    * @param message the exception message if invalid, not null
-    *
-    * @throws IllegalArgumentException if the value falls outside the boundaries
-    *
-    * @since 3.3
-    */
+     * Validate that the specified primitive value falls between the two
+     * inclusive values specified; otherwise, throws an exception with the
+     * specified message.
+     *
+     * <pre>Validate.inclusiveBetween(0.1, 2.1, 1.1, "Not in range");</pre>
+     *
+     * @param start   the inclusive start value
+     * @param end     the inclusive end value
+     * @param value   the value to validate
+     * @param message the exception message if invalid, not null
+     * @throws IllegalArgumentException if the value falls outside the boundaries
+     * @since 3.3
+     */
     public static void inclusiveBetween(double start, double end, double value, String message) {
         // TODO when breaking BC, consider returning value
         if (value < start || value > end) {
@@ -877,13 +858,12 @@ public class Validate {
      *
      * <pre>Validate.exclusiveBetween(0, 2, 1);</pre>
      *
-     * @param <T> the type of the argument object
-     * @param start  the exclusive start value, not null
-     * @param end  the exclusive end value, not null
-     * @param value  the object to validate, not null
+     * @param <T>   the type of the argument object
+     * @param start the exclusive start value, not null
+     * @param end   the exclusive end value, not null
+     * @param value the object to validate, not null
      * @throws IllegalArgumentException if the value falls outside the boundaries
      * @see #exclusiveBetween(Object, Object, Comparable, String, Object...)
-     *
      * @since 3.0
      */
     public static <T> void exclusiveBetween(final T start, final T end, final Comparable<T> value) {
@@ -900,15 +880,14 @@ public class Validate {
      *
      * <pre>Validate.exclusiveBetween(0, 2, 1, "Not in boundaries");</pre>
      *
-     * @param <T> the type of the argument object
-     * @param start  the exclusive start value, not null
-     * @param end  the exclusive end value, not null
-     * @param value  the object to validate, not null
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param <T>     the type of the argument object
+     * @param start   the exclusive start value, not null
+     * @param end     the exclusive end value, not null
+     * @param value   the object to validate, not null
+     * @param message the {@link String#format(String, Object...)} exception message if invalid, not null
      * @param values  the optional values for the formatted exception message, null array not recommended
      * @throws IllegalArgumentException if the value falls outside the boundaries
      * @see #exclusiveBetween(Object, Object, Comparable)
-     *
      * @since 3.0
      */
     public static <T> void exclusiveBetween(final T start, final T end, final Comparable<T> value, final String message, final Object... values) {
@@ -919,18 +898,17 @@ public class Validate {
     }
 
     /**
-    * Validate that the specified primitive value falls between the two
-    * exclusive values specified; otherwise, throws an exception.
-    *
-    * <pre>Validate.exclusiveBetween(0, 2, 1);</pre>
-    *
-    * @param start the exclusive start value
-    * @param end   the exclusive end value
-    * @param value the value to validate
-    * @throws IllegalArgumentException if the value falls out of the boundaries
-    *
-    * @since 3.3
-    */
+     * Validate that the specified primitive value falls between the two
+     * exclusive values specified; otherwise, throws an exception.
+     *
+     * <pre>Validate.exclusiveBetween(0, 2, 1);</pre>
+     *
+     * @param start the exclusive start value
+     * @param end   the exclusive end value
+     * @param value the value to validate
+     * @throws IllegalArgumentException if the value falls out of the boundaries
+     * @since 3.3
+     */
     @SuppressWarnings("boxing")
     public static void exclusiveBetween(long start, long end, long value) {
         // TODO when breaking BC, consider returning value
@@ -940,21 +918,19 @@ public class Validate {
     }
 
     /**
-    * Validate that the specified primitive value falls between the two
-    * exclusive values specified; otherwise, throws an exception with the
-    * specified message.
-    *
-    * <pre>Validate.exclusiveBetween(0, 2, 1, "Not in range");</pre>
-    *
-    * @param start the exclusive start value
-    * @param end   the exclusive end value
-    * @param value the value to validate
-    * @param message the exception message if invalid, not null
-    *
-    * @throws IllegalArgumentException if the value falls outside the boundaries
-    *
-    * @since 3.3
-    */
+     * Validate that the specified primitive value falls between the two
+     * exclusive values specified; otherwise, throws an exception with the
+     * specified message.
+     *
+     * <pre>Validate.exclusiveBetween(0, 2, 1, "Not in range");</pre>
+     *
+     * @param start   the exclusive start value
+     * @param end     the exclusive end value
+     * @param value   the value to validate
+     * @param message the exception message if invalid, not null
+     * @throws IllegalArgumentException if the value falls outside the boundaries
+     * @since 3.3
+     */
     public static void exclusiveBetween(long start, long end, long value, String message) {
         // TODO when breaking BC, consider returning value
         if (value <= start || value >= end) {
@@ -963,18 +939,17 @@ public class Validate {
     }
 
     /**
-    * Validate that the specified primitive value falls between the two
-    * exclusive values specified; otherwise, throws an exception.
-    *
-    * <pre>Validate.exclusiveBetween(0.1, 2.1, 1.1);</pre>
-    *
-    * @param start the exclusive start value
-    * @param end   the exclusive end value
-    * @param value the value to validate
-    * @throws IllegalArgumentException if the value falls out of the boundaries
-    *
-    * @since 3.3
-    */
+     * Validate that the specified primitive value falls between the two
+     * exclusive values specified; otherwise, throws an exception.
+     *
+     * <pre>Validate.exclusiveBetween(0.1, 2.1, 1.1);</pre>
+     *
+     * @param start the exclusive start value
+     * @param end   the exclusive end value
+     * @param value the value to validate
+     * @throws IllegalArgumentException if the value falls out of the boundaries
+     * @since 3.3
+     */
     @SuppressWarnings("boxing")
     public static void exclusiveBetween(double start, double end, double value) {
         // TODO when breaking BC, consider returning value
@@ -984,21 +959,19 @@ public class Validate {
     }
 
     /**
-    * Validate that the specified primitive value falls between the two
-    * exclusive values specified; otherwise, throws an exception with the
-    * specified message.
-    *
-    * <pre>Validate.exclusiveBetween(0.1, 2.1, 1.1, "Not in range");</pre>
-    *
-    * @param start the exclusive start value
-    * @param end   the exclusive end value
-    * @param value the value to validate
-    * @param message the exception message if invalid, not null
-    *
-    * @throws IllegalArgumentException if the value falls outside the boundaries
-    *
-    * @since 3.3
-    */
+     * Validate that the specified primitive value falls between the two
+     * exclusive values specified; otherwise, throws an exception with the
+     * specified message.
+     *
+     * <pre>Validate.exclusiveBetween(0.1, 2.1, 1.1, "Not in range");</pre>
+     *
+     * @param start   the exclusive start value
+     * @param end     the exclusive end value
+     * @param value   the value to validate
+     * @param message the exception message if invalid, not null
+     * @throws IllegalArgumentException if the value falls outside the boundaries
+     * @since 3.3
+     */
     public static void exclusiveBetween(double start, double end, double value, String message) {
         // TODO when breaking BC, consider returning value
         if (value <= start || value >= end) {
@@ -1011,18 +984,17 @@ public class Validate {
 
     /**
      * Validates that the argument is an instance of the specified class, if not throws an exception.
-     *  
+     *
      * <p>This method is useful when validating according to an arbitrary class</p>
      *
      * <pre>Validate.isInstanceOf(OkClass.class, object);</pre>
      *
      * <p>The message of the exception is &quot;Expected type: {type}, actual: {obj_type}&quot;</p>
      *
-     * @param type  the class the object must be validated against, not null
+     * @param type the class the object must be validated against, not null
      * @param obj  the object to check, null throws an exception
      * @throws IllegalArgumentException if argument is not of specified class
      * @see #isInstanceOf(Class, Object, String, Object...)
-     *
      * @since 3.0
      */
     public static void isInstanceOf(final Class<?> type, final Object obj) {
@@ -1041,13 +1013,12 @@ public class Validate {
      * <pre>Validate.isInstanceOf(OkClass.classs, object, "Wrong class, object is of class %s",
      *   object.getClass().getName());</pre>
      *
-     * @param type  the class the object must be validated against, not null
-     * @param obj  the object to check, null throws an exception
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param type    the class the object must be validated against, not null
+     * @param obj     the object to check, null throws an exception
+     * @param message the {@link String#format(String, Object...)} exception message if invalid, not null
      * @param values  the optional values for the formatted exception message, null array not recommended
      * @throws IllegalArgumentException if argument is not of specified class
      * @see #isInstanceOf(Class, Object)
-     *
      * @since 3.0
      */
     public static void isInstanceOf(final Class<?> type, final Object obj, final String message, final Object... values) {
@@ -1062,18 +1033,17 @@ public class Validate {
 
     /**
      * Validates that the argument can be converted to the specified class, if not, throws an exception.
-     * 
+     *
      * <p>This method is useful when validating that there will be no casting errors.</p>
      *
      * <pre>Validate.isAssignableFrom(SuperClass.class, object.getClass());</pre>
      *
      * <p>The message format of the exception is &quot;Cannot assign {type} to {superType}&quot;</p>
      *
-     * @param superType  the class the class must be validated against, not null
-     * @param type  the class to check, not null
+     * @param superType the class the class must be validated against, not null
+     * @param type      the class to check, not null
      * @throws IllegalArgumentException if type argument is not assignable to the specified superType
      * @see #isAssignableFrom(Class, Class, String, Object...)
-     *
      * @since 3.0
      */
     public static void isAssignableFrom(final Class<?> superType, final Class<?> type) {
@@ -1086,7 +1056,7 @@ public class Validate {
 
     /**
      * Validates that the argument can be converted to the specified class, if not throws an exception.
-     *  
+     *
      * <p>This method is useful when validating if there will be no casting errors.</p>
      *
      * <pre>Validate.isAssignableFrom(SuperClass.class, object.getClass());</pre>
@@ -1094,10 +1064,10 @@ public class Validate {
      * <p>The message of the exception is &quot;The validated object can not be converted to the&quot;
      * followed by the name of the class and &quot;class&quot;</p>
      *
-     * @param superType  the class the class must be validated against, not null
-     * @param type  the class to check, not null
-     * @param message  the {@link String#format(String, Object...)} exception message if invalid, not null
-     * @param values  the optional values for the formatted exception message, null array not recommended
+     * @param superType the class the class must be validated against, not null
+     * @param type      the class to check, not null
+     * @param message   the {@link String#format(String, Object...)} exception message if invalid, not null
+     * @param values    the optional values for the formatted exception message, null array not recommended
      * @throws IllegalArgumentException if argument can not be converted to the specified class
      * @see #isAssignableFrom(Class, Class)
      */

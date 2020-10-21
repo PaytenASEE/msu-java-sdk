@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.invoice;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.InvoiceDeleteResponse;
 
-@ResponseInfo(
-        responseClass = InvoiceDeleteResponse.class
-)
-public class InvoiceDeleteRequest extends ApiRequest {
+public class InvoiceDeleteRequest extends ApiRequest<InvoiceDeleteResponse> {
     private String dealerCode;
 
     private String invoiceId;
@@ -20,6 +16,11 @@ public class InvoiceDeleteRequest extends ApiRequest {
 
     public static InvoiceDeleteRequestBuilder builder() {
         return new InvoiceDeleteRequestBuilder();
+    }
+
+    @Override
+    public Class<InvoiceDeleteResponse> responseClass() {
+        return InvoiceDeleteResponse.class;
     }
 
     @Override

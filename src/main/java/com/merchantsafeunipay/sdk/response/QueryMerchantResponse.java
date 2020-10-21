@@ -1,25 +1,24 @@
 package com.merchantsafeunipay.sdk.response;
 
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.merchantsafeunipay.sdk.response.model.Merchant;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import java.util.List;
+
 
 public class QueryMerchantResponse extends ApiResponse {
-	@JsonProperty(value = "merchantList")
-	@XmlElementWrapper(name = "merchantList")
-	@XmlElement(name = "merchantList")
-	private List<Merchant> merchants;
+    @JsonProperty(value = "merchantList")
+    @XmlElementWrapper(name = "merchantList")
+    @XmlElement(name = "merchantList")
+    private List<Merchant> merchants;
 
-	public List<Merchant> getMerchants() {
-		return merchants;
-	}
+    public List<Merchant> getMerchants() {
+        return merchants;
+    }
 
-	public void setMerchants(List<Merchant> merchants) {
-		this.merchants = merchants;
-	}
+    public void setMerchants(List<Merchant> merchants) {
+        this.merchants = merchants;
+    }
 }

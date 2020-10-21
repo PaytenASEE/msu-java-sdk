@@ -6,12 +6,8 @@ import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryPaymentPolicyResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryPaymentPolicyResponse.class
-)
-public class QueryPaymentPolicyRequest extends ApiRequest {
+public class QueryPaymentPolicyRequest extends ApiRequest<QueryPaymentPolicyResponse> {
     private String paymentSystem;
 
     private Currency currency;
@@ -21,6 +17,11 @@ public class QueryPaymentPolicyRequest extends ApiRequest {
 
     public static QueryPaymentPolicyRequestBuilder builder() {
         return new QueryPaymentPolicyRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryPaymentPolicyResponse> responseClass() {
+        return QueryPaymentPolicyResponse.class;
     }
 
     @Override

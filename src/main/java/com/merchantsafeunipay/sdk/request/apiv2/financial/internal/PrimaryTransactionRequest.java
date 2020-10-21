@@ -1,13 +1,10 @@
 package com.merchantsafeunipay.sdk.request.apiv2.financial.internal;
 
 import com.merchantsafeunipay.sdk.authentication.Authentication;
-import com.merchantsafeunipay.sdk.request.apiv2.financial.SaleRequest;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.*;
 import com.merchantsafeunipay.sdk.request.model.Point;
-import com.merchantsafeunipay.sdk.response.SaleResponse;
 import com.merchantsafeunipay.sdk.response.model.CustomField;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -15,10 +12,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-@ResponseInfo(
-        responseClass = SaleResponse.class
-)
-public class PrimaryTransactionRequest extends ApiRequest {
+public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
     private String merchantPaymentId;
 
     private String customer;
@@ -314,7 +308,7 @@ public class PrimaryTransactionRequest extends ApiRequest {
         public abstract PrimaryTransactionRequest build();
 
         public abstract B self();
-        
+
         public B withAuthentication(Authentication authentication) {
             this.authentication = authentication;
             return self();

@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.AuthMerchantUserResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = AuthMerchantUserResponse.class
-)
-public class AuthMerchantUserRequest extends ApiRequest {
+public class AuthMerchantUserRequest extends ApiRequest<AuthMerchantUserResponse> {
     private String merchantUserEmail;
 
     private String merchantUserPassword;
@@ -20,6 +16,11 @@ public class AuthMerchantUserRequest extends ApiRequest {
 
     public static AuthMerchantUserRequestBuilder builder() {
         return new AuthMerchantUserRequestBuilder();
+    }
+
+    @Override
+    public Class<AuthMerchantUserResponse> responseClass() {
+        return AuthMerchantUserResponse.class;
     }
 
     @Override

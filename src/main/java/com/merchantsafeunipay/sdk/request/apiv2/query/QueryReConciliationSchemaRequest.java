@@ -4,15 +4,16 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryReconciliationSchemaResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryReconciliationSchemaResponse.class
-)
-public class QueryReConciliationSchemaRequest extends ApiRequest {
+public class QueryReConciliationSchemaRequest extends ApiRequest<QueryReconciliationSchemaResponse> {
     private String name;
 
     private QueryReConciliationSchemaRequest() {
+    }
+
+    @Override
+    public Class<QueryReconciliationSchemaResponse> responseClass() {
+        return QueryReconciliationSchemaResponse.class;
     }
 
     @Override

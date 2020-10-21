@@ -3,18 +3,19 @@ package com.merchantsafeunipay.sdk.request.apiv2.session;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.response.SessionKillResponse;
 
-@ResponseInfo(
-        responseClass = SessionKillResponse.class
-)
-public class SessionKillRequest extends ApiRequest {
+public class SessionKillRequest extends ApiRequest<SessionKillResponse> {
     private SessionKillRequest() {
     }
 
     public static SessionKillRequestBuilder builder() {
         return new SessionKillRequestBuilder();
+    }
+
+    @Override
+    public Class<SessionKillResponse> responseClass() {
+        return SessionKillResponse.class;
     }
 
     @Override

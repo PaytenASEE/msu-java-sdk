@@ -3,15 +3,11 @@ package com.merchantsafeunipay.sdk.request.apiv2.dealer;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.request.enumerated.PaymentSystemType;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.request.enumerated.PaymentSystemType;
 import com.merchantsafeunipay.sdk.response.DealerPstDeleteResponse;
 
-@ResponseInfo(
-        responseClass = DealerPstDeleteResponse.class
-)
-public class DealerPstDeleteRequest extends ApiRequest {
+public class DealerPstDeleteRequest extends ApiRequest<DealerPstDeleteResponse> {
     private String paymentSystem;
 
     private PaymentSystemType paymentSystemType;
@@ -23,6 +19,11 @@ public class DealerPstDeleteRequest extends ApiRequest {
 
     public static DealerPstDeleteRequestBuilder builder() {
         return new DealerPstDeleteRequestBuilder();
+    }
+
+    @Override
+    public Class<DealerPstDeleteResponse> responseClass() {
+        return DealerPstDeleteResponse.class;
     }
 
     @Override

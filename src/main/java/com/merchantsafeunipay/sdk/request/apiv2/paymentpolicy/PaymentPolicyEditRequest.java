@@ -5,16 +5,12 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
 import com.merchantsafeunipay.sdk.request.enumerated.PPolicy;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.PaymentPolicyEditResponse;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = PaymentPolicyEditResponse.class
-)
-public class PaymentPolicyEditRequest extends ApiRequest {
+public class PaymentPolicyEditRequest extends ApiRequest<PaymentPolicyEditResponse> {
     private String paymentSystem;
 
     private PPolicy pPolicy;
@@ -28,6 +24,11 @@ public class PaymentPolicyEditRequest extends ApiRequest {
 
     public static PaymentPolicyEditRequestBuilder builder() {
         return new PaymentPolicyEditRequestBuilder();
+    }
+
+    @Override
+    public Class<PaymentPolicyEditResponse> responseClass() {
+        return PaymentPolicyEditResponse.class;
     }
 
     @Override

@@ -1,140 +1,139 @@
 package com.merchantsafeunipay.sdk.response.model;
 
-import java.math.BigDecimal;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import java.math.BigDecimal;
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonInclude(Include.NON_NULL)
 public class PayByLinkPayment {
-	private String token;
-	private BigDecimal amount;
-	private Currency currency;
-	private String cardHolderEmail;
-	private String dueDate;
-	private String createdTs;
-	private String status;
+    private String token;
+    private BigDecimal amount;
+    private Currency currency;
+    private String cardHolderEmail;
+    private String dueDate;
+    private String createdTs;
+    private String status;
 
-	public PayByLinkPayment() {
-	}
+    public PayByLinkPayment() {
+    }
 
-	public String getToken() {
-		return token;
-	}
+    private PayByLinkPayment(Builder builder) {
+        this.token = builder.token;
+        this.amount = builder.amount;
+        this.currency = builder.currency;
+        this.cardHolderEmail = builder.cardHolderEmail;
+        this.dueDate = builder.dueDate;
+        this.createdTs = builder.createdTs;
+        this.status = builder.status;
+    }
 
-	public void setToken(String token) {
-		this.token = token;
-	}
+    public String getToken() {
+        return token;
+    }
 
-	public BigDecimal getAmount() {
-		return amount;
-	}
+    public void setToken(String token) {
+        this.token = token;
+    }
 
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
-	}
+    public BigDecimal getAmount() {
+        return amount;
+    }
 
-	public Currency getCurrency() {
-		return currency;
-	}
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
 
-	public void setCurrency(Currency currency) {
-		this.currency = currency;
-	}
+    public Currency getCurrency() {
+        return currency;
+    }
 
-	public String getCardHolderEmail() {
-		return cardHolderEmail;
-	}
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
 
-	public void setCardHolderEmail(String cardHolderEmail) {
-		this.cardHolderEmail = cardHolderEmail;
-	}
+    public String getCardHolderEmail() {
+        return cardHolderEmail;
+    }
 
-	public String getDueDate() {
-		return dueDate;
-	}
+    public void setCardHolderEmail(String cardHolderEmail) {
+        this.cardHolderEmail = cardHolderEmail;
+    }
 
-	public void setDueDate(String dueDate) {
-		this.dueDate = dueDate;
-	}
+    public String getDueDate() {
+        return dueDate;
+    }
 
-	public String getCreatedTs() {
-		return createdTs;
-	}
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
 
-	public void setCreatedTs(String createdTs) {
-		this.createdTs = createdTs;
-	}
+    public String getCreatedTs() {
+        return createdTs;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public void setCreatedTs(String createdTs) {
+        this.createdTs = createdTs;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	public static class Builder {
-		private String token;
-		private BigDecimal amount;
-		private Currency currency;
-		private String cardHolderEmail;
-		private String dueDate;
-		private String createdTs;
-		private String status;
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-		public Builder token(String token) {
-			this.token = token;
-			return this;
-		}
+    public static class Builder {
+        private String token;
+        private BigDecimal amount;
+        private Currency currency;
+        private String cardHolderEmail;
+        private String dueDate;
+        private String createdTs;
+        private String status;
 
-		public Builder amount(BigDecimal amount) {
-			this.amount = amount;
-			return this;
-		}
+        public Builder token(String token) {
+            this.token = token;
+            return this;
+        }
 
-		public Builder currency(Currency currency) {
-			this.currency = currency;
-			return this;
-		}
+        public Builder amount(BigDecimal amount) {
+            this.amount = amount;
+            return this;
+        }
 
-		public Builder cardHolderEmail(String cardHolderEmail) {
-			this.cardHolderEmail = cardHolderEmail;
-			return this;
-		}
+        public Builder currency(Currency currency) {
+            this.currency = currency;
+            return this;
+        }
 
-		public Builder dueDate(String dueDate) {
-			this.dueDate = dueDate;
-			return this;
-		}
+        public Builder cardHolderEmail(String cardHolderEmail) {
+            this.cardHolderEmail = cardHolderEmail;
+            return this;
+        }
 
-		public Builder createdTs(String createdTs) {
-			this.createdTs = createdTs;
-			return this;
-		}
+        public Builder dueDate(String dueDate) {
+            this.dueDate = dueDate;
+            return this;
+        }
 
-		public Builder status(String status) {
-			this.status = status;
-			return this;
-		}
+        public Builder createdTs(String createdTs) {
+            this.createdTs = createdTs;
+            return this;
+        }
 
-		public PayByLinkPayment build() {
-			return new PayByLinkPayment(this);
-		}
-	}
+        public Builder status(String status) {
+            this.status = status;
+            return this;
+        }
 
-	private PayByLinkPayment(Builder builder) {
-		this.token = builder.token;
-		this.amount = builder.amount;
-		this.currency = builder.currency;
-		this.cardHolderEmail = builder.cardHolderEmail;
-		this.dueDate = builder.dueDate;
-		this.createdTs = builder.createdTs;
-		this.status = builder.status;
-	}
+        public PayByLinkPayment build() {
+            return new PayByLinkPayment(this);
+        }
+    }
 }

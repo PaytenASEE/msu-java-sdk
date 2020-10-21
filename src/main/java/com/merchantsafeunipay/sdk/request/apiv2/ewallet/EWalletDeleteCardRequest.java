@@ -1,16 +1,12 @@
-package com.merchantsafeunipay.sdk.request.apiv2.ewallet;
+package com.merchantsafeunipay.sdknull.request.apiv2.ewallet;
 
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.EWalletDeleteCardResponse;
 
-@ResponseInfo(
-        responseClass = EWalletDeleteCardResponse.class
-)
-public class EWalletDeleteCardRequest extends ApiRequest {
+public class EWalletDeleteCardRequest extends ApiRequest<EWalletDeleteCardResponse> {
     private String cardToken;
 
     private boolean forGroup;
@@ -20,6 +16,11 @@ public class EWalletDeleteCardRequest extends ApiRequest {
 
     public static EWalletDeleteCardRequestBuilder builder() {
         return new EWalletDeleteCardRequestBuilder();
+    }
+
+    @Override
+    public Class<EWalletDeleteCardResponse> responseClass() {
+        return EWalletDeleteCardResponse.class;
     }
 
     @Override

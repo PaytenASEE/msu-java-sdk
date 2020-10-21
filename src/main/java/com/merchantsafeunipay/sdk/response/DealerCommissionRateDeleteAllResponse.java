@@ -1,3 +1,4 @@
 package com.merchantsafeunipay.sdk.response;
 
-public class DealerCommissionRateDeleteAllResponse extends ApiResponse {}
+public class DealerCommissionRateDeleteAllResponse extends ApiResponse {
+}

@@ -4,14 +4,10 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.InvoiceStatus;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryInvoiceResponse;
 
-@ResponseInfo(
-        responseClass = QueryInvoiceResponse.class
-)
-public class QueryInvoiceRequest extends ApiRequest {
+public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
     private String dealerCode;
 
     private String invoiceId;
@@ -31,6 +27,11 @@ public class QueryInvoiceRequest extends ApiRequest {
 
     public static QueryInvoiceRequestBuilder builder() {
         return new QueryInvoiceRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryInvoiceResponse> responseClass() {
+        return QueryInvoiceResponse.class;
     }
 
     @Override

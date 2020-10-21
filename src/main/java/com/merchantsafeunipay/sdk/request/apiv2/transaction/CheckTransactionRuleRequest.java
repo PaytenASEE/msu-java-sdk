@@ -4,17 +4,13 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
-import com.merchantsafeunipay.sdk.request.enumerated.TransactionType;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.request.enumerated.TransactionType;
 import com.merchantsafeunipay.sdk.response.CheckTransactionRuleResponse;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = CheckTransactionRuleResponse.class
-)
-public class CheckTransactionRuleRequest extends ApiRequest {
+public class CheckTransactionRuleRequest extends ApiRequest<CheckTransactionRuleResponse> {
     private TransactionType transactionType;
 
     private String dealerCode;
@@ -32,6 +28,11 @@ public class CheckTransactionRuleRequest extends ApiRequest {
 
     public static CheckTransactionRuleRequestBuilder builder() {
         return new CheckTransactionRuleRequestBuilder();
+    }
+
+    @Override
+    public Class<CheckTransactionRuleResponse> responseClass() {
+        return CheckTransactionRuleResponse.class;
     }
 
     @Override

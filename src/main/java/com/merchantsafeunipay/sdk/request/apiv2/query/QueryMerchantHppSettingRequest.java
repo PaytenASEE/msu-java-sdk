@@ -4,17 +4,18 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.response.QueryMerchantHppSettingResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryMerchantHppSettingResponse.class
-)
-public class QueryMerchantHppSettingRequest extends ApiRequest {
+public class QueryMerchantHppSettingRequest extends ApiRequest<QueryMerchantHppSettingResponse> {
     private QueryMerchantHppSettingRequest() {
     }
 
     public static QueryMerchantHppsettingRequestBuilder builder() {
         return new QueryMerchantHppsettingRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryMerchantHppSettingResponse> responseClass() {
+        return QueryMerchantHppSettingResponse.class;
     }
 
     @Override

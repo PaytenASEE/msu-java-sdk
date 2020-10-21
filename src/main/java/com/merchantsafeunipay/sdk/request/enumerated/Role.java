@@ -122,6 +122,7 @@ public enum Role {
      * Sale manager role
      */
     SLMNG;
+
     /**
      * Returns group user roles
      *

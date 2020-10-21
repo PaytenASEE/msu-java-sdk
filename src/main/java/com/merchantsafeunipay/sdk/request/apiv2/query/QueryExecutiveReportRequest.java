@@ -6,12 +6,8 @@ import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.enumerated.SplitPaymentType;
 import com.merchantsafeunipay.sdk.response.QueryExecutiveReportResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryExecutiveReportResponse.class
-)
-public class QueryExecutiveReportRequest extends ApiRequest {
+public class QueryExecutiveReportRequest extends ApiRequest<QueryExecutiveReportResponse> {
     private String merchantGroupName;
 
     private String merchantBusinessId;
@@ -27,6 +23,11 @@ public class QueryExecutiveReportRequest extends ApiRequest {
 
     public static QueryExecutiveReportRequestBuilder builder() {
         return new QueryExecutiveReportRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryExecutiveReportResponse> responseClass() {
+        return QueryExecutiveReportResponse.class;
     }
 
     @Override

@@ -6,12 +6,8 @@ import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.enumerated.RecurringPlanStatus;
 import com.merchantsafeunipay.sdk.response.QueryRecurringPlanResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryRecurringPlanResponse.class
-)
-public class QueryRecurringPlanRequest extends ApiRequest {
+public class QueryRecurringPlanRequest extends ApiRequest<QueryRecurringPlanResponse> {
     private String recurringPlanCode;
 
     private RecurringPlanStatus recurringPlanStatus;
@@ -37,6 +33,11 @@ public class QueryRecurringPlanRequest extends ApiRequest {
 
     public static QueryRecurringPlanRequestBuilder builder() {
         return new QueryRecurringPlanRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryRecurringPlanResponse> responseClass() {
+        return QueryRecurringPlanResponse.class;
     }
 
     @Override

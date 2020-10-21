@@ -3,15 +3,11 @@ package com.merchantsafeunipay.sdk.request.apiv2.paymentsystem;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.request.enumerated.PaymentSystemType;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.request.enumerated.PaymentSystemType;
 import com.merchantsafeunipay.sdk.response.PaymentSystemReadResponse;
 
-@ResponseInfo(
-        responseClass = PaymentSystemReadResponse.class
-)
-public class PaymentSystemReadRequest extends ApiRequest {
+public class PaymentSystemReadRequest extends ApiRequest<PaymentSystemReadResponse> {
     private String paymentSystem;
 
     private PaymentSystemType paymentSystemType;
@@ -21,6 +17,11 @@ public class PaymentSystemReadRequest extends ApiRequest {
 
     public static PaymentSystemReadRequestBuilder builder() {
         return new PaymentSystemReadRequestBuilder();
+    }
+
+    @Override
+    public Class<PaymentSystemReadResponse> responseClass() {
+        return PaymentSystemReadResponse.class;
     }
 
     @Override

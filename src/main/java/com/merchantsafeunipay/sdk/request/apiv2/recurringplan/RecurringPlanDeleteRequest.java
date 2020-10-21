@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.recurringplan;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.RecurringPlanDeleteResponse;
 
-@ResponseInfo(
-        responseClass = RecurringPlanDeleteResponse.class
-)
-public class RecurringPlanDeleteRequest extends ApiRequest {
+public class RecurringPlanDeleteRequest extends ApiRequest<RecurringPlanDeleteResponse> {
     private String recurringPlanCode;
 
     private RecurringPlanDeleteRequest() {
@@ -18,6 +14,11 @@ public class RecurringPlanDeleteRequest extends ApiRequest {
 
     public static RecurringPlanDeleteRequestBuilder builder() {
         return new RecurringPlanDeleteRequestBuilder();
+    }
+
+    @Override
+    public Class<RecurringPlanDeleteResponse> responseClass() {
+        return RecurringPlanDeleteResponse.class;
     }
 
     @Override

@@ -1,17 +1,13 @@
 package com.merchantsafeunipay.sdk.request.apiv2.messagecontent;
 
-import com.merchantsafeunipay.sdk.response.MessageContentEditResponse;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.MessageContentType;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.response.MessageContentEditResponse;
 
-@ResponseInfo(
-        responseClass = MessageContentEditResponse.class
-)
-public class MessageContentEditRequest extends ApiRequest {
+public class MessageContentEditRequest extends ApiRequest<MessageContentEditResponse> {
     private MessageContentType messageContentType;
 
     private String language;
@@ -27,6 +23,11 @@ public class MessageContentEditRequest extends ApiRequest {
 
     public static MessageContentEditRequestBuilder builder() {
         return new MessageContentEditRequestBuilder();
+    }
+
+    @Override
+    public Class<MessageContentEditResponse> responseClass() {
+        return MessageContentEditResponse.class;
     }
 
     @Override

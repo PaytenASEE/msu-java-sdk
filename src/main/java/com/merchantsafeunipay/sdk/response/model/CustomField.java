@@ -27,12 +27,12 @@ public class CustomField {
         return value;
     }
 
-    public String getIntegrationCode() {
-        return integrationCode;
-    }
-
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public String getIntegrationCode() {
+        return integrationCode;
     }
 
     public void setIntegrationCode(String integrationCode) {

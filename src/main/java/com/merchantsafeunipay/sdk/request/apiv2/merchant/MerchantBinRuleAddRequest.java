@@ -4,14 +4,10 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.*;
 import com.merchantsafeunipay.sdk.response.MerchantBinRuleAddResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = MerchantBinRuleAddResponse.class
-)
-public class MerchantBinRuleAddRequest extends ApiRequest {
+public class MerchantBinRuleAddRequest extends ApiRequest<MerchantBinRuleAddResponse> {
     private String ruleName;
 
     private String divertedPsName;
@@ -39,6 +35,11 @@ public class MerchantBinRuleAddRequest extends ApiRequest {
 
     public static MerchantBinRuleAddRequestBuilder builder() {
         return new MerchantBinRuleAddRequestBuilder();
+    }
+
+    @Override
+    public Class<MerchantBinRuleAddResponse> responseClass() {
+        return MerchantBinRuleAddResponse.class;
     }
 
     @Override

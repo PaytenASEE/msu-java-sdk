@@ -1,3 +1,4 @@
 package com.merchantsafeunipay.sdk.response;
 
-public class BkmTransactionEditResponse extends BkmTransactionResponse {}
+public class BkmTransactionEditResponse extends BkmTransactionResponse {
+}

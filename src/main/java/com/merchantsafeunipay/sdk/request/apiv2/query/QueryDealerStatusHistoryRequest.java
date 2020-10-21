@@ -6,12 +6,8 @@ import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.enumerated.Status;
 import com.merchantsafeunipay.sdk.response.QueryDealerStatusHistoryResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryDealerStatusHistoryResponse.class
-)
-public class QueryDealerStatusHistoryRequest extends ApiRequest {
+public class QueryDealerStatusHistoryRequest extends ApiRequest<QueryDealerStatusHistoryResponse> {
     private String dealerCodes;
 
     private Status status;
@@ -27,6 +23,11 @@ public class QueryDealerStatusHistoryRequest extends ApiRequest {
 
     public static QueryDealerStatusHistoryRequestBuilder builder() {
         return new QueryDealerStatusHistoryRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryDealerStatusHistoryResponse> responseClass() {
+        return QueryDealerStatusHistoryResponse.class;
     }
 
     @Override

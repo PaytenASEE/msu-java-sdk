@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.ResetPasswordResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = ResetPasswordResponse.class
-)
-public class ResetPasswordRequest extends ApiRequest {
+public class ResetPasswordRequest extends ApiRequest<ResetPasswordResponse> {
     private String oldPassword;
 
     private String recoveryToken;
@@ -26,6 +22,11 @@ public class ResetPasswordRequest extends ApiRequest {
 
     public static ResetPasswordRequestBuilder builder() {
         return new ResetPasswordRequestBuilder();
+    }
+
+    @Override
+    public Class<ResetPasswordResponse> responseClass() {
+        return ResetPasswordResponse.class;
     }
 
     @Override

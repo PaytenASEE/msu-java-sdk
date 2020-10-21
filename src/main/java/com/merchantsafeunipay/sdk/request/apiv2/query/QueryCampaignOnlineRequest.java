@@ -6,15 +6,11 @@ import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryCampaignOnlineResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
 import java.math.BigDecimal;
 import java.util.Map;
 
-@ResponseInfo(
-        responseClass = QueryCampaignOnlineResponse.class
-)
-public class QueryCampaignOnlineRequest extends ApiRequest {
+public class QueryCampaignOnlineRequest extends ApiRequest<QueryCampaignOnlineResponse> {
     private String installments;
 
     private String merchantPaymentId;
@@ -50,6 +46,11 @@ public class QueryCampaignOnlineRequest extends ApiRequest {
 
     public static QueryCampaignOnlineRequestBuilder builder() {
         return new QueryCampaignOnlineRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryCampaignOnlineResponse> responseClass() {
+        return QueryCampaignOnlineResponse.class;
     }
 
     @Override

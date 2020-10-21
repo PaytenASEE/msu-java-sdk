@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.query;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryTransactionResponse;
 
-@ResponseInfo(
-        responseClass = QueryTransactionResponse.class
-)
-public class QueryTransactionRequest extends ApiRequest {
+public class QueryTransactionRequest extends ApiRequest<QueryTransactionResponse> {
     private String pgTranId;
 
     private String transactionStatus;
@@ -38,6 +34,11 @@ public class QueryTransactionRequest extends ApiRequest {
 
     public static QueryTransactionRequestBuilder builder() {
         return new QueryTransactionRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryTransactionResponse> responseClass() {
+        return QueryTransactionResponse.class;
     }
 
     @Override

@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryPasswordTokenResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryPasswordTokenResponse.class
-)
-public class QueryPasswordTokenRequest extends ApiRequest {
+public class QueryPasswordTokenRequest extends ApiRequest<QueryPasswordTokenResponse> {
     private String recoveryToken;
 
     private QueryPasswordTokenRequest() {
@@ -18,6 +14,11 @@ public class QueryPasswordTokenRequest extends ApiRequest {
 
     public static QueryPasswordTokenRequestBuilder builder() {
         return new QueryPasswordTokenRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryPasswordTokenResponse> responseClass() {
+        return QueryPasswordTokenResponse.class;
     }
 
     @Override

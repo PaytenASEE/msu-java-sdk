@@ -7,12 +7,8 @@ import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.enumerated.PaymentSystemType;
 import com.merchantsafeunipay.sdk.request.enumerated.Status;
 import com.merchantsafeunipay.sdk.response.QueryInstallmentResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryInstallmentResponse.class
-)
-public class QueryInstallmentRequest extends ApiRequest {
+public class QueryInstallmentRequest extends ApiRequest<QueryInstallmentResponse> {
     private String paymentSystem;
 
     private PaymentSystemType paymentSystemType;
@@ -26,6 +22,11 @@ public class QueryInstallmentRequest extends ApiRequest {
 
     public static QueryInstallmentRequestBuilder builder() {
         return new QueryInstallmentRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryInstallmentResponse> responseClass() {
+        return QueryInstallmentResponse.class;
     }
 
     @Override

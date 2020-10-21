@@ -1,3 +1,4 @@
 package com.merchantsafeunipay.sdk.response;
 
-public class MerchantUserDealerRemoveResponse extends ApiResponse {}
+public class MerchantUserDealerRemoveResponse extends ApiResponse {
+}

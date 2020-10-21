@@ -6,14 +6,10 @@ import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryPointsResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = QueryPointsResponse.class
-)
-public class QueryPointsRequest extends ApiRequest {
+public class QueryPointsRequest extends ApiRequest<QueryPointsResponse> {
     private String merchantPaymentId;
 
     private BigDecimal amount;
@@ -45,6 +41,11 @@ public class QueryPointsRequest extends ApiRequest {
 
     public static QueryPointsRequestBuilder builder() {
         return new QueryPointsRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryPointsResponse> responseClass() {
+        return QueryPointsResponse.class;
     }
 
     @Override

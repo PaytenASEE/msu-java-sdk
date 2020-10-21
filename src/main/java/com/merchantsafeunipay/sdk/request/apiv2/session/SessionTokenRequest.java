@@ -3,21 +3,14 @@ package com.merchantsafeunipay.sdk.request.apiv2.session;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.complex.OrderItem;
-import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.request.enumerated.CardPanType;
-import com.merchantsafeunipay.sdk.request.enumerated.Currency;
-import com.merchantsafeunipay.sdk.request.enumerated.Param;
-import com.merchantsafeunipay.sdk.request.enumerated.SessionType;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
+import com.merchantsafeunipay.sdk.request.enumerated.*;
 import com.merchantsafeunipay.sdk.response.SessionTokenResponse;
+
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-@ResponseInfo(
-        responseClass = SessionTokenResponse.class
-)
-public class SessionTokenRequest extends ApiRequest {
+public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
     private SessionType sessionType;
 
     private String customer;
@@ -89,6 +82,11 @@ public class SessionTokenRequest extends ApiRequest {
 
     public static SessionTokenRequestBuilder builder() {
         return new SessionTokenRequestBuilder();
+    }
+
+    @Override
+    public Class<SessionTokenResponse> responseClass() {
+        return SessionTokenResponse.class;
     }
 
     @Override

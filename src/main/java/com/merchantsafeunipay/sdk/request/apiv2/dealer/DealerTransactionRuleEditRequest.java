@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.dealer;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.DealerTransactionRuleEditResponse;
 
-@ResponseInfo(
-        responseClass = DealerTransactionRuleEditResponse.class
-)
-public class DealerTransactionRuleEditRequest extends ApiRequest {
+public class DealerTransactionRuleEditRequest extends ApiRequest<DealerTransactionRuleEditResponse> {
     private String dealerCode;
 
     private String rule;
@@ -20,6 +16,11 @@ public class DealerTransactionRuleEditRequest extends ApiRequest {
 
     public static DealerTransactionRuleEditRequestBuilder builder() {
         return new DealerTransactionRuleEditRequestBuilder();
+    }
+
+    @Override
+    public Class<DealerTransactionRuleEditResponse> responseClass() {
+        return DealerTransactionRuleEditResponse.class;
     }
 
     @Override

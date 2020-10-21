@@ -1,9 +1,9 @@
 package com.merchantsafeunipay.sdk.response;
 
-import javax.xml.bind.annotation.XmlElement;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.merchantsafeunipay.sdk.response.model.Transaction;
+
+import javax.xml.bind.annotation.XmlElement;
 
 public class QueryBkmTransactionResponse extends ApiResponse {
     @JsonProperty(value = "bkmTransaction")

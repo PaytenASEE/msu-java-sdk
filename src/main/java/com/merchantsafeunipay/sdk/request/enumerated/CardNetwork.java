@@ -5,12 +5,12 @@ import java.util.List;
 
 /**
  * CardNetwork Maximum length 8-char
- * 
+ *
  * @author Anil Tangul <anil.tangul@asseco-see.com.tr>
  * @author Krenar Muhidini <krenar.muhidini@asseco-see.mk>
  */
 public enum CardNetwork {
-	// @formatter:off
+    // @formatter:off
 	/**
 	 * Bonus
 	 */
@@ -94,14 +94,6 @@ public enum CardNetwork {
 		this.paymentSystemTypeList = paymentSystemTypeList;
 	}
 
-	public List<PaymentSystemType> getPaymentSystemTypeList() {
-		return paymentSystemTypeList;
-	}
-
-	public boolean containsPaymentSystem(PaymentSystemType psType) {
-		return this.getPaymentSystemTypeList().contains(psType);
-	}
-
 	public static CardNetwork detectNetwork(PaymentSystemType type) {
 		for (CardNetwork cn : values()) {
 			if (cn.containsPaymentSystem(type)) {
@@ -110,13 +102,20 @@ public enum CardNetwork {
 		}
 		return CardNetwork.UNKNOWN;
 	}
-	
-	
+
 	public static CardNetwork fromString(String input){
 		for(CardNetwork cn: values()){
 			if(cn.name().equals(input))
 				return cn;
 		}
 		return null;
+	}
+
+	public List<PaymentSystemType> getPaymentSystemTypeList() {
+		return paymentSystemTypeList;
+	}
+	
+	public boolean containsPaymentSystem(PaymentSystemType psType) {
+		return this.getPaymentSystemTypeList().contains(psType);
 	}
 }

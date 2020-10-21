@@ -5,16 +5,12 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
 import com.merchantsafeunipay.sdk.request.enumerated.Occurrence;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.RecurringPlanAddResponse;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = RecurringPlanAddResponse.class
-)
-public class RecurringPlanAddRequest extends ApiRequest {
+public class RecurringPlanAddRequest extends ApiRequest<RecurringPlanAddResponse> {
     private String cardToken;
 
     private String customer;
@@ -54,6 +50,11 @@ public class RecurringPlanAddRequest extends ApiRequest {
 
     public static RecurringPlanAddRequestBuilder builder() {
         return new RecurringPlanAddRequestBuilder();
+    }
+
+    @Override
+    public Class<RecurringPlanAddResponse> responseClass() {
+        return RecurringPlanAddResponse.class;
     }
 
     @Override

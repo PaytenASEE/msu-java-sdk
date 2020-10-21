@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.paymentsystem;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.SharedPaymentSystemDeleteResponse;
 
-@ResponseInfo(
-        responseClass = SharedPaymentSystemDeleteResponse.class
-)
-public class SharedPaymentSystemDeleteRequest extends ApiRequest {
+public class SharedPaymentSystemDeleteRequest extends ApiRequest<SharedPaymentSystemDeleteResponse> {
     private String associatedMerchant;
 
     private String associatedPaymentSystems;
@@ -20,6 +16,11 @@ public class SharedPaymentSystemDeleteRequest extends ApiRequest {
 
     public static SharedPaymentSystemDeleteRequestBuilder builder() {
         return new SharedPaymentSystemDeleteRequestBuilder();
+    }
+
+    @Override
+    public Class<SharedPaymentSystemDeleteResponse> responseClass() {
+        return SharedPaymentSystemDeleteResponse.class;
     }
 
     @Override

@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.customer;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.CustomerEditResponse;
 
-@ResponseInfo(
-        responseClass = CustomerEditResponse.class
-)
-public class CustomerEditRequest extends ApiRequest {
+public class CustomerEditRequest extends ApiRequest<CustomerEditResponse> {
     private String cardToken;
 
     private String currentcustomerid;
@@ -32,6 +28,11 @@ public class CustomerEditRequest extends ApiRequest {
 
     public static CustomerEditRequestBuilder builder() {
         return new CustomerEditRequestBuilder();
+    }
+
+    @Override
+    public Class<CustomerEditResponse> responseClass() {
+        return CustomerEditResponse.class;
     }
 
     @Override

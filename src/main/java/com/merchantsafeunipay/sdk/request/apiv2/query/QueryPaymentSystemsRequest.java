@@ -6,14 +6,10 @@ import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.enumerated.YesNo;
 import com.merchantsafeunipay.sdk.response.QueryPaymentSystemsResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = QueryPaymentSystemsResponse.class
-)
-public class QueryPaymentSystemsRequest extends ApiRequest {
+public class QueryPaymentSystemsRequest extends ApiRequest<QueryPaymentSystemsResponse> {
     private String bin;
 
     private String cardToken;
@@ -35,6 +31,11 @@ public class QueryPaymentSystemsRequest extends ApiRequest {
 
     public static QueryPaymentSystemsRequestBuilder builder() {
         return new QueryPaymentSystemsRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryPaymentSystemsResponse> responseClass() {
+        return QueryPaymentSystemsResponse.class;
     }
 
     @Override

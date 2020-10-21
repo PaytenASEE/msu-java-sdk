@@ -3,17 +3,13 @@ package com.merchantsafeunipay.sdk.request.apiv2.query;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.request.enumerated.PaymentSystemType;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.request.enumerated.PaymentSystemType;
 import com.merchantsafeunipay.sdk.response.QueryPaymentSystemDataResponse;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = QueryPaymentSystemDataResponse.class
-)
-public class QueryPaymentSystemDataRequest extends ApiRequest {
+public class QueryPaymentSystemDataRequest extends ApiRequest<QueryPaymentSystemDataResponse> {
     private String installments;
 
     private String bin;
@@ -31,6 +27,11 @@ public class QueryPaymentSystemDataRequest extends ApiRequest {
 
     public static QueryPaymentSystemDataRequestBuilder builder() {
         return new QueryPaymentSystemDataRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryPaymentSystemDataResponse> responseClass() {
+        return QueryPaymentSystemDataResponse.class;
     }
 
     @Override

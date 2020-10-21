@@ -3,15 +3,11 @@ package com.merchantsafeunipay.sdk.request.apiv2.query;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
+import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.enumerated.Status;
 import com.merchantsafeunipay.sdk.response.BaseCustomFieldResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
-import com.merchantsafeunipay.sdk.request.enumerated.Param;
 
-@ResponseInfo(
-        responseClass = BaseCustomFieldResponse.class
-)
-public class QueryCustomFieldRequest extends ApiRequest {
+public class QueryCustomFieldRequest extends ApiRequest<BaseCustomFieldResponse> {
     private String code;
 
     private Status status;
@@ -21,6 +17,11 @@ public class QueryCustomFieldRequest extends ApiRequest {
 
     public static QueryCustomFieldRequestBuilder builder() {
         return new QueryCustomFieldRequestBuilder();
+    }
+
+    @Override
+    public Class<BaseCustomFieldResponse> responseClass() {
+        return BaseCustomFieldResponse.class;
     }
 
     @Override

@@ -3,17 +3,13 @@ package com.merchantsafeunipay.sdk.request.apiv2.dealer;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.request.enumerated.Status;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.request.enumerated.Status;
 import com.merchantsafeunipay.sdk.response.DealerCommissionRateAddResponse;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = DealerCommissionRateAddResponse.class
-)
-public class DealerCommissionRateAddRequest extends ApiRequest {
+public class DealerCommissionRateAddRequest extends ApiRequest<DealerCommissionRateAddResponse> {
     private String dealerCode;
 
     private String installments;
@@ -29,6 +25,11 @@ public class DealerCommissionRateAddRequest extends ApiRequest {
 
     public static DealerCommissionRateAddRequestBuilder builder() {
         return new DealerCommissionRateAddRequestBuilder();
+    }
+
+    @Override
+    public Class<DealerCommissionRateAddResponse> responseClass() {
+        return DealerCommissionRateAddResponse.class;
     }
 
     @Override

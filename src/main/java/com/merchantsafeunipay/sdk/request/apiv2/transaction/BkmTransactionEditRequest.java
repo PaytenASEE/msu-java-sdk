@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.transaction;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.BkmTransactionEditResponse;
 
-@ResponseInfo(
-        responseClass = BkmTransactionEditResponse.class
-)
-public class BkmTransactionEditRequest extends ApiRequest {
+public class BkmTransactionEditRequest extends ApiRequest<BkmTransactionEditResponse> {
     private String bkmToken;
 
     private String paymentSystem;
@@ -38,6 +34,11 @@ public class BkmTransactionEditRequest extends ApiRequest {
 
     public static BkmTransactionEditRequestBuilder builder() {
         return new BkmTransactionEditRequestBuilder();
+    }
+
+    @Override
+    public Class<BkmTransactionEditResponse> responseClass() {
+        return BkmTransactionEditResponse.class;
     }
 
     @Override

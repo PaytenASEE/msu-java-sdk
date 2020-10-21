@@ -5,15 +5,11 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.enumerated.RecurringPlanStatus;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.response.RecurringPlanEditResponse;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = RecurringPlanEditResponse.class
-)
-public class RecurringPlanEditRequest extends ApiRequest {
+public class RecurringPlanEditRequest extends ApiRequest<RecurringPlanEditResponse> {
     private String recurringPlanCode;
 
     private RecurringPlanStatus recurringPlanStatus;
@@ -27,6 +23,11 @@ public class RecurringPlanEditRequest extends ApiRequest {
 
     public static RecurringPlanEditRequestBuilder builder() {
         return new RecurringPlanEditRequestBuilder();
+    }
+
+    @Override
+    public Class<RecurringPlanEditResponse> responseClass() {
+        return RecurringPlanEditResponse.class;
     }
 
     @Override

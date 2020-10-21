@@ -3,18 +3,19 @@ package com.merchantsafeunipay.sdk.request.apiv2.query;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.response.QuerySessionResponse;
 
-@ResponseInfo(
-        responseClass = QuerySessionResponse.class
-)
-public class QuerySessionRequest extends ApiRequest {
+public class QuerySessionRequest extends ApiRequest<QuerySessionResponse> {
     private QuerySessionRequest() {
     }
 
     public static QuerySessionRequestBuilder builder() {
         return new QuerySessionRequestBuilder();
+    }
+
+    @Override
+    public Class<QuerySessionResponse> responseClass() {
+        return QuerySessionResponse.class;
     }
 
     @Override

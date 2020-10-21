@@ -1,9 +1,9 @@
 package com.merchantsafeunipay.sdk.response;
 
 public class RefundResponseResponse extends ApiResponse {
-	private String refundType;
+    private String refundType;
 
-	public String getRefundType() {
-		return refundType;
-	}
+    public String getRefundType() {
+        return refundType;
+    }
 }

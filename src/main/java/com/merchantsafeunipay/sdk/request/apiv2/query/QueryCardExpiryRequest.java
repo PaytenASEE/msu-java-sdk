@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryCardExpiryResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryCardExpiryResponse.class
-)
-public class QueryCardExpiryRequest extends ApiRequest {
+public class QueryCardExpiryRequest extends ApiRequest<QueryCardExpiryResponse> {
     private String customer;
 
     private String offset;
@@ -22,6 +18,11 @@ public class QueryCardExpiryRequest extends ApiRequest {
 
     public static QueryCardExpiryRequestBuilder builder() {
         return new QueryCardExpiryRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryCardExpiryResponse> responseClass() {
+        return QueryCardExpiryResponse.class;
     }
 
     @Override

@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.transaction;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.ApproveTransactionResponse;
 
-@ResponseInfo(
-        responseClass = ApproveTransactionResponse.class
-)
-public class ApproveTransactionRequest extends ApiRequest {
+public class ApproveTransactionRequest extends ApiRequest<ApproveTransactionResponse> {
     private String pgTranId;
 
     private ApproveTransactionRequest() {
@@ -18,6 +14,11 @@ public class ApproveTransactionRequest extends ApiRequest {
 
     public static ApproveTransactionRequestBuilder builder() {
         return new ApproveTransactionRequestBuilder();
+    }
+
+    @Override
+    public Class<ApproveTransactionResponse> responseClass() {
+        return ApproveTransactionResponse.class;
     }
 
     @Override

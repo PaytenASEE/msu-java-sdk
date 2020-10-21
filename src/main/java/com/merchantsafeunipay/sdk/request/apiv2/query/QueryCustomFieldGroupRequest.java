@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryCustomFieldGroupResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryCustomFieldGroupResponse.class
-)
-public class QueryCustomFieldGroupRequest extends ApiRequest {
+public class QueryCustomFieldGroupRequest extends ApiRequest<QueryCustomFieldGroupResponse> {
     private String code;
 
     private QueryCustomFieldGroupRequest() {
@@ -18,6 +14,11 @@ public class QueryCustomFieldGroupRequest extends ApiRequest {
 
     public static QueryCustomFieldGroupRequestBuilder builder() {
         return new QueryCustomFieldGroupRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryCustomFieldGroupResponse> responseClass() {
+        return QueryCustomFieldGroupResponse.class;
     }
 
     @Override

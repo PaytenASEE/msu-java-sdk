@@ -1,57 +1,57 @@
 package com.merchantsafeunipay.sdk.response.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonInclude(Include.NON_NULL)
 public class DealerStatusHistory {
-	private User user;
-	private Dealer dealer;
-	private String status;
-	private String editedTs;
-	private String reason;
+    private User user;
+    private Dealer dealer;
+    private String status;
+    private String editedTs;
+    private String reason;
 
-	public User getUser() {
-		return user;
-	}
+    public User getUser() {
+        return user;
+    }
 
-	public Dealer getDealer() {
-		return dealer;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public Dealer getDealer() {
+        return dealer;
+    }
 
-	public String getEditedTs() {
-		return editedTs;
-	}
+    public void setDealer(Dealer dealer) {
+        this.dealer = dealer;
+    }
 
-	public String getReason() {
-		return reason;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	public void setDealer(Dealer dealer) {
-		this.dealer = dealer;
-	}
+    public String getEditedTs() {
+        return editedTs;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setEditedTs(String editedTs) {
+        this.editedTs = editedTs;
+    }
 
-	public void setEditedTs(String editedTs) {
-		this.editedTs = editedTs;
-	}
+    public String getReason() {
+        return reason;
+    }
 
-	public void setReason(String reason) {
-		this.reason = reason;
-	}
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
 }

@@ -3,16 +3,12 @@ package com.merchantsafeunipay.sdk.request.apiv2.paymentsystem;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
+import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.enumerated.PaymentSystemRuleType;
 import com.merchantsafeunipay.sdk.request.enumerated.Status;
 import com.merchantsafeunipay.sdk.response.BasePaymentSystemRuleResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
-import com.merchantsafeunipay.sdk.request.enumerated.Param;
 
-@ResponseInfo(
-        responseClass = BasePaymentSystemRuleResponse.class
-)
-public class PaymentSystemRuleAddRequest extends ApiRequest {
+public class PaymentSystemRuleAddRequest extends ApiRequest<BasePaymentSystemRuleResponse> {
     private PaymentSystemRuleType ruleType;
 
     private String paymentSystemRuleScope;
@@ -26,6 +22,11 @@ public class PaymentSystemRuleAddRequest extends ApiRequest {
 
     public static PaymentSystemRuleAddRequestBuilder builder() {
         return new PaymentSystemRuleAddRequestBuilder();
+    }
+
+    @Override
+    public Class<BasePaymentSystemRuleResponse> responseClass() {
+        return BasePaymentSystemRuleResponse.class;
     }
 
     @Override

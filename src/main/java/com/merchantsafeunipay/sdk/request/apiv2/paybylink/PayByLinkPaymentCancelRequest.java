@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.PayByLinkPaymentCancelResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = PayByLinkPaymentCancelResponse.class
-)
-public class PayByLinkPaymentCancelRequest extends ApiRequest {
+public class PayByLinkPaymentCancelRequest extends ApiRequest<PayByLinkPaymentCancelResponse> {
     private String payByLinkToken;
 
     private PayByLinkPaymentCancelRequest() {
@@ -18,6 +14,11 @@ public class PayByLinkPaymentCancelRequest extends ApiRequest {
 
     public static PayByLinkPaymentCancelRequestBuilder builder() {
         return new PayByLinkPaymentCancelRequestBuilder();
+    }
+
+    @Override
+    public Class<PayByLinkPaymentCancelResponse> responseClass() {
+        return PayByLinkPaymentCancelResponse.class;
     }
 
     @Override

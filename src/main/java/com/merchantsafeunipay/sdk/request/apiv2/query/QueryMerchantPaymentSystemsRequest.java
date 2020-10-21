@@ -6,14 +6,10 @@ import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.enumerated.YesNo;
 import com.merchantsafeunipay.sdk.response.QueryMerchantPaymentSystemsResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = QueryMerchantPaymentSystemsResponse.class
-)
-public class QueryMerchantPaymentSystemsRequest extends ApiRequest {
+public class QueryMerchantPaymentSystemsRequest extends ApiRequest<QueryMerchantPaymentSystemsResponse> {
     private String dealerCode;
 
     private BigDecimal amount;
@@ -29,6 +25,11 @@ public class QueryMerchantPaymentSystemsRequest extends ApiRequest {
 
     public static QueryMerchantPaymentSystemsRequestBuilder builder() {
         return new QueryMerchantPaymentSystemsRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryMerchantPaymentSystemsResponse> responseClass() {
+        return QueryMerchantPaymentSystemsResponse.class;
     }
 
     @Override

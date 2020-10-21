@@ -3,15 +3,11 @@ package com.merchantsafeunipay.sdk.request.apiv2.query;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.request.enumerated.PayByLinkStatus;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.request.enumerated.PayByLinkStatus;
 import com.merchantsafeunipay.sdk.response.QueryPayByLinkPaymentResponse;
 
-@ResponseInfo(
-        responseClass = QueryPayByLinkPaymentResponse.class
-)
-public class QueryPayByLinkPaymentRequest extends ApiRequest {
+public class QueryPayByLinkPaymentRequest extends ApiRequest<QueryPayByLinkPaymentResponse> {
     private String payByLinkToken;
 
     private String startDate;
@@ -31,6 +27,11 @@ public class QueryPayByLinkPaymentRequest extends ApiRequest {
 
     public static QueryPayByLinkPaymentRequestBuilder builder() {
         return new QueryPayByLinkPaymentRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryPayByLinkPaymentResponse> responseClass() {
+        return QueryPayByLinkPaymentResponse.class;
     }
 
     @Override

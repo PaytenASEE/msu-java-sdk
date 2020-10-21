@@ -5,17 +5,13 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.CardPanType;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.FinancialResponse;
 
 import java.math.BigDecimal;
 import java.util.Map;
 
-@ResponseInfo(
-        responseClass = FinancialResponse.class
-)
-public class DetachedRefundRequest extends ApiRequest {
+public class DetachedRefundRequest extends ApiRequest<FinancialResponse> {
     private String merchantPaymentId;
 
     private BigDecimal amount;
@@ -53,6 +49,11 @@ public class DetachedRefundRequest extends ApiRequest {
 
     public static DetachedRefundRequestBuilder builder() {
         return new DetachedRefundRequestBuilder();
+    }
+
+    @Override
+    public Class<FinancialResponse> responseClass() {
+        return FinancialResponse.class;
     }
 
     @Override

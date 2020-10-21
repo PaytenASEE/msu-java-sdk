@@ -4,14 +4,10 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.CustomFieldGroupBehaviour;
-import com.merchantsafeunipay.sdk.response.BaseCustomFieldGroupResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.response.BaseCustomFieldGroupResponse;
 
-@ResponseInfo(
-        responseClass = BaseCustomFieldGroupResponse.class
-)
-public class CustomFieldGroupAddRequest extends ApiRequest {
+public class CustomFieldGroupAddRequest extends ApiRequest<BaseCustomFieldGroupResponse> {
     private String name;
 
     private CustomFieldGroupBehaviour behaviour;
@@ -21,6 +17,11 @@ public class CustomFieldGroupAddRequest extends ApiRequest {
 
     public static CustomFieldGroupAddRequestBuilder builder() {
         return new CustomFieldGroupAddRequestBuilder();
+    }
+
+    @Override
+    public Class<BaseCustomFieldGroupResponse> responseClass() {
+        return BaseCustomFieldGroupResponse.class;
     }
 
     @Override

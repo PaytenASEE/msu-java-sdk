@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryDealerFeatureResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryDealerFeatureResponse.class
-)
-public class QueryDealerFeatureRequest extends ApiRequest {
+public class QueryDealerFeatureRequest extends ApiRequest<QueryDealerFeatureResponse> {
     private String feature;
 
     private QueryDealerFeatureRequest() {
@@ -18,6 +14,11 @@ public class QueryDealerFeatureRequest extends ApiRequest {
 
     public static QueryDealerFeatureRequestBuilder builder() {
         return new QueryDealerFeatureRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryDealerFeatureResponse> responseClass() {
+        return QueryDealerFeatureResponse.class;
     }
 
     @Override

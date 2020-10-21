@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.recurringplan;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.RecurringPlanCardAddResponse;
 
-@ResponseInfo(
-        responseClass = RecurringPlanCardAddResponse.class
-)
-public class RecurringPlanCardAddRequest extends ApiRequest {
+public class RecurringPlanCardAddRequest extends ApiRequest<RecurringPlanCardAddResponse> {
     private String recurringPlanCode;
 
     private String cardPan;
@@ -28,6 +24,11 @@ public class RecurringPlanCardAddRequest extends ApiRequest {
 
     public static RecurringPlanCardAddRequestBuilder builder() {
         return new RecurringPlanCardAddRequestBuilder();
+    }
+
+    @Override
+    public Class<RecurringPlanCardAddResponse> responseClass() {
+        return RecurringPlanCardAddResponse.class;
     }
 
     @Override

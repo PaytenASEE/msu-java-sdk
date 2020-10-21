@@ -4,16 +4,12 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.InvoiceAddResponse;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = InvoiceAddResponse.class
-)
-public class InvoiceAddRequest extends ApiRequest {
+public class InvoiceAddRequest extends ApiRequest<InvoiceAddResponse> {
     private String dealerCode;
 
     private String invoiceId;
@@ -37,6 +33,11 @@ public class InvoiceAddRequest extends ApiRequest {
 
     public static InvoiceAddRequestBuilder builder() {
         return new InvoiceAddRequestBuilder();
+    }
+
+    @Override
+    public Class<InvoiceAddResponse> responseClass() {
+        return InvoiceAddResponse.class;
     }
 
     @Override

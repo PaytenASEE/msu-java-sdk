@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.merchant;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.MerchantUserAddResponse;
 
-@ResponseInfo(
-        responseClass = MerchantUserAddResponse.class
-)
-public class MerchantUserAddRequest extends ApiRequest {
+public class MerchantUserAddRequest extends ApiRequest<MerchantUserAddResponse> {
     private String userName;
 
     private String merchantUserEmail;
@@ -28,6 +24,11 @@ public class MerchantUserAddRequest extends ApiRequest {
 
     public static MerchantUserAddRequestBuilder builder() {
         return new MerchantUserAddRequestBuilder();
+    }
+
+    @Override
+    public Class<MerchantUserAddResponse> responseClass() {
+        return MerchantUserAddResponse.class;
     }
 
     @Override

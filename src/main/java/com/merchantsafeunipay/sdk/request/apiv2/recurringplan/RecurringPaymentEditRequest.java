@@ -3,17 +3,13 @@ package com.merchantsafeunipay.sdk.request.apiv2.recurringplan;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.request.enumerated.RecurringPaymentStatus;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.request.enumerated.RecurringPaymentStatus;
 import com.merchantsafeunipay.sdk.response.RecurringPaymentEditResponse;
 
 import java.math.BigDecimal;
 
-@ResponseInfo(
-        responseClass = RecurringPaymentEditResponse.class
-)
-public class RecurringPaymentEditRequest extends ApiRequest {
+public class RecurringPaymentEditRequest extends ApiRequest<RecurringPaymentEditResponse> {
     private String recurringPlanCode;
 
     private BigDecimal recurrence;
@@ -27,6 +23,11 @@ public class RecurringPaymentEditRequest extends ApiRequest {
 
     public static RecurringPaymentEditRequestBuilder builder() {
         return new RecurringPaymentEditRequestBuilder();
+    }
+
+    @Override
+    public Class<RecurringPaymentEditResponse> responseClass() {
+        return RecurringPaymentEditResponse.class;
     }
 
     @Override

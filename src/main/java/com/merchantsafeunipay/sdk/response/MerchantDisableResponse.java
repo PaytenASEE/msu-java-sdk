@@ -1,3 +1,4 @@
 package com.merchantsafeunipay.sdk.response;
 
-public class MerchantDisableResponse extends ApiResponse {}
+public class MerchantDisableResponse extends ApiResponse {
+}

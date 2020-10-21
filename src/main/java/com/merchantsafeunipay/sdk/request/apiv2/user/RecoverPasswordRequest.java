@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.RecoverPasswordResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = RecoverPasswordResponse.class
-)
-public class RecoverPasswordRequest extends ApiRequest {
+public class RecoverPasswordRequest extends ApiRequest<RecoverPasswordResponse> {
     private String userEmail;
 
     private RecoverPasswordRequest() {
@@ -18,6 +14,11 @@ public class RecoverPasswordRequest extends ApiRequest {
 
     public static RecoverPasswordRequestBuilder builder() {
         return new RecoverPasswordRequestBuilder();
+    }
+
+    @Override
+    public Class<RecoverPasswordResponse> responseClass() {
+        return RecoverPasswordResponse.class;
     }
 
     @Override

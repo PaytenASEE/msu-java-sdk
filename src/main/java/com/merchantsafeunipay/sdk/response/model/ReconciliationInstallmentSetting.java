@@ -14,68 +14,68 @@ import java.util.List;
 @JsonInclude(Include.NON_NULL)
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ReconciliationInstallmentSetting {
-	private String identifier;
-	private BigDecimal serviceCommissionRate;
-	private BigDecimal pointCommissionRate;
-	private BigDecimal serviceCutoffRate;
-	@JsonProperty(value = "dueDay")
-	private List<Integer> dueDays = new ArrayList<>();
-	private boolean status;
-	
-	public ReconciliationInstallmentSetting() {
-	}
+    private String identifier;
+    private BigDecimal serviceCommissionRate;
+    private BigDecimal pointCommissionRate;
+    private BigDecimal serviceCutoffRate;
+    @JsonProperty(value = "dueDay")
+    private List<Integer> dueDays = new ArrayList<>();
+    private boolean status;
 
-	public String getIdentifier() {
-		return identifier;
-	}
+    public ReconciliationInstallmentSetting() {
+    }
 
-	public void setIdentifier(String identifier) {
-		this.identifier = identifier;
-	}
+    public String getIdentifier() {
+        return identifier;
+    }
 
-	public BigDecimal getServiceCommissionRate() {
-		return serviceCommissionRate;
-	}
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
+    }
 
-	public void setServiceCommissionRate(BigDecimal serviceCommissionRate) {
-		this.serviceCommissionRate = serviceCommissionRate;
-	}
+    public BigDecimal getServiceCommissionRate() {
+        return serviceCommissionRate;
+    }
 
-	public BigDecimal getPointCommissionRate() {
-		return pointCommissionRate;
-	}
+    public void setServiceCommissionRate(BigDecimal serviceCommissionRate) {
+        this.serviceCommissionRate = serviceCommissionRate;
+    }
 
-	public void setPointCommissionRate(BigDecimal pointCommissionRate) {
-		this.pointCommissionRate = pointCommissionRate;
-	}
+    public BigDecimal getPointCommissionRate() {
+        return pointCommissionRate;
+    }
 
-	public BigDecimal getServiceCutoffRate() {
-		return serviceCutoffRate;
-	}
+    public void setPointCommissionRate(BigDecimal pointCommissionRate) {
+        this.pointCommissionRate = pointCommissionRate;
+    }
 
-	public void setServiceCutoffRate(BigDecimal serviceCutoffRate) {
-		this.serviceCutoffRate = serviceCutoffRate;
-	}
+    public BigDecimal getServiceCutoffRate() {
+        return serviceCutoffRate;
+    }
 
-	public List<Integer> getDueDays() {
-		return dueDays;
-	}
+    public void setServiceCutoffRate(BigDecimal serviceCutoffRate) {
+        this.serviceCutoffRate = serviceCutoffRate;
+    }
 
-	public void setDueDays(List<Integer> dueDays) {
-		this.dueDays = dueDays;
-	}
+    public List<Integer> getDueDays() {
+        return dueDays;
+    }
 
-	public boolean isStatus() {
-		return status;
-	}
+    public void setDueDays(List<Integer> dueDays) {
+        this.dueDays = dueDays;
+    }
 
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
+    public boolean isStatus() {
+        return status;
+    }
 
-	@Override
-	public String toString() {
-		return "ReconciliationInstallmentSettingVO [identifier=" + identifier + ", serviceCommissionRate=" + serviceCommissionRate + ", pointCommissionRate="
-				+ pointCommissionRate + ", serviceCutoffRate=" + serviceCutoffRate + ", dueDays=" + dueDays + ", status=" + status + "]";
-	}
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "ReconciliationInstallmentSettingVO [identifier=" + identifier + ", serviceCommissionRate=" + serviceCommissionRate + ", pointCommissionRate="
+                + pointCommissionRate + ", serviceCutoffRate=" + serviceCutoffRate + ", dueDays=" + dueDays + ", status=" + status + "]";
+    }
 }

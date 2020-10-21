@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryUserRolePermissionResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryUserRolePermissionResponse.class
-)
-public class QueryUserRolePermissionRequest extends ApiRequest {
+public class QueryUserRolePermissionRequest extends ApiRequest<QueryUserRolePermissionResponse> {
     private String permission;
 
     private String role;
@@ -20,6 +16,11 @@ public class QueryUserRolePermissionRequest extends ApiRequest {
 
     public static QueryUserRolePermissionRequestBuilder builder() {
         return new QueryUserRolePermissionRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryUserRolePermissionResponse> responseClass() {
+        return QueryUserRolePermissionResponse.class;
     }
 
     @Override

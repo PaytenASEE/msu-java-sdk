@@ -6,12 +6,8 @@ import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.enumerated.Status;
 import com.merchantsafeunipay.sdk.response.QueryMerchantStatusHistoryResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryMerchantStatusHistoryResponse.class
-)
-public class QueryMerchantStatusHistoryRequest extends ApiRequest {
+public class QueryMerchantStatusHistoryRequest extends ApiRequest<QueryMerchantStatusHistoryResponse> {
     private Status status;
 
     private String startDate;
@@ -23,6 +19,11 @@ public class QueryMerchantStatusHistoryRequest extends ApiRequest {
 
     public static QueryMerchantStatusHistoryRequestBuilder builder() {
         return new QueryMerchantStatusHistoryRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryMerchantStatusHistoryResponse> responseClass() {
+        return QueryMerchantStatusHistoryResponse.class;
     }
 
     @Override

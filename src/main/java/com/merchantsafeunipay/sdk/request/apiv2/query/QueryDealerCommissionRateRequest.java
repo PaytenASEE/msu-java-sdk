@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryDealerCommissionRateResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryDealerCommissionRateResponse.class
-)
-public class QueryDealerCommissionRateRequest extends ApiRequest {
+public class QueryDealerCommissionRateRequest extends ApiRequest<QueryDealerCommissionRateResponse> {
     private String paymentSystem;
 
     private String dealerCode;
@@ -20,6 +16,11 @@ public class QueryDealerCommissionRateRequest extends ApiRequest {
 
     public static QueryDealerCommissionRateRequestBuilder builder() {
         return new QueryDealerCommissionRateRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryDealerCommissionRateResponse> responseClass() {
+        return QueryDealerCommissionRateResponse.class;
     }
 
     @Override

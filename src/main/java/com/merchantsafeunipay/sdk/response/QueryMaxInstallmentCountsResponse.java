@@ -8,12 +8,12 @@ public class QueryMaxInstallmentCountsResponse extends ApiResponse {
         return minAllowedInstallmentCount;
     }
 
-    public String getMaxAllowedInstallmentCount() {
-        return maxAllowedInstallmentCount;
-    }
-
     public void setMinAllowedInstallmentCount(String minAllowedInstallmentCount) {
         this.minAllowedInstallmentCount = minAllowedInstallmentCount;
+    }
+
+    public String getMaxAllowedInstallmentCount() {
+        return maxAllowedInstallmentCount;
     }
 
     public void setMaxAllowedInstallmentCount(String maxAllowedInstallmentCount) {

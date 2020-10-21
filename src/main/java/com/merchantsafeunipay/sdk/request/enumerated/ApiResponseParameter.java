@@ -1,7 +1,6 @@
 package com.merchantsafeunipay.sdk.request.enumerated;
 
 
-
 public enum ApiResponseParameter {
     RESPONSE,
 
@@ -569,6 +568,7 @@ public enum ApiResponseParameter {
     PAYMENTTYPEID,
 
     TRANSACTION_ID;
+
     public static ApiResponseParameter[] toEnums(String... values) {
         ApiResponseParameter[] apiResponseParameter = new ApiResponseParameter[values.length];
         int i = 0;

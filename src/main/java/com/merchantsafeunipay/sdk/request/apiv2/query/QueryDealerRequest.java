@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryDealerResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryDealerResponse.class
-)
-public class QueryDealerRequest extends ApiRequest {
+public class QueryDealerRequest extends ApiRequest<QueryDealerResponse> {
     private String dealerCode;
 
     private String parentDealerCode;
@@ -22,6 +18,11 @@ public class QueryDealerRequest extends ApiRequest {
 
     public static QueryDealerRequestBuilder builder() {
         return new QueryDealerRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryDealerResponse> responseClass() {
+        return QueryDealerResponse.class;
     }
 
     @Override

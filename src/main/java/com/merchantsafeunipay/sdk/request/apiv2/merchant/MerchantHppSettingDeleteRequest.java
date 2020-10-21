@@ -4,17 +4,18 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.response.MerchantHppSettingDeleteResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = MerchantHppSettingDeleteResponse.class
-)
-public class MerchantHppSettingDeleteRequest extends ApiRequest {
+public class MerchantHppSettingDeleteRequest extends ApiRequest<MerchantHppSettingDeleteResponse> {
     private MerchantHppSettingDeleteRequest() {
     }
 
     public static MerchantHppsettingdeleteRequestBuilder builder() {
         return new MerchantHppsettingdeleteRequestBuilder();
+    }
+
+    @Override
+    public Class<MerchantHppSettingDeleteResponse> responseClass() {
+        return MerchantHppSettingDeleteResponse.class;
     }
 
     @Override

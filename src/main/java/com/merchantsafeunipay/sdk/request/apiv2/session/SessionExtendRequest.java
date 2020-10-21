@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.session;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.SessionExtendResponse;
 
-@ResponseInfo(
-        responseClass = SessionExtendResponse.class
-)
-public class SessionExtendRequest extends ApiRequest {
+public class SessionExtendRequest extends ApiRequest<SessionExtendResponse> {
     private String token;
 
     private String sessionExpiry;
@@ -20,6 +16,11 @@ public class SessionExtendRequest extends ApiRequest {
 
     public static SessionExtendRequestBuilder builder() {
         return new SessionExtendRequestBuilder();
+    }
+
+    @Override
+    public Class<SessionExtendResponse> responseClass() {
+        return SessionExtendResponse.class;
     }
 
     @Override

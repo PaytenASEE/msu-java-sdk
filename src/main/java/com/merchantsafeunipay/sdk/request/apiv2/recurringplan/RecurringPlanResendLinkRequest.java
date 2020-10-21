@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.recurringplan;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.RecurringPlanResendLinkResponse;
 
-@ResponseInfo(
-        responseClass = RecurringPlanResendLinkResponse.class
-)
-public class RecurringPlanResendLinkRequest extends ApiRequest {
+public class RecurringPlanResendLinkRequest extends ApiRequest<RecurringPlanResendLinkResponse> {
     private String recurringPlanCode;
 
     private String notificationChannels;
@@ -20,6 +16,11 @@ public class RecurringPlanResendLinkRequest extends ApiRequest {
 
     public static RecurringPlanResendLinkRequestBuilder builder() {
         return new RecurringPlanResendLinkRequestBuilder();
+    }
+
+    @Override
+    public Class<RecurringPlanResendLinkResponse> responseClass() {
+        return RecurringPlanResendLinkResponse.class;
     }
 
     @Override

@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.transaction;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.CompayTransactionAddResponse;
 
-@ResponseInfo(
-        responseClass = CompayTransactionAddResponse.class
-)
-public class CompayTransactionAddRequest extends ApiRequest {
+public class CompayTransactionAddRequest extends ApiRequest<CompayTransactionAddResponse> {
     private String paymentSystemTypeName;
 
     private String customerIp;
@@ -20,6 +16,11 @@ public class CompayTransactionAddRequest extends ApiRequest {
 
     public static CompayTransactionAddRequestBuilder builder() {
         return new CompayTransactionAddRequestBuilder();
+    }
+
+    @Override
+    public Class<CompayTransactionAddResponse> responseClass() {
+        return CompayTransactionAddResponse.class;
     }
 
     @Override

@@ -9,107 +9,107 @@ import javax.xml.bind.annotation.XmlAccessorType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonInclude(Include.NON_NULL)
 public class MerchantBinRule {
-	private String ruleName;
-	private String divertedPaymentSystem;
-	private String cardBrand;
-	private String cardType;
-	private String countryIsoA3;
-	private String issuer;
-	private String cardNetwork;
-	private String amountLowerLimit;
-	private String amountUpperLimit;
-	private String status;
-	private String foreign;
-	
-	public MerchantBinRule() {
-		super();
-	}
+    private String ruleName;
+    private String divertedPaymentSystem;
+    private String cardBrand;
+    private String cardType;
+    private String countryIsoA3;
+    private String issuer;
+    private String cardNetwork;
+    private String amountLowerLimit;
+    private String amountUpperLimit;
+    private String status;
+    private String foreign;
 
-	public String getRuleName() {
-		return ruleName;
-	}
+    public MerchantBinRule() {
+        super();
+    }
 
-	public void setRuleName(String ruleName) {
-		this.ruleName = ruleName;
-	}
+    public String getRuleName() {
+        return ruleName;
+    }
 
-	public String getDivertedPaymentSystem() {
-		return divertedPaymentSystem;
-	}
+    public void setRuleName(String ruleName) {
+        this.ruleName = ruleName;
+    }
 
-	public void setDivertedPaymentSystem(String divertedPaymentSystemName) {
-		this.divertedPaymentSystem = divertedPaymentSystemName;
-	}
+    public String getDivertedPaymentSystem() {
+        return divertedPaymentSystem;
+    }
 
-	public String getCardBrand() {
-		return cardBrand;
-	}
+    public void setDivertedPaymentSystem(String divertedPaymentSystemName) {
+        this.divertedPaymentSystem = divertedPaymentSystemName;
+    }
 
-	public void setCardBrand(String cardBrand) {
-		this.cardBrand = cardBrand;
-	}
+    public String getCardBrand() {
+        return cardBrand;
+    }
 
-	public String getCardType() {
-		return cardType;
-	}
+    public void setCardBrand(String cardBrand) {
+        this.cardBrand = cardBrand;
+    }
 
-	public void setCardType(String cardType) {
-		this.cardType = cardType;
-	}
+    public String getCardType() {
+        return cardType;
+    }
 
-	public String getCountryIsoA3() {
-		return countryIsoA3;
-	}
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
+    }
 
-	public void setCountryIsoA3(String countryIsoA3) {
-		this.countryIsoA3 = countryIsoA3;
-	}
+    public String getCountryIsoA3() {
+        return countryIsoA3;
+    }
 
-	public String getIssuer() {
-		return issuer;
-	}
+    public void setCountryIsoA3(String countryIsoA3) {
+        this.countryIsoA3 = countryIsoA3;
+    }
 
-	public void setIssuer(String issuer) {
-		this.issuer = issuer;
-	}
+    public String getIssuer() {
+        return issuer;
+    }
 
-	public String getCardNetwork() {
-		return cardNetwork;
-	}
+    public void setIssuer(String issuer) {
+        this.issuer = issuer;
+    }
 
-	public void setCardNetwork(String cardNetwork) {
-		this.cardNetwork = cardNetwork;
-	}
+    public String getCardNetwork() {
+        return cardNetwork;
+    }
 
-	public String getAmountLowerLimit() {
-		return amountLowerLimit;
-	}
+    public void setCardNetwork(String cardNetwork) {
+        this.cardNetwork = cardNetwork;
+    }
 
-	public void setAmountLowerLimit(String amountLowerLimit) {
-		this.amountLowerLimit = amountLowerLimit;
-	}
+    public String getAmountLowerLimit() {
+        return amountLowerLimit;
+    }
 
-	public String getAmountUpperLimit() {
-		return amountUpperLimit;
-	}
+    public void setAmountLowerLimit(String amountLowerLimit) {
+        this.amountLowerLimit = amountLowerLimit;
+    }
 
-	public void setAmountUpperLimit(String amountUpperLimit) {
-		this.amountUpperLimit = amountUpperLimit;
-	}
+    public String getAmountUpperLimit() {
+        return amountUpperLimit;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public void setAmountUpperLimit(String amountUpperLimit) {
+        this.amountUpperLimit = amountUpperLimit;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	public String getForeign() {
-		return foreign;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	public void setForeign(String foreign) {
-		this.foreign = foreign;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getForeign() {
+        return foreign;
+    }
+
+    public void setForeign(String foreign) {
+        this.foreign = foreign;
+    }
 }

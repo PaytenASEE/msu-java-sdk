@@ -3,15 +3,11 @@ package com.merchantsafeunipay.sdk.request.apiv2.query;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.request.enumerated.PaymentSystemType;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.request.enumerated.PaymentSystemType;
 import com.merchantsafeunipay.sdk.response.QueryDealerPstResponse;
 
-@ResponseInfo(
-        responseClass = QueryDealerPstResponse.class
-)
-public class QueryDealerPstRequest extends ApiRequest {
+public class QueryDealerPstRequest extends ApiRequest<QueryDealerPstResponse> {
     private String paymentSystem;
 
     private PaymentSystemType paymentSystemType;
@@ -25,6 +21,11 @@ public class QueryDealerPstRequest extends ApiRequest {
 
     public static QueryDealerPstRequestBuilder builder() {
         return new QueryDealerPstRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryDealerPstResponse> responseClass() {
+        return QueryDealerPstResponse.class;
     }
 
     @Override

@@ -3,14 +3,10 @@ package com.merchantsafeunipay.sdk.request.apiv2.merchant;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.MerchantBinRuleDeleteResponse;
 
-@ResponseInfo(
-        responseClass = MerchantBinRuleDeleteResponse.class
-)
-public class MerchantBinRuleDeleteRequest extends ApiRequest {
+public class MerchantBinRuleDeleteRequest extends ApiRequest<MerchantBinRuleDeleteResponse> {
     private String ruleName;
 
     private MerchantBinRuleDeleteRequest() {
@@ -18,6 +14,11 @@ public class MerchantBinRuleDeleteRequest extends ApiRequest {
 
     public static MerchantBinRuleDeleteRequestBuilder builder() {
         return new MerchantBinRuleDeleteRequestBuilder();
+    }
+
+    @Override
+    public Class<MerchantBinRuleDeleteResponse> responseClass() {
+        return MerchantBinRuleDeleteResponse.class;
     }
 
     @Override

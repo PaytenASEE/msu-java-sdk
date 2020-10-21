@@ -4,14 +4,10 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.MessageContentType;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.MessageContentAddResponse;
 
-@ResponseInfo(
-        responseClass = MessageContentAddResponse.class
-)
-public class MessageContentAddRequest extends ApiRequest {
+public class MessageContentAddRequest extends ApiRequest<MessageContentAddResponse> {
     private String title;
 
     private String content;
@@ -27,6 +23,11 @@ public class MessageContentAddRequest extends ApiRequest {
 
     public static MessageContentAddRequestBuilder builder() {
         return new MessageContentAddRequestBuilder();
+    }
+
+    @Override
+    public Class<MessageContentAddResponse> responseClass() {
+        return MessageContentAddResponse.class;
     }
 
     @Override

@@ -5,13 +5,9 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.enumerated.TransactionStatus;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.response.UpdateTransactionStatusResponse;
 
-@ResponseInfo(
-        responseClass = UpdateTransactionStatusResponse.class
-)
-public class UpdateTransactionStatusRequest extends ApiRequest {
+public class UpdateTransactionStatusRequest extends ApiRequest<UpdateTransactionStatusResponse> {
     private String pgTranId;
 
     private TransactionStatus transactionStatus;
@@ -21,6 +17,11 @@ public class UpdateTransactionStatusRequest extends ApiRequest {
 
     public static UpdateTransactionStatusRequestBuilder builder() {
         return new UpdateTransactionStatusRequestBuilder();
+    }
+
+    @Override
+    public Class<UpdateTransactionStatusResponse> responseClass() {
+        return UpdateTransactionStatusResponse.class;
     }
 
     @Override

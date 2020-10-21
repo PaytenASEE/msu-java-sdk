@@ -4,17 +4,18 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.response.QueryCityResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryCityResponse.class
-)
-public class QueryCityRequest extends ApiRequest {
+public class QueryCityRequest extends ApiRequest<QueryCityResponse> {
     private QueryCityRequest() {
     }
 
     public static QueryCityRequestBuilder builder() {
         return new QueryCityRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryCityResponse> responseClass() {
+        return QueryCityResponse.class;
     }
 
     @Override

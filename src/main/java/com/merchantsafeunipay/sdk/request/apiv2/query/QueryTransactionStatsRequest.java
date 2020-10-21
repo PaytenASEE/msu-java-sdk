@@ -7,12 +7,8 @@ import com.merchantsafeunipay.sdk.request.enumerated.Currency;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.enumerated.TransactionType;
 import com.merchantsafeunipay.sdk.response.QueryTransactionStatsResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryTransactionStatsResponse.class
-)
-public class QueryTransactionStatsRequest extends ApiRequest {
+public class QueryTransactionStatsRequest extends ApiRequest<QueryTransactionStatsResponse> {
     private String startDate;
 
     private String endDate;
@@ -30,6 +26,11 @@ public class QueryTransactionStatsRequest extends ApiRequest {
 
     public static QueryTransactionStatsRequestBuilder builder() {
         return new QueryTransactionStatsRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryTransactionStatsResponse> responseClass() {
+        return QueryTransactionStatsResponse.class;
     }
 
     @Override

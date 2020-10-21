@@ -4,17 +4,18 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.response.QueryMaxInstallmentCountsResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryMaxInstallmentCountsResponse.class
-)
-public class QueryMaxInstallmentCountsRequest extends ApiRequest {
+public class QueryMaxInstallmentCountsRequest extends ApiRequest<QueryMaxInstallmentCountsResponse> {
     private QueryMaxInstallmentCountsRequest() {
     }
 
     public static QueryMaxInstallmentCountsRequestBuilder builder() {
         return new QueryMaxInstallmentCountsRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryMaxInstallmentCountsResponse> responseClass() {
+        return QueryMaxInstallmentCountsResponse.class;
     }
 
     @Override

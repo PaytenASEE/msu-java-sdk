@@ -4,15 +4,11 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.InputType;
-import com.merchantsafeunipay.sdk.request.enumerated.Status;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.request.enumerated.Status;
 import com.merchantsafeunipay.sdk.response.CustomFieldAddResponse;
 
-@ResponseInfo(
-        responseClass = CustomFieldAddResponse.class
-)
-public class CustomFieldAddRequest extends ApiRequest {
+public class CustomFieldAddRequest extends ApiRequest<CustomFieldAddResponse> {
     private String integrationCode;
 
     private String name;
@@ -34,6 +30,11 @@ public class CustomFieldAddRequest extends ApiRequest {
 
     public static CustomFieldAddRequestBuilder builder() {
         return new CustomFieldAddRequestBuilder();
+    }
+
+    @Override
+    public Class<CustomFieldAddResponse> responseClass() {
+        return CustomFieldAddResponse.class;
     }
 
     @Override

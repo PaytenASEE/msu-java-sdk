@@ -3,18 +3,19 @@ package com.merchantsafeunipay.sdk.request.apiv2.merchant;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.response.MerchantDisableResponse;
 
-@ResponseInfo(
-        responseClass = MerchantDisableResponse.class
-)
-public class MerchantDisableRequest extends ApiRequest {
+public class MerchantDisableRequest extends ApiRequest<MerchantDisableResponse> {
     private MerchantDisableRequest() {
     }
 
     public static MerchantDisableRequestBuilder builder() {
         return new MerchantDisableRequestBuilder();
+    }
+
+    @Override
+    public Class<MerchantDisableResponse> responseClass() {
+        return MerchantDisableResponse.class;
     }
 
     @Override

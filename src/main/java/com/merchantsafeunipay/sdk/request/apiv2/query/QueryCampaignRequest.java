@@ -5,12 +5,8 @@ import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryCampaignResponse;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
 
-@ResponseInfo(
-        responseClass = QueryCampaignResponse.class
-)
-public class QueryCampaignRequest extends ApiRequest {
+public class QueryCampaignRequest extends ApiRequest<QueryCampaignResponse> {
     private String bin;
 
     private String cardToken;
@@ -22,6 +18,11 @@ public class QueryCampaignRequest extends ApiRequest {
 
     public static QueryCampaignRequestBuilder builder() {
         return new QueryCampaignRequestBuilder();
+    }
+
+    @Override
+    public Class<QueryCampaignResponse> responseClass() {
+        return QueryCampaignResponse.class;
     }
 
     @Override

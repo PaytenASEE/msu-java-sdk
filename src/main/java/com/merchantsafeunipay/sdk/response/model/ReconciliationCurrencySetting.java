@@ -1,42 +1,41 @@
 package com.merchantsafeunipay.sdk.response.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import java.util.ArrayList;
+import java.util.List;
 
 @JsonInclude(Include.NON_NULL)
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ReconciliationCurrencySetting {
-	private String currency;
-	private List<ReconciliationInstallmentSetting> values = new ArrayList<>();
+    private String currency;
+    private List<ReconciliationInstallmentSetting> values = new ArrayList<>();
 
-	public ReconciliationCurrencySetting() {
-	}
-	
-	public String getCurrency() {
-		return currency;
-	}
+    public ReconciliationCurrencySetting() {
+    }
 
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
+    public String getCurrency() {
+        return currency;
+    }
 
-	public List<ReconciliationInstallmentSetting> getValues() {
-		return values;
-	}
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
 
-	public void setValues(List<ReconciliationInstallmentSetting> values) {
-		this.values = values;
-	}
+    public List<ReconciliationInstallmentSetting> getValues() {
+        return values;
+    }
 
-	@Override
-	public String toString() {
-		return "ReconciliationCurrencySettingVO [currency=" + currency + "]";
-	}
+    public void setValues(List<ReconciliationInstallmentSetting> values) {
+        this.values = values;
+    }
+
+    @Override
+    public String toString() {
+        return "ReconciliationCurrencySettingVO [currency=" + currency + "]";
+    }
 
 }
