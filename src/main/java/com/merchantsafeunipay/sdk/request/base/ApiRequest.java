@@ -33,7 +33,7 @@ public abstract class ApiRequest {
 		return authentication;
 	}
 
-	protected void addToPayload(Param param, Object paramValue) {
+	protected void addToPayload(Param param, Object paramValue){
 		if (paramValue == null) {
 			return;
 		}
@@ -61,6 +61,18 @@ public abstract class ApiRequest {
 			payload.put(param.name(), paramValue.toString());
 		} else if (paramValue instanceof Number) {
 			payload.put(param.name(), paramValue.toString());
+		}else if(paramValue instanceof Map){
+			if (((Map<?, ?>) paramValue).isEmpty()){
+				return;
+			}
+			ObjectWriter objectWriter = objectMapper.writerFor(paramValue.getClass());
+			try {
+				String paramValueAsJsonString = objectWriter.writeValueAsString(paramValue);
+				String asJsonStringUrlEncoded = URLEncoder.encode(paramValueAsJsonString, "UTF-8");
+				payload.put(param.name(), asJsonStringUrlEncoded);
+			} catch (JsonProcessingException | UnsupportedEncodingException e) {
+				throw new RuntimeException(e);
+			}
 		}
 	}
 

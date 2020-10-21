@@ -1,13 +1,16 @@
 package com.merchantsafeunipay.sdk.response.model;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.merchantsafeunipay.sdk.request.enumerated.CardPanType;
+import com.merchantsafeunipay.sdk.response.BaseCustomFieldResponse;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonInclude(Include.NON_NULL)
@@ -35,6 +38,7 @@ public class Session {
 	private String dealerTypeName;
 	private Integer businessMaxInstallmentCount;
 	private CardPanType cardPanType;
+	private List<CustomField> customFields;
 
 	public Session() {
 	}
@@ -221,5 +225,13 @@ public class Session {
 
 	public void setCardPanType(CardPanType cardPanType) {
 		this.cardPanType = cardPanType;
+	}
+
+	public List<CustomField> getCustomFields() {
+		return customFields;
+	}
+
+	public void setCustomFields(List<CustomField> customFields) {
+		this.customFields = customFields;
 	}
 }
