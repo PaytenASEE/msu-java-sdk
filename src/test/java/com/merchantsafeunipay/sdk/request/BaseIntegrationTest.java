@@ -16,7 +16,7 @@ public class BaseIntegrationTest {
 				new StaticCredentialsProvider("testmerchant", "apiuser@testmerchant.com", "Pluto321`"));
 		client = MsuApiClient.builder()
 				.withUrl("https://neon-app.asseco-see.com.tr/msu/api/v2")
-				.withPrettyPrintRequests(true)
+				//.withPrettyPrintRequests(true)
 				.withDefaultAuthentication(userCredentialsAuthentication)
 				.build();
 	}

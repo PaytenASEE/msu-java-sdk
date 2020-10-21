@@ -15,10 +15,12 @@ public class ClasspathPropertyFileCredentialsProvider implements MsuCredentialsP
         try {
             InputStream resourceAsStream = Thread.currentThread().getContextClassLoader()
                     .getResourceAsStream("msuCredentials.properties");
-            Validate.notNull(resourceAsStream, "msuCredentials.properties not found in classpath");
+            if(resourceAsStream == null){
+                throw new RuntimeException("Could not find msuCredentials.properties in classpath!");
+            }
             props.load(resourceAsStream);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Could not find msuCredentials.properties in classpath!");
         }
         String merchantBusinessId = props.getProperty("merchantBusinessId");
         String email = props.getProperty("merchantuser");
