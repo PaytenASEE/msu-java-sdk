@@ -10,13 +10,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.merchantsafeunipay.sdk.authentication.types.SessionTokenAuthentication;
-import com.merchantsafeunipay.sdk.generator.RandomGenerator;
 import com.merchantsafeunipay.sdk.request.apiv2.query.QuerySessionRequest;
 import com.merchantsafeunipay.sdk.request.apiv2.session.SessionTokenRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
 import com.merchantsafeunipay.sdk.request.enumerated.SessionType;
 import com.merchantsafeunipay.sdk.response.QuerySessionResponse;
 import com.merchantsafeunipay.sdk.response.SessionTokenResponse;
+import com.merchantsafeunipay.sdk.util.StringUtils;
 import org.junit.Test;
 
 public class SessionRequestsTest extends BaseIntegrationTest {
@@ -53,8 +53,8 @@ public class SessionRequestsTest extends BaseIntegrationTest {
 		SessionTokenRequest sessionTokenRequest = SessionTokenRequest.builder().withCurrency(Currency.TRY)
 				.withSessionType(SessionType.PAYMENTSESSION)
 				.withAmount(new BigDecimal("100.00"))
-				.withCustomer("customer" + RandomGenerator.generateString(10))
-				.withMerchantPaymentId("payment" + RandomGenerator.generateString(10))
+				.withCustomer("customer" + StringUtils.generateString(10))
+				.withMerchantPaymentId("payment" + StringUtils.generateString(10))
 				.withReturnUrl("http://www.returnurl.com")
 				.withExtra(extra)
 				.build();
