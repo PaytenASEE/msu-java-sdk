@@ -10,7 +10,6 @@ import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.request.enumerated.SessionType;
 import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.response.SessionTokenResponse;
-
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
