@@ -24,7 +24,7 @@ public class QueryMerchantProfileResponse extends ApiResponse {
     private String returnUrl;
     private String paymentType;
     private DealerPortalLandingPage dealerPortalLandingPage;
-    private List<String> transactionTypeSelectionAvailabilities;
+    private List<String> transactionTypeSelectionAvailabilities = new ArrayList<>();
 
     public String getMerchantBussinesId() {
         return merchantBussinesId;
