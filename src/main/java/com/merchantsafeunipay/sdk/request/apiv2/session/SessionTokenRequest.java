@@ -3,7 +3,13 @@ package com.merchantsafeunipay.sdk.request.apiv2.session;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.complex.OrderItem;
-import com.merchantsafeunipay.sdk.request.enumerated.*;
+import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
+import com.merchantsafeunipay.sdk.request.enumerated.CardPanType;
+import com.merchantsafeunipay.sdk.request.enumerated.Currency;
+import com.merchantsafeunipay.sdk.request.enumerated.Param;
+import com.merchantsafeunipay.sdk.request.enumerated.SessionType;
+import com.merchantsafeunipay.sdk.response.model.CustomField;
+import com.merchantsafeunipay.sdk.util.ResponseInfo;
 import com.merchantsafeunipay.sdk.response.SessionTokenResponse;
 
 import java.math.BigDecimal;
@@ -77,6 +83,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
 
     private String billToPhone;
 
+    private List<CustomField> customFields;
+
     private SessionTokenRequest() {
     }
 
@@ -124,6 +132,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         addToPayload(Param.SHIPTOCOUNTRY, this.shipToCountry);
         addToPayload(Param.SHIPTOPHONE, this.shipToPhone);
         addToPayload(Param.BILLTOPHONE, this.billToPhone);
+        addToPayload(Param.CUSTOMFIELDS, this.customFields);
     }
 
     @Override
@@ -199,6 +208,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         private String billToPhone;
 
         private Authentication authentication;
+
+        private List<CustomField> customFields;
 
         public SessionTokenRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -371,6 +382,11 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             return this;
         }
 
+        public SessionTokenRequestBuilder withCustomFields(List<CustomField> customFields){
+            this.customFields = customFields;
+            return this;
+        }
+
         public SessionTokenRequest build() {
             SessionTokenRequest request = new SessionTokenRequest();
             request.authentication = this.authentication;
@@ -407,6 +423,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             request.shipToCountry = this.shipToCountry;
             request.shipToPhone = this.shipToPhone;
             request.billToPhone = this.billToPhone;
+            request.customFields = this.customFields;
             return request;
         }
     }
