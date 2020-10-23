@@ -11,7 +11,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomField {
-
     private String integrationCode;
     private String value;
 
@@ -21,6 +20,12 @@ public class CustomField {
     public CustomField(String integrationCode, String value) {
         this.integrationCode = integrationCode;
         this.value = value;
+    }
+
+
+    private CustomField(Builder builder){
+        this.integrationCode = builder.integrationCode;
+        this.value = builder.value;
     }
 
     public String getValue() {
@@ -38,4 +43,30 @@ public class CustomField {
     public void setIntegrationCode(String integrationCode) {
         this.integrationCode = integrationCode;
     }
+
+    public static Builder builder(){
+        return new Builder();
+    }
+
+    public static class Builder {
+        private String integrationCode;
+        private String value;
+
+        public Builder integrationCode(String integrationCode){
+            this.integrationCode = integrationCode;
+            return this;
+        }
+
+        public Builder value(String value){
+            this.value = value;
+            return this;
+        }
+
+        public CustomField build(){
+            return new CustomField(this);
+        }
+
+    }
+
+
 }
