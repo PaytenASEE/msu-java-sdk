@@ -60,6 +60,10 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public static class Builder {
         private String code;
         private String name;
