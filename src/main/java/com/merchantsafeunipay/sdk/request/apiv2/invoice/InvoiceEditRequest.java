@@ -8,6 +8,8 @@ import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.InvoiceEditResponse;
 
 import java.math.BigDecimal;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class InvoiceEditRequest extends ApiRequest<InvoiceEditResponse> {
     private String dealerCode;
@@ -21,6 +23,10 @@ public class InvoiceEditRequest extends ApiRequest<InvoiceEditResponse> {
     private BigDecimal amount;
 
     private Currency currency;
+
+    private Map<String, String> extra = new LinkedHashMap<>();
+
+    private String merchantOrderId;
 
     private InvoiceEditRequest() {
     }
@@ -42,6 +48,8 @@ public class InvoiceEditRequest extends ApiRequest<InvoiceEditResponse> {
         addToPayload(Param.DUEDATE, this.dueDate);
         addToPayload(Param.AMOUNT, this.amount);
         addToPayload(Param.CURRENCY, this.currency);
+        addToPayload(Param.EXTRA, this.extra);
+        addToPayload(Param.MERCHANTORDERID, this.merchantOrderId);
     }
 
     @Override
@@ -63,6 +71,10 @@ public class InvoiceEditRequest extends ApiRequest<InvoiceEditResponse> {
         private Currency currency;
 
         private Authentication authentication;
+
+        private Map<String, String> extra = new LinkedHashMap<>();
+
+        private String merchantOrderId;
 
         public InvoiceEditRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -99,6 +111,16 @@ public class InvoiceEditRequest extends ApiRequest<InvoiceEditResponse> {
             return this;
         }
 
+        public InvoiceEditRequestBuilder withExtra(Map<String, String> extra){
+            this.extra = extra;
+            return this;
+        }
+
+        public InvoiceEditRequestBuilder withMerchantOrderId(String merchantOrderId){
+            this.merchantOrderId = merchantOrderId;
+            return this;
+        }
+
         public InvoiceEditRequest build() {
             InvoiceEditRequest request = new InvoiceEditRequest();
             request.authentication = this.authentication;
@@ -108,6 +130,8 @@ public class InvoiceEditRequest extends ApiRequest<InvoiceEditResponse> {
             request.dueDate = this.dueDate;
             request.amount = this.amount;
             request.currency = this.currency;
+            request.extra = this.extra;
+            request.merchantOrderId = this.merchantOrderId;
             return request;
         }
     }

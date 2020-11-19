@@ -1,5 +1,7 @@
 package com.merchantsafeunipay.sdk.util;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Random;
 
 public class StringUtils {
@@ -54,5 +56,17 @@ public class StringUtils {
             text[i] = SOURCES.charAt(new Random().nextInt(SOURCES.length()));
         }
         return new String(text);
+    }
+
+    /**
+     * Returns date as string based on given formatter and days which are going to be added in current date.
+     * @param formatter
+     * @param days
+     * @return
+     */
+    public static String getDateAfterAddedInDays(DateFormat formatter, int days) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_WEEK,days);
+        return formatter.format(calendar.getTime());
     }
 }

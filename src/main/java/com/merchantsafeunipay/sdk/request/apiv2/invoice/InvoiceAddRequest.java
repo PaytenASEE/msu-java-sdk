@@ -8,6 +8,8 @@ import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.InvoiceAddResponse;
 
 import java.math.BigDecimal;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class InvoiceAddRequest extends ApiRequest<InvoiceAddResponse> {
     private String dealerCode;
@@ -27,6 +29,10 @@ public class InvoiceAddRequest extends ApiRequest<InvoiceAddResponse> {
     private Currency currency;
 
     private String dealerTypeName;
+
+    private Map<String, String> extra = new LinkedHashMap<>();
+
+    private String merchantOrderId;
 
     private InvoiceAddRequest() {
     }
@@ -51,6 +57,8 @@ public class InvoiceAddRequest extends ApiRequest<InvoiceAddResponse> {
         addToPayload(Param.ORIGINALAMOUNT, this.originalAmount);
         addToPayload(Param.CURRENCY, this.currency);
         addToPayload(Param.DEALERTYPENAME, this.dealerTypeName);
+        addToPayload(Param.EXTRA, this.extra);
+        addToPayload(Param.MERCHANTORDERID, this.merchantOrderId);
     }
 
     @Override
@@ -78,6 +86,10 @@ public class InvoiceAddRequest extends ApiRequest<InvoiceAddResponse> {
         private String dealerTypeName;
 
         private Authentication authentication;
+
+        Map<String, String> extra = new LinkedHashMap<>();
+
+        private String merchantOrderId;
 
         public InvoiceAddRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -129,6 +141,16 @@ public class InvoiceAddRequest extends ApiRequest<InvoiceAddResponse> {
             return this;
         }
 
+        public InvoiceAddRequestBuilder withExtra(Map<String, String> extra){
+            this.extra = extra;
+            return this;
+        }
+
+        public InvoiceAddRequestBuilder withMerchantOrderId(String merchantOrderId){
+            this.merchantOrderId = merchantOrderId;
+            return this;
+        }
+
         public InvoiceAddRequest build() {
             InvoiceAddRequest request = new InvoiceAddRequest();
             request.authentication = this.authentication;
@@ -141,6 +163,8 @@ public class InvoiceAddRequest extends ApiRequest<InvoiceAddResponse> {
             request.originalAmount = this.originalAmount;
             request.currency = this.currency;
             request.dealerTypeName = this.dealerTypeName;
+            request.extra = this.extra;
+            request.merchantOrderId = this.merchantOrderId;
             return request;
         }
     }

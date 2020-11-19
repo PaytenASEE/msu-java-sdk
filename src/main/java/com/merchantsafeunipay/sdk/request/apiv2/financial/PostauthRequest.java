@@ -13,6 +13,7 @@ public class PostauthRequest extends ApiRequest<PostauthResponse> {
     private String merchantPaymentId;
     private String initiatorMerchantBusinessId;
     private BigDecimal amount;
+    private String invoiceId;
 
     private PostauthRequest(PostauthRequestBuilder builder) {
         super();
@@ -21,6 +22,7 @@ public class PostauthRequest extends ApiRequest<PostauthResponse> {
         this.initiatorMerchantBusinessId = builder.initiatorMerchantBusinessId;
         this.amount = builder.amount;
         this.authentication = builder.authentication;
+        this.invoiceId = builder.invoiceId;
     }
 
     public static PostauthRequestBuilder builder() {
@@ -38,6 +40,7 @@ public class PostauthRequest extends ApiRequest<PostauthResponse> {
         addToPayload(Param.MERCHANTPAYMENTID, this.merchantPaymentId);
         addToPayload(Param.INITIATORMERCHANTBUSINESSID, this.initiatorMerchantBusinessId);
         addToPayload(Param.AMOUNT, this.amount);
+        addToPayload(Param.INVOICEID, this.invoiceId);
     }
 
     @Override
@@ -51,6 +54,7 @@ public class PostauthRequest extends ApiRequest<PostauthResponse> {
         private String initiatorMerchantBusinessId;
         private BigDecimal amount;
         private Authentication authentication;
+        private String invoiceId;
 
         public PostauthRequestBuilder withPgTranId(String pgTranId) {
             this.pgTranId = pgTranId;
@@ -74,6 +78,11 @@ public class PostauthRequest extends ApiRequest<PostauthResponse> {
 
         public PostauthRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
+            return this;
+        }
+
+        public PostauthRequestBuilder withInvoiceId(String invoiceId){
+            this.invoiceId = invoiceId;
             return this;
         }
 
