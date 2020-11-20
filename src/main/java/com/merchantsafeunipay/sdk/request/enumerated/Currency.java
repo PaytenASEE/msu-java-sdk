@@ -40,7 +40,9 @@ public enum Currency {
     ARS(new String[]{}, "032", 2, "Argentine peso"), //
     BOB(new String[]{}, "068", 2, "Boliviano"), //
     COP(new String[]{}, "170", 2, "Colombian peso"), //
-    RSD(new String[]{}, "941", 2, "Serbian dinar");
+    RSD(new String[]{}, "941", 2, "Serbian dinar"),
+    UAH(new String[] {}, "980", 2, "Ukrainian hryvnia");;
+
 
     private String[] validAbbreviations;
     private String numcode;

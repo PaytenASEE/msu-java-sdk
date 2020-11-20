@@ -85,6 +85,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
 
     private List<CustomField> customFields;
 
+    private String merchantOrderId;
+
     private SessionTokenRequest() {
     }
 
@@ -133,6 +135,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         addToPayload(Param.SHIPTOPHONE, this.shipToPhone);
         addToPayload(Param.BILLTOPHONE, this.billToPhone);
         addToPayload(Param.CUSTOMFIELDS, this.customFields);
+        addToPayload(Param.MERCHANTORDERID, this.merchantOrderId);
     }
 
     @Override
@@ -210,6 +213,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         private Authentication authentication;
 
         private List<CustomField> customFields;
+
+        private String merchantOrderId;
 
         public SessionTokenRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -387,6 +392,11 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             return this;
         }
 
+        public SessionTokenRequestBuilder withMerchantOrderId(String merchantOrderId){
+            this.merchantOrderId = merchantOrderId;
+            return this;
+        }
+
         public SessionTokenRequest build() {
             SessionTokenRequest request = new SessionTokenRequest();
             request.authentication = this.authentication;
@@ -424,6 +434,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             request.shipToPhone = this.shipToPhone;
             request.billToPhone = this.billToPhone;
             request.customFields = this.customFields;
+            request.merchantOrderId = this.merchantOrderId;
             return request;
         }
     }
