@@ -4,6 +4,7 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.InvoiceStatus;
+import com.merchantsafeunipay.sdk.request.enumerated.InvoiceType;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryInvoiceResponse;
 
@@ -21,6 +22,8 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
     private String dueDateEnd;
 
     private InvoiceStatus invoiceStatus;
+
+    private InvoiceType invoiceType;
 
     private QueryInvoiceRequest() {
     }
@@ -43,6 +46,7 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
         addToPayload(Param.DUEDATE, this.dueDate);
         addToPayload(Param.DUEDATEEND, this.dueDateEnd);
         addToPayload(Param.INVOICESTATUS, this.invoiceStatus);
+        addToPayload(Param.INVOICETYPE, this.invoiceType);
     }
 
     @Override
@@ -66,6 +70,8 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
         private InvoiceStatus invoiceStatus;
 
         private Authentication authentication;
+
+        private InvoiceType invoiceType;
 
         public QueryInvoiceRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -107,6 +113,11 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
             return this;
         }
 
+        public QueryInvoiceRequestBuilder withInvoiceType(InvoiceType invoiceType){
+            this.invoiceType = invoiceType;
+            return this;
+        }
+
         public QueryInvoiceRequest build() {
             QueryInvoiceRequest request = new QueryInvoiceRequest();
             request.authentication = this.authentication;
@@ -117,6 +128,7 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
             request.dueDate = this.dueDate;
             request.dueDateEnd = this.dueDateEnd;
             request.invoiceStatus = this.invoiceStatus;
+            request.invoiceType = this.invoiceType;
             return request;
         }
     }

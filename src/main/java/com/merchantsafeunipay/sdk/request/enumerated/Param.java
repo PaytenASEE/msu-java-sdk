@@ -341,6 +341,7 @@ public enum Param {
     DUEDATEEND,
     ORIGINALAMOUNT,
     MERCHANTORDERID,
+    INVOICETYPE,
 
 
     USEREMAIL,
