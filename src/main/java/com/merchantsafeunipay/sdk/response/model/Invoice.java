@@ -23,6 +23,8 @@ public class Invoice {
     private String merchantPaymentId;
     private Dealer dealer;
     private Merchant merchant;
+    private String merchantOrderId;
+    private boolean isPreauth;
 
     public String getInvoiceId() {
         return invoiceId;
@@ -72,4 +74,11 @@ public class Invoice {
         return merchant;
     }
 
+    public String getMerchantOrderId() {
+        return merchantOrderId;
+    }
+
+    public boolean isPreauth() {
+        return isPreauth;
+    }
 }
