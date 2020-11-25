@@ -4,7 +4,6 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.InvoiceStatus;
-import com.merchantsafeunipay.sdk.request.enumerated.InvoiceType;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryInvoiceResponse;
 
@@ -23,7 +22,7 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
 
     private InvoiceStatus invoiceStatus;
 
-    private InvoiceType invoiceType;
+    private String invoiceType;
 
     private QueryInvoiceRequest() {
     }
@@ -71,7 +70,7 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
 
         private Authentication authentication;
 
-        private InvoiceType invoiceType;
+        private String invoiceType;
 
         public QueryInvoiceRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -113,7 +112,7 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
             return this;
         }
 
-        public QueryInvoiceRequestBuilder withInvoiceType(InvoiceType invoiceType){
+        public QueryInvoiceRequestBuilder withInvoiceType(String invoiceType){
             this.invoiceType = invoiceType;
             return this;
         }

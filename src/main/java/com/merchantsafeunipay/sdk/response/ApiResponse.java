@@ -28,6 +28,8 @@ public class ApiResponse {
     private String paymentSystemEftCode;
     private String pgTranDate;
     private String merchantPaymentId;
+    private String merchantOrderId;
+    private String invoiceId;
     private String pgTranId;
     private String pgTranRefId;
     private String pgOrderId;
@@ -362,5 +364,21 @@ public class ApiResponse {
 
     public void setRawResponse(String rawResponse) {
         this.rawResponse = rawResponse;
+    }
+
+    public String getMerchantOrderId() {
+        return merchantOrderId;
+    }
+
+    public void setMerchantOrderId(String merchantOrderId) {
+        this.merchantOrderId = merchantOrderId;
+    }
+
+    public String getInvoiceId() {
+        return invoiceId;
+    }
+
+    public void setInvoiceId(String invoiceId) {
+        this.invoiceId = invoiceId;
     }
 }
