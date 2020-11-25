@@ -3,7 +3,6 @@ package com.merchantsafeunipay.sdk.request;
 import com.merchantsafeunipay.sdk.request.apiv2.invoice.InvoiceAddRequest;
 import com.merchantsafeunipay.sdk.request.apiv2.query.QueryInvoiceRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
-import com.merchantsafeunipay.sdk.request.enumerated.InvoiceType;
 import com.merchantsafeunipay.sdk.response.InvoiceAddResponse;
 import com.merchantsafeunipay.sdk.response.QueryInvoiceResponse;
 import com.merchantsafeunipay.sdk.response.model.Invoice;
@@ -16,7 +15,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -55,7 +53,7 @@ public class QueryInvoiceRequestTest extends BaseIntegrationTest{
         QueryInvoiceRequest queryInvoiceRequest = QueryInvoiceRequest
                 .builder()
                 .withDealerCode("auth01")
-                .withInvoiceType(InvoiceType.PREAUTH)
+                .withInvoiceType("PREAUTH")
                 .build();
         QueryInvoiceResponse queryInvoiceResponse = client.doRequest(queryInvoiceRequest);
         assertThat(queryInvoiceResponse, is(notNullValue()));
@@ -97,7 +95,7 @@ public class QueryInvoiceRequestTest extends BaseIntegrationTest{
         QueryInvoiceRequest queryInvoiceRequest = QueryInvoiceRequest
                 .builder()
                 .withDealerCode("auth01")
-                .withInvoiceType(InvoiceType.SALE)
+                .withInvoiceType("SALE")
                 .build();
         QueryInvoiceResponse queryInvoiceResponse = client.doRequest(queryInvoiceRequest);
         assertThat(queryInvoiceResponse, is(notNullValue()));
