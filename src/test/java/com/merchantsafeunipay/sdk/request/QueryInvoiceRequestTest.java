@@ -15,6 +15,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -27,7 +28,6 @@ import static org.junit.Assert.assertThat;
 public class QueryInvoiceRequestTest extends BaseIntegrationTest{
 
     @Test
-    @Ignore
     public void queryInvoiceWithInvoiceTypeAsPreauthTest() throws Exception {
         DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         Map<String, String> extra = new HashMap<>();
@@ -62,17 +62,15 @@ public class QueryInvoiceRequestTest extends BaseIntegrationTest{
                 .stream()
                 .filter(x -> x.getMerchantOrderId().equals(merchantOrderId)
                         && x.isPreauth() && x.getName().equals(name));
-        long countOfQueriedInvoices = queriedInvoice.count();
-        assertThat(countOfQueriedInvoices, is(1L));
-        assertThat(queriedInvoice.findAny().isPresent(), is(Boolean.TRUE));
-        Invoice foundInvoice = queriedInvoice.findAny().get();
+        Optional<Invoice> foundInvoiceResult = queriedInvoice.findAny();
+        assertThat(foundInvoiceResult.isPresent(), is(Boolean.TRUE));
+        Invoice foundInvoice = foundInvoiceResult.get();
         assertThat(foundInvoice.getName(), is(name));
         assertThat(foundInvoice.getMerchantOrderId(), is(merchantOrderId));
         assertThat(foundInvoice.isPreauth(), is(Boolean.TRUE));
     }
 
     @Test
-    @Ignore
     public void queryInvoiceWithInvoiceTypeAsSaleTest() throws Exception {
         DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         String invoiceId = StringUtils.generateString(10);
@@ -104,10 +102,10 @@ public class QueryInvoiceRequestTest extends BaseIntegrationTest{
                 .stream()
                 .filter(x -> !x.isPreauth()
                         && x.getInvoiceId().equals(invoiceId) && x.getName().equals(name));
-        long countOfQueriedInvoices = queriedInvoice.count();
-        assertThat(countOfQueriedInvoices, is(1L));
-        assertThat(queriedInvoice.findAny().isPresent(), is(Boolean.TRUE));
-        Invoice foundInvoice = queriedInvoice.findAny().get();
+
+        Optional<Invoice> foundInvoiceResult = queriedInvoice.findAny();
+        assertThat(foundInvoiceResult.isPresent(), is(Boolean.TRUE));
+        Invoice foundInvoice = foundInvoiceResult.get();
         assertThat(foundInvoice, is(notNullValue()));
         assertThat(foundInvoice.getName(), is(name));
         assertThat(foundInvoice.getInvoiceId(), is(invoiceId));
