@@ -1,5 +1,6 @@
 package com.merchantsafeunipay.sdk.response;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -18,6 +19,7 @@ import java.util.Map;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonInclude(Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder({"action", "responseCode", "merchant", "amount", "installment", "currency"})
 @XmlType(propOrder = {"action", "responseCode", "merchant", "amount", "installment", "currency"})
 public class FinancialResponse extends ApiResponse {
