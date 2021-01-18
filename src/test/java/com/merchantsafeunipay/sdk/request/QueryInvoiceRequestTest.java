@@ -7,7 +7,6 @@ import com.merchantsafeunipay.sdk.response.InvoiceAddResponse;
 import com.merchantsafeunipay.sdk.response.QueryInvoiceResponse;
 import com.merchantsafeunipay.sdk.response.model.Invoice;
 import com.merchantsafeunipay.sdk.util.StringUtils;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.math.BigDecimal;
