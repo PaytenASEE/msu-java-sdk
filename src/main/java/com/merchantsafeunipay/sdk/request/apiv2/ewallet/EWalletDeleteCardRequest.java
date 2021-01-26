@@ -1,4 +1,4 @@
-package com.merchantsafeunipay.sdknull.request.apiv2.ewallet;
+package com.merchantsafeunipay.sdk.request.apiv2.ewallet;
 
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
