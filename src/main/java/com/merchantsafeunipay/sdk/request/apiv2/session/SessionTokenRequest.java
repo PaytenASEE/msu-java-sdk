@@ -59,6 +59,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
 
     private String businessMaxInstallmentCount;
 
+    private String installments;
+
     private String splitPaymentType;
 
     private String dealerTypeName;
@@ -122,6 +124,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         addToPayload(Param.EXTRA, this.extra);
         addToPayload(Param.MAXINSTALLMENTCOUNT, this.maxInstallmentCount);
         addToPayload(Param.BUSINESSMAXINSTALLMENTCOUNT, this.businessMaxInstallmentCount);
+        addToPayload(Param.INSTALLMENTS, this.installments);
         addToPayload(Param.SPLITPAYMENTTYPE, this.splitPaymentType);
         addToPayload(Param.DEALERTYPENAME, this.dealerTypeName);
         addToPayload(Param.BILLTOADDRESSLINE, this.billToAddressLine);
@@ -185,6 +188,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         private String maxInstallmentCount;
 
         private String businessMaxInstallmentCount;
+
+        private String installments;
 
         private String splitPaymentType;
 
@@ -327,6 +332,11 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             return this;
         }
 
+        public SessionTokenRequestBuilder withInstallments(String installments){
+            this.installments= installments;
+            return this;
+        }
+
         public SessionTokenRequestBuilder withSplitPaymentType(String splitPaymentType) {
             this.splitPaymentType = splitPaymentType;
             return this;
@@ -421,6 +431,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             request.extra = this.extra;
             request.maxInstallmentCount = this.maxInstallmentCount;
             request.businessMaxInstallmentCount = this.businessMaxInstallmentCount;
+            request.installments = this.installments;
             request.splitPaymentType = this.splitPaymentType;
             request.dealerTypeName = this.dealerTypeName;
             request.billToAddressLine = this.billToAddressLine;

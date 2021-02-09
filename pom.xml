@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.merchantsafeunipay</groupId>
 	<artifactId>msu-java-sdk</artifactId>
-	<version>1.0.4-SNAPSHOT</version>
+	<version>1.0.5-SNAPSHOT</version>
 	<name>MerchantSafe Unipay API SDK - Java</name>
 	<description>Java SDK for MSU API</description>
 	<url>https://github.com/PaytenASEE/msu-java-sdk</url>
@@ -77,6 +77,12 @@
 			<artifactId>javapoet</artifactId>
 			<version>1.10.0</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>2.3.3</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 
