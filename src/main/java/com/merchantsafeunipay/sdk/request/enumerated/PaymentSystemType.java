@@ -28,6 +28,8 @@ public enum PaymentSystemType {
     YKB("0067", PaymentProcessor.PROCESSOR_YKB),
     ZIRAATBANK("0010", PaymentProcessor.PROCESSOR_NESTPAY),
     TURKIYEFINANS("0206", PaymentProcessor.PROCESSOR_NESTPAY),
+    ALBARAKA("",PaymentProcessor.PROCESSOR_ALBARAKA),
+    UKRAINIANPROCESSINGCENTER("", PaymentProcessor.PROCESSOR_UKRAINIANCENTER),
 
 
     // non issuer payment system types
