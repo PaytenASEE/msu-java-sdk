@@ -19,6 +19,8 @@ public class MerchantUserAddRequest extends ApiRequest<MerchantUserAddResponse> 
 
     private String confirmPassword;
 
+    private String userCode;
+
     private MerchantUserAddRequest() {
     }
 
@@ -39,6 +41,7 @@ public class MerchantUserAddRequest extends ApiRequest<MerchantUserAddResponse> 
         addToPayload(Param.TIMEZONE, this.timeZone);
         addToPayload(Param.MERCHANTUSERPASSWORD, this.merchantUserPassword);
         addToPayload(Param.CONFIRMPASSWORD, this.confirmPassword);
+        addToPayload(Param.USERCODE, this.userCode);
     }
 
     @Override
@@ -58,6 +61,8 @@ public class MerchantUserAddRequest extends ApiRequest<MerchantUserAddResponse> 
         private String merchantUserPassword;
 
         private String confirmPassword;
+
+        private String userCode;
 
         private Authentication authentication;
 
@@ -96,6 +101,11 @@ public class MerchantUserAddRequest extends ApiRequest<MerchantUserAddResponse> 
             return this;
         }
 
+        public MerchantUserAddRequestBuilder withUserCode(String userCode){
+            this.userCode = userCode;
+            return this;
+        }
+
         public MerchantUserAddRequest build() {
             MerchantUserAddRequest request = new MerchantUserAddRequest();
             request.authentication = this.authentication;
@@ -105,6 +115,7 @@ public class MerchantUserAddRequest extends ApiRequest<MerchantUserAddResponse> 
             request.timeZone = this.timeZone;
             request.merchantUserPassword = this.merchantUserPassword;
             request.confirmPassword = this.confirmPassword;
+            request.userCode = this.userCode;
             return request;
         }
     }
