@@ -89,7 +89,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
 
     private String merchantOrderId;
 
-    private SessionTokenRequest() {
+    protected SessionTokenRequest() {
     }
 
     public static SessionTokenRequestBuilder builder() {
@@ -146,7 +146,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         return ApiAction.SESSIONTOKEN;
     }
 
-    public static final class SessionTokenRequestBuilder {
+    public static class SessionTokenRequestBuilder {
         private SessionType sessionType;
 
         private String customer;
