@@ -90,6 +90,41 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
     private String merchantOrderId;
 
     protected SessionTokenRequest() {
+    protected SessionTokenRequest() {
+    }
+
+    protected SessionTokenRequest(SessionTokenRequestBuilder builder){
+        this.sessionType = builder.sessionType;
+        this.returnUrl = builder.returnUrl;
+        this.authentication = builder.authentication;
+        this.merchantPaymentId = builder.merchantPaymentId;
+        this.customer = builder.customer;
+        this.amount = builder.amount;
+        this.currency = builder.currency;
+        this.customerEmail = builder.customerEmail;
+        this.customerName = builder.customerName;
+        this.customerPhone = builder.customerPhone;
+        this.customerIp = builder.customerIp;
+        this.customerUserAgent = builder.customerUserAgent;
+        this.installments = builder.installments;
+        this.paymentSystem = builder.paymentSystem;
+        this.campaignCode = builder.campaignCode;
+        this.billToAddressLine = builder.billToAddressLine;
+        this.billToPhone = builder.billToPhone;
+        this.billToCity = builder.billToCity;
+        this.billToPostalCode = builder.billToPostalCode;
+        this.billToCountry = builder.billToCountry;
+        this.shipToAddressLine = builder.shipToAddressLine;
+        this.shipToPhone = builder.shipToPhone;
+        this.shipToCity = builder.shipToCity;
+        this.shipToPostalCode = builder.shipToPostalCode;
+        this.shipToCountry = builder.shipToCountry;
+        this.tmxSessionQueryInput = builder.tmxSessionQueryInput;
+        this.extra = builder.extra;
+        this.dealerTypeName = builder.dealerTypeName;
+        this.customFields = builder.customFields;
+        this.cardPanType = builder.cardPanType;
+        this.orderItems = builder.orderItems;
     }
 
     public static SessionTokenRequestBuilder builder() {
