@@ -314,6 +314,7 @@ public enum Param {
     MERCHANTUSERPASSWORD,
     CONFIRMPASSWORD,
     ISLOCKED,
+    USERCODE,
 
 
     USERS,

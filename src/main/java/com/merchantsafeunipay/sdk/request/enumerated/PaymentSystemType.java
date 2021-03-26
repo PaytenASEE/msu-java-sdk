@@ -30,7 +30,7 @@ public enum PaymentSystemType {
     TURKIYEFINANS("0206", PaymentProcessor.PROCESSOR_NESTPAY),
     ALBARAKA("",PaymentProcessor.PROCESSOR_ALBARAKA),
     UKRAINIANPROCESSINGCENTER("", PaymentProcessor.PROCESSOR_UKRAINIANCENTER),
-    FIBABANK("",PaymentProcessor.PROCESSOR_FIBABANK),
+    FIBABANK("", PaymentProcessor.PROCESSOR_FIBABANK),
 
 
     // non issuer payment system types
