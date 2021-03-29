@@ -3,14 +3,9 @@ package com.merchantsafeunipay.sdk.request.apiv2.session;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.complex.OrderItem;
-import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.request.enumerated.CardPanType;
-import com.merchantsafeunipay.sdk.request.enumerated.Currency;
-import com.merchantsafeunipay.sdk.request.enumerated.Param;
-import com.merchantsafeunipay.sdk.request.enumerated.SessionType;
-import com.merchantsafeunipay.sdk.response.model.CustomField;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
+import com.merchantsafeunipay.sdk.request.enumerated.*;
 import com.merchantsafeunipay.sdk.response.SessionTokenResponse;
+import com.merchantsafeunipay.sdk.response.model.CustomField;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -89,7 +84,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
 
     private String merchantOrderId;
 
-    protected SessionTokenRequest() {
+    private String paymentSystemType;
+
     protected SessionTokenRequest() {
     }
 
@@ -125,6 +121,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         this.customFields = builder.customFields;
         this.cardPanType = builder.cardPanType;
         this.orderItems = builder.orderItems;
+        this.paymentSystemType = builder.paymentSystemType;
     }
 
     public static SessionTokenRequestBuilder builder() {
@@ -174,6 +171,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         addToPayload(Param.BILLTOPHONE, this.billToPhone);
         addToPayload(Param.CUSTOMFIELDS, this.customFields);
         addToPayload(Param.MERCHANTORDERID, this.merchantOrderId);
+        addToPayload(Param.PAYMENTSYSTEMTYPE, this.paymentSystemType);
     }
 
     @Override
@@ -255,6 +253,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         private List<CustomField> customFields;
 
         private String merchantOrderId;
+
+        private String paymentSystemType;
 
         public SessionTokenRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -442,6 +442,11 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             return this;
         }
 
+        public SessionTokenRequestBuilder withPaymentSystemType(String paymentSystemType) {
+            this.paymentSystemType = paymentSystemType;
+            return this;
+        }
+
         public SessionTokenRequest build() {
             SessionTokenRequest request = new SessionTokenRequest();
             request.authentication = this.authentication;
@@ -481,6 +486,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             request.billToPhone = this.billToPhone;
             request.customFields = this.customFields;
             request.merchantOrderId = this.merchantOrderId;
+            request.paymentSystemType = this.paymentSystemType;
             return request;
         }
     }
