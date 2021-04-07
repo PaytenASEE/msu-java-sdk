@@ -50,6 +50,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
 
     private Map<String, String> extra;
 
+    private Map<String, List<String>> extraAsJsonArray;
+
     private String maxInstallmentCount;
 
     private String businessMaxInstallmentCount;
@@ -117,6 +119,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         this.shipToCountry = builder.shipToCountry;
         this.tmxSessionQueryInput = builder.tmxSessionQueryInput;
         this.extra = builder.extra;
+        this.extraAsJsonArray = builder.extraAsJsonArray;
         this.dealerTypeName = builder.dealerTypeName;
         this.customFields = builder.customFields;
         this.cardPanType = builder.cardPanType;
@@ -154,6 +157,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         addToPayload(Param.ORDERITEMS, this.orderItems);
         addToPayload(Param.TMXSESSIONQUERYINPUT, this.tmxSessionQueryInput);
         addToPayload(Param.EXTRA, this.extra);
+        addToPayload(Param.EXTRA, this.extraAsJsonArray);
         addToPayload(Param.MAXINSTALLMENTCOUNT, this.maxInstallmentCount);
         addToPayload(Param.BUSINESSMAXINSTALLMENTCOUNT, this.businessMaxInstallmentCount);
         addToPayload(Param.INSTALLMENTS, this.installments);
@@ -217,6 +221,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         private String tmxSessionQueryInput;
 
         private Map<String, String> extra;
+
+        private Map<String, List<String>> extraAsJsonArray;
 
         private String maxInstallmentCount;
 
@@ -356,6 +362,11 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             return this;
         }
 
+        public SessionTokenRequestBuilder withExtraAsJsonArray(Map<String, List<String>> extraAsJsonArray) {
+            this.extraAsJsonArray = extraAsJsonArray;
+            return this;
+        }
+
         public SessionTokenRequestBuilder withMaxInstallmentCount(String maxInstallmentCount) {
             this.maxInstallmentCount = maxInstallmentCount;
             return this;
@@ -469,6 +480,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             request.orderItems = this.orderItems;
             request.tmxSessionQueryInput = this.tmxSessionQueryInput;
             request.extra = this.extra;
+            request.extraAsJsonArray = this.extraAsJsonArray;
             request.maxInstallmentCount = this.maxInstallmentCount;
             request.businessMaxInstallmentCount = this.businessMaxInstallmentCount;
             request.installments = this.installments;
