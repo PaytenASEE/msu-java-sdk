@@ -36,8 +36,17 @@ public class Session {
     private Integer businessMaxInstallmentCount;
     private CardPanType cardPanType;
     private List<CustomField> customFields;
+    private String iframeUrl;
 
     public Session() {
+    }
+
+    public String getIframeUrl() {
+        return iframeUrl;
+    }
+
+    public void setIframeUrl(String iframeUrl) {
+        this.iframeUrl = iframeUrl;
     }
 
     public String getToken() {
