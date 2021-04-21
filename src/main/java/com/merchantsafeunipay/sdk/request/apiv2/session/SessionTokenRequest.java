@@ -88,6 +88,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
 
     private String paymentSystemType;
 
+    private String cardPan;
+
     protected SessionTokenRequest() {
     }
 
@@ -125,6 +127,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         this.cardPanType = builder.cardPanType;
         this.orderItems = builder.orderItems;
         this.paymentSystemType = builder.paymentSystemType;
+        this.cardPan = builder.cardPan;
     }
 
     public static SessionTokenRequestBuilder builder() {
@@ -176,6 +179,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         addToPayload(Param.CUSTOMFIELDS, this.customFields);
         addToPayload(Param.MERCHANTORDERID, this.merchantOrderId);
         addToPayload(Param.PAYMENTSYSTEMTYPE, this.paymentSystemType);
+        addToPayload(Param.CARDPAN, this.cardPan);
     }
 
     @Override
@@ -261,6 +265,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         private String merchantOrderId;
 
         private String paymentSystemType;
+
+        private String cardPan;
 
         public SessionTokenRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -458,6 +464,11 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             return this;
         }
 
+        public SessionTokenRequestBuilder withCardPan(String cardPan){
+            this.cardPan = cardPan;
+            return this;
+        }
+
         public SessionTokenRequest build() {
             SessionTokenRequest request = new SessionTokenRequest();
             request.authentication = this.authentication;
@@ -499,6 +510,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             request.customFields = this.customFields;
             request.merchantOrderId = this.merchantOrderId;
             request.paymentSystemType = this.paymentSystemType;
+            request.cardPan = this.cardPan;
             return request;
         }
     }
