@@ -8,6 +8,9 @@ public class OrderItem {
     private String description;
     private BigDecimal amount;
     private Integer quantity;
+    private Integer sellerId;
+    private Integer sellerCommissionAmount;
+    private Integer productCategoryCode;
 
     public OrderItem() {
     }
@@ -18,6 +21,10 @@ public class OrderItem {
         this.description = builder.description;
         this.amount = builder.amount;
         this.quantity = builder.quantity;
+        this.sellerId = builder.sellerId;
+        this.sellerCommissionAmount = builder.sellerCommissionAmount;
+        this.productCategoryCode = builder.productCategoryCode;
+
     }
 
     public String getCode() {
@@ -60,6 +67,31 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
+    public Integer getSellerCommissionAmount() {
+        return sellerCommissionAmount;
+    }
+
+    public void setSellerCommissionAmount(Integer sellerCommissionAmount)  {
+        this.sellerCommissionAmount = sellerCommissionAmount;
+    }
+
+    public Integer getProductCategoryCode() {
+        return productCategoryCode;
+    }
+
+    public void setProductCategoryCode(Integer productCategoryCode)  {
+        this.productCategoryCode = productCategoryCode;
+    }
+
+    public Integer getsellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(Integer sellerId)  {
+        this.productCategoryCode = sellerId;
+    }
+
+
     public static Builder builder() {
         return new Builder();
     }
@@ -70,6 +102,9 @@ public class OrderItem {
         private String description;
         private BigDecimal amount;
         private Integer quantity;
+        private Integer sellerId;
+        private Integer sellerCommissionAmount;
+        private Integer productCategoryCode;
 
         public Builder code(String code) {
             this.code = code;
@@ -93,6 +128,21 @@ public class OrderItem {
 
         public Builder quantity(Integer quantity) {
             this.quantity = quantity;
+            return this;
+        }
+
+        public Builder sellerId(Integer sellerId) {
+            this.sellerId = sellerId;
+            return this;
+        }
+
+        public Builder sellerCommissionAmount(Integer sellerCommissionAmount) {
+            this.sellerCommissionAmount = sellerCommissionAmount;
+            return this;
+        }
+
+        public Builder productCategoryCode(Integer productCategoryCode) {
+            this.productCategoryCode = productCategoryCode;
             return this;
         }
 
