@@ -28,27 +28,13 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
 
     private String integrationExtraField02;
 
-    private String terminalId;
-
-    private String mbrId;
-
-    private String eposNo;
-
-    private String encKey;
-
     private String isDefault;
 
     private String subMerchantCode;
 
     private YesNo adjustRates;
 
-    private String privateKey;
-
-    private String publicKey;
-
     private String merchantKey;
-
-    private String appId;
 
     private String appSecret;
 
@@ -56,13 +42,11 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
 
     private String secureKey;
 
-    private String provautPassword;
-
-    private String provrfnPassword;
-
     private String directPossURL;
 
     private String directPoss3DURL;
+
+    private String integrationExtraField03;
 
     private PaymentSystemAddRequest() {
     }
@@ -92,21 +76,13 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
         addToPayload(Param.SUBMERCHANTCODE, this.subMerchantCode);
         addToPayload(Param.ADJUSTRATES, this.adjustRates);
         addToPayload(Param.INTEGRATIONEXTRAFIELD02, this.integrationExtraField02);
-        addToPayload(Param.TERMINALID,this.terminalId);
-        addToPayload(Param.MBRID,this.mbrId);
-        addToPayload(Param.EPOSNO,this.eposNo);
-        addToPayload(Param.ENCKEY,this.encKey);
-        addToPayload(Param.PRIVATEKEY,this.privateKey);
-        addToPayload(Param.PUBLICKEY, this.publicKey);
         addToPayload(Param.MERCHANTKEY,this.merchantKey);
-        addToPayload(Param.APPID,this.appId);
         addToPayload(Param.APPSECRET,this.appSecret);
         addToPayload(Param.MERCHANTID,this.merchantId);
         addToPayload(Param.SECUREKEY,this.secureKey);
-        addToPayload(Param.PROVAUTPASSWORD,this.provautPassword);
-        addToPayload(Param.PROVRFNPASSWORD,this.provrfnPassword);
         addToPayload(Param.DIRECTPOSSURL,this.directPossURL);
         addToPayload(Param.DIRECTPOSS3DURL,this.directPoss3DURL);
+        addToPayload(Param.INTEGRATIONEXTRAFIELD03,this.integrationExtraField03);
     }
 
     @Override
@@ -145,21 +121,7 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
 
         private Authentication authentication;
 
-        private String terminalId;
-
-        private String mbrId;
-
-        private String eposNo;
-
-        private String encKey;
-
-        private String privateKey;
-
-        private String publicKey;
-
         private String merchantKey;
-
-        private String appId;
 
         private String appSecret;
 
@@ -167,13 +129,11 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
 
         private String secureKey;
 
-        private String provautPassword;
-
-        private String provrfnPassword;
-
         private String directPossURL;
 
         private String directPoss3DURL;
+
+        private String integrationExtraField03;
 
         public PaymentSystemAddRequestBuilder withDirectPossURL(String directPossURL) {
             this.directPossURL = directPossURL;
@@ -184,33 +144,14 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
             this.directPossURL = directPossURL;
             return this;
         }
-        public PaymentSystemAddRequestBuilder withProvautPassword(String provautPassword) {
-            this.provautPassword = provautPassword;
-            return this;
-        }
-
-        public PaymentSystemAddRequestBuilder withProvrfnPassword(String provrfnPassword) {
-            this.provrfnPassword = provrfnPassword;
-            return this;
-        }
 
         public PaymentSystemAddRequestBuilder withMerchantId(String merchantId) {
             this.merchantId = merchantId;
             return this;
         }
 
-        public PaymentSystemAddRequestBuilder withEncKey(String encKey) {
-            this.encKey = encKey;
-            return this;
-        }
-
         public PaymentSystemAddRequestBuilder withSecureKey(String secureKey) {
             this.secureKey = secureKey;
-            return this;
-        }
-
-        public PaymentSystemAddRequestBuilder withAppId(String appId) {
-            this.appId = appId;
             return this;
         }
 
@@ -224,33 +165,12 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
             return this;
         }
 
-        public PaymentSystemAddRequestBuilder withPublicKey(String publicKey) {
-            this.publicKey = publicKey;
-            return this;
-        }
-
-        public PaymentSystemAddRequestBuilder withPrivateKey(String privateKey) {
-            this.privateKey = privateKey;
-            return this;
-        }
-
         public PaymentSystemAddRequestBuilder withIntegrationExtraField02(String integrationExtraField02) {
             this.integrationExtraField02 = integrationExtraField02;
             return this;
         }
-
-        public PaymentSystemAddRequestBuilder withTerminalId(String terminalId) {
-            this.terminalId = terminalId;
-            return this;
-        }
-
-        public PaymentSystemAddRequestBuilder withEposNo(String eposNo) {
-            this.eposNo = eposNo;
-            return this;
-        }
-
-        public PaymentSystemAddRequestBuilder withMbrID(String mbrId) {
-            this.mbrId = mbrId;
+        public PaymentSystemAddRequestBuilder withIntegrationExtraField03(String integrationExtraField03) {
+            this.integrationExtraField03 = integrationExtraField03;
             return this;
         }
 
@@ -346,21 +266,13 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
             request.subMerchantCode = this.subMerchantCode;
             request.adjustRates = this.adjustRates;
             request.integrationExtraField02 = this.integrationExtraField02;
-            request.terminalId = this.terminalId;
-            request.mbrId = this.mbrId;
-            request.eposNo = this.eposNo;
-            request.encKey = this.encKey;
-            request.privateKey = this.privateKey;
-            request.publicKey = this.publicKey;
             request.merchantKey= this.merchantKey;
-            request.appId = this.appId;
             request.appSecret = this.appSecret;
             request.merchantId=this.merchantId;
             request.secureKey=this.secureKey;
-            request.provautPassword=this.provautPassword;
-            request.provrfnPassword=this.provrfnPassword;
             request.directPossURL=this.directPossURL;
             request.directPoss3DURL=this.directPoss3DURL;
+            request.integrationExtraField03=this.integrationExtraField03;
 
             return request;
         }
