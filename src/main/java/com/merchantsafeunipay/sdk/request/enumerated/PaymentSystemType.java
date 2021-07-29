@@ -31,7 +31,7 @@ public enum PaymentSystemType {
     ALBARAKA("",PaymentProcessor.PROCESSOR_ALBARAKA),
     UKRAINIANPROCESSINGCENTER("", PaymentProcessor.PROCESSOR_UKRAINIANCENTER),
     FIBABANK("", PaymentProcessor.PROCESSOR_FIBABANK),
-
+    SIPAY("",PaymentProcessor.PROCESSOR_SIPAY),
 
     // non issuer payment system types
     BKMEXPRESS("", PaymentProcessor.PROCESSOR_BKMEXPRESS),
