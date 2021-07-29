@@ -40,8 +40,6 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
 
     private String merchantId;
 
-    private String secureKey;
-
     private String directPossURL;
 
     private String directPoss3DURL;
@@ -79,7 +77,6 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
         addToPayload(Param.MERCHANTKEY,this.merchantKey);
         addToPayload(Param.APPSECRET,this.appSecret);
         addToPayload(Param.MERCHANTID,this.merchantId);
-        addToPayload(Param.SECUREKEY,this.secureKey);
         addToPayload(Param.DIRECTPOSSURL,this.directPossURL);
         addToPayload(Param.DIRECTPOSS3DURL,this.directPoss3DURL);
         addToPayload(Param.INTEGRATIONEXTRAFIELD03,this.integrationExtraField03);
@@ -127,8 +124,6 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
 
         private String merchantId;
 
-        private String secureKey;
-
         private String directPossURL;
 
         private String directPoss3DURL;
@@ -147,11 +142,6 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
 
         public PaymentSystemAddRequestBuilder withMerchantId(String merchantId) {
             this.merchantId = merchantId;
-            return this;
-        }
-
-        public PaymentSystemAddRequestBuilder withSecureKey(String secureKey) {
-            this.secureKey = secureKey;
             return this;
         }
 
@@ -269,7 +259,6 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
             request.merchantKey= this.merchantKey;
             request.appSecret = this.appSecret;
             request.merchantId=this.merchantId;
-            request.secureKey=this.secureKey;
             request.directPossURL=this.directPossURL;
             request.directPoss3DURL=this.directPoss3DURL;
             request.integrationExtraField03=this.integrationExtraField03;
