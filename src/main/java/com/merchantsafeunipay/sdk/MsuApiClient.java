@@ -134,6 +134,7 @@ public class MsuApiClient {
     public void log(ApiRequest request, ApiResponse response, long totalTimeMs) throws JsonProcessingException {
         String responseCode = response != null ? response.getResponseCode() : "N/A";
         String responseMsg = response != null ? response.getResponseMsg() : "N/A";
+        String responseDesc = response != null ? response.getResponseDesc() : "N/A";
         String errorCode = response != null ? response.getErrorCode() : "N/A";
         String errorMsg = response != null ? response.getErrorMsg() : "N/A";
         String actionName = request.apiAction().name();

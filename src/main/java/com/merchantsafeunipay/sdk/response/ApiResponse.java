@@ -42,6 +42,7 @@ public class ApiResponse {
     private String responseCode;
     private String errorMsg;
     private String responseMsg;
+    private String responseDesc;
     private String violatorParam;
     private String tmxReviewStatus;
     private String tmxRiskRating;
@@ -206,6 +207,14 @@ public class ApiResponse {
 
     public void setResponseMsg(String responseMsg) {
         this.responseMsg = responseMsg;
+    }
+
+    public String getResponseDesc() {
+        return responseDesc;
+    }
+
+    public void setResponseDesc(String responseDesc) {
+        this.responseDesc = responseDesc;
     }
 
     public String getErrorMsg() {

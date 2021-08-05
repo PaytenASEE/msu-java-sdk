@@ -90,6 +90,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
 
     private String cardPan;
 
+    private String setInstallment;
+
     protected SessionTokenRequest() {
     }
 
@@ -128,6 +130,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         this.orderItems = builder.orderItems;
         this.paymentSystemType = builder.paymentSystemType;
         this.cardPan = builder.cardPan;
+        this.setInstallment = builder.setInstallment;
     }
 
     public static SessionTokenRequestBuilder builder() {
@@ -180,6 +183,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         addToPayload(Param.MERCHANTORDERID, this.merchantOrderId);
         addToPayload(Param.PAYMENTSYSTEMTYPE, this.paymentSystemType);
         addToPayload(Param.CARDPAN, this.cardPan);
+        addToPayload(Param.SETINSTALLMENT, this.setInstallment);
     }
 
     @Override
@@ -267,6 +271,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         private String paymentSystemType;
 
         private String cardPan;
+
+        private String setInstallment;
 
         public SessionTokenRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -469,6 +475,11 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             return this;
         }
 
+        public SessionTokenRequestBuilder withSetInstallment(String setInstallment) {
+            this.setInstallment = setInstallment;
+            return this;
+        }
+
         public SessionTokenRequest build() {
             SessionTokenRequest request = new SessionTokenRequest();
             request.authentication = this.authentication;
@@ -511,6 +522,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             request.merchantOrderId = this.merchantOrderId;
             request.paymentSystemType = this.paymentSystemType;
             request.cardPan = this.cardPan;
+            request.setInstallment = this.setInstallment;
             return request;
         }
     }

@@ -1,5 +1,6 @@
 package com.merchantsafeunipay.sdk.response;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.merchantsafeunipay.sdk.response.model.Bin;
 import com.merchantsafeunipay.sdk.response.model.Transaction;
@@ -8,10 +9,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class QueryTransactionResponse extends ApiResponse {
-    @JsonProperty(value = "bin")
-    @XmlElement(name = "bin")
-    private Bin bin;
     private String transactionCount;
     private String totalTransactionCount;
     @JsonProperty(value = "transactionList")
@@ -41,13 +40,5 @@ public class QueryTransactionResponse extends ApiResponse {
 
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
-    }
-
-    public Bin getBin() {
-        return bin;
-    }
-
-    public void setBin(Bin binVO) {
-        this.bin = binVO;
     }
 }
