@@ -56,6 +56,7 @@ public class ApiResponse {
     private String isCardSavable;
     private String panLast4;
     private String cardBin;
+    private String posId;
     private Map<String, String> bankResponseExtras;
     private ProxyPaymentTool proxyPaymentTool;
     @JsonIgnore
@@ -349,6 +350,14 @@ public class ApiResponse {
 
     public void setCardBin(String cardBin) {
         this.cardBin = cardBin;
+    }
+
+    public String getPosId() {
+        return posId;
+    }
+
+    public void setPosId(String posId) {
+        this.posId = posId;
     }
 
     public Map<String, String> getBankResponseExtras() {

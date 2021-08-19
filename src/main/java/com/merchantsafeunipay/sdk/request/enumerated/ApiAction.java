@@ -141,6 +141,10 @@ public enum ApiAction {
      */
     QUERYCAMPAIGNONLINE,
     /**
+     * Query Recon
+     */
+    QUERYRECON,
+    /**
      * Action for Editing Recurring Payment
      */
     RECURRINGPAYMENTEDIT,
