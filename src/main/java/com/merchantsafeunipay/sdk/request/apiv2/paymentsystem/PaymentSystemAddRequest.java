@@ -46,6 +46,8 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
 
     private String integrationExtraField03;
 
+    private String posId;
+
     private PaymentSystemAddRequest() {
     }
 
@@ -80,6 +82,7 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
         addToPayload(Param.DIRECTPOSSURL,this.directPossURL);
         addToPayload(Param.DIRECTPOSS3DURL,this.directPoss3DURL);
         addToPayload(Param.INTEGRATIONEXTRAFIELD03,this.integrationExtraField03);
+        addToPayload(Param.POSID,this.posId);
     }
 
     @Override
@@ -129,6 +132,8 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
         private String directPoss3DURL;
 
         private String integrationExtraField03;
+
+        private String posId;
 
         public PaymentSystemAddRequestBuilder withDirectPossURL(String directPossURL) {
             this.directPossURL = directPossURL;
@@ -238,6 +243,11 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
             return this;
         }
 
+        public PaymentSystemAddRequestBuilder withPosId(String posId) {
+            this.posId = posId;
+            return this;
+        }
+
 
         public PaymentSystemAddRequest build() {
             PaymentSystemAddRequest request = new PaymentSystemAddRequest();
@@ -262,6 +272,7 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
             request.directPossURL=this.directPossURL;
             request.directPoss3DURL=this.directPoss3DURL;
             request.integrationExtraField03=this.integrationExtraField03;
+            request.posId = this.posId;
 
             return request;
         }

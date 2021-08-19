@@ -32,6 +32,8 @@ public class PaymentSystemEditRequest extends ApiRequest<PaymentSystemEditRespon
 
     private YesNo adjustRates;
 
+    private String posId;
+
     private PaymentSystemEditRequest() {
     }
 
@@ -59,6 +61,7 @@ public class PaymentSystemEditRequest extends ApiRequest<PaymentSystemEditRespon
         addToPayload(Param.ISDEFAULT, this.isDefault);
         addToPayload(Param.SUBMERCHANTCODE, this.subMerchantCode);
         addToPayload(Param.ADJUSTRATES, this.adjustRates);
+        addToPayload(Param.POSID,this.posId);
     }
 
     @Override
@@ -94,6 +97,8 @@ public class PaymentSystemEditRequest extends ApiRequest<PaymentSystemEditRespon
         private YesNo adjustRates;
 
         private Authentication authentication;
+
+        private String posId;
 
         public PaymentSystemEditRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -169,6 +174,11 @@ public class PaymentSystemEditRequest extends ApiRequest<PaymentSystemEditRespon
             return this;
         }
 
+        public PaymentSystemEditRequestBuilder withPosId(String posId) {
+            this.posId = posId;
+            return this;
+        }
+
         public PaymentSystemEditRequest build() {
             PaymentSystemEditRequest request = new PaymentSystemEditRequest();
             request.authentication = this.authentication;
@@ -185,6 +195,7 @@ public class PaymentSystemEditRequest extends ApiRequest<PaymentSystemEditRespon
             request.isDefault = this.isDefault;
             request.subMerchantCode = this.subMerchantCode;
             request.adjustRates = this.adjustRates;
+            request.posId = this.posId;
             return request;
         }
     }
