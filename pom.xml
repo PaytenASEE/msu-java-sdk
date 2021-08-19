@@ -87,6 +87,7 @@
 	</dependencies>
 
 	<distributionManagement>
+		<!--
 		<snapshotRepository>
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
@@ -95,6 +96,11 @@
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
+		-->
+		<snapshotRepository>
+			<id>msu-sdk-repositories</id>
+			<url>https://nexus.local.payten.com.tr/repository/msu-sdk-repositories</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 	<profiles>

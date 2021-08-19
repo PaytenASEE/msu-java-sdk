@@ -21,7 +21,7 @@ public enum PaymentSystemType {
     KOMBANK("", PaymentProcessor.PROCESSOR_NESTPAY),
     KUVEYTTURK("0205", PaymentProcessor.PROCESSOR_KUVEYT),
     ODEABANK("0146", PaymentProcessor.PROCESSOR_ODEA),
-    QNBFINANS("0111", PaymentProcessor.PROCESSOR_QNB_FINANS),
+    QNBFINANS("0public enum Param111", PaymentProcessor.PROCESSOR_QNB_FINANS),
     SEKERBANK("0059", PaymentProcessor.PROCESSOR_NESTPAY),
     TEB("0032", PaymentProcessor.PROCESSOR_NESTPAY),
     VAKIFBANK("0015", PaymentProcessor.PROCESSOR_VAKIF),

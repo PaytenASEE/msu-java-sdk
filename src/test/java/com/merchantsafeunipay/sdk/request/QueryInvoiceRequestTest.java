@@ -24,13 +24,13 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by sercan.sensulun on 23/11/2020
  */
-public class QueryInvoiceRequestTest extends BaseIntegrationTest{
+public class QueryInvoiceRequestTest extends BaseIntegrationTest {
 
     @Test
     public void queryInvoiceWithInvoiceTypeAsPreauthTest() throws Exception {
         DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         Map<String, String> extra = new HashMap<>();
-        extra.put("Preauth","YES");
+        extra.put("Preauth", "YES");
         String merchantOrderId = StringUtils.generateString(10);
         String name = StringUtils.generateString(10);
         InvoiceAddRequest invoiceAddRequest = InvoiceAddRequest
@@ -99,8 +99,7 @@ public class QueryInvoiceRequestTest extends BaseIntegrationTest{
         assertThat(queryInvoiceResponse.isApproved(), is(Boolean.TRUE));
         Stream<Invoice> queriedInvoice = queryInvoiceResponse.getInvoices()
                 .stream()
-                .filter(x -> !x.isPreauth()
-                        && x.getInvoiceId().equals(invoiceId) && x.getName().equals(name));
+                .filter(x -> !x.isPreauth() && invoiceId.equals(x.getInvoiceId()) && name.equals(x.getName()));
 
         Optional<Invoice> foundInvoiceResult = queriedInvoice.findAny();
         assertThat(foundInvoiceResult.isPresent(), is(Boolean.TRUE));
