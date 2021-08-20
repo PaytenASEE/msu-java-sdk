@@ -7,7 +7,7 @@ import com.merchantsafeunipay.sdk.response.QueryReconResponse;
 
 public class QueryReconRequest extends ApiRequest<QueryReconResponse> {
 
-    private PaymentSystemType paymentSystemType;
+    private String paymentSystemType;
     private String pgOrderId;
     private String pgTranApprCode;
     private String startDate;
@@ -17,8 +17,8 @@ public class QueryReconRequest extends ApiRequest<QueryReconResponse> {
     private QueryReconRequest() {
     }
 
-    public static QueryReconRequest.QueryReconRequestRequestBuilder builder() {
-        return new QueryReconRequest.QueryReconRequestRequestBuilder();
+    public static QueryReconRequestBuilder builder() {
+        return new QueryReconRequestBuilder();
     }
 
     @Override
@@ -40,35 +40,35 @@ public class QueryReconRequest extends ApiRequest<QueryReconResponse> {
         return ApiAction.QUERYRECON;
     }
 
-    public static final class QueryReconRequestRequestBuilder {
+    public static final class QueryReconRequestBuilder {
 
-        private PaymentSystemType paymentSystemType;
+        private String paymentSystemType;
         private String pgOrderId;
         private String pgTranApprCode;
         private String startDate;
         private String endDate;
 
-        public QueryReconRequestRequestBuilder withPaymentSystemType(PaymentSystemType paymentSystemType) {
+        public QueryReconRequestBuilder withPaymentSystemType(String paymentSystemType) {
             this.paymentSystemType = paymentSystemType;
             return this;
         }
 
-        public QueryReconRequestRequestBuilder withPgOrderId(String pgOrderId) {
+        public QueryReconRequestBuilder withPgOrderId(String pgOrderId) {
             this.pgOrderId = pgOrderId;
             return this;
         }
 
-        public QueryReconRequestRequestBuilder withPgApprCode(String pgTranApprCode) {
+        public QueryReconRequestBuilder withPgApprCode(String pgTranApprCode) {
             this.pgTranApprCode = pgTranApprCode;
             return this;
         }
 
-        public QueryReconRequestRequestBuilder withStartDate(String startDate) {
+        public QueryReconRequestBuilder withStartDate(String startDate) {
             this.startDate = startDate;
             return this;
         }
 
-        public QueryReconRequestRequestBuilder withEndDate(String endDate) {
+        public QueryReconRequestBuilder withEndDate(String endDate) {
             this.endDate = endDate;
             return this;
         }
