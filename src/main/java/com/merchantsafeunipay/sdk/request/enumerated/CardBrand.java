@@ -6,43 +6,53 @@ import java.util.List;
 
 public enum CardBrand {
 
-    VISA,
+    VISA("Visa"),
     /**
      * MasterCard
      */
-    MC,
+    MC("Master Card"),
     /**
      * AmericanExpress
      */
-    AMEX,
+    AMEX("American Express"),
     /**
      * Discover Card
      */
-    DISCOVER,
+    DISCOVER("Discover"),
     /**
      * Dina Card
      */
-    DINACARD,
+    DINACARD("Dina Card"),
     /**
      * Diner's Club
      */
-    DINERS,
+    DINERS("Diner's Card"),
     /**
      * JCB - Japan Credit Bureau
      */
-    JCB,
+    JCB("JCB"),
     /**
      * Union Pay - China
      */
-    UNIONPAY,
+    UNIONPAY("Union Pay"),
     /**
      * Turkey’s Payment Method
      */
-    TROY,
-    /**
+    TROY("TROY"),
+    /**POM
      * UNKNOWN
      */
-    UNKNOWN;
+    UNKNOWN("Unknown");
+
+    private String userInterfaceValue;
+
+    CardBrand(String userInterfaceValue) {
+        this.userInterfaceValue = userInterfaceValue;
+    }
+
+    public String getUserInterfaceValue() {
+        return userInterfaceValue;
+    }
 
     public static List<PaymentSystemType> getSupportedPaymentSystemTypes(CardBrand cardBrand) {
         if (CardBrand.JCB.equals(cardBrand)) {
