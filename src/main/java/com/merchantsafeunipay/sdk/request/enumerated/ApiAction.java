@@ -143,7 +143,7 @@ public enum ApiAction {
     /**
      * Query Recon
      */
-    QUERYRECON,
+    QUERYRECONTRANSACTION,
     /**
      * Action for Editing Recurring Payment
      */

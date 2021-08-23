@@ -2,7 +2,6 @@ package com.merchantsafeunipay.sdk.request.apiv2.query;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
-import com.merchantsafeunipay.sdk.request.enumerated.PaymentSystemType;
 import com.merchantsafeunipay.sdk.response.QueryReconResponse;
 
 public class QueryReconRequest extends ApiRequest<QueryReconResponse> {
@@ -37,7 +36,7 @@ public class QueryReconRequest extends ApiRequest<QueryReconResponse> {
 
     @Override
     public ApiAction apiAction() {
-        return ApiAction.QUERYRECON;
+        return ApiAction.QUERYRECONTRANSACTION;
     }
 
     public static final class QueryReconRequestBuilder {
