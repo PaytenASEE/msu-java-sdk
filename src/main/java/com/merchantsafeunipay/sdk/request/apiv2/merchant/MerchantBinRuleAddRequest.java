@@ -30,6 +30,8 @@ public class MerchantBinRuleAddRequest extends ApiRequest<MerchantBinRuleAddResp
 
     private YesNo foreign;
 
+    private InstallmentType installmentType;
+
     private MerchantBinRuleAddRequest() {
     }
 
@@ -55,6 +57,7 @@ public class MerchantBinRuleAddRequest extends ApiRequest<MerchantBinRuleAddResp
         addToPayload(Param.AMOUNTLOWERLIMIT, this.amountLowerLimit);
         addToPayload(Param.AMOUNTUPPERLIMIT, this.amountUpperLimit);
         addToPayload(Param.FOREIGN, this.foreign);
+        addToPayload(Param.INSTALLMENTTYPE, this.installmentType);
     }
 
     @Override
@@ -86,6 +89,8 @@ public class MerchantBinRuleAddRequest extends ApiRequest<MerchantBinRuleAddResp
         private YesNo foreign;
 
         private Authentication authentication;
+
+        private InstallmentType installmentType;
 
         public MerchantBinRuleAddRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -147,6 +152,11 @@ public class MerchantBinRuleAddRequest extends ApiRequest<MerchantBinRuleAddResp
             return this;
         }
 
+        public MerchantBinRuleAddRequestBuilder withInstallmentType(InstallmentType installmentType) {
+            this.installmentType = installmentType;
+            return this;
+        }
+
         public MerchantBinRuleAddRequest build() {
             MerchantBinRuleAddRequest request = new MerchantBinRuleAddRequest();
             request.authentication = this.authentication;
@@ -161,6 +171,7 @@ public class MerchantBinRuleAddRequest extends ApiRequest<MerchantBinRuleAddResp
             request.amountLowerLimit = this.amountLowerLimit;
             request.amountUpperLimit = this.amountUpperLimit;
             request.foreign = this.foreign;
+            request.installmentType = this.installmentType;
             return request;
         }
     }

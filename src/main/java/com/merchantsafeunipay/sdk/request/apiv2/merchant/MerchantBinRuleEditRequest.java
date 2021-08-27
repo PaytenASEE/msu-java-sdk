@@ -30,6 +30,8 @@ public class MerchantBinRuleEditRequest extends ApiRequest<MerchantBinRuleEditRe
 
     private YesNo forEIgn;
 
+    private InstallmentType installmentType;
+
     private MerchantBinRuleEditRequest() {
     }
 
@@ -55,6 +57,7 @@ public class MerchantBinRuleEditRequest extends ApiRequest<MerchantBinRuleEditRe
         addToPayload(Param.AMOUNTLOWERLIMIT, this.amountLowerLimit);
         addToPayload(Param.AMOUNTUPPERLIMIT, this.amountUpperLimit);
         addToPayload(Param.FOREIGN, this.forEIgn);
+        addToPayload(Param.INSTALLMENTTYPE, this.installmentType);
     }
 
     @Override
@@ -84,6 +87,8 @@ public class MerchantBinRuleEditRequest extends ApiRequest<MerchantBinRuleEditRe
         private BigDecimal amountUpperLimit;
 
         private YesNo forEIgn;
+
+        private InstallmentType installmentType;
 
         private Authentication authentication;
 
@@ -147,6 +152,11 @@ public class MerchantBinRuleEditRequest extends ApiRequest<MerchantBinRuleEditRe
             return this;
         }
 
+        public MerchantBinRuleEditRequestBuilder withInstallmentType(InstallmentType installmentType) {
+            this.installmentType = installmentType;
+            return this;
+        }
+
         public MerchantBinRuleEditRequest build() {
             MerchantBinRuleEditRequest request = new MerchantBinRuleEditRequest();
             request.authentication = this.authentication;
@@ -161,6 +171,7 @@ public class MerchantBinRuleEditRequest extends ApiRequest<MerchantBinRuleEditRe
             request.amountLowerLimit = this.amountLowerLimit;
             request.amountUpperLimit = this.amountUpperLimit;
             request.forEIgn = this.forEIgn;
+            request.installmentType = this.installmentType;
             return request;
         }
     }

@@ -20,6 +20,7 @@ public class MerchantBinRule {
     private String amountUpperLimit;
     private String status;
     private String foreign;
+    private String installmentType;
 
     public MerchantBinRule() {
         super();
@@ -111,5 +112,13 @@ public class MerchantBinRule {
 
     public void setForeign(String foreign) {
         this.foreign = foreign;
+    }
+
+    public String getInstallmentType() {
+        return installmentType;
+    }
+
+    public void setInstallmentType(String installmentType) {
+        this.installmentType = installmentType;
     }
 }
