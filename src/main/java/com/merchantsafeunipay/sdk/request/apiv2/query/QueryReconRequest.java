@@ -11,6 +11,7 @@ public class QueryReconRequest extends ApiRequest<QueryReconResponse> {
     private String pgTranApprCode;
     private String startDate;
     private String endDate;
+    private String merchantPaymentId;
 
 
     private QueryReconRequest() {
@@ -32,11 +33,12 @@ public class QueryReconRequest extends ApiRequest<QueryReconResponse> {
         addToPayload(Param.PGTRANAPPRCODE, this.pgTranApprCode);
         addToPayload(Param.STARTDATE, this.startDate);
         addToPayload(Param.ENDDATE, this.endDate);
+        addToPayload(Param.MERCHANTPAYMENTID,this.merchantPaymentId);
     }
 
     @Override
     public ApiAction apiAction() {
-        return ApiAction.QUERYRECONTRANSACTION;
+        return ApiAction.RECONTRANSACTION;
     }
 
     public static final class QueryReconRequestBuilder {
@@ -46,6 +48,7 @@ public class QueryReconRequest extends ApiRequest<QueryReconResponse> {
         private String pgTranApprCode;
         private String startDate;
         private String endDate;
+        private String merchantPaymentId;
 
         public QueryReconRequestBuilder withPaymentSystemType(String paymentSystemType) {
             this.paymentSystemType = paymentSystemType;
@@ -59,6 +62,12 @@ public class QueryReconRequest extends ApiRequest<QueryReconResponse> {
 
         public QueryReconRequestBuilder withPgApprCode(String pgTranApprCode) {
             this.pgTranApprCode = pgTranApprCode;
+            return this;
+        }
+
+
+        public QueryReconRequestBuilder withMerchantPaymentId(String merchantPaymentId) {
+            this.merchantPaymentId = merchantPaymentId;
             return this;
         }
 
@@ -79,6 +88,7 @@ public class QueryReconRequest extends ApiRequest<QueryReconResponse> {
             request.pgTranApprCode = this.pgTranApprCode;
             request.startDate = this.startDate;
             request.endDate = this.endDate;
+            request.merchantPaymentId = this.merchantPaymentId;
 
             return request;
         }

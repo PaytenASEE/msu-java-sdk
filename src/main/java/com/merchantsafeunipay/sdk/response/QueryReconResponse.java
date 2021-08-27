@@ -8,26 +8,26 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import java.util.List;
 
 public class QueryReconResponse extends ApiResponse  {
-    private String transactionCount;
-    private String totalTransactionCount;
+    private int transactionCount;
+    private int totalTransactionCount;
     @JsonProperty(value = "transactionList")
     @XmlElementWrapper(name = "transactionList")
     @XmlElement(name = "transaction")
     private List<Transaction> transactions;
 
-    public String getTransactionCount() {
+    public int getTransactionCount() {
         return transactionCount;
     }
 
-    public void setTransactionCount(String transactionCount) {
+    public void setTransactionCount(int transactionCount) {
         this.transactionCount = transactionCount;
     }
 
-    public String getTotalTransactionCount() {
+    public int getTotalTransactionCount() {
         return totalTransactionCount;
     }
 
-    public void setTotalTransactionCount(String totalTransactionCount) {
+    public void setTotalTransactionCount(int totalTransactionCount) {
         this.totalTransactionCount = totalTransactionCount;
     }
 

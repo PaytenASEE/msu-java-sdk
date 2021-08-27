@@ -39,7 +39,7 @@ public class Transaction {
     private Integer installmentCount;
     private String cardOwnerMasked;
     private String customerId;
-    private String bin;
+    private Bin bin;
     private Dealer dealer;
     private boolean is3D;
     private String threeDStatus;
@@ -48,6 +48,7 @@ public class Transaction {
     private boolean isRefundable;
     private String transactionId;
     private BigDecimal refundableAmount;
+    private String posId;
 
     public Transaction() {
     }
@@ -260,12 +261,20 @@ public class Transaction {
         this.customerId = customerId;
     }
 
-    public String getBin() {
+    public Bin getBin() {
         return bin;
     }
 
-    public void setBin(String bin) {
+    public void setBin(Bin bin) {
         this.bin = bin;
+    }
+
+    public String getPosId() {
+        return posId;
+    }
+
+    public void setPosId(String posId) {
+        this.posId = posId;
     }
 
     public Dealer getDealer() {
