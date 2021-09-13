@@ -409,6 +409,10 @@ public enum ApiAction {
      */
     QUERYDEALERPST,
     /**
+     * Api action to Add bin based rule.
+     */
+    QUERYBINBASEDADD,
+    /**
      * Api action to query merchant user.
      */
     QUERYMERCHANTUSER,
