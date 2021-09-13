@@ -137,6 +137,10 @@ public enum ApiAction {
      */
     QUERYCAMPAIGN,
     /**
+     * Query Bin Based Action
+     */
+    QUERYBINBASEDACTION,
+    /**
      * Query Online Campaign Data
      */
     QUERYCAMPAIGNONLINE,
@@ -411,7 +415,7 @@ public enum ApiAction {
     /**
      * Api action to Add bin based rule.
      */
-    QUERYBINBASEDADD,
+    BINBASEDACTIONADD,
     /**
      * Api action to query merchant user.
      */

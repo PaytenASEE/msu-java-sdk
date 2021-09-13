@@ -1,5 +1,6 @@
 package com.merchantsafeunipay.sdk.request.apiv2.query;
 
+import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ActionType;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
@@ -9,6 +10,7 @@ import com.merchantsafeunipay.sdk.response.BinBasedActionAddResponse;
 public class BinBasedActionAddRequest extends ApiRequest<BinBasedActionAddResponse> {
     private ActionType actionType;
     private String ruleName;
+    private Authentication authentication;
 
     private BinBasedActionAddRequest() {
     }
@@ -30,12 +32,19 @@ public class BinBasedActionAddRequest extends ApiRequest<BinBasedActionAddRespon
 
     @Override
     public ApiAction apiAction() {
-        return ApiAction.QUERYBINBASEDADD;
+        return ApiAction.BINBASEDACTIONADD;
 
     }
     public static final class BinBasedActionAddRequestBuilder {
         private ActionType actionType;
         private String ruleName;
+        private Authentication authentication;
+
+
+        public BinBasedActionAddRequestBuilder withAuthentication(Authentication authentication) {
+            this.authentication = authentication;
+            return this;
+        }
 
         public BinBasedActionAddRequestBuilder withRuleName(String ruleName){
             this.ruleName = ruleName;
@@ -51,6 +60,8 @@ public class BinBasedActionAddRequest extends ApiRequest<BinBasedActionAddRespon
             BinBasedActionAddRequest request = new BinBasedActionAddRequest();
             request.actionType= this.actionType;
             request.ruleName = this.ruleName;
+            request.authentication = this.authentication;
+
             return request;
 
         }

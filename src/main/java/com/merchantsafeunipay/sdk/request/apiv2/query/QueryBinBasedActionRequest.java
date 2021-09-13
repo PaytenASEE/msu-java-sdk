@@ -26,7 +26,7 @@ public class QueryBinBasedActionRequest extends ApiRequest<QueryBinBasedActionRe
 
     @Override
     public ApiAction apiAction() {
-        return ApiAction.QUERYBINBASEDADD;
+        return ApiAction.QUERYBINBASEDACTION;
 
     }
 
