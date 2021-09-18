@@ -1,11 +1,13 @@
 package com.merchantsafeunipay.sdk.response.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.merchantsafeunipay.sdk.request.enumerated.ActionType;
 
-public class binBasedActionRule {
-    @JsonProperty("BinBaseRule")
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class BinBasedActionRule {
+
     private String ruleName;
-    private String actionType;
+    private ActionType actionType;
     private String bin;
     private String minAmount;
     private String maxAmount;
@@ -27,11 +29,11 @@ public class binBasedActionRule {
     }
 
 
-    public String getActionType() {
+    public ActionType getActionType() {
         return actionType;
     }
 
-    public void setActionType(String actionType) {
+    public void setActionType(ActionType actionType) {
         this.actionType = actionType;
     }
     public String getBin() {
