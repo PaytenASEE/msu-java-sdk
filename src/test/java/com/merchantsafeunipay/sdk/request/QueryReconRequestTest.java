@@ -24,7 +24,7 @@ public class QueryReconRequestTest extends BaseIntegrationTest{
                 .withCardPan("4508034508034509")
                 .withCardCvv("000")
                 .withCardExpiry("12.2023")
-                .withNameOnCard("fasfsasaf")
+                .withNameOnCard("John Doe")
                 .build();
 
         SaleResponse saleResponse = client.doRequest(saleRequest);

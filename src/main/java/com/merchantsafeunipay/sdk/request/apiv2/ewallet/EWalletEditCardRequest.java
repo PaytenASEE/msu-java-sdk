@@ -19,6 +19,8 @@ public class EWalletEditCardRequest extends ApiRequest<EWalletEditCardResponse> 
 
     private boolean forGroup;
 
+    private String trxAction;
+
     private EWalletEditCardRequest() {
     }
 
@@ -39,6 +41,7 @@ public class EWalletEditCardRequest extends ApiRequest<EWalletEditCardResponse> 
         addToPayload(Param.CARDSAVENAME, this.cardSaveName);
         addToPayload(Param.CUTOFFDAY, this.cutoffDay);
         addToPayload(Param.FORGROUP, this.forGroup);
+        addToPayload(Param.TRXACTION, this.trxAction);
     }
 
     @Override
@@ -58,6 +61,8 @@ public class EWalletEditCardRequest extends ApiRequest<EWalletEditCardResponse> 
         private String cutoffDay;
 
         private boolean forGroup;
+
+        private String trxAction;
 
         private Authentication authentication;
 
@@ -96,6 +101,11 @@ public class EWalletEditCardRequest extends ApiRequest<EWalletEditCardResponse> 
             return this;
         }
 
+        public EWalletEditCardRequestBuilder withTrxAction(String trxAction) {
+            this.trxAction = trxAction;
+            return this;
+        }
+
         public EWalletEditCardRequest build() {
             EWalletEditCardRequest request = new EWalletEditCardRequest();
             request.authentication = this.authentication;
@@ -105,6 +115,7 @@ public class EWalletEditCardRequest extends ApiRequest<EWalletEditCardResponse> 
             request.cardSaveName = this.cardSaveName;
             request.cutoffDay = this.cutoffDay;
             request.forGroup = this.forGroup;
+            request.trxAction = this.trxAction;
             return request;
         }
     }
