@@ -137,6 +137,10 @@ public enum ApiAction {
      */
     QUERYCAMPAIGN,
     /**
+     * Query Bin Based Action
+     */
+    QUERYBINBASEDACTION,
+    /**
      * Query Online Campaign Data
      */
     QUERYCAMPAIGNONLINE,

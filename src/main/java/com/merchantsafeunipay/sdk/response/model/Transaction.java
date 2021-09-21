@@ -49,6 +49,8 @@ public class Transaction {
     private String transactionId;
     private BigDecimal refundableAmount;
     private String posId;
+    private Integer bankCommissionRate;
+    private Integer bankCommissionAmount;
 
     public Transaction() {
     }
@@ -347,5 +349,21 @@ public class Transaction {
 
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
+    }
+
+    public Integer getBankCommissionRate() {
+        return bankCommissionRate;
+    }
+
+    public void setBankCommissionRate(Integer bankCommissionRate) {
+        this.bankCommissionRate = bankCommissionRate;
+    }
+
+    public Integer getBankCommissionAmount() {
+        return bankCommissionAmount;
+    }
+
+    public void setBankCommissionAmount(Integer bankCommissionAmount) {
+        this.bankCommissionAmount = bankCommissionAmount;
     }
 }
