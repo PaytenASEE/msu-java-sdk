@@ -134,6 +134,7 @@ public enum Param {
     CARDNAME,
     NAMEONCARD,
     CARDCVV,
+    CVV,
     CARDSAVENAME,
     CARDNUMBER,
     CARDSTATUS,

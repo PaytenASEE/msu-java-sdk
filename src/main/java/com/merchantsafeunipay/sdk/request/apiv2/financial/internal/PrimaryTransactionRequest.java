@@ -47,9 +47,11 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
 
     private String cardCvv;
 
+    private String cvv;
+
     private String cardSaveName;
 
-    private boolean saveCard;
+    private String saveCard;
 
     private boolean isRefundable = true;
 
@@ -124,6 +126,7 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
         this.cardExpiry = builder.cardExpiry;
         this.nameOnCard = builder.nameOnCard;
         this.cardCvv = builder.cardCvv;
+        this.cvv = builder.cvv;
         this.cardSaveName = builder.cardSaveName;
         this.saveCard = builder.saveCard;
         this.isRefundable = builder.isRefundable;
@@ -174,6 +177,7 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
         addToPayload(Param.CARDEXPIRY, this.cardExpiry);
         addToPayload(Param.NAMEONCARD, this.nameOnCard);
         addToPayload(Param.CARDCVV, this.cardCvv);
+        addToPayload(Param.CVV, this.cvv);
         addToPayload(Param.CARDSAVENAME, this.cardSaveName);
         addToPayload(Param.SAVECARD, this.saveCard);
         addToPayload(Param.ISREFUNDABLE, this.isRefundable);
@@ -245,9 +249,11 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
 
         String cardCvv;
 
+        String cvv;
+
         String cardSaveName;
 
-        boolean saveCard;
+        String saveCard;
 
         boolean isRefundable = true;
 
@@ -399,12 +405,17 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
             return self();
         }
 
+        public B withCvv(String cardCvv) {
+            this.cvv = cvv;
+            return self();
+        }
+
         public B withCardSaveName(String cardSaveName) {
             this.cardSaveName = cardSaveName;
             return self();
         }
 
-        public B withSaveCard(boolean saveCard) {
+        public B withSaveCard(String saveCard) {
             this.saveCard = saveCard;
             return self();
         }
