@@ -1,5 +1,6 @@
 package com.merchantsafeunipay.sdk.response.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -7,6 +8,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import java.math.BigDecimal;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonInclude(Include.NON_NULL)
 public class Transaction {
@@ -37,7 +39,7 @@ public class Transaction {
     private Integer installmentCount;
     private String cardOwnerMasked;
     private String customerId;
-    private String bin;
+    private Bin bin;
     private Dealer dealer;
     private boolean is3D;
     private String threeDStatus;
@@ -46,6 +48,9 @@ public class Transaction {
     private boolean isRefundable;
     private String transactionId;
     private BigDecimal refundableAmount;
+    private String posId;
+    private Integer bankCommissionRate;
+    private Integer bankCommissionAmount;
 
     public Transaction() {
     }
@@ -258,12 +263,20 @@ public class Transaction {
         this.customerId = customerId;
     }
 
-    public String getBin() {
+    public Bin getBin() {
         return bin;
     }
 
-    public void setBin(String bin) {
+    public void setBin(Bin bin) {
         this.bin = bin;
+    }
+
+    public String getPosId() {
+        return posId;
+    }
+
+    public void setPosId(String posId) {
+        this.posId = posId;
     }
 
     public Dealer getDealer() {
@@ -336,5 +349,21 @@ public class Transaction {
 
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
+    }
+
+    public Integer getBankCommissionRate() {
+        return bankCommissionRate;
+    }
+
+    public void setBankCommissionRate(Integer bankCommissionRate) {
+        this.bankCommissionRate = bankCommissionRate;
+    }
+
+    public Integer getBankCommissionAmount() {
+        return bankCommissionAmount;
+    }
+
+    public void setBankCommissionAmount(Integer bankCommissionAmount) {
+        this.bankCommissionAmount = bankCommissionAmount;
     }
 }

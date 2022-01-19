@@ -45,7 +45,27 @@ public class RecurringPlanAddRequest extends ApiRequest<RecurringPlanAddResponse
 
     private String notificationChannels;
 
-    private RecurringPlanAddRequest() {
+    protected RecurringPlanAddRequest() {
+    }
+
+    protected RecurringPlanAddRequest(RecurringPlanAddRequestBuilder builder){
+        this.cardToken = builder.cardToken;
+        this.currency = builder.currency;
+        this.customer = builder.customer;
+        this.customerEmail = builder.customerEmail;
+        this.customerName = builder.customerName;
+        this.customerIp = builder.customerIp;
+        this.customerPhone = builder.customerPhone;
+        this.firstamount = builder.firstamount;
+        this.frequency = builder.frequency;
+        this.recurrenceCount = builder.recurrenceCount;
+        this.recurringAmount = builder.recurringAmount;
+        this.recurringPlanCode = builder.recurringPlanCode;
+        this.notificationChannels = builder.notificationChannels;
+        this.occurrence = builder.occurrence;
+        this.paymentSystem = builder.paymentSystem;
+        this.tckn = builder.tckn;
+        this.startDate = builder.startDate;
     }
 
     public static RecurringPlanAddRequestBuilder builder() {
@@ -83,7 +103,7 @@ public class RecurringPlanAddRequest extends ApiRequest<RecurringPlanAddResponse
         return ApiAction.RECURRINGPLANADD;
     }
 
-    public static final class RecurringPlanAddRequestBuilder {
+    public static class RecurringPlanAddRequestBuilder {
         private String cardToken;
 
         private String customer;

@@ -42,6 +42,7 @@ public class ApiResponse {
     private String responseCode;
     private String errorMsg;
     private String responseMsg;
+    private String responseDesc;
     private String violatorParam;
     private String tmxReviewStatus;
     private String tmxRiskRating;
@@ -55,6 +56,7 @@ public class ApiResponse {
     private String isCardSavable;
     private String panLast4;
     private String cardBin;
+    private String posId;
     private Map<String, String> bankResponseExtras;
     private ProxyPaymentTool proxyPaymentTool;
     @JsonIgnore
@@ -208,6 +210,14 @@ public class ApiResponse {
         this.responseMsg = responseMsg;
     }
 
+    public String getResponseDesc() {
+        return responseDesc;
+    }
+
+    public void setResponseDesc(String responseDesc) {
+        this.responseDesc = responseDesc;
+    }
+
     public String getErrorMsg() {
         return errorMsg;
     }
@@ -340,6 +350,14 @@ public class ApiResponse {
 
     public void setCardBin(String cardBin) {
         this.cardBin = cardBin;
+    }
+
+    public String getPosId() {
+        return posId;
+    }
+
+    public void setPosId(String posId) {
+        this.posId = posId;
     }
 
     public Map<String, String> getBankResponseExtras() {

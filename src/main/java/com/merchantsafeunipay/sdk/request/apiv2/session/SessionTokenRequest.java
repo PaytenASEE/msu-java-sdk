@@ -3,14 +3,9 @@ package com.merchantsafeunipay.sdk.request.apiv2.session;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.complex.OrderItem;
-import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
-import com.merchantsafeunipay.sdk.request.enumerated.CardPanType;
-import com.merchantsafeunipay.sdk.request.enumerated.Currency;
-import com.merchantsafeunipay.sdk.request.enumerated.Param;
-import com.merchantsafeunipay.sdk.request.enumerated.SessionType;
-import com.merchantsafeunipay.sdk.response.model.CustomField;
-import com.merchantsafeunipay.sdk.util.ResponseInfo;
+import com.merchantsafeunipay.sdk.request.enumerated.*;
 import com.merchantsafeunipay.sdk.response.SessionTokenResponse;
+import com.merchantsafeunipay.sdk.response.model.CustomField;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -55,6 +50,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
 
     private Map<String, String> extra;
 
+    private Map<String, List<String>> extraAsJsonArray;
+
     private String maxInstallmentCount;
 
     private String businessMaxInstallmentCount;
@@ -89,7 +86,51 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
 
     private String merchantOrderId;
 
-    private SessionTokenRequest() {
+    private String paymentSystemType;
+
+    private String cardPan;
+
+    private String setInstallment;
+
+    protected SessionTokenRequest() {
+    }
+
+    protected SessionTokenRequest(SessionTokenRequestBuilder builder){
+        this.sessionType = builder.sessionType;
+        this.returnUrl = builder.returnUrl;
+        this.authentication = builder.authentication;
+        this.merchantPaymentId = builder.merchantPaymentId;
+        this.customer = builder.customer;
+        this.amount = builder.amount;
+        this.currency = builder.currency;
+        this.customerEmail = builder.customerEmail;
+        this.customerName = builder.customerName;
+        this.customerPhone = builder.customerPhone;
+        this.customerIp = builder.customerIp;
+        this.customerUserAgent = builder.customerUserAgent;
+        this.installments = builder.installments;
+        this.paymentSystem = builder.paymentSystem;
+        this.campaignCode = builder.campaignCode;
+        this.billToAddressLine = builder.billToAddressLine;
+        this.billToPhone = builder.billToPhone;
+        this.billToCity = builder.billToCity;
+        this.billToPostalCode = builder.billToPostalCode;
+        this.billToCountry = builder.billToCountry;
+        this.shipToAddressLine = builder.shipToAddressLine;
+        this.shipToPhone = builder.shipToPhone;
+        this.shipToCity = builder.shipToCity;
+        this.shipToPostalCode = builder.shipToPostalCode;
+        this.shipToCountry = builder.shipToCountry;
+        this.tmxSessionQueryInput = builder.tmxSessionQueryInput;
+        this.extra = builder.extra;
+        this.extraAsJsonArray = builder.extraAsJsonArray;
+        this.dealerTypeName = builder.dealerTypeName;
+        this.customFields = builder.customFields;
+        this.cardPanType = builder.cardPanType;
+        this.orderItems = builder.orderItems;
+        this.paymentSystemType = builder.paymentSystemType;
+        this.cardPan = builder.cardPan;
+        this.setInstallment = builder.setInstallment;
     }
 
     public static SessionTokenRequestBuilder builder() {
@@ -122,6 +163,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         addToPayload(Param.ORDERITEMS, this.orderItems);
         addToPayload(Param.TMXSESSIONQUERYINPUT, this.tmxSessionQueryInput);
         addToPayload(Param.EXTRA, this.extra);
+        addToPayload(Param.EXTRA, this.extraAsJsonArray);
         addToPayload(Param.MAXINSTALLMENTCOUNT, this.maxInstallmentCount);
         addToPayload(Param.BUSINESSMAXINSTALLMENTCOUNT, this.businessMaxInstallmentCount);
         addToPayload(Param.INSTALLMENTS, this.installments);
@@ -139,6 +181,9 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         addToPayload(Param.BILLTOPHONE, this.billToPhone);
         addToPayload(Param.CUSTOMFIELDS, this.customFields);
         addToPayload(Param.MERCHANTORDERID, this.merchantOrderId);
+        addToPayload(Param.PAYMENTSYSTEMTYPE, this.paymentSystemType);
+        addToPayload(Param.CARDPAN, this.cardPan);
+        addToPayload(Param.SETINSTALLMENT, this.setInstallment);
     }
 
     @Override
@@ -146,7 +191,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         return ApiAction.SESSIONTOKEN;
     }
 
-    public static final class SessionTokenRequestBuilder {
+    public static class SessionTokenRequestBuilder {
         private SessionType sessionType;
 
         private String customer;
@@ -185,6 +230,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
 
         private Map<String, String> extra;
 
+        private Map<String, List<String>> extraAsJsonArray;
+
         private String maxInstallmentCount;
 
         private String businessMaxInstallmentCount;
@@ -220,6 +267,12 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         private List<CustomField> customFields;
 
         private String merchantOrderId;
+
+        private String paymentSystemType;
+
+        private String cardPan;
+
+        private String setInstallment;
 
         public SessionTokenRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -321,6 +374,11 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             return this;
         }
 
+        public SessionTokenRequestBuilder withExtraAsJsonArray(Map<String, List<String>> extraAsJsonArray) {
+            this.extraAsJsonArray = extraAsJsonArray;
+            return this;
+        }
+
         public SessionTokenRequestBuilder withMaxInstallmentCount(String maxInstallmentCount) {
             this.maxInstallmentCount = maxInstallmentCount;
             return this;
@@ -407,6 +465,21 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             return this;
         }
 
+        public SessionTokenRequestBuilder withPaymentSystemType(String paymentSystemType) {
+            this.paymentSystemType = paymentSystemType;
+            return this;
+        }
+
+        public SessionTokenRequestBuilder withCardPan(String cardPan){
+            this.cardPan = cardPan;
+            return this;
+        }
+
+        public SessionTokenRequestBuilder withSetInstallment(String setInstallment) {
+            this.setInstallment = setInstallment;
+            return this;
+        }
+
         public SessionTokenRequest build() {
             SessionTokenRequest request = new SessionTokenRequest();
             request.authentication = this.authentication;
@@ -429,6 +502,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             request.orderItems = this.orderItems;
             request.tmxSessionQueryInput = this.tmxSessionQueryInput;
             request.extra = this.extra;
+            request.extraAsJsonArray = this.extraAsJsonArray;
             request.maxInstallmentCount = this.maxInstallmentCount;
             request.businessMaxInstallmentCount = this.businessMaxInstallmentCount;
             request.installments = this.installments;
@@ -446,6 +520,9 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             request.billToPhone = this.billToPhone;
             request.customFields = this.customFields;
             request.merchantOrderId = this.merchantOrderId;
+            request.paymentSystemType = this.paymentSystemType;
+            request.cardPan = this.cardPan;
+            request.setInstallment = this.setInstallment;
             return request;
         }
     }

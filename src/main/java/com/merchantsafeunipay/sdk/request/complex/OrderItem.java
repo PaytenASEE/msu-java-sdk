@@ -9,6 +9,7 @@ public class OrderItem {
     private BigDecimal amount;
     private Integer quantity;
 
+
     public OrderItem() {
     }
 
@@ -18,6 +19,7 @@ public class OrderItem {
         this.description = builder.description;
         this.amount = builder.amount;
         this.quantity = builder.quantity;
+
     }
 
     public String getCode() {
@@ -60,6 +62,7 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
+
     public static Builder builder() {
         return new Builder();
     }
@@ -70,6 +73,9 @@ public class OrderItem {
         private String description;
         private BigDecimal amount;
         private Integer quantity;
+        private Integer sellerId;
+        private Integer sellerCommissionAmount;
+        private Integer productCategoryCode;
 
         public Builder code(String code) {
             this.code = code;

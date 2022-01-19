@@ -137,9 +137,17 @@ public enum ApiAction {
      */
     QUERYCAMPAIGN,
     /**
+     * Query Bin Based Action
+     */
+    QUERYBINBASEDACTION,
+    /**
      * Query Online Campaign Data
      */
     QUERYCAMPAIGNONLINE,
+    /**
+     * Query Recon
+     */
+    RECONTRANSACTION,
     /**
      * Action for Editing Recurring Payment
      */
@@ -614,6 +622,10 @@ public enum ApiAction {
      * Auth Token for Loan Payment
      */
     LOANPAYMENTAUTHTOKEN,
+    /**
+     * Query Card Details
+     */
+    QUERYCARDDETAILS,
 
     SHAREDPAYMENTSYSTEMADD, SHAREDPAYMENTSYSTEMDELETE, PAYMENTSYSTEMRULEADD, QUERYPAYMENTSYSTEMRULE, PAYMENTSYSTEMRULEDELETE, PAYMENTSYSTEMRULEEDIT, QUERYRECONCILIATIONSCHEMA, QUERYSHAREDPAYMENTSYSTEM, RECONCILIATIONSCHEMAADD, RECONCILIATIONSCHEMAEDIT;
 

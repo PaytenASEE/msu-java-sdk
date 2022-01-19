@@ -26,11 +26,27 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
 
     private String integrationExtraField01;
 
+    private String integrationExtraField02;
+
     private String isDefault;
 
     private String subMerchantCode;
 
     private YesNo adjustRates;
+
+    private String merchantKey;
+
+    private String appSecret;
+
+    private String merchantId;
+
+    private String directPossURL;
+
+    private String directPoss3DURL;
+
+    private String integrationExtraField03;
+
+    private String posId;
 
     private PaymentSystemAddRequest() {
     }
@@ -59,6 +75,14 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
         addToPayload(Param.ISDEFAULT, this.isDefault);
         addToPayload(Param.SUBMERCHANTCODE, this.subMerchantCode);
         addToPayload(Param.ADJUSTRATES, this.adjustRates);
+        addToPayload(Param.INTEGRATIONEXTRAFIELD02, this.integrationExtraField02);
+        addToPayload(Param.MERCHANTKEY,this.merchantKey);
+        addToPayload(Param.APPSECRET,this.appSecret);
+        addToPayload(Param.MERCHANTID,this.merchantId);
+        addToPayload(Param.DIRECTPOSSURL,this.directPossURL);
+        addToPayload(Param.DIRECTPOSS3DURL,this.directPoss3DURL);
+        addToPayload(Param.INTEGRATIONEXTRAFIELD03,this.integrationExtraField03);
+        addToPayload(Param.POSID,this.posId);
     }
 
     @Override
@@ -87,6 +111,8 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
 
         private String integrationExtraField01;
 
+        private String integrationExtraField02;
+
         private String isDefault;
 
         private String subMerchantCode;
@@ -94,6 +120,54 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
         private YesNo adjustRates;
 
         private Authentication authentication;
+
+        private String merchantKey;
+
+        private String appSecret;
+
+        private String merchantId;
+
+        private String directPossURL;
+
+        private String directPoss3DURL;
+
+        private String integrationExtraField03;
+
+        private String posId;
+
+        public PaymentSystemAddRequestBuilder withDirectPossURL(String directPossURL) {
+            this.directPossURL = directPossURL;
+            return this;
+        }
+
+        public PaymentSystemAddRequestBuilder withDirectPoss3DURL(String directPoss3DURL) {
+            this.directPossURL = directPossURL;
+            return this;
+        }
+
+        public PaymentSystemAddRequestBuilder withMerchantId(String merchantId) {
+            this.merchantId = merchantId;
+            return this;
+        }
+
+        public PaymentSystemAddRequestBuilder withAppSecret(String appSecret) {
+            this.appSecret = appSecret;
+            return this;
+        }
+
+        public PaymentSystemAddRequestBuilder withMerchantKey(String merchantKey) {
+            this.merchantKey = merchantKey;
+            return this;
+        }
+
+        public PaymentSystemAddRequestBuilder withIntegrationExtraField02(String integrationExtraField02) {
+            this.integrationExtraField02 = integrationExtraField02;
+            return this;
+        }
+        public PaymentSystemAddRequestBuilder withIntegrationExtraField03(String integrationExtraField03) {
+            this.integrationExtraField03 = integrationExtraField03;
+            return this;
+        }
 
         public PaymentSystemAddRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -169,6 +243,12 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
             return this;
         }
 
+        public PaymentSystemAddRequestBuilder withPosId(String posId) {
+            this.posId = posId;
+            return this;
+        }
+
+
         public PaymentSystemAddRequest build() {
             PaymentSystemAddRequest request = new PaymentSystemAddRequest();
             request.authentication = this.authentication;
@@ -185,6 +265,15 @@ public class PaymentSystemAddRequest extends ApiRequest<PaymentSystemAddResponse
             request.isDefault = this.isDefault;
             request.subMerchantCode = this.subMerchantCode;
             request.adjustRates = this.adjustRates;
+            request.integrationExtraField02 = this.integrationExtraField02;
+            request.merchantKey= this.merchantKey;
+            request.appSecret = this.appSecret;
+            request.merchantId=this.merchantId;
+            request.directPossURL=this.directPossURL;
+            request.directPoss3DURL=this.directPoss3DURL;
+            request.integrationExtraField03=this.integrationExtraField03;
+            request.posId = this.posId;
+
             return request;
         }
     }

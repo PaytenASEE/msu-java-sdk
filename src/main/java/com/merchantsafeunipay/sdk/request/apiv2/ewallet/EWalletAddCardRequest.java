@@ -31,6 +31,8 @@ public class EWalletAddCardRequest extends ApiRequest<EWalletAddCardResponse> {
 
     private String cutoffDay;
 
+    private String trxAction;
+
     private EWalletAddCardRequest() {
     }
 
@@ -57,6 +59,7 @@ public class EWalletAddCardRequest extends ApiRequest<EWalletAddCardResponse> {
         addToPayload(Param.CUSTOMERPHONE, this.customerPhone);
         addToPayload(Param.DEALERCODE, this.dealerCode);
         addToPayload(Param.CUTOFFDAY, this.cutoffDay);
+        addToPayload(Param.TRXACTION, this.trxAction);
     }
 
     @Override
@@ -88,6 +91,8 @@ public class EWalletAddCardRequest extends ApiRequest<EWalletAddCardResponse> {
         private String dealerCode;
 
         private String cutoffDay;
+
+        private String trxAction;
 
         private Authentication authentication;
 
@@ -156,6 +161,11 @@ public class EWalletAddCardRequest extends ApiRequest<EWalletAddCardResponse> {
             return this;
         }
 
+        public EWalletAddCardRequestBuilder withTrxAction(String trxAction) {
+            this.trxAction = trxAction;
+            return this;
+        }
+
         public EWalletAddCardRequest build() {
             EWalletAddCardRequest request = new EWalletAddCardRequest();
             request.authentication = this.authentication;
@@ -171,6 +181,7 @@ public class EWalletAddCardRequest extends ApiRequest<EWalletAddCardResponse> {
             request.customerPhone = this.customerPhone;
             request.dealerCode = this.dealerCode;
             request.cutoffDay = this.cutoffDay;
+            request.trxAction = this.trxAction;
             return request;
         }
     }
