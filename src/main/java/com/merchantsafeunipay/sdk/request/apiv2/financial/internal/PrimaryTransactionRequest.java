@@ -107,6 +107,8 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
 
     private CardPanType cardPanType;
 
+    private  String invoiceId;
+
     protected PrimaryTransactionRequest(PrimaryTransactionBuilder builder) {
         this.authentication = builder.authentication;
         this.merchantPaymentId = builder.merchantPaymentId;
@@ -156,6 +158,7 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
         this.cardCutoffDay = builder.cardCutoffDay;
         this.dealerUserEmail = builder.dealerUserEmail;
         this.cardPanType = builder.cardPanType;
+        this.invoiceId = builder.invoiceId;
     }
 
     @Override
@@ -207,6 +210,7 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
         addToPayload(Param.CARDCUTOFFDAY, this.cardCutoffDay);
         addToPayload(Param.DEALERUSEREMAIL, this.dealerUserEmail);
         addToPayload(Param.CARDPANTYPE, this.cardPanType);
+        addToPayload(Param.INVIOCEID,this.invoiceId);
     }
 
     @Override
@@ -298,6 +302,8 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
         String dealerCode;
 
         String dealerTypeName;
+
+        String invoiceId;
 
         boolean forGroup;
 
@@ -552,6 +558,11 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
 
         public B withCardPanType(CardPanType cardPanType) {
             this.cardPanType = cardPanType;
+            return self();
+        }
+
+        public B withInvoiceId(String invoiceId) {
+            this.invoiceId = invoiceId;
             return self();
         }
     }
