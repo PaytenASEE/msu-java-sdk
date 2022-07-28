@@ -23,7 +23,7 @@ public class SessionKillRequest extends ApiRequest<SessionKillResponse> {
 
     @Override
     public void applyRequestParams() {
-        addToPayload(Param.TOKEN, this.sessionToken);
+        addToPayload(Param.SESSIONTOKEN, this.sessionToken);
     }
 
     @Override
