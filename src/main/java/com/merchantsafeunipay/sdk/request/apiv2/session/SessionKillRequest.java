@@ -3,9 +3,12 @@ package com.merchantsafeunipay.sdk.request.apiv2.session;
 import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
+import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.SessionKillResponse;
 
 public class SessionKillRequest extends ApiRequest<SessionKillResponse> {
+    private String sessionToken;
+
     private SessionKillRequest() {
     }
 
@@ -20,6 +23,7 @@ public class SessionKillRequest extends ApiRequest<SessionKillResponse> {
 
     @Override
     public void applyRequestParams() {
+        addToPayload(Param.SESSIONTOKEN, this.sessionToken);
     }
 
     @Override
@@ -29,15 +33,22 @@ public class SessionKillRequest extends ApiRequest<SessionKillResponse> {
 
     public static final class SessionKillRequestBuilder {
         private Authentication authentication;
+        private String sessionToken;
 
         public SessionKillRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
             return this;
         }
 
+        public SessionKillRequestBuilder withSessionToken(String sessionToken) {
+            this.sessionToken = sessionToken;
+            return this;
+        }
+
         public SessionKillRequest build() {
             SessionKillRequest request = new SessionKillRequest();
             request.authentication = this.authentication;
+            request.sessionToken = this.sessionToken;
             return request;
         }
     }
