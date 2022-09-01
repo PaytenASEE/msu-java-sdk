@@ -109,6 +109,8 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
 
     private  String invoiceId;
 
+    private String paymentSytemPool;
+
     protected PrimaryTransactionRequest(PrimaryTransactionBuilder builder) {
         this.authentication = builder.authentication;
         this.merchantPaymentId = builder.merchantPaymentId;
@@ -159,6 +161,7 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
         this.dealerUserEmail = builder.dealerUserEmail;
         this.cardPanType = builder.cardPanType;
         this.invoiceId = builder.invoiceId;
+        this.paymentSytemPool = builder.paymentSystemPool;
     }
 
     @Override
@@ -211,6 +214,7 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
         addToPayload(Param.DEALERUSEREMAIL, this.dealerUserEmail);
         addToPayload(Param.CARDPANTYPE, this.cardPanType);
         addToPayload(Param.INVIOCEID,this.invoiceId);
+        addToPayload(Param.PAYMENTSYSTEMPOOL,this.paymentSytemPool);
     }
 
     @Override
@@ -304,6 +308,8 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
         String dealerTypeName;
 
         String invoiceId;
+
+        String paymentSystemPool;
 
         boolean forGroup;
 
@@ -563,6 +569,11 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
 
         public B withInvoiceId(String invoiceId) {
             this.invoiceId = invoiceId;
+            return self();
+        }
+
+        public B withPaymentSystemPool(){
+            this.paymentSystemPool = paymentSystemPool;
             return self();
         }
     }
