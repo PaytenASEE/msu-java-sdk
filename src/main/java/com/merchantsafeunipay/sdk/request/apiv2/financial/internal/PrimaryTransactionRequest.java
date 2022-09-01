@@ -109,7 +109,7 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
 
     private  String invoiceId;
 
-    private String paymentSytemPool;
+    private Map<String, String> paymentSystemPool = new LinkedHashMap<>();
 
     protected PrimaryTransactionRequest(PrimaryTransactionBuilder builder) {
         this.authentication = builder.authentication;
@@ -161,7 +161,7 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
         this.dealerUserEmail = builder.dealerUserEmail;
         this.cardPanType = builder.cardPanType;
         this.invoiceId = builder.invoiceId;
-        this.paymentSytemPool = builder.paymentSystemPool;
+        this.paymentSystemPool = builder.paymentSystemPool;
     }
 
     @Override
@@ -214,7 +214,7 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
         addToPayload(Param.DEALERUSEREMAIL, this.dealerUserEmail);
         addToPayload(Param.CARDPANTYPE, this.cardPanType);
         addToPayload(Param.INVIOCEID,this.invoiceId);
-        addToPayload(Param.PAYMENTSYSTEMPOOL,this.paymentSytemPool);
+        addToPayload(Param.PAYMENTSYSTEMPOOL,this.paymentSystemPool);
     }
 
     @Override
@@ -309,7 +309,7 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
 
         String invoiceId;
 
-        String paymentSystemPool;
+        Map<String, String> paymentSystemPool = new LinkedHashMap<>();
 
         boolean forGroup;
 
@@ -572,7 +572,7 @@ public abstract class PrimaryTransactionRequest<R> extends ApiRequest<R> {
             return self();
         }
 
-        public B withPaymentSystemPool(){
+        public B withPaymentSystemPool(Map<String, String> paymentSystemPool){
             this.paymentSystemPool = paymentSystemPool;
             return self();
         }
