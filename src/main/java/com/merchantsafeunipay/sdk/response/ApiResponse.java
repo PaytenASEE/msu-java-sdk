@@ -357,11 +357,11 @@ public class ApiResponse {
         return posId;
     }
 
-    public String customer(){
+    public String customer() {
         return customer;
     }
 
-    public void setCustomer(String customer){
+    public void setCustomer(String customer) {
         this.customer = customer;
     }
 
