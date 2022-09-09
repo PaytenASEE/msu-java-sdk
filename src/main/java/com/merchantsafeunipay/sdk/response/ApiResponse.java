@@ -57,7 +57,9 @@ public class ApiResponse {
     private String panLast4;
     private String cardBin;
     private String posId;
+    private String customer;
     private String cardExpiry;
+
     private Map<String, String> bankResponseExtras;
     private ProxyPaymentTool proxyPaymentTool;
     @JsonIgnore
@@ -355,6 +357,14 @@ public class ApiResponse {
 
     public String getPosId() {
         return posId;
+    }
+
+    public String customer() {
+        return customer;
+    }
+
+    public void setCustomer(String customer) {
+        this.customer = customer;
     }
 
     public void setPosId(String posId) {
