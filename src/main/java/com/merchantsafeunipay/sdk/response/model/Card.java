@@ -34,6 +34,7 @@ public class Card {
     private String createdDate;
     private String lastUpdateDate;
     private String cutoffDay;
+    private String bankEftCode;
 
     public Card() {
     }
@@ -237,4 +238,13 @@ public class Card {
     public void setCutoffDay(String cutoffDay) {
         this.cutoffDay = cutoffDay;
     }
+
+    public String getBankEftCode() {
+        return bankEftCode;
+    }
+
+    public void setBankEftCode(String bankEftCode) {
+        this.bankEftCode = bankEftCode;
+    }
+
 }

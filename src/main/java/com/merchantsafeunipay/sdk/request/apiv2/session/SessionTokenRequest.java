@@ -1,6 +1,7 @@
 package com.merchantsafeunipay.sdk.request.apiv2.session;
 
 import com.merchantsafeunipay.sdk.authentication.Authentication;
+import com.merchantsafeunipay.sdk.request.apiv2.financial.PostauthRequest;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.complex.OrderItem;
 import com.merchantsafeunipay.sdk.request.enumerated.*;
@@ -92,6 +93,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
 
     private String setInstallment;
 
+    private String initiatorMerchantBusinessId;
+
     protected SessionTokenRequest() {
     }
 
@@ -131,6 +134,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         this.paymentSystemType = builder.paymentSystemType;
         this.cardPan = builder.cardPan;
         this.setInstallment = builder.setInstallment;
+        this.initiatorMerchantBusinessId = builder.initiatorMerchantBusinessId;
     }
 
     public static SessionTokenRequestBuilder builder() {
@@ -184,6 +188,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         addToPayload(Param.PAYMENTSYSTEMTYPE, this.paymentSystemType);
         addToPayload(Param.CARDPAN, this.cardPan);
         addToPayload(Param.SETINSTALLMENT, this.setInstallment);
+        addToPayload(Param.INITIATORMERCHANTBUSINESSID, this.initiatorMerchantBusinessId);
     }
 
     @Override
@@ -273,6 +278,8 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
         private String cardPan;
 
         private String setInstallment;
+
+        private String initiatorMerchantBusinessId;
 
         public SessionTokenRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -480,6 +487,12 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             return this;
         }
 
+
+        public SessionTokenRequestBuilder withInitiatorMerchantBusinessId(String initiatorMerchantBusinessId) {
+            this.initiatorMerchantBusinessId = initiatorMerchantBusinessId;
+            return this;
+        }
+
         public SessionTokenRequest build() {
             SessionTokenRequest request = new SessionTokenRequest();
             request.authentication = this.authentication;
@@ -523,6 +536,7 @@ public class SessionTokenRequest extends ApiRequest<SessionTokenResponse> {
             request.paymentSystemType = this.paymentSystemType;
             request.cardPan = this.cardPan;
             request.setInstallment = this.setInstallment;
+            request.initiatorMerchantBusinessId = this.initiatorMerchantBusinessId;
             return request;
         }
     }
