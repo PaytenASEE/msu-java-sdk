@@ -59,6 +59,7 @@ public class ApiResponse {
     private String posId;
     private String customer;
     private String cardExpiry;
+    private String nameOnCard;
 
     private Map<String, String> bankResponseExtras;
     private ProxyPaymentTool proxyPaymentTool;
@@ -299,6 +300,14 @@ public class ApiResponse {
 
     public void setPaymentSystemEftCode(String paymentSystemEftCode) {
         this.paymentSystemEftCode = paymentSystemEftCode;
+    }
+
+    public String getNameOnCard() {
+        return nameOnCard;
+    }
+
+    public void setNameOnCard(String nameOnCard) {
+        this.nameOnCard = nameOnCard;
     }
 
     public void setSuccessResponseParams() {
