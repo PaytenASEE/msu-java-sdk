@@ -43,7 +43,7 @@ public enum CardNetwork {
 	 * World
 	 */
 	WORLD(Arrays.asList(
-			PaymentSystemType.YKB, 
+			PaymentSystemType.YKB,
 			PaymentSystemType.ANADOLU, 
 			PaymentSystemType.VAKIFBANK, 
 			PaymentSystemType.IYZICO)),
