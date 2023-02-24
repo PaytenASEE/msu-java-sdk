@@ -60,6 +60,7 @@ public class ApiResponse {
     private String customer;
     private String cardExpiry;
     private String nameOnCard;
+    private String extra;
 
     private Map<String, String> bankResponseExtras;
     private ProxyPaymentTool proxyPaymentTool;
@@ -426,5 +427,13 @@ public class ApiResponse {
 
     public void setCardExpiry(String cardExpiry) {
         this.cardExpiry = cardExpiry;
+    }
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
     }
 }
