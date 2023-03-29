@@ -24,6 +24,8 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
 
     private String invoiceType;
 
+    private String merchantOrderID;
+
     private QueryInvoiceRequest() {
     }
 
@@ -46,6 +48,7 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
         addToPayload(Param.DUEDATEEND, this.dueDateEnd);
         addToPayload(Param.INVOICESTATUS, this.invoiceStatus);
         addToPayload(Param.INVOICETYPE, this.invoiceType);
+        addToPayload(Param.MERCHANTORDERID,this.merchantOrderID);
     }
 
     @Override
@@ -71,6 +74,8 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
         private Authentication authentication;
 
         private String invoiceType;
+
+        private String merchantOrderId;
 
         public QueryInvoiceRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -116,6 +121,10 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
             this.invoiceType = invoiceType;
             return this;
         }
+        public QueryInvoiceRequestBuilder withMerchantOrderID(String merchantOrderID){
+            this.merchantOrderId = merchantOrderID;
+            return this;
+        }
 
         public QueryInvoiceRequest build() {
             QueryInvoiceRequest request = new QueryInvoiceRequest();
@@ -128,6 +137,7 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
             request.dueDateEnd = this.dueDateEnd;
             request.invoiceStatus = this.invoiceStatus;
             request.invoiceType = this.invoiceType;
+            request.merchantOrderID = this.merchantOrderId;
             return request;
         }
     }
