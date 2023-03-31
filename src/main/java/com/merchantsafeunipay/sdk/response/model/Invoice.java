@@ -25,6 +25,42 @@ public class Invoice {
     private Merchant merchant;
     private String merchantOrderId;
     private boolean isPreauth;
+    private BigDecimal discountAmount;
+    private BigDecimal paidAmount;
+    private BigDecimal postAuthAmount;
+    private String dealerTypeName;
+    private String extra;
+    private String type;
+    private Boolean isSplitPayment;
+    private Boolean hasActiveSplitPayment;
+
+    public BigDecimal getPostAuthAmount() {return postAuthAmount;}
+
+    public BigDecimal getPaidAmount() {return paidAmount;}
+
+    public BigDecimal getDiscountAmount() {return discountAmount;}
+
+    public void setDiscountAmount(BigDecimal discountAmount) {this.discountAmount = discountAmount;}
+
+    public String getExtra() {return extra;}
+
+    public void setExtra(String extra) {this.extra = extra;}
+
+    public String getType() {return type;}
+
+    public void setType(String type) {this.type = type;}
+
+    public Boolean getSplitPayment() {return isSplitPayment;}
+
+    public void setSplitPayment(Boolean splitPayment) {isSplitPayment = splitPayment;}
+
+    public Boolean getHasActiveSplitPayment() {return hasActiveSplitPayment;}
+
+    public void setHasActiveSplitPayment(Boolean hasActiveSplitPayment) {this.hasActiveSplitPayment = hasActiveSplitPayment;}
+
+    public void setDealerTypeName(String dealerTypeName) {this.dealerTypeName = dealerTypeName;}
+
+    public String getDealerTypeName() {return dealerTypeName;}
 
     public String getInvoiceId() {
         return invoiceId;

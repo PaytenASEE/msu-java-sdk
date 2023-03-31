@@ -36,6 +36,7 @@ public class Merchant {
     private Boolean useBankMerchantId;
     private Boolean insuranceCompany;
     private Boolean allowPreamt;
+    private Boolean basicPayment;
 
     public String getBusinessId() {
         return businessId;
@@ -201,6 +202,8 @@ public class Merchant {
         return allowUrl;
     }
 
+    public Boolean getBasicPayment() { return basicPayment;}
+
     public void setAllowUrl(String allowUrl) {
         this.allowUrl = allowUrl;
     }
@@ -235,5 +238,8 @@ public class Merchant {
 
     public void setAllowPreamt(Boolean allowPreamt) {
         this.allowPreamt = allowPreamt;
+    }
+    public void setBasicPayment(Boolean basicPayment) {
+        this.allowPreamt = basicPayment;
     }
 }
