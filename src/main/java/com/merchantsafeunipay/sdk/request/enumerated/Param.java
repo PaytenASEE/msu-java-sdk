@@ -86,7 +86,6 @@ public enum Param {
     SHOWJCB,
     SHOWTROY,
 
-
     @Deprecated
     ITEMNUM_CODE,
     @Deprecated
@@ -149,6 +148,7 @@ public enum Param {
     CARDHOLDERID,
 
     OFFSET, LIMIT,
+    ORDER, SORTBY,
     S_CARD_TOKEN,
     S_CARD_OWNER_MASKED,
     S_PAN_LAST4,
