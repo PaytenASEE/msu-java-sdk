@@ -24,6 +24,15 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
 
     private String invoiceType;
 
+    private String sortBy;
+
+    private String order;
+
+    private String limit;
+
+    private String offset;
+
+
     private QueryInvoiceRequest() {
     }
 
@@ -46,6 +55,12 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
         addToPayload(Param.DUEDATEEND, this.dueDateEnd);
         addToPayload(Param.INVOICESTATUS, this.invoiceStatus);
         addToPayload(Param.INVOICETYPE, this.invoiceType);
+        addToPayload(Param.SORTBY, this.sortBy);
+        addToPayload(Param.ORDER, this.order);
+        addToPayload(Param.LIMIT, this.limit);
+        addToPayload(Param.OFFSET, this.offset);
+
+
     }
 
     @Override
@@ -71,6 +86,14 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
         private Authentication authentication;
 
         private String invoiceType;
+
+        private String sortBy;
+
+        private String order;
+
+        private String limit;
+
+        private String offset;
 
         public QueryInvoiceRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -117,6 +140,26 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
             return this;
         }
 
+        public QueryInvoiceRequestBuilder withOffset(String offset) {
+            this.offset = offset;
+            return this;
+        }
+
+        public QueryInvoiceRequestBuilder withOrder(String order) {
+            this.order = order;
+            return this;
+        }
+
+        public QueryInvoiceRequestBuilder withLimit(String limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        public QueryInvoiceRequestBuilder withSortBy(String sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
         public QueryInvoiceRequest build() {
             QueryInvoiceRequest request = new QueryInvoiceRequest();
             request.authentication = this.authentication;
@@ -128,6 +171,10 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
             request.dueDateEnd = this.dueDateEnd;
             request.invoiceStatus = this.invoiceStatus;
             request.invoiceType = this.invoiceType;
+            request.limit = this.limit;
+            request.order = this.order;
+            request.offset = this.offset;
+            request.sortBy = this.sortBy;
             return request;
         }
     }
