@@ -32,6 +32,8 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
 
     private String offset;
 
+    private String merchantOrderID;
+
 
     private QueryInvoiceRequest() {
     }
@@ -59,7 +61,7 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
         addToPayload(Param.ORDER, this.order);
         addToPayload(Param.LIMIT, this.limit);
         addToPayload(Param.OFFSET, this.offset);
-
+        addToPayload(Param.MERCHANTORDERID,this.merchantOrderID);
 
     }
 
@@ -94,6 +96,8 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
         private String limit;
 
         private String offset;
+
+        private String merchantOrderId;
 
         public QueryInvoiceRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -139,6 +143,10 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
             this.invoiceType = invoiceType;
             return this;
         }
+        public QueryInvoiceRequestBuilder withMerchantOrderID(String merchantOrderID){
+            this.merchantOrderId = merchantOrderID;
+            return this;
+        }
 
         public QueryInvoiceRequestBuilder withOffset(String offset) {
             this.offset = offset;
@@ -175,6 +183,7 @@ public class QueryInvoiceRequest extends ApiRequest<QueryInvoiceResponse> {
             request.order = this.order;
             request.offset = this.offset;
             request.sortBy = this.sortBy;
+            request.merchantOrderID = this.merchantOrderId;
             return request;
         }
     }

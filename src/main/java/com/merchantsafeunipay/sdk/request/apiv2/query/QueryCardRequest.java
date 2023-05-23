@@ -21,6 +21,10 @@ public class QueryCardRequest extends ApiRequest<QueryCardResponse> {
 
     private String dealerCode;
 
+    private String startDate;
+
+    private String endDate;
+
     private QueryCardRequest() {
     }
 
@@ -42,6 +46,8 @@ public class QueryCardRequest extends ApiRequest<QueryCardResponse> {
         addToPayload(Param.OFFSET, this.offset);
         addToPayload(Param.LIMIT, this.limit);
         addToPayload(Param.DEALERCODE, this.dealerCode);
+        addToPayload(Param.STARTDATE, this.startDate);
+        addToPayload(Param.ENDDATE, this.endDate);
     }
 
     @Override
@@ -64,6 +70,10 @@ public class QueryCardRequest extends ApiRequest<QueryCardResponse> {
 
         private String dealerCode;
 
+        private String startDate;
+
+        private String endDate;
+
         private Authentication authentication;
 
         public QueryCardRequestBuilder withAuthentication(Authentication authentication) {
@@ -83,6 +93,16 @@ public class QueryCardRequest extends ApiRequest<QueryCardResponse> {
 
         public QueryCardRequestBuilder withCustomer(String customer) {
             this.customer = customer;
+            return this;
+        }
+
+        public QueryCardRequestBuilder withEndDate(String endDate) {
+            this.endDate = endDate;
+            return this;
+        }
+
+        public QueryCardRequestBuilder withStartDate(String startDate) {
+            this.startDate = startDate;
             return this;
         }
 
@@ -116,6 +136,8 @@ public class QueryCardRequest extends ApiRequest<QueryCardResponse> {
             request.offset = this.offset;
             request.limit = this.limit;
             request.dealerCode = this.dealerCode;
+            request.startDate = this.startDate;
+            request.endDate = this.endDate;
             return request;
         }
     }
