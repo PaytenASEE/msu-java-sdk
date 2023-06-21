@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
+import com.merchantsafeunipay.sdk.response.SplitPaymentInvoices;
 import com.merchantsafeunipay.sdk.response.misc.MoneySerializer;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -56,6 +57,28 @@ public class SplitPayment {
     @XmlElementWrapper(name = "splitPaymentTransactionList")
     @XmlElement(name = "splitPaymentTransactionList")
     private List<SplitPaymentTransaction> splitPaymentTransactionList = new ArrayList<>();
+    @JsonProperty(value = "splitPaymentInvoices")
+    @XmlElementWrapper(name = "splitPaymentInvoices")
+    @XmlElement(name = "splitPaymentInvoices")
+    private List<SplitPaymentInvoices> splitPaymentInvoices = new ArrayList<>();
+    private String groupNumber;
+    @JsonProperty(value = "groupNumber")
+    @XmlElementWrapper(name = "groupNumber")
+    @XmlElement(name = "groupNumber")
+    private BigDecimal refundedAmount;
+    @JsonProperty(value = "refundedAmount")
+    @XmlElementWrapper(name = "refundedAmount")
+    @XmlElement(name = "refundedAmount")
+    private String expirationTime;
+    @JsonProperty(value = "expirationTime")
+    @XmlElementWrapper(name = "expirationTime")
+    @XmlElement(name = "expirationTime")
+    private String spExpirationTimeUTC;
+    @JsonProperty(value = "spExpirationTimeUTC")
+    @XmlElementWrapper(name = "spExpirationTimeUTC")
+    @XmlElement(name = "spExpirationTimeUTC")
+
+
 
     public String getCode() {
         return code;
@@ -112,4 +135,25 @@ public class SplitPayment {
     public List<SplitPaymentTransaction> getSplitPaymentTransactionList() {
         return splitPaymentTransactionList;
     }
+
+    public List<SplitPaymentInvoices> getSplitPaymentInvoices() {return splitPaymentInvoices;}
+
+    public void setSplitPaymentInvoices(List<SplitPaymentInvoices> splitPaymentInvoices) {this.splitPaymentInvoices = splitPaymentInvoices;}
+
+    public String getGroupNumber() {return groupNumber;}
+
+    public void setGroupNumber(String groupNumber) {this.groupNumber = groupNumber;}
+
+    public BigDecimal getRefundedAmount() {return refundedAmount;}
+
+    public void setRefundedAmount(BigDecimal refundedAmount) {this.refundedAmount = refundedAmount;}
+
+    public String getExpirationTime() {return expirationTime;}
+
+    public void setExpirationTime(String expirationTime) {this.expirationTime = expirationTime;}
+
+    public String getSpExpirationTimeUTC() {return spExpirationTimeUTC;}
+
+    public void setSpExpirationTimeUTC(String spExpirationTimeUTC) {this.spExpirationTimeUTC = spExpirationTimeUTC;}
+
 }

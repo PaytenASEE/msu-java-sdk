@@ -61,6 +61,8 @@ public class ApiResponse {
     private String cardExpiry;
     private String nameOnCard;
     private String extra;
+    private String groupNumber;
+
 
     private Map<String, String> bankResponseExtras;
     private ProxyPaymentTool proxyPaymentTool;
@@ -78,6 +80,9 @@ public class ApiResponse {
         apiServiceVO.setDeclinedResponseParams();
         return apiServiceVO;
     }
+    public String getGroupNumber() {return groupNumber;}
+
+    public void setGroupNumber(String groupNumber) {this.groupNumber = groupNumber;}
 
     public ApiAction getAction() {
         return action;

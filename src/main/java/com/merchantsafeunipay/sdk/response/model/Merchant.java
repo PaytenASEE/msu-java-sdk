@@ -37,6 +37,152 @@ public class Merchant {
     private Boolean insuranceCompany;
     private Boolean allowPreamt;
     private Boolean basicPayment;
+    private Boolean multipleAccountsPerBank;
+    private Boolean useAxessWallet;
+    private Boolean usePayTR;
+    private Boolean useCompay;
+    private Boolean usePlatron;
+    private Boolean useParam;
+    private Boolean useVakifBankRefundService;
+    private String multipleAccountsType;
+    private Boolean ignoreUserValidation;
+    private Boolean useMobiMoney;
+    private Boolean useGarantiLoan;
+    private Boolean useZubizu;
+    private Boolean usePapara;
+    private Boolean useAkode;
+    private Boolean externalAuthentication;
+    private Boolean useMultinet;
+
+    public Boolean getMultipleAccountsPerBank() {
+        return multipleAccountsPerBank;
+    }
+
+    public void setMultipleAccountsPerBank(Boolean multipleAccountsPerBank) {
+        this.multipleAccountsPerBank = multipleAccountsPerBank;
+    }
+
+    public Boolean getUseAxessWallet() {
+        return useAxessWallet;
+    }
+
+    public void setUseAxessWallet(Boolean useAxessWallet) {
+        this.useAxessWallet = useAxessWallet;
+    }
+
+    public Boolean getUsePayTR() {
+        return usePayTR;
+    }
+
+    public void setUsePayTR(Boolean usePayTR) {
+        this.usePayTR = usePayTR;
+    }
+
+    public Boolean getUseCompay() {
+        return useCompay;
+    }
+
+    public void setUseCompay(Boolean useCompay) {
+        this.useCompay = useCompay;
+    }
+
+    public Boolean getUsePlatron() {
+        return usePlatron;
+    }
+
+    public void setUsePlatron(Boolean usePlatron) {
+        this.usePlatron = usePlatron;
+    }
+
+    public Boolean getUseParam() {
+        return useParam;
+    }
+
+    public void setUseParam(Boolean useParam) {
+        this.useParam = useParam;
+    }
+
+    public Boolean getUseVakifBankRefundService() {
+        return useVakifBankRefundService;
+    }
+
+    public void setUseVakifBankRefundService(Boolean useVakifBankRefundService) {
+        this.useVakifBankRefundService = useVakifBankRefundService;
+    }
+
+    public String getMultipleAccountsType() {
+        return multipleAccountsType;
+    }
+
+    public void setMultipleAccountsType(String multipleAccountsType) {
+        this.multipleAccountsType = multipleAccountsType;
+    }
+
+    public Boolean getIgnoreUserValidation() {
+        return ignoreUserValidation;
+    }
+
+    public void setIgnoreUserValidation(Boolean ignoreUserValidation) {
+        this.ignoreUserValidation = ignoreUserValidation;
+    }
+
+    public Boolean getUseMobiMoney() {
+        return useMobiMoney;
+    }
+
+    public void setUseMobiMoney(Boolean useMobiMoney) {
+        this.useMobiMoney = useMobiMoney;
+    }
+
+    public Boolean getUseGarantiLoan() {
+        return useGarantiLoan;
+    }
+
+    public void setUseGarantiLoan(Boolean useGarantiLoan) {
+        this.useGarantiLoan = useGarantiLoan;
+    }
+
+    public Boolean getUseZubizu() {
+        return useZubizu;
+    }
+
+    public void setUseZubizu(Boolean useZubizu) {
+        this.useZubizu = useZubizu;
+    }
+
+    public Boolean getUsePapara() {
+        return usePapara;
+    }
+
+    public void setUsePapara(Boolean usePapara) {
+        this.usePapara = usePapara;
+    }
+
+    public Boolean getUseAkode() {
+        return useAkode;
+    }
+
+    public void setUseAkode(Boolean useAkode) {
+        this.useAkode = useAkode;
+    }
+
+    public Boolean getExternalAuthentication() {
+        return externalAuthentication;
+    }
+
+    public void setExternalAuthentication(Boolean externalAuthentication) {
+        this.externalAuthentication = externalAuthentication;
+    }
+
+    public Boolean getUseMultinet() {
+        return useMultinet;
+    }
+
+    public void setUseMultinet(Boolean useMultinet) {
+        this.useMultinet = useMultinet;
+    }
+
+
 
     public String getBusinessId() {
         return businessId;
