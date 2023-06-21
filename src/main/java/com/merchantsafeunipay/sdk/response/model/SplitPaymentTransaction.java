@@ -39,6 +39,30 @@ public class SplitPaymentTransaction {
     @XmlElementWrapper(name = "campaign")
     @XmlElement(name = "campaign")
     private CampaignCode campaignVO;
+    @JsonProperty(value = "issuerType")
+    private String issuerType;
+    @JsonProperty(value = "nameOnCard")
+    private String nameOnCard;
+    @JsonProperty(value = "cardExpiry")
+    private String cardExpiry;
+    @JsonProperty(value = "extra")
+    private String extra;
+
+    public String getExtra() {return extra;}
+
+    public void setExtra(String extra) {this.extra = extra;}
+
+    public String getCardExpiry() {return cardExpiry;}
+
+    public void setCardExpiry(String cardExpiry) {this.cardExpiry = cardExpiry;}
+
+    public String getNameOnCard() {return nameOnCard;}
+
+    public void setNameOnCard(String nameOnCard) {this.nameOnCard = nameOnCard;}
+
+    public String getIssuerType() {return issuerType;}
+
+    public void setIssuerType(String issuerType) {this.issuerType = issuerType;}
 
     public String getMerchantPaymentId() {
         return merchantPaymentId;

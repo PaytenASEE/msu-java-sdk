@@ -17,4 +17,13 @@ public class QuerySplitPaymentResponse extends ApiResponse {
     public List<SplitPayment> getSplitPaymentList() {
         return splitPaymentList;
     }
+
+    @JsonProperty(value = "splitPaymentInvoices")
+    @XmlElementWrapper(name = "splitPaymentInvoices")
+    @XmlElement(name = "splitPaymentInvoices")
+    private List<SplitPaymentInvoices> splitPaymentInvoices = new ArrayList<>();
+
+    public List<SplitPaymentInvoices> getSplitPaymentInvoices() {
+        return splitPaymentInvoices;
+    }
 }
