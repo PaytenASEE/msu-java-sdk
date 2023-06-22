@@ -61,24 +61,22 @@ public class SplitPayment {
     @XmlElementWrapper(name = "splitPaymentInvoices")
     @XmlElement(name = "splitPaymentInvoices")
     private List<SplitPaymentInvoices> splitPaymentInvoices = new ArrayList<>();
-    private String groupNumber;
     @JsonProperty(value = "groupNumber")
     @XmlElementWrapper(name = "groupNumber")
     @XmlElement(name = "groupNumber")
-    private BigDecimal refundedAmount;
+    private String groupNumber;
     @JsonProperty(value = "refundedAmount")
     @XmlElementWrapper(name = "refundedAmount")
     @XmlElement(name = "refundedAmount")
-    private String expirationTime;
+    private BigDecimal refundedAmount;
     @JsonProperty(value = "expirationTime")
     @XmlElementWrapper(name = "expirationTime")
     @XmlElement(name = "expirationTime")
-    private String spExpirationTimeUTC;
+    private String expirationTime;
     @JsonProperty(value = "spExpirationTimeUTC")
     @XmlElementWrapper(name = "spExpirationTimeUTC")
     @XmlElement(name = "spExpirationTimeUTC")
-
-
+    private String spExpirationTimeUTC;
 
     public String getCode() {
         return code;
