@@ -29,6 +29,8 @@ public class QueryTransactionRequest extends ApiRequest<QueryTransactionResponse
 
     private String customerPhone;
 
+    private String encryptedPan;
+
     private QueryTransactionRequest() {
     }
 
@@ -54,6 +56,7 @@ public class QueryTransactionRequest extends ApiRequest<QueryTransactionResponse
         addToPayload(Param.CUSTOMEREMAIL, this.customerEmail);
         addToPayload(Param.CUSTOMERNAME, this.customerName);
         addToPayload(Param.CUSTOMERPHONE, this.customerPhone);
+        addToPayload(Param.ENCRYPTEDPAN, this.encryptedPan);
     }
 
     @Override
@@ -83,6 +86,8 @@ public class QueryTransactionRequest extends ApiRequest<QueryTransactionResponse
         private String customerName;
 
         private String customerPhone;
+
+        private String encryptedPan;
 
         private Authentication authentication;
 
@@ -146,6 +151,11 @@ public class QueryTransactionRequest extends ApiRequest<QueryTransactionResponse
             return this;
         }
 
+        public QueryTransactionRequestBuilder withEncryptedPan(String encryptedPan) {
+            this.encryptedPan = encryptedPan;
+            return this;
+        }
+
         public QueryTransactionRequest build() {
             QueryTransactionRequest request = new QueryTransactionRequest();
             request.authentication = this.authentication;
@@ -160,6 +170,7 @@ public class QueryTransactionRequest extends ApiRequest<QueryTransactionResponse
             request.customerEmail = this.customerEmail;
             request.customerName = this.customerName;
             request.customerPhone = this.customerPhone;
+            request.encryptedPan = this.encryptedPan;
             return request;
         }
     }
