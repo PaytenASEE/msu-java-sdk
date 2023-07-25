@@ -25,6 +25,8 @@ public class QueryCardRequest extends ApiRequest<QueryCardResponse> {
 
     private String endDate;
 
+    private String encryptedPan;
+
     private QueryCardRequest() {
     }
 
@@ -48,6 +50,7 @@ public class QueryCardRequest extends ApiRequest<QueryCardResponse> {
         addToPayload(Param.DEALERCODE, this.dealerCode);
         addToPayload(Param.STARTDATE, this.startDate);
         addToPayload(Param.ENDDATE, this.endDate);
+        addToPayload(Param.ENCRYPTEDPAN, this.encryptedPan);
     }
 
     @Override
@@ -73,6 +76,8 @@ public class QueryCardRequest extends ApiRequest<QueryCardResponse> {
         private String startDate;
 
         private String endDate;
+
+        private String encryptedPan;
 
         private Authentication authentication;
 
@@ -126,6 +131,11 @@ public class QueryCardRequest extends ApiRequest<QueryCardResponse> {
             return this;
         }
 
+        public QueryCardRequestBuilder withEncryptedPan(String encryptedPan) {
+            this.encryptedPan = encryptedPan;
+            return this;
+        }
+
         public QueryCardRequest build() {
             QueryCardRequest request = new QueryCardRequest();
             request.authentication = this.authentication;
@@ -138,6 +148,7 @@ public class QueryCardRequest extends ApiRequest<QueryCardResponse> {
             request.dealerCode = this.dealerCode;
             request.startDate = this.startDate;
             request.endDate = this.endDate;
+            request.encryptedPan = this.encryptedPan;
             return request;
         }
     }
