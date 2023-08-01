@@ -16,7 +16,7 @@ public class QueryTransactionResponse extends ApiResponse {
     @JsonProperty(value = "transactionList")
     @XmlElementWrapper(name = "transactionList")
     @XmlElement(name = "transaction")
-    private List<Transaction> transactions;
+    private List<TransactionList> transactionList;
 
     public String getTransactionCount() {
         return transactionCount;
@@ -33,12 +33,8 @@ public class QueryTransactionResponse extends ApiResponse {
     public void setTotalTransactionCount(String totalTransactionCount) {
         this.totalTransactionCount = totalTransactionCount;
     }
+    public List<TransactionList> getTransactionList (){return transactionList;}
 
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
+    public void setTransactionList(List<TransactionList> transactionList){this.transactionList = transactionList;}
 
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
-    }
 }
