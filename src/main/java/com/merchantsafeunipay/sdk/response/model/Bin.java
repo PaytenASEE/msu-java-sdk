@@ -22,10 +22,11 @@ public class Bin {
     private String cardName;
     private String countryIsoA3;
     private String issuerType;
+    private String is8Digit;
+    private String is6Digit;
+    private String prepaidCard;
 
-    public String getBinValue() {
-        return binValue;
-    }
+    public String getBinValue() {return binValue;}
 
     public String getCardBrand() {
         return cardBrand;
@@ -63,4 +64,13 @@ public class Bin {
         return issuerType;
     }
 
+    public String getPrepaidCard() {return prepaidCard;}
+
+    public String getIs8Digit() {
+        return is8Digit;
+    }
+
+    public String getIs6Digit() {
+        return is6Digit;
+    }
 }
