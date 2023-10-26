@@ -426,5 +426,8 @@ public enum Param {
     TRXACTION,
     INVIOCEID,
     PAYMENTSYSTEMPOOL,
-    ENCRYPTEDPAN;
+
+    ENCRYPTEDPAN,
+
+    VALIDFOR;
 }

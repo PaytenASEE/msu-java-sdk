@@ -15,7 +15,7 @@ public class BaseIntegrationTest {
 		Authentication userCredentialsAuthentication = new UserCredentialsAuthentication(
 				new StaticCredentialsProvider("testmerchant", "apiuser@testmerchant.com", "Pluto321`"));
 		client = MsuApiClient.builder()
-				.withUrl("https://neon-app.asseco-see.com.tr/msu/api/v2")
+				.withUrl("https://neon-app.local.payten.com.tr/msu/api/v2")
 				//.withPrettyPrintRequests(true)
 				.withDefaultAuthentication(userCredentialsAuthentication)
 				.build();
