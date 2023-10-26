@@ -11,6 +11,7 @@ public class QueryBnplProductRequestTest extends BaseIntegrationTest {
         QueryBnplProductRequest queryBnplProductRequest = QueryBnplProductRequest.builder()
                 .withCode("1234")
                 .withValidFor("DEALER")
+                .withPaymentSystem("YKB_LOAN")
                 .build();
 
         QueryBnplProductResponse queryBnplProductResponse = client.doRequest(queryBnplProductRequest);
