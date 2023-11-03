@@ -29,6 +29,7 @@ public class RecurringPayment {
     @XmlElement(name = "recPaymentTransactionList")
     private List<RecurringPaymentTransaction> recPaymentTransactionList = new ArrayList<>();
 
+
     public String getStartDate() {
         return startDate;
     }
