@@ -1,5 +1,4 @@
 package com.merchantsafeunipay.sdk.response;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -8,7 +7,6 @@ import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.ProxyPaymentTool;
 import com.merchantsafeunipay.sdk.response.misc.ResponseCode;
 import com.merchantsafeunipay.sdk.response.misc.ResponseMessage;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
