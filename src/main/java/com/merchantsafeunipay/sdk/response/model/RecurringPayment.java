@@ -24,19 +24,11 @@ public class RecurringPayment {
     @JsonSerialize(using = MoneySerializer.class)
     private BigDecimal amount;
     private Integer tryCount;
-    private String traceId;
     @JsonProperty(value = "recPaymentTransactionList")
     @XmlElementWrapper(name = "recPaymentTransactionList")
     @XmlElement(name = "recPaymentTransactionList")
     private List<RecurringPaymentTransaction> recPaymentTransactionList = new ArrayList<>();
 
-    public String getTraceId() {
-        return traceId;
-    }
-
-    public void setTraceId(String traceId) {
-        this.traceId = traceId;
-    }
 
     public String getStartDate() {
         return startDate;

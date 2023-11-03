@@ -62,7 +62,7 @@ public class ApiResponse {
     private String nameOnCard;
     private String extra;
     private String groupNumber;
-
+    private String traceId;
 
     private Map<String, String> bankResponseExtras;
     private ProxyPaymentTool proxyPaymentTool;
@@ -83,6 +83,14 @@ public class ApiResponse {
     public String getGroupNumber() {return groupNumber;}
 
     public void setGroupNumber(String groupNumber) {this.groupNumber = groupNumber;}
+
+    public String getTraceId() {
+        return traceId;
+    }
+
+    public void setTraceId(String traceId) {
+        this.traceId = traceId;
+    }
 
     public ApiAction getAction() {
         return action;

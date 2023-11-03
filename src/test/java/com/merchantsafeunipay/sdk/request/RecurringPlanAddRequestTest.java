@@ -19,7 +19,7 @@ public class RecurringPlanAddRequestTest extends BaseIntegrationTest {
                 .withCustomerEmail("skurtulus@yopmail.com")
                 .withCustomerPhone("05531907302")
                 .withTckn("13286288390")
-                .withRecurringPlanCode("reg1")
+                .withRecurringPlanCode("reg2")
                 .withFirstamount(new BigDecimal("100"))
                 .withRecurringAmount(new BigDecimal("100"))
                 .withRecurrenceCount(new BigDecimal("10"))
