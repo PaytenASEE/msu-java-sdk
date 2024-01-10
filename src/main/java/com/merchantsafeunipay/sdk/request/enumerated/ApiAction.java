@@ -631,7 +631,12 @@ public enum ApiAction {
 
     QUERYBNPLPRODUCT,
 
-    EDITSESSIONTOKEN;
+    EDITSESSIONTOKEN,
+    /**
+     * API action to edit sessiontoken amount and returnurl.
+     */
+
+    PAYBYLINKPAYMENTEDIT;
     /**
      * API action to edit sessiontoken amount and returnurl.
      */
