@@ -9,6 +9,8 @@ import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.RecurringPlanAddResponse;
 
 import java.math.BigDecimal;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class RecurringPlanAddRequest extends ApiRequest<RecurringPlanAddResponse> {
     private String cardToken;
@@ -45,6 +47,8 @@ public class RecurringPlanAddRequest extends ApiRequest<RecurringPlanAddResponse
 
     private String notificationChannels;
 
+    private Map<String, String> extra = new LinkedHashMap<>();
+
     protected RecurringPlanAddRequest() {
     }
 
@@ -66,6 +70,7 @@ public class RecurringPlanAddRequest extends ApiRequest<RecurringPlanAddResponse
         this.paymentSystem = builder.paymentSystem;
         this.tckn = builder.tckn;
         this.startDate = builder.startDate;
+        this.extra = builder.extra;
     }
 
     public static RecurringPlanAddRequestBuilder builder() {
@@ -96,6 +101,7 @@ public class RecurringPlanAddRequest extends ApiRequest<RecurringPlanAddResponse
         addToPayload(Param.CURRENCY, this.currency);
         addToPayload(Param.PAYMENTSYSTEM, this.paymentSystem);
         addToPayload(Param.NOTIFICATIONCHANNELS, this.notificationChannels);
+        addToPayload(Param.EXTRA,this.extra);
     }
 
     @Override
@@ -139,9 +145,15 @@ public class RecurringPlanAddRequest extends ApiRequest<RecurringPlanAddResponse
         private String notificationChannels;
 
         private Authentication authentication;
+        Map<String, String> extra = new LinkedHashMap<>();
 
         public RecurringPlanAddRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
+            return this;
+        }
+
+        public RecurringPlanAddRequestBuilder withExtra(Map<String, String> extra) {
+            this.extra = extra;
             return this;
         }
 
@@ -250,6 +262,7 @@ public class RecurringPlanAddRequest extends ApiRequest<RecurringPlanAddResponse
             request.currency = this.currency;
             request.paymentSystem = this.paymentSystem;
             request.notificationChannels = this.notificationChannels;
+            request.extra = this.extra;
             return request;
         }
     }
