@@ -10,7 +10,7 @@ public class QrPaymentTest extends BaseIntegrationTest{
     public void qrPayment() {
         QrpaymentRequest qrpaymentRequest = QrpaymentRequest.builder()
                 .withCurrency("TRY")
-                .withAmount("101")
+                .withAmount("200")
                 .withMerchantPaymentId("KuveytTurk-1")
                 .withSessionToken("CF6OGRQDKB6EB67YQVL6WLP7HDIV2BNM6TLKQP4S2IDEJ4CY")
                 .withPaymentSystemType("KUVEYTTURK_LOAN")
