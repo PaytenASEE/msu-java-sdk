@@ -636,10 +636,12 @@ public enum ApiAction {
      * API action to edit sessiontoken amount and returnurl.
      */
 
-    PAYBYLINKPAYMENTEDIT;
+    PAYBYLINKPAYMENTEDIT,
     /**
      * API action to edit sessiontoken amount and returnurl.
      */
+
+    QRPAYMENT;
 
     public static ApiAction fromString(String input) {
         for (ApiAction a : values()) {
