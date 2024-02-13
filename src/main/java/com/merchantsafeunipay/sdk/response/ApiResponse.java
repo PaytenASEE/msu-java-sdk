@@ -61,6 +61,8 @@ public class ApiResponse {
     private String extra;
     private String groupNumber;
     private String traceId;
+    private String qrCode;
+    private String qrTransactionId;
 
     private Map<String, String> bankResponseExtras;
     private ProxyPaymentTool proxyPaymentTool;
@@ -108,6 +110,15 @@ public class ApiResponse {
 
     public String getPaymentSystem() {
         return paymentSystem;
+    }
+
+    public String getQrCode() {return qrCode;}
+
+    public void setQrcode(String qrcode) {this.qrCode = qrCode;}
+
+    public String getQrTransactionId() {return qrTransactionId;}
+
+    public void setQrTransactionId(String qrTransactionId) {this.qrTransactionId = qrTransactionId;
     }
 
     public void setPaymentSystem(String paymentSystem) {
