@@ -4,26 +4,26 @@ import com.merchantsafeunipay.sdk.authentication.Authentication;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
-import com.merchantsafeunipay.sdk.response.QrpaymentResponse;
+import com.merchantsafeunipay.sdk.response.QrPaymentResponse;
 
-public class QrpaymentRequest extends ApiRequest<QrpaymentResponse> {
+public class QrPaymentRequest extends ApiRequest<QrPaymentResponse> {
     private String sessionToken;
     private String currency;
     private String amount;
     private String merchantOrderId;
     private String paymentSystemType;
 
-    private QrpaymentRequest() {
+    private QrPaymentRequest() {
 
     }
 
-    public static QrpaymentRequestBuilder builder() {
-        return new QrpaymentRequestBuilder();
+    public static QrPaymentRequestBuilder builder() {
+        return new QrPaymentRequestBuilder();
     }
 
     @Override
-    public Class<QrpaymentResponse> responseClass() {
-        return QrpaymentResponse.class;
+    public Class<QrPaymentResponse> responseClass() {
+        return QrPaymentResponse.class;
     }
 
     @Override
@@ -41,7 +41,7 @@ public class QrpaymentRequest extends ApiRequest<QrpaymentResponse> {
         return ApiAction.QRPAYMENT;
     }
 
-    public static final class QrpaymentRequestBuilder {
+    public static final class QrPaymentRequestBuilder {
 
         private String amount;
 
@@ -54,38 +54,38 @@ public class QrpaymentRequest extends ApiRequest<QrpaymentResponse> {
         private String sessionToken;
         private Authentication authentication;
 
-        public QrpaymentRequestBuilder withAuthentication(Authentication authentication) {
+        public QrPaymentRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
             return this;
         }
 
-        public QrpaymentRequestBuilder withSessionToken(String sessionToken) {
+        public QrPaymentRequestBuilder withSessionToken(String sessionToken) {
             this.sessionToken = sessionToken;
             return this;
         }
 
-        public QrpaymentRequestBuilder withMerchantPaymentId(String merchantPaymentId) {
+        public QrPaymentRequestBuilder withMerchantPaymentId(String merchantPaymentId) {
             this.merchantPaymentId = merchantPaymentId;
             return this;
         }
 
-        public QrpaymentRequestBuilder withPaymentSystemType(String paymentSystemType) {
+        public QrPaymentRequestBuilder withPaymentSystemType(String paymentSystemType) {
             this.paymentSystemType = paymentSystemType;
             return this;
         }
 
-        public QrpaymentRequestBuilder withCurrency(String currency) {
+        public QrPaymentRequestBuilder withCurrency(String currency) {
             this.currency = currency;
             return this;
         }
 
-        public QrpaymentRequestBuilder withAmount(String amount) {
+        public QrPaymentRequestBuilder withAmount(String amount) {
             this.amount = amount;
             return this;
         }
 
-        public QrpaymentRequest build() {
-            QrpaymentRequest request = new QrpaymentRequest();
+        public QrPaymentRequest build() {
+            QrPaymentRequest request = new QrPaymentRequest();
             request.authentication = this.authentication;
             request.paymentSystemType = this.paymentSystemType;
             request.merchantOrderId = this.merchantPaymentId;
@@ -94,6 +94,5 @@ public class QrpaymentRequest extends ApiRequest<QrpaymentResponse> {
             request.sessionToken = this.sessionToken;
             return request;
         }
-
     }
 }
