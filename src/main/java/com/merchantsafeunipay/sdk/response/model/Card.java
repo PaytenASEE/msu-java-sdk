@@ -35,10 +35,13 @@ public class Card {
     private String lastUpdateDate;
     private String cutoffDay;
     private String bankEftCode;
+    private String subCustomer;
 
     public Card() {
     }
 
+    public String getSubCustomer() {return subCustomer;}
+    public void setSubCustomer(String subCustomer) {this.subCustomer = subCustomer;}
     public String getCardToken() {
         return cardToken;
     }

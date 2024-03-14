@@ -63,6 +63,7 @@ public class ApiResponse {
     private String traceId;
     private String qrCode;
     private String qrTransactionId;
+    private String subCustomer;
 
     private Map<String, String> bankResponseExtras;
     private ProxyPaymentTool proxyPaymentTool;
@@ -316,6 +317,10 @@ public class ApiResponse {
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
+
+    public String getSubCustomer() {return subCustomer;}
+
+    public void setSubCustomer(String subCustomer) {this.subCustomer = subCustomer;}
 
     public String getPaymentSystemEftCode() {
         return paymentSystemEftCode;
