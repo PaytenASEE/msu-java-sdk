@@ -26,6 +26,8 @@ public class ExternalRefundRequest extends ApiRequest<FinancialResponse> {
 
     private String tckn;
 
+    private String vkn;
+
     private String merchantPaymentId;
 
     private ExternalRefundRequest() {
@@ -50,6 +52,7 @@ public class ExternalRefundRequest extends ApiRequest<FinancialResponse> {
         addToPayload(Param.CUSTOMEREMAIL, this.customerEmail);
         addToPayload(Param.CUSTOMERPHONE, this.customerPhone);
         addToPayload(Param.TCKN, this.tckn);
+        addToPayload(Param.VKN, this.vkn);
         addToPayload(Param.MERCHANTPAYMENTID, this.merchantPaymentId);
     }
 
@@ -74,7 +77,7 @@ public class ExternalRefundRequest extends ApiRequest<FinancialResponse> {
         private String customerPhone;
 
         private String tckn;
-
+        private String vkn;
         private String merchantPaymentId;
 
         private Authentication authentication;
@@ -91,6 +94,11 @@ public class ExternalRefundRequest extends ApiRequest<FinancialResponse> {
 
         public ExternalRefundRequestBuilder withAmount(BigDecimal amount) {
             this.amount = amount;
+            return this;
+        }
+
+        public ExternalRefundRequestBuilder withVkn(String vkn) {
+            this.vkn = vkn;
             return this;
         }
 
@@ -140,6 +148,7 @@ public class ExternalRefundRequest extends ApiRequest<FinancialResponse> {
             request.customerEmail = this.customerEmail;
             request.customerPhone = this.customerPhone;
             request.tckn = this.tckn;
+            request.vkn = this.vkn;
             request.merchantPaymentId = this.merchantPaymentId;
             return request;
         }
