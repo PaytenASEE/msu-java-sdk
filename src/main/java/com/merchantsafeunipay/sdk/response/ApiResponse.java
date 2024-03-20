@@ -64,7 +64,8 @@ public class ApiResponse {
     private String qrCode;
     private String qrTransactionId;
     private String subCustomer;
-
+    private String sessionId;
+    private String otpValidationId;
     private Map<String, String> bankResponseExtras;
     private ProxyPaymentTool proxyPaymentTool;
     @JsonIgnore
@@ -463,4 +464,12 @@ public class ApiResponse {
     public void setExtra(String extra) {
         this.extra = extra;
     }
+
+    public String getSessionId() {return sessionId;}
+
+    public void setSessionId(String sessionId) {this.sessionId = sessionId;}
+
+    public String getOtpValidationId() {return otpValidationId;}
+
+    public void setOtpValidationId(String otpValidationId) {this.otpValidationId = otpValidationId;}
 }

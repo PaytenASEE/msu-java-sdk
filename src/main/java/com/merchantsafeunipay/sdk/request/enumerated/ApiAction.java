@@ -641,6 +641,11 @@ public enum ApiAction {
      * API action to edit sessiontoken amount and returnurl.
      */
 
+    GENERATEOTP,
+    /**
+     * API action to generate and validate otp.
+     */
+
     QRPAYMENT;
 
     public static ApiAction fromString(String input) {
