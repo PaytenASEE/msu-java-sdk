@@ -46,7 +46,6 @@ public class QueryMerchantFeatureRequest extends ApiRequest<QueryMerchantFeature
             return this;
         }
 
-
         public QueryMerchantFeatureRequest build() {
             QueryMerchantFeatureRequest request = new QueryMerchantFeatureRequest();
             request.authentication = this.authentication;
