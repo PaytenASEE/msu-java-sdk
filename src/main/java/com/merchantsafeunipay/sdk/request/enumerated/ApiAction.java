@@ -646,6 +646,11 @@ public enum ApiAction {
      * API action to generate and validate otp.
      */
 
+    QUERYMERCHANTFEATURE,
+    /**
+     * API action to query merchant feature status visibility.
+     */
+
     QRPAYMENT;
 
     public static ApiAction fromString(String input) {
