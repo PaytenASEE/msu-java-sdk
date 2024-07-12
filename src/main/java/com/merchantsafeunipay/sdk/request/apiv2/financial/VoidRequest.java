@@ -1,15 +1,20 @@
 package com.merchantsafeunipay.sdk.request.apiv2.financial;
 
+import com.merchantsafeunipay.sdk.request.apiv2.session.SessionTokenRequest;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.VoidResponse;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class VoidRequest extends ApiRequest<VoidResponse> {
     private String pgTranId;
     private String merchantPaymentId;
     private String substatus;
     private String initiatorMerchantBusinessId;
+    private Map<String, String> extra;
 
     private VoidRequest(VoidRequestBuilder builder) {
         super();
@@ -17,6 +22,7 @@ public class VoidRequest extends ApiRequest<VoidResponse> {
         this.merchantPaymentId = builder.merchantPaymentId;
         this.substatus = builder.substatus;
         this.initiatorMerchantBusinessId = builder.initiatorMerchantBusinessId;
+        this.extra = builder.extra;
     }
 
     public static VoidRequestBuilder builder() {
@@ -39,6 +45,7 @@ public class VoidRequest extends ApiRequest<VoidResponse> {
         addToPayload(Param.MERCHANTPAYMENTID, this.merchantPaymentId);
         addToPayload(Param.SUBSTATUS, this.substatus);
         addToPayload(Param.INITIATORMERCHANTBUSINESSID, this.initiatorMerchantBusinessId);
+        addToPayload(Param.EXTRA, this.extra);
     }
 
     public static class VoidRequestBuilder {
@@ -46,9 +53,15 @@ public class VoidRequest extends ApiRequest<VoidResponse> {
         private String merchantPaymentId;
         private String substatus;
         private String initiatorMerchantBusinessId;
+        private Map<String, String> extra;
 
         public VoidRequestBuilder withPgTranId(String pgTranId) {
             this.pgTranId = pgTranId;
+            return this;
+        }
+
+        public VoidRequestBuilder withExtra(Map<String, String> extra) {
+            this.extra = extra;
             return this;
         }
 
@@ -66,6 +79,7 @@ public class VoidRequest extends ApiRequest<VoidResponse> {
             this.initiatorMerchantBusinessId = initiatorMerchantBusinessId;
             return this;
         }
+
 
         public VoidRequest build() {
             return new VoidRequest(this);
