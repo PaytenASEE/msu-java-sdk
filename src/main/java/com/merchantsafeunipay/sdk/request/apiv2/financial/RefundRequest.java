@@ -7,6 +7,7 @@ import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.RefundResponse;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 public class RefundRequest extends ApiRequest<RefundResponse> {
     private String pgTranId;
@@ -15,6 +16,7 @@ public class RefundRequest extends ApiRequest<RefundResponse> {
     private String merchantPaymentId;
     private String substatus;
     private String initiatorMerchantBusinessId;
+    private Map<String, String> extra;
 
     public RefundRequest(RefundRequestBuilder builder) {
         super();
@@ -24,6 +26,8 @@ public class RefundRequest extends ApiRequest<RefundResponse> {
         this.merchantPaymentId = builder.merchantPaymentId;
         this.substatus = builder.substatus;
         this.initiatorMerchantBusinessId = builder.initiatorMerchantBusinessId;
+        this.extra = builder.extra;
+
     }
 
     public static RefundRequestBuilder builder() {
@@ -48,6 +52,7 @@ public class RefundRequest extends ApiRequest<RefundResponse> {
         addToPayload(Param.CURRENCY, this.currency);
         addToPayload(Param.AMOUNT, this.amount);
         addToPayload(Param.SUBSTATUS, this.substatus);
+        addToPayload(Param.EXTRA, this.extra);
     }
 
     public static class RefundRequestBuilder {
@@ -57,6 +62,7 @@ public class RefundRequest extends ApiRequest<RefundResponse> {
         private String merchantPaymentId;
         private String substatus;
         private String initiatorMerchantBusinessId;
+        private Map<String, String> extra;
 
         public RefundRequestBuilder withPgTranId(String pgTranId) {
             this.pgTranId = pgTranId;
@@ -85,6 +91,11 @@ public class RefundRequest extends ApiRequest<RefundResponse> {
 
         public RefundRequestBuilder withInitiatorMerchantBusinessId(String initiatorMerchantBusinessId) {
             this.initiatorMerchantBusinessId = initiatorMerchantBusinessId;
+            return this;
+        }
+
+        public RefundRequestBuilder withExtra(Map<String, String> extra) {
+            this.extra = extra;
             return this;
         }
 
