@@ -651,6 +651,8 @@ public enum ApiAction {
      * API action to query merchant feature status visibility.
      */
 
+    COMMISSIONSCHEMAADD, COMMISSIONSCHEMAEDIT, COMMISSIONSCHEMAQUERY,
+
     QRPAYMENT;
 
     public static ApiAction fromString(String input) {
