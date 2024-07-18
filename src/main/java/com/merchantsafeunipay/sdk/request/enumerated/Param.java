@@ -85,6 +85,7 @@ public enum Param {
     SHOWDINERS,
     SHOWJCB,
     SHOWTROY,
+    USABILITY,
 
     @Deprecated
     ITEMNUM_CODE,
