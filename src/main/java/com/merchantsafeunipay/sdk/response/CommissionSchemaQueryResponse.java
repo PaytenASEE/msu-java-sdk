@@ -23,6 +23,10 @@ public class CommissionSchemaQueryResponse extends ApiResponse{
     @XmlElementWrapper(name = "settings")
     private List<Object> settings = new ArrayList<>();
 
+    @JsonProperty(value = "futureSchemas")
+    @XmlElementWrapper(name = "futureSchemas")
+    private List<Object> futureSchemas = new ArrayList<>();
+
     public List<Object> getSettings() {
         return settings;
     }
@@ -39,4 +43,5 @@ public class CommissionSchemaQueryResponse extends ApiResponse{
         return endDate;
     }
 
+    public List<Object> getFutureSchemas() {return futureSchemas;}
 }
