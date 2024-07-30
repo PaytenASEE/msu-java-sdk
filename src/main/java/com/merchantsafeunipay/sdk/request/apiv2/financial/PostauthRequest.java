@@ -7,6 +7,7 @@ import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.PostauthResponse;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 public class PostauthRequest extends ApiRequest<PostauthResponse> {
     private String pgTranId;
@@ -14,6 +15,7 @@ public class PostauthRequest extends ApiRequest<PostauthResponse> {
     private String initiatorMerchantBusinessId;
     private BigDecimal amount;
     private String invoiceId;
+    private Map<String, String> extra;
 
     private PostauthRequest(PostauthRequestBuilder builder) {
         super();
@@ -23,6 +25,7 @@ public class PostauthRequest extends ApiRequest<PostauthResponse> {
         this.amount = builder.amount;
         this.authentication = builder.authentication;
         this.invoiceId = builder.invoiceId;
+        this.extra = builder.extra;
     }
 
     public static PostauthRequestBuilder builder() {
@@ -41,6 +44,7 @@ public class PostauthRequest extends ApiRequest<PostauthResponse> {
         addToPayload(Param.INITIATORMERCHANTBUSINESSID, this.initiatorMerchantBusinessId);
         addToPayload(Param.AMOUNT, this.amount);
         addToPayload(Param.INVOICEID, this.invoiceId);
+        addToPayload(Param.EXTRA, this.extra);
     }
 
     @Override
@@ -55,9 +59,14 @@ public class PostauthRequest extends ApiRequest<PostauthResponse> {
         private BigDecimal amount;
         private Authentication authentication;
         private String invoiceId;
+        private Map<String, String> extra;
 
         public PostauthRequestBuilder withPgTranId(String pgTranId) {
             this.pgTranId = pgTranId;
+            return this;
+        }
+        public PostauthRequest.PostauthRequestBuilder withExtra(Map<String, String> extra) {
+            this.extra = extra;
             return this;
         }
 
