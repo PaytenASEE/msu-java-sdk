@@ -1,6 +1,7 @@
 package com.merchantsafeunipay.sdk.request.apiv2.query;
 
 import com.merchantsafeunipay.sdk.authentication.Authentication;
+import com.merchantsafeunipay.sdk.request.apiv2.financial.DetachedRefundRequest;
 import com.merchantsafeunipay.sdk.request.base.ApiRequest;
 import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
@@ -8,6 +9,7 @@ import com.merchantsafeunipay.sdk.request.enumerated.Param;
 import com.merchantsafeunipay.sdk.response.QueryPointsResponse;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 public class QueryPointsRequest extends ApiRequest<QueryPointsResponse> {
     private String merchantPaymentId;
@@ -36,6 +38,9 @@ public class QueryPointsRequest extends ApiRequest<QueryPointsResponse> {
 
     private String dealerTypeName;
 
+    private Map<String, String> extra;
+
+
     private QueryPointsRequest() {
     }
 
@@ -63,6 +68,7 @@ public class QueryPointsRequest extends ApiRequest<QueryPointsResponse> {
         addToPayload(Param.PAYMENTSYSTEM, this.paymentSystem);
         addToPayload(Param.FORGROUP, this.forGroup);
         addToPayload(Param.DEALERTYPENAME, this.dealerTypeName);
+        addToPayload(Param.EXTRA, this.extra);
     }
 
     @Override
@@ -98,6 +104,8 @@ public class QueryPointsRequest extends ApiRequest<QueryPointsResponse> {
         private String dealerTypeName;
 
         private Authentication authentication;
+
+        private Map<String, String> extra;
 
         public QueryPointsRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -169,6 +177,11 @@ public class QueryPointsRequest extends ApiRequest<QueryPointsResponse> {
             return this;
         }
 
+        public QueryPointsRequestBuilder withExtra(Map<String, String> extra) {
+            this.extra = extra;
+            return this;
+        }
+
         public QueryPointsRequest build() {
             QueryPointsRequest request = new QueryPointsRequest();
             request.authentication = this.authentication;
@@ -185,6 +198,7 @@ public class QueryPointsRequest extends ApiRequest<QueryPointsResponse> {
             request.paymentSystem = this.paymentSystem;
             request.forGroup = this.forGroup;
             request.dealerTypeName = this.dealerTypeName;
+            request.extra = this.extra;
             return request;
         }
     }

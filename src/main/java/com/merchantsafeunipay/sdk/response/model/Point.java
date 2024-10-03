@@ -14,13 +14,21 @@ public class Point {
     @JsonProperty("value")
     private String value;
 
+    @JsonProperty("amount")
+    private String amount;
+
+    @JsonProperty("useRate")
+    private String useRate;
+
     public Point() {
     }
 
-    public Point(String pointName, String pointValue) {
+    public Point(String pointName, String pointValue, String useRate, String amount) {
         super();
         this.name = pointName;
         this.value = pointValue;
+        this.amount = amount;
+        this.useRate = useRate;
     }
 
     public String getName() {
