@@ -653,7 +653,9 @@ public enum ApiAction {
 
     COMMISSIONSCHEMAADD, COMMISSIONSCHEMAEDIT, QUERYCOMMISSIONSCHEMA,
 
-    QRPAYMENT;
+    QRPAYMENT,
+
+    QUERYAGRICULTURETEMPLATE;
 
     public static ApiAction fromString(String input) {
         for (ApiAction a : values()) {
