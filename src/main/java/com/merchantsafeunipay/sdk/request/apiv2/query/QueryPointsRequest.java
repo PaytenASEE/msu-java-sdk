@@ -13,6 +13,7 @@ import java.util.Map;
 
 public class QueryPointsRequest extends ApiRequest<QueryPointsResponse> {
     private String merchantPaymentId;
+    private String encryptedData;
 
     private BigDecimal amount;
 
@@ -69,6 +70,7 @@ public class QueryPointsRequest extends ApiRequest<QueryPointsResponse> {
         addToPayload(Param.FORGROUP, this.forGroup);
         addToPayload(Param.DEALERTYPENAME, this.dealerTypeName);
         addToPayload(Param.EXTRA, this.extra);
+        addToPayload(Param.ENCRYPTEDDATA,this.encryptedData);
     }
 
     @Override
@@ -78,7 +80,7 @@ public class QueryPointsRequest extends ApiRequest<QueryPointsResponse> {
 
     public static final class QueryPointsRequestBuilder {
         private String merchantPaymentId;
-
+        private String encryptedData;
         private BigDecimal amount;
 
         private String customer;
@@ -142,6 +144,11 @@ public class QueryPointsRequest extends ApiRequest<QueryPointsResponse> {
             return this;
         }
 
+        public QueryPointsRequestBuilder withEncryptedData(String encryptedData) {
+            this.encryptedData = encryptedData;
+            return this;
+        }
+
         public QueryPointsRequestBuilder withCardExpiry(String cardExpiry) {
             this.cardExpiry = cardExpiry;
             return this;
@@ -199,6 +206,7 @@ public class QueryPointsRequest extends ApiRequest<QueryPointsResponse> {
             request.forGroup = this.forGroup;
             request.dealerTypeName = this.dealerTypeName;
             request.extra = this.extra;
+            request.encryptedData = this.encryptedData;
             return request;
         }
     }

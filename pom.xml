@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.merchantsafeunipay</groupId>
 	<artifactId>msu-java-sdk</artifactId>
-	<version>1.0.23-SNAPSHOT</version>
+	<version>1.0.24-SNAPSHOT</version>
 	<name>MerchantSafe Unipay API SDK - Java</name>
 	<description>Java SDK for MSU API</description>
 	<url>https://github.com/PaytenASEE/msu-java-sdk</url>
