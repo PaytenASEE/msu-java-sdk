@@ -20,6 +20,12 @@ public class Installment {
     private String startDateISO;
     private String endDateISO;
     private String name;
+    private String posId;
+    private String amount;
+    private String currencyId;
+    private String allocationId;
+    private String campaignId;
+    private String finalAmount;
     private String paymentSystemName;
     private String paymentSystemType;
     private String commissionStatus;
@@ -139,4 +145,10 @@ public class Installment {
     public void setCommission(Commission commission) {
         this.commission = commission;
     }
+
+    public String getAmount() {return amount;}
+
+    public String getCurrencyId() {return currencyId;}
+
+    public String getFinalAmount() {return finalAmount;}
 }

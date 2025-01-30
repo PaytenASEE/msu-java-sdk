@@ -115,6 +115,11 @@ public enum ApiAction {
     /**
      * Action for Adding paymentType for API v2
      */
+
+    QUERYPSINSTALLMENT,
+    /**
+     * Action for Query to bank installments according to card
+     */
     PAYMENTTYPEADD,
     /**
      * Action for Adding paymentType for API v2
