@@ -62,7 +62,7 @@ public class QueryAgricultureTemplateRequest extends ApiRequest<QueryAgriculture
 
     @Override
     public ApiAction apiAction() {
-        return ApiAction.QUERYAGRICULTURETEMPLATE;
+        return ApiAction.QUERYAGRITEMPLATE;
     }
 
     public static final class QueryAgricultureTemplateRequestBuilder {

@@ -660,7 +660,7 @@ public enum ApiAction {
 
     QRPAYMENT,
 
-    QUERYAGRICULTURETEMPLATE;
+    QUERYAGRITEMPLATE;
 
     public static ApiAction fromString(String input) {
         for (ApiAction a : values()) {
