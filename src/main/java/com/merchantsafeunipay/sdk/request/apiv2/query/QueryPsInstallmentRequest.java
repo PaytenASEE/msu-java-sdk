@@ -23,6 +23,7 @@ public class QueryPsInstallmentRequest extends ApiRequest<QueryPsInstallmentResp
     private String nameOnCard;
     private String paymentSystemType;
     private String paymentSystem;
+    private String merchantPaymentId;
 
     private QueryPsInstallmentRequest() {
     }
@@ -51,6 +52,7 @@ public class QueryPsInstallmentRequest extends ApiRequest<QueryPsInstallmentResp
         addToPayload(Param.NAMEONCARD, this.nameOnCard);
         addToPayload(Param.CUSTOMERPHONE, this.customerPhone);
         addToPayload(Param.CUSTOMERIP, this.customerIp);
+        addToPayload(Param.MERCHANTPAYMENTID, this.merchantPaymentId);
 
     }
 
@@ -74,6 +76,7 @@ public class QueryPsInstallmentRequest extends ApiRequest<QueryPsInstallmentResp
         private String paymentSystemType;
         private String paymentSystem;
         private Authentication authentication;
+        private String merchantPaymentId;
 
         public QueryPsInstallmentRequestBuilder withAuthentication(Authentication authentication) {
             this.authentication = authentication;
@@ -91,6 +94,10 @@ public class QueryPsInstallmentRequest extends ApiRequest<QueryPsInstallmentResp
 
         public QueryPsInstallmentRequestBuilder withDealerCode(String paymentSystemType) {
             this.paymentSystemType = paymentSystemType;
+            return this;
+        }
+        public QueryPsInstallmentRequestBuilder withMerchantPaymentId(String merchantPaymentId) {
+            this.merchantPaymentId = merchantPaymentId;
             return this;
         }
 
@@ -156,6 +163,7 @@ public class QueryPsInstallmentRequest extends ApiRequest<QueryPsInstallmentResp
             request.paymentSystemType = this.paymentSystemType;
             request.sessionToken = this.sessionToken;
             request.nameOnCard = this.nameOnCard;
+            request.merchantPaymentId =this.merchantPaymentId;
 
             return request;
         }
