@@ -125,7 +125,6 @@ public class QueryPsInstallmentRequest extends ApiRequest<QueryPsInstallmentResp
             return this;
         }
 
-
         public QueryPsInstallmentRequestBuilder withCardPan(String cardPan) {
             this.cardPan = cardPan;
             return this;
