@@ -2,6 +2,7 @@ package com.merchantsafeunipay.sdk.response.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,8 +32,11 @@ public class Invoice {
     private String dealerTypeName;
     private String extra;
     private String type;
-    private Boolean isSplitPayment;
+    private JsonNode isSplitPayment;
     private Boolean hasActiveSplitPayment;
+    private String sessionToken;
+
+    public String getSessionToken() {return sessionToken;}
 
     public BigDecimal getPostAuthAmount() {return postAuthAmount;}
 
@@ -50,9 +54,9 @@ public class Invoice {
 
     public void setType(String type) {this.type = type;}
 
-    public Boolean getSplitPayment() {return isSplitPayment;}
+    public Object getSplitPayment() {return isSplitPayment;}
 
-    public void setSplitPayment(Boolean splitPayment) {isSplitPayment = splitPayment;}
+    public void setSplitPayment(JsonNode splitPayment) {isSplitPayment = splitPayment;}
 
     public Boolean getHasActiveSplitPayment() {return hasActiveSplitPayment;}
 
