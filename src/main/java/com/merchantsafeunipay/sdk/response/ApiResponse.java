@@ -64,6 +64,7 @@ public class ApiResponse {
     private String qrCode;
     private String qrTransactionId;
     private String subCustomer;
+    private String userAttemptStatus;
     private String sessionId;
     private String otpValidationId;
     private Map<String, String> bankResponseExtras;
@@ -101,6 +102,8 @@ public class ApiResponse {
     public void setAction(ApiAction action) {
         this.action = action;
     }
+    public String getUserAttemptStatus() {return userAttemptStatus;}
+    public void setUserAttemptStatus(String userAttemptStatus) {this.userAttemptStatus = userAttemptStatus;}
 
     public String getApiMerchantId() {
         return apiMerchantId;
