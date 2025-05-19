@@ -430,6 +430,7 @@ public enum Param {
 
     ENCRYPTEDPAN,
 
+    BASICQUERY,
     VALIDFOR,
     WALLETPAYMENTTOOL;
 }
