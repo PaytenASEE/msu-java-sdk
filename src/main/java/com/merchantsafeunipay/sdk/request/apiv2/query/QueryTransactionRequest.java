@@ -8,6 +8,7 @@ import com.merchantsafeunipay.sdk.response.QueryTransactionResponse;
 
 public class QueryTransactionRequest extends ApiRequest<QueryTransactionResponse> {
     private String pgTranId;
+    private String walletPaymentTool;
 
     private String transactionStatus;
 
@@ -57,6 +58,7 @@ public class QueryTransactionRequest extends ApiRequest<QueryTransactionResponse
         addToPayload(Param.CUSTOMERNAME, this.customerName);
         addToPayload(Param.CUSTOMERPHONE, this.customerPhone);
         addToPayload(Param.ENCRYPTEDPAN, this.encryptedPan);
+        addToPayload(Param.WALLETPAYMENTTOOL,this.walletPaymentTool);
     }
 
     @Override
@@ -66,6 +68,7 @@ public class QueryTransactionRequest extends ApiRequest<QueryTransactionResponse
 
     public static final class QueryTransactionRequestBuilder {
         private String pgTranId;
+        private String walletPaymentTool;
 
         private String transactionStatus;
 
@@ -98,6 +101,10 @@ public class QueryTransactionRequest extends ApiRequest<QueryTransactionResponse
 
         public QueryTransactionRequestBuilder withPgTranId(String pgTranId) {
             this.pgTranId = pgTranId;
+            return this;
+        }
+        public QueryTransactionRequestBuilder withWalletPaymentTool(String walletPaymentTool) {
+            this.walletPaymentTool = walletPaymentTool;
             return this;
         }
 
@@ -171,6 +178,7 @@ public class QueryTransactionRequest extends ApiRequest<QueryTransactionResponse
             request.customerName = this.customerName;
             request.customerPhone = this.customerPhone;
             request.encryptedPan = this.encryptedPan;
+            request.walletPaymentTool = this.walletPaymentTool;
             return request;
         }
     }
