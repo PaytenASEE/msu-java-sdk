@@ -15,6 +15,8 @@ public class QueryOfflineCampaignDataRequest extends ApiRequest<QueryOfflineCamp
     private String dealerCode;
     private String paymentSystem;
     private String dealerTypeName;
+    private String bin;
+    private String amount;
     private Map<String, String> extra;
 
     private QueryOfflineCampaignDataRequest() {
@@ -37,6 +39,8 @@ public class QueryOfflineCampaignDataRequest extends ApiRequest<QueryOfflineCamp
         addToPayload(Param.DEALERCODE, this.dealerCode);
         addToPayload(Param.PAYMENTSYSTEM, this.paymentSystem);
         addToPayload(Param.DEALERTYPENAME, this.dealerTypeName);
+        addToPayload(Param.AMOUNT, this.amount);
+        addToPayload(Param.BIN, this.bin);
     }
 
     @Override
@@ -50,6 +54,8 @@ public class QueryOfflineCampaignDataRequest extends ApiRequest<QueryOfflineCamp
         private String dealerCode;
         private String paymentSystem;
         private String dealerTypeName;
+        private String bin;
+        private String amount;
         private Map<String, String> extra;
 
         private Authentication authentication;
@@ -58,6 +64,7 @@ public class QueryOfflineCampaignDataRequest extends ApiRequest<QueryOfflineCamp
             this.authentication = authentication;
             return this;
         }
+
         public QueryOfflineCampaignDataRequestBuilder withPaymentSystem(String paymentSystem) {
             this.paymentSystem = paymentSystem;
             return this;
@@ -65,6 +72,16 @@ public class QueryOfflineCampaignDataRequest extends ApiRequest<QueryOfflineCamp
 
         public QueryOfflineCampaignDataRequestBuilder withInstallments(String installments) {
             this.installments = installments;
+            return this;
+        }
+
+        public QueryOfflineCampaignDataRequestBuilder withAmount(String amount) {
+            this.amount = amount;
+            return this;
+        }
+
+        public QueryOfflineCampaignDataRequestBuilder withBin(String bin) {
+            this.bin = bin;
             return this;
         }
 
@@ -93,6 +110,8 @@ public class QueryOfflineCampaignDataRequest extends ApiRequest<QueryOfflineCamp
             request.cardToken = this.cardToken;
             request.extra = this.extra;
             request.dealerTypeName = this.dealerTypeName;
+            request.amount = this.amount;
+            request.bin = this.bin;
             return request;
         }
     }
