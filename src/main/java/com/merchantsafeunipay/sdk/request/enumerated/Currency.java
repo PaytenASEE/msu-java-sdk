@@ -41,6 +41,7 @@ public enum Currency {
     BOB(new String[]{}, "068", 2, "Boliviano"), //
     COP(new String[]{}, "170", 2, "Colombian peso"), //
     RSD(new String[]{}, "941", 2, "Serbian dinar"),
+    AZN(new String[]{}, "944", 2, "Turkish Lira"),
     UAH(new String[] {}, "980", 2, "Ukrainian hryvnia");;
 
 
