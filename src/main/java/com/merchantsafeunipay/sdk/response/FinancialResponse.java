@@ -9,6 +9,7 @@ import com.merchantsafeunipay.sdk.request.enumerated.ApiAction;
 import com.merchantsafeunipay.sdk.request.enumerated.Currency;
 import com.merchantsafeunipay.sdk.request.enumerated.PaymentSystemRuleType;
 import com.merchantsafeunipay.sdk.response.model.CampaignCode;
+import com.merchantsafeunipay.sdk.response.model.CampaignOffline;
 import com.merchantsafeunipay.sdk.response.model.CampaignOnline;
 import com.merchantsafeunipay.sdk.response.model.Point;
 
@@ -32,6 +33,8 @@ public class FinancialResponse extends ApiResponse {
     private List<Point> points;
     @JsonProperty(value = "campaigns")
     private List<CampaignOnline> campaigns;
+    @JsonProperty(value = "campaignCodeList")
+    private List<CampaignOffline> campaignCodeList;
     private BigDecimal finalAmount;
     private BigDecimal commissionRate;
     private BigDecimal commissionAppliedAmount;
@@ -95,6 +98,9 @@ public class FinancialResponse extends ApiResponse {
 
     public List<CampaignOnline> getCampaigns() {
         return campaigns;
+    }
+    public List<CampaignOffline> getOfflineCampaigns() {
+        return campaignCodeList;
     }
 
     public void setCampaigns(List<CampaignOnline> campaigns) {
