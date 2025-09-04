@@ -9,9 +9,11 @@ import org.junit.Test;
 public class QueryTransactionRequestTest extends BaseIntegrationTest {
     @Test
     public void queryTransactionWithEcryptedPan() {
-        String encryptedPan = "UBDb8Mp9chk2SbFMnhW3m5YcIw3rXQHUP6yV6oEGTiC0jWaGdTQQ+aCb50Uo1bqg1xmxXLqTCIkdPJ0yPgrbY+R918u195S7RGWe/4ZB11iy8oEjccM9nyqGTvTWAeOc3yo0/GtxgU5LJzM00xKhXsiHv59UU4hO7TeAO9ucpm5qB4ecsi09QiLDq/xld0nDOBLLOZ3Wx66VLHX/Y5+VAn0r0FFBJaQcmEzxlvVuigqxRCs/48c4dvUoyRkdjs9dLhrDLHwCzOqDjuGM89DlQ5QvPuIlaQMDhTDv0CebpoBh/mDyptzo7OpF43bEdaccTWyZDKqFGH3Avb69XbUpDg==";
+        String encryptedPan = "LMrwvn+0SabX/YMR1zPAMKqj4HM1Y4LK95pQ4QnR6+7PMFL3dnN8AThlTZczoOAe0k6BxiQ2aVHzdfGJSA8UFicE/6bAuCVDeFg4twtuB9FtZ1xk7xpal1qNVxCp+KaxvP4fBeXJf8fImDjP/U/watiBEwUG31qToPUM365HG6uoaz1tTucLdr3aZqJHhUJ+zO1cCC80QzolppT7ZGXDCTXMFMXYhQo+pyNiIZWjND4MN1qOPvdzJADcKF8KMNf+4ich7nzd8EZpA3s2dYSlcMmD/o1uwy0Q3rdRdUVVCa9Su/bcV5WzUTd7DJlRAsRQ6ujJ3wfqOXJ+UmPbW0Ugsw==";
+        String basicQueryValue = "YES";
         QueryTransactionRequest queryTransactionRequest = QueryTransactionRequest.builder()
                 .withEncryptedPan(encryptedPan)
+                .withBasicQuery(basicQueryValue)
                 .build();
 
         QueryTransactionResponse queryTransactionResponse = client.doRequest(queryTransactionRequest);
